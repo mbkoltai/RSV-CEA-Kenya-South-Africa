@@ -1,0 +1,2264 @@
+"country","country_iso3","target_population","year","stillbirth_rate","income_region","incomplete_maternal_transfer_rate"
+"Afghanistan","AFG",1090088,2020,0.0267,"LIC",0
+"Afghanistan","AFG",1093626,2021,0.0267,"LIC",0
+"Afghanistan","AFG",1097163,2022,0.0267,"LIC",0
+"Afghanistan","AFG",1100701,2023,0.0267,"LIC",0
+"Afghanistan","AFG",1104238,2024,0.0267,"LIC",0
+"Afghanistan","AFG",1107776,2025,0.0267,"LIC",0
+"Afghanistan","AFG",1110609,2026,0.0267,"LIC",0
+"Afghanistan","AFG",1113442,2027,0.0267,"LIC",0
+"Afghanistan","AFG",1116275,2028,0.0267,"LIC",0
+"Afghanistan","AFG",1119108,2029,0.0267,"LIC",0
+"Afghanistan","AFG",1121941,2030,0.0267,"LIC",0
+"Afghanistan","AFG",1122436,2031,0.0267,"LIC",0
+"Afghanistan","AFG",1122931,2032,0.0267,"LIC",0
+"Afghanistan","AFG",1123426,2033,0.0267,"LIC",0
+"Afghanistan","AFG",1123921,2034,0.0267,"LIC",0
+"Afghanistan","AFG",1124416,2035,0.0267,"LIC",0
+"Afghanistan","AFG",1121897,2036,0.0267,"LIC",0
+"Afghanistan","AFG",1119378,2037,0.0267,"LIC",0
+"Afghanistan","AFG",1116860,2038,0.0267,"LIC",0
+"Afghanistan","AFG",1114341,2039,0.0267,"LIC",0
+"Afghanistan","AFG",1111822,2040,0.0267,"LIC",0
+"Afghanistan","AFG",1106317,2041,0.0267,"LIC",0
+"Afghanistan","AFG",1100812,2042,0.0267,"LIC",0
+"Afghanistan","AFG",1095307,2043,0.0267,"LIC",0
+"Afghanistan","AFG",1089802,2044,0.0267,"LIC",0
+"Afghanistan","AFG",1084297,2045,0.0267,"LIC",0
+"Afghanistan","AFG",1076970,2046,0.0267,"LIC",0
+"Afghanistan","AFG",1069643,2047,0.0267,"LIC",0
+"Afghanistan","AFG",1062316,2048,0.0267,"LIC",0
+"Afghanistan","AFG",1054989,2049,0.0267,"LIC",0
+"Afghanistan","AFG",1047662,2050,0.0267,"LIC",0
+"Angola","AGO",1158885,2020,0.0273,"LMIC",0
+"Angola","AGO",1187897,2021,0.0273,"LMIC",0
+"Angola","AGO",1216908,2022,0.0273,"LMIC",0
+"Angola","AGO",1245920,2023,0.0273,"LMIC",0
+"Angola","AGO",1274931,2024,0.0273,"LMIC",0
+"Angola","AGO",1303943,2025,0.0273,"LMIC",0
+"Angola","AGO",1335578,2026,0.0273,"LMIC",0
+"Angola","AGO",1367213,2027,0.0273,"LMIC",0
+"Angola","AGO",1398849,2028,0.0273,"LMIC",0
+"Angola","AGO",1430484,2029,0.0273,"LMIC",0
+"Angola","AGO",1462119,2030,0.0273,"LMIC",0
+"Angola","AGO",1494174,2031,0.0273,"LMIC",0
+"Angola","AGO",1526229,2032,0.0273,"LMIC",0
+"Angola","AGO",1558285,2033,0.0273,"LMIC",0
+"Angola","AGO",1590340,2034,0.0273,"LMIC",0
+"Angola","AGO",1622395,2035,0.0273,"LMIC",0
+"Angola","AGO",1653689,2036,0.0273,"LMIC",0
+"Angola","AGO",1684983,2037,0.0273,"LMIC",0
+"Angola","AGO",1716278,2038,0.0273,"LMIC",0
+"Angola","AGO",1747572,2039,0.0273,"LMIC",0
+"Angola","AGO",1778866,2040,0.0273,"LMIC",0
+"Angola","AGO",1808398,2041,0.0273,"LMIC",0
+"Angola","AGO",1837930,2042,0.0273,"LMIC",0
+"Angola","AGO",1867463,2043,0.0273,"LMIC",0
+"Angola","AGO",1896995,2044,0.0273,"LMIC",0
+"Angola","AGO",1926527,2045,0.0273,"LMIC",0
+"Angola","AGO",1954318,2046,0.0273,"LMIC",0
+"Angola","AGO",1982109,2047,0.0273,"LMIC",0
+"Angola","AGO",2009901,2048,0.0273,"LMIC",0
+"Angola","AGO",2037692,2049,0.0273,"LMIC",0
+"Angola","AGO",2065483,2050,0.0273,"LMIC",0
+"Armenia","ARM",37031,2020,0.0138,"LMIC",0
+"Armenia","ARM",36086,2021,0.0138,"LMIC",0
+"Armenia","ARM",35141,2022,0.0138,"LMIC",0
+"Armenia","ARM",34197,2023,0.0138,"LMIC",0
+"Armenia","ARM",33252,2024,0.0138,"LMIC",0
+"Armenia","ARM",32307,2025,0.0138,"LMIC",0
+"Armenia","ARM",31572,2026,0.0138,"LMIC",0
+"Armenia","ARM",30837,2027,0.0138,"LMIC",0
+"Armenia","ARM",30101,2028,0.0138,"LMIC",0
+"Armenia","ARM",29366,2029,0.0138,"LMIC",0
+"Armenia","ARM",28631,2030,0.0138,"LMIC",0
+"Armenia","ARM",28302,2031,0.0138,"LMIC",0
+"Armenia","ARM",27973,2032,0.0138,"LMIC",0
+"Armenia","ARM",27645,2033,0.0138,"LMIC",0
+"Armenia","ARM",27316,2034,0.0138,"LMIC",0
+"Armenia","ARM",26987,2035,0.0138,"LMIC",0
+"Armenia","ARM",27015,2036,0.0138,"LMIC",0
+"Armenia","ARM",27044,2037,0.0138,"LMIC",0
+"Armenia","ARM",27072,2038,0.0138,"LMIC",0
+"Armenia","ARM",27101,2039,0.0138,"LMIC",0
+"Armenia","ARM",27129,2040,0.0138,"LMIC",0
+"Armenia","ARM",27142,2041,0.0138,"LMIC",0
+"Armenia","ARM",27154,2042,0.0138,"LMIC",0
+"Armenia","ARM",27167,2043,0.0138,"LMIC",0
+"Armenia","ARM",27179,2044,0.0138,"LMIC",0
+"Armenia","ARM",27192,2045,0.0138,"LMIC",0
+"Armenia","ARM",26932,2046,0.0138,"LMIC",0
+"Armenia","ARM",26671,2047,0.0138,"LMIC",0
+"Armenia","ARM",26411,2048,0.0138,"LMIC",0
+"Armenia","ARM",26150,2049,0.0138,"LMIC",0
+"Armenia","ARM",25890,2050,0.0138,"LMIC",0
+"Azerbaijan","AZE",160019,2020,0.0165,"LMIC",0
+"Azerbaijan","AZE",156019,2021,0.0165,"LMIC",0
+"Azerbaijan","AZE",152019,2022,0.0165,"LMIC",0
+"Azerbaijan","AZE",148019,2023,0.0165,"LMIC",0
+"Azerbaijan","AZE",144019,2024,0.0165,"LMIC",0
+"Azerbaijan","AZE",140019,2025,0.0165,"LMIC",0
+"Azerbaijan","AZE",137743,2026,0.0165,"LMIC",0
+"Azerbaijan","AZE",135468,2027,0.0165,"LMIC",0
+"Azerbaijan","AZE",133192,2028,0.0165,"LMIC",0
+"Azerbaijan","AZE",130917,2029,0.0165,"LMIC",0
+"Azerbaijan","AZE",128641,2030,0.0165,"LMIC",0
+"Azerbaijan","AZE",128651,2031,0.0165,"LMIC",0
+"Azerbaijan","AZE",128660,2032,0.0165,"LMIC",0
+"Azerbaijan","AZE",128670,2033,0.0165,"LMIC",0
+"Azerbaijan","AZE",128679,2034,0.0165,"LMIC",0
+"Azerbaijan","AZE",128689,2035,0.0165,"LMIC",0
+"Azerbaijan","AZE",129124,2036,0.0165,"LMIC",0
+"Azerbaijan","AZE",129560,2037,0.0165,"LMIC",0
+"Azerbaijan","AZE",129995,2038,0.0165,"LMIC",0
+"Azerbaijan","AZE",130431,2039,0.0165,"LMIC",0
+"Azerbaijan","AZE",130866,2040,0.0165,"LMIC",0
+"Azerbaijan","AZE",130494,2041,0.0165,"LMIC",0
+"Azerbaijan","AZE",130121,2042,0.0165,"LMIC",0
+"Azerbaijan","AZE",129749,2043,0.0165,"LMIC",0
+"Azerbaijan","AZE",129376,2044,0.0165,"LMIC",0
+"Azerbaijan","AZE",129004,2045,0.0165,"LMIC",0
+"Azerbaijan","AZE",127920,2046,0.0165,"LMIC",0
+"Azerbaijan","AZE",126836,2047,0.0165,"LMIC",0
+"Azerbaijan","AZE",125753,2048,0.0165,"LMIC",0
+"Azerbaijan","AZE",124669,2049,0.0165,"LMIC",0
+"Azerbaijan","AZE",123585,2050,0.0165,"LMIC",0
+"Burundi","BDI",420048,2020,0.0266,"LIC",0
+"Burundi","BDI",426906,2021,0.0266,"LIC",0
+"Burundi","BDI",433764,2022,0.0266,"LIC",0
+"Burundi","BDI",440621,2023,0.0266,"LIC",0
+"Burundi","BDI",447479,2024,0.0266,"LIC",0
+"Burundi","BDI",454337,2025,0.0266,"LIC",0
+"Burundi","BDI",460413,2026,0.0266,"LIC",0
+"Burundi","BDI",466489,2027,0.0266,"LIC",0
+"Burundi","BDI",472566,2028,0.0266,"LIC",0
+"Burundi","BDI",478642,2029,0.0266,"LIC",0
+"Burundi","BDI",484718,2030,0.0266,"LIC",0
+"Burundi","BDI",493542,2031,0.0266,"LIC",0
+"Burundi","BDI",502366,2032,0.0266,"LIC",0
+"Burundi","BDI",511189,2033,0.0266,"LIC",0
+"Burundi","BDI",520013,2034,0.0266,"LIC",0
+"Burundi","BDI",528837,2035,0.0266,"LIC",0
+"Burundi","BDI",540039,2036,0.0266,"LIC",0
+"Burundi","BDI",551241,2037,0.0266,"LIC",0
+"Burundi","BDI",562443,2038,0.0266,"LIC",0
+"Burundi","BDI",573645,2039,0.0266,"LIC",0
+"Burundi","BDI",584847,2040,0.0266,"LIC",0
+"Burundi","BDI",595428,2041,0.0266,"LIC",0
+"Burundi","BDI",606009,2042,0.0266,"LIC",0
+"Burundi","BDI",616591,2043,0.0266,"LIC",0
+"Burundi","BDI",627172,2044,0.0266,"LIC",0
+"Burundi","BDI",637753,2045,0.0266,"LIC",0
+"Burundi","BDI",645753,2046,0.0266,"LIC",0
+"Burundi","BDI",653752,2047,0.0266,"LIC",0
+"Burundi","BDI",661752,2048,0.0266,"LIC",0
+"Burundi","BDI",669751,2049,0.0266,"LIC",0
+"Burundi","BDI",677751,2050,0.0266,"LIC",0
+"Benin","BEN",381589,2020,0.0303,"LIC",0
+"Benin","BEN",388637,2021,0.0303,"LIC",0
+"Benin","BEN",395685,2022,0.0303,"LIC",0
+"Benin","BEN",402734,2023,0.0303,"LIC",0
+"Benin","BEN",409782,2024,0.0303,"LIC",0
+"Benin","BEN",416830,2025,0.0303,"LIC",0
+"Benin","BEN",423861,2026,0.0303,"LIC",0
+"Benin","BEN",430893,2027,0.0303,"LIC",0
+"Benin","BEN",437924,2028,0.0303,"LIC",0
+"Benin","BEN",444956,2029,0.0303,"LIC",0
+"Benin","BEN",451987,2030,0.0303,"LIC",0
+"Benin","BEN",458807,2031,0.0303,"LIC",0
+"Benin","BEN",465628,2032,0.0303,"LIC",0
+"Benin","BEN",472448,2033,0.0303,"LIC",0
+"Benin","BEN",479269,2034,0.0303,"LIC",0
+"Benin","BEN",486089,2035,0.0303,"LIC",0
+"Benin","BEN",492645,2036,0.0303,"LIC",0
+"Benin","BEN",499202,2037,0.0303,"LIC",0
+"Benin","BEN",505758,2038,0.0303,"LIC",0
+"Benin","BEN",512315,2039,0.0303,"LIC",0
+"Benin","BEN",518871,2040,0.0303,"LIC",0
+"Benin","BEN",524845,2041,0.0303,"LIC",0
+"Benin","BEN",530819,2042,0.0303,"LIC",0
+"Benin","BEN",536792,2043,0.0303,"LIC",0
+"Benin","BEN",542766,2044,0.0303,"LIC",0
+"Benin","BEN",548740,2045,0.0303,"LIC",0
+"Benin","BEN",554193,2046,0.0303,"LIC",0
+"Benin","BEN",559645,2047,0.0303,"LIC",0
+"Benin","BEN",565098,2048,0.0303,"LIC",0
+"Benin","BEN",570550,2049,0.0303,"LIC",0
+"Benin","BEN",576003,2050,0.0303,"LIC",0
+"Burkina Faso","BFA",694502,2020,0.0212,"LIC",0
+"Burkina Faso","BFA",707589,2021,0.0212,"LIC",0
+"Burkina Faso","BFA",720676,2022,0.0212,"LIC",0
+"Burkina Faso","BFA",733762,2023,0.0212,"LIC",0
+"Burkina Faso","BFA",746849,2024,0.0212,"LIC",0
+"Burkina Faso","BFA",759936,2025,0.0212,"LIC",0
+"Burkina Faso","BFA",773825,2026,0.0212,"LIC",0
+"Burkina Faso","BFA",787714,2027,0.0212,"LIC",0
+"Burkina Faso","BFA",801602,2028,0.0212,"LIC",0
+"Burkina Faso","BFA",815491,2029,0.0212,"LIC",0
+"Burkina Faso","BFA",829380,2030,0.0212,"LIC",0
+"Burkina Faso","BFA",842892,2031,0.0212,"LIC",0
+"Burkina Faso","BFA",856404,2032,0.0212,"LIC",0
+"Burkina Faso","BFA",869917,2033,0.0212,"LIC",0
+"Burkina Faso","BFA",883429,2034,0.0212,"LIC",0
+"Burkina Faso","BFA",896941,2035,0.0212,"LIC",0
+"Burkina Faso","BFA",909365,2036,0.0212,"LIC",0
+"Burkina Faso","BFA",921788,2037,0.0212,"LIC",0
+"Burkina Faso","BFA",934212,2038,0.0212,"LIC",0
+"Burkina Faso","BFA",946635,2039,0.0212,"LIC",0
+"Burkina Faso","BFA",959059,2040,0.0212,"LIC",0
+"Burkina Faso","BFA",969705,2041,0.0212,"LIC",0
+"Burkina Faso","BFA",980351,2042,0.0212,"LIC",0
+"Burkina Faso","BFA",990996,2043,0.0212,"LIC",0
+"Burkina Faso","BFA",1001642,2044,0.0212,"LIC",0
+"Burkina Faso","BFA",1012288,2045,0.0212,"LIC",0
+"Burkina Faso","BFA",1021407,2046,0.0212,"LIC",0
+"Burkina Faso","BFA",1030527,2047,0.0212,"LIC",0
+"Burkina Faso","BFA",1039646,2048,0.0212,"LIC",0
+"Burkina Faso","BFA",1048766,2049,0.0212,"LIC",0
+"Burkina Faso","BFA",1057885,2050,0.0212,"LIC",0
+"Bangladesh","BGD",2968333,2020,0.0254,"LMIC",0
+"Bangladesh","BGD",2943945,2021,0.0254,"LMIC",0
+"Bangladesh","BGD",2919557,2022,0.0254,"LMIC",0
+"Bangladesh","BGD",2895168,2023,0.0254,"LMIC",0
+"Bangladesh","BGD",2870780,2024,0.0254,"LMIC",0
+"Bangladesh","BGD",2846392,2025,0.0254,"LMIC",0
+"Bangladesh","BGD",2817508,2026,0.0254,"LMIC",0
+"Bangladesh","BGD",2788625,2027,0.0254,"LMIC",0
+"Bangladesh","BGD",2759741,2028,0.0254,"LMIC",0
+"Bangladesh","BGD",2730858,2029,0.0254,"LMIC",0
+"Bangladesh","BGD",2701974,2030,0.0254,"LMIC",0
+"Bangladesh","BGD",2671124,2031,0.0254,"LMIC",0
+"Bangladesh","BGD",2640273,2032,0.0254,"LMIC",0
+"Bangladesh","BGD",2609423,2033,0.0254,"LMIC",0
+"Bangladesh","BGD",2578572,2034,0.0254,"LMIC",0
+"Bangladesh","BGD",2547722,2035,0.0254,"LMIC",0
+"Bangladesh","BGD",2519760,2036,0.0254,"LMIC",0
+"Bangladesh","BGD",2491797,2037,0.0254,"LMIC",0
+"Bangladesh","BGD",2463835,2038,0.0254,"LMIC",0
+"Bangladesh","BGD",2435872,2039,0.0254,"LMIC",0
+"Bangladesh","BGD",2407910,2040,0.0254,"LMIC",0
+"Bangladesh","BGD",2385809,2041,0.0254,"LMIC",0
+"Bangladesh","BGD",2363709,2042,0.0254,"LMIC",0
+"Bangladesh","BGD",2341608,2043,0.0254,"LMIC",0
+"Bangladesh","BGD",2319508,2044,0.0254,"LMIC",0
+"Bangladesh","BGD",2297407,2045,0.0254,"LMIC",0
+"Bangladesh","BGD",2277500,2046,0.0254,"LMIC",0
+"Bangladesh","BGD",2257593,2047,0.0254,"LMIC",0
+"Bangladesh","BGD",2237685,2048,0.0254,"LMIC",0
+"Bangladesh","BGD",2217778,2049,0.0254,"LMIC",0
+"Bangladesh","BGD",2197871,2050,0.0254,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",242722,2020,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",243371,2021,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",244020,2022,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",244669,2023,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",245318,2024,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",245967,2025,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246127,2026,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246286,2027,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246446,2028,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246605,2029,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246765,2030,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246423,2031,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",246081,2032,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",245740,2033,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",245398,2034,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",245056,2035,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",244454,2036,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",243853,2037,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",243251,2038,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",242650,2039,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",242048,2040,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",241283,2041,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",240518,2042,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",239752,2043,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",238987,2044,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",238222,2045,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",237414,2046,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",236606,2047,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",235799,2048,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",234991,2049,0.0129,"LMIC",0
+"Bolivia (Plurinational State of)","BOL",234183,2050,0.0129,"LMIC",0
+"Bhutan","BTN",14070,2020,0.016,"LMIC",0
+"Bhutan","BTN",13943,2021,0.016,"LMIC",0
+"Bhutan","BTN",13815,2022,0.016,"LMIC",0
+"Bhutan","BTN",13688,2023,0.016,"LMIC",0
+"Bhutan","BTN",13560,2024,0.016,"LMIC",0
+"Bhutan","BTN",13433,2025,0.016,"LMIC",0
+"Bhutan","BTN",13261,2026,0.016,"LMIC",0
+"Bhutan","BTN",13089,2027,0.016,"LMIC",0
+"Bhutan","BTN",12918,2028,0.016,"LMIC",0
+"Bhutan","BTN",12746,2029,0.016,"LMIC",0
+"Bhutan","BTN",12574,2030,0.016,"LMIC",0
+"Bhutan","BTN",12414,2031,0.016,"LMIC",0
+"Bhutan","BTN",12253,2032,0.016,"LMIC",0
+"Bhutan","BTN",12093,2033,0.016,"LMIC",0
+"Bhutan","BTN",11932,2034,0.016,"LMIC",0
+"Bhutan","BTN",11772,2035,0.016,"LMIC",0
+"Bhutan","BTN",11660,2036,0.016,"LMIC",0
+"Bhutan","BTN",11549,2037,0.016,"LMIC",0
+"Bhutan","BTN",11437,2038,0.016,"LMIC",0
+"Bhutan","BTN",11326,2039,0.016,"LMIC",0
+"Bhutan","BTN",11214,2040,0.016,"LMIC",0
+"Bhutan","BTN",11146,2041,0.016,"LMIC",0
+"Bhutan","BTN",11078,2042,0.016,"LMIC",0
+"Bhutan","BTN",11010,2043,0.016,"LMIC",0
+"Bhutan","BTN",10942,2044,0.016,"LMIC",0
+"Bhutan","BTN",10874,2045,0.016,"LMIC",0
+"Bhutan","BTN",10822,2046,0.016,"LMIC",0
+"Bhutan","BTN",10770,2047,0.016,"LMIC",0
+"Bhutan","BTN",10719,2048,0.016,"LMIC",0
+"Bhutan","BTN",10667,2049,0.016,"LMIC",0
+"Bhutan","BTN",10615,2050,0.016,"LMIC",0
+"Central African Republic","CAF",148262,2020,0.0344,"LIC",0
+"Central African Republic","CAF",150995,2021,0.0344,"LIC",0
+"Central African Republic","CAF",153729,2022,0.0344,"LIC",0
+"Central African Republic","CAF",156462,2023,0.0344,"LIC",0
+"Central African Republic","CAF",159196,2024,0.0344,"LIC",0
+"Central African Republic","CAF",161929,2025,0.0344,"LIC",0
+"Central African Republic","CAF",164694,2026,0.0344,"LIC",0
+"Central African Republic","CAF",167459,2027,0.0344,"LIC",0
+"Central African Republic","CAF",170223,2028,0.0344,"LIC",0
+"Central African Republic","CAF",172988,2029,0.0344,"LIC",0
+"Central African Republic","CAF",175753,2030,0.0344,"LIC",0
+"Central African Republic","CAF",177485,2031,0.0344,"LIC",0
+"Central African Republic","CAF",179217,2032,0.0344,"LIC",0
+"Central African Republic","CAF",180948,2033,0.0344,"LIC",0
+"Central African Republic","CAF",182680,2034,0.0344,"LIC",0
+"Central African Republic","CAF",184412,2035,0.0344,"LIC",0
+"Central African Republic","CAF",185051,2036,0.0344,"LIC",0
+"Central African Republic","CAF",185690,2037,0.0344,"LIC",0
+"Central African Republic","CAF",186328,2038,0.0344,"LIC",0
+"Central African Republic","CAF",186967,2039,0.0344,"LIC",0
+"Central African Republic","CAF",187606,2040,0.0344,"LIC",0
+"Central African Republic","CAF",187942,2041,0.0344,"LIC",0
+"Central African Republic","CAF",188277,2042,0.0344,"LIC",0
+"Central African Republic","CAF",188613,2043,0.0344,"LIC",0
+"Central African Republic","CAF",188948,2044,0.0344,"LIC",0
+"Central African Republic","CAF",189284,2045,0.0344,"LIC",0
+"Central African Republic","CAF",189790,2046,0.0344,"LIC",0
+"Central African Republic","CAF",190296,2047,0.0344,"LIC",0
+"Central African Republic","CAF",190802,2048,0.0344,"LIC",0
+"Central African Republic","CAF",191308,2049,0.0344,"LIC",0
+"Central African Republic","CAF",191814,2050,0.0344,"LIC",0
+"Cote d'Ivoire","CIV",837173,2020,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",852956,2021,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",868739,2022,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",884523,2023,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",900306,2024,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",916089,2025,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",931318,2026,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",946547,2027,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",961775,2028,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",977004,2029,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",992233,2030,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1008212,2031,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1024191,2032,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1040171,2033,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1056150,2034,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1072129,2035,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1088332,2036,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1104535,2037,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1120737,2038,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1136940,2039,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1153143,2040,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1169158,2041,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1185172,2042,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1201187,2043,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1217201,2044,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1233216,2045,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1248503,2046,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1263790,2047,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1279078,2048,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1294365,2049,0.0267,"LMIC",0
+"Cote d'Ivoire","CIV",1309652,2050,0.0267,"LMIC",0
+"Cameroon","CMR",803786,2020,0.0196,"LMIC",0
+"Cameroon","CMR",814985,2021,0.0196,"LMIC",0
+"Cameroon","CMR",826183,2022,0.0196,"LMIC",0
+"Cameroon","CMR",837382,2023,0.0196,"LMIC",0
+"Cameroon","CMR",848580,2024,0.0196,"LMIC",0
+"Cameroon","CMR",859779,2025,0.0196,"LMIC",0
+"Cameroon","CMR",871502,2026,0.0196,"LMIC",0
+"Cameroon","CMR",883226,2027,0.0196,"LMIC",0
+"Cameroon","CMR",894949,2028,0.0196,"LMIC",0
+"Cameroon","CMR",906673,2029,0.0196,"LMIC",0
+"Cameroon","CMR",918396,2030,0.0196,"LMIC",0
+"Cameroon","CMR",930816,2031,0.0196,"LMIC",0
+"Cameroon","CMR",943237,2032,0.0196,"LMIC",0
+"Cameroon","CMR",955657,2033,0.0196,"LMIC",0
+"Cameroon","CMR",968078,2034,0.0196,"LMIC",0
+"Cameroon","CMR",980498,2035,0.0196,"LMIC",0
+"Cameroon","CMR",992248,2036,0.0196,"LMIC",0
+"Cameroon","CMR",1003998,2037,0.0196,"LMIC",0
+"Cameroon","CMR",1015749,2038,0.0196,"LMIC",0
+"Cameroon","CMR",1027499,2039,0.0196,"LMIC",0
+"Cameroon","CMR",1039249,2040,0.0196,"LMIC",0
+"Cameroon","CMR",1050288,2041,0.0196,"LMIC",0
+"Cameroon","CMR",1061327,2042,0.0196,"LMIC",0
+"Cameroon","CMR",1072366,2043,0.0196,"LMIC",0
+"Cameroon","CMR",1083405,2044,0.0196,"LMIC",0
+"Cameroon","CMR",1094444,2045,0.0196,"LMIC",0
+"Cameroon","CMR",1104019,2046,0.0196,"LMIC",0
+"Cameroon","CMR",1113594,2047,0.0196,"LMIC",0
+"Cameroon","CMR",1123170,2048,0.0196,"LMIC",0
+"Cameroon","CMR",1132745,2049,0.0196,"LMIC",0
+"Cameroon","CMR",1142320,2050,0.0196,"LMIC",0
+"Democratic Republic of the Congo","COD",3163502,2020,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3231273,2021,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3299044,2022,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3366814,2023,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3434585,2024,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3502356,2025,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3573153,2026,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3643950,2027,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3714748,2028,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3785545,2029,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3856342,2030,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3924925,2031,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",3993508,2032,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4062092,2033,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4130675,2034,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4199258,2035,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4260320,2036,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4321382,2037,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4382444,2038,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4443506,2039,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4504568,2040,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4553309,2041,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4602050,2042,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4650791,2043,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4699532,2044,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4748273,2045,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4788045,2046,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4827816,2047,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4867588,2048,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4907359,2049,0.0273,"LIC",0
+"Democratic Republic of the Congo","COD",4947131,2050,0.0273,"LIC",0
+"Congo","COG",171752,2020,0.0151,"LMIC",0
+"Congo","COG",174738,2021,0.0151,"LMIC",0
+"Congo","COG",177724,2022,0.0151,"LMIC",0
+"Congo","COG",180710,2023,0.0151,"LMIC",0
+"Congo","COG",183696,2024,0.0151,"LMIC",0
+"Congo","COG",186682,2025,0.0151,"LMIC",0
+"Congo","COG",190745,2026,0.0151,"LMIC",0
+"Congo","COG",194808,2027,0.0151,"LMIC",0
+"Congo","COG",198870,2028,0.0151,"LMIC",0
+"Congo","COG",202933,2029,0.0151,"LMIC",0
+"Congo","COG",206996,2030,0.0151,"LMIC",0
+"Congo","COG",211365,2031,0.0151,"LMIC",0
+"Congo","COG",215735,2032,0.0151,"LMIC",0
+"Congo","COG",220104,2033,0.0151,"LMIC",0
+"Congo","COG",224474,2034,0.0151,"LMIC",0
+"Congo","COG",228843,2035,0.0151,"LMIC",0
+"Congo","COG",232562,2036,0.0151,"LMIC",0
+"Congo","COG",236282,2037,0.0151,"LMIC",0
+"Congo","COG",240001,2038,0.0151,"LMIC",0
+"Congo","COG",243721,2039,0.0151,"LMIC",0
+"Congo","COG",247440,2040,0.0151,"LMIC",0
+"Congo","COG",250348,2041,0.0151,"LMIC",0
+"Congo","COG",253257,2042,0.0151,"LMIC",0
+"Congo","COG",256165,2043,0.0151,"LMIC",0
+"Congo","COG",259074,2044,0.0151,"LMIC",0
+"Congo","COG",261982,2045,0.0151,"LMIC",0
+"Congo","COG",264741,2046,0.0151,"LMIC",0
+"Congo","COG",267500,2047,0.0151,"LMIC",0
+"Congo","COG",270260,2048,0.0151,"LMIC",0
+"Congo","COG",273019,2049,0.0151,"LMIC",0
+"Congo","COG",275778,2050,0.0151,"LMIC",0
+"Comoros","COM",24702,2020,0.0305,"LIC",0
+"Comoros","COM",24904,2021,0.0305,"LIC",0
+"Comoros","COM",25106,2022,0.0305,"LIC",0
+"Comoros","COM",25308,2023,0.0305,"LIC",0
+"Comoros","COM",25510,2024,0.0305,"LIC",0
+"Comoros","COM",25712,2025,0.0305,"LIC",0
+"Comoros","COM",25911,2026,0.0305,"LIC",0
+"Comoros","COM",26110,2027,0.0305,"LIC",0
+"Comoros","COM",26310,2028,0.0305,"LIC",0
+"Comoros","COM",26509,2029,0.0305,"LIC",0
+"Comoros","COM",26708,2030,0.0305,"LIC",0
+"Comoros","COM",26928,2031,0.0305,"LIC",0
+"Comoros","COM",27147,2032,0.0305,"LIC",0
+"Comoros","COM",27367,2033,0.0305,"LIC",0
+"Comoros","COM",27586,2034,0.0305,"LIC",0
+"Comoros","COM",27806,2035,0.0305,"LIC",0
+"Comoros","COM",28027,2036,0.0305,"LIC",0
+"Comoros","COM",28248,2037,0.0305,"LIC",0
+"Comoros","COM",28468,2038,0.0305,"LIC",0
+"Comoros","COM",28689,2039,0.0305,"LIC",0
+"Comoros","COM",28910,2040,0.0305,"LIC",0
+"Comoros","COM",29096,2041,0.0305,"LIC",0
+"Comoros","COM",29281,2042,0.0305,"LIC",0
+"Comoros","COM",29467,2043,0.0305,"LIC",0
+"Comoros","COM",29652,2044,0.0305,"LIC",0
+"Comoros","COM",29838,2045,0.0305,"LIC",0
+"Comoros","COM",29970,2046,0.0305,"LIC",0
+"Comoros","COM",30102,2047,0.0305,"LIC",0
+"Comoros","COM",30234,2048,0.0305,"LIC",0
+"Comoros","COM",30366,2049,0.0305,"LIC",0
+"Comoros","COM",30498,2050,0.0305,"LIC",0
+"Cuba","CUB",120359,2020,0.0062,"LMIC",0
+"Cuba","CUB",119431,2021,0.0062,"LMIC",0
+"Cuba","CUB",118503,2022,0.0062,"LMIC",0
+"Cuba","CUB",117575,2023,0.0062,"LMIC",0
+"Cuba","CUB",116647,2024,0.0062,"LMIC",0
+"Cuba","CUB",115719,2025,0.0062,"LMIC",0
+"Cuba","CUB",114458,2026,0.0062,"LMIC",0
+"Cuba","CUB",113198,2027,0.0062,"LMIC",0
+"Cuba","CUB",111937,2028,0.0062,"LMIC",0
+"Cuba","CUB",110677,2029,0.0062,"LMIC",0
+"Cuba","CUB",109416,2030,0.0062,"LMIC",0
+"Cuba","CUB",108236,2031,0.0062,"LMIC",0
+"Cuba","CUB",107057,2032,0.0062,"LMIC",0
+"Cuba","CUB",105877,2033,0.0062,"LMIC",0
+"Cuba","CUB",104698,2034,0.0062,"LMIC",0
+"Cuba","CUB",103518,2035,0.0062,"LMIC",0
+"Cuba","CUB",102770,2036,0.0062,"LMIC",0
+"Cuba","CUB",102022,2037,0.0062,"LMIC",0
+"Cuba","CUB",101273,2038,0.0062,"LMIC",0
+"Cuba","CUB",100525,2039,0.0062,"LMIC",0
+"Cuba","CUB",99777,2040,0.0062,"LMIC",0
+"Cuba","CUB",99464,2041,0.0062,"LMIC",0
+"Cuba","CUB",99151,2042,0.0062,"LMIC",0
+"Cuba","CUB",98837,2043,0.0062,"LMIC",0
+"Cuba","CUB",98524,2044,0.0062,"LMIC",0
+"Cuba","CUB",98211,2045,0.0062,"LMIC",0
+"Cuba","CUB",97924,2046,0.0062,"LMIC",0
+"Cuba","CUB",97637,2047,0.0062,"LMIC",0
+"Cuba","CUB",97351,2048,0.0062,"LMIC",0
+"Cuba","CUB",97064,2049,0.0062,"LMIC",0
+"Cuba","CUB",96777,2050,0.0062,"LMIC",0
+"Djibouti","DJI",20393,2020,0.0346,"LMIC",0
+"Djibouti","DJI",20398,2021,0.0346,"LMIC",0
+"Djibouti","DJI",20403,2022,0.0346,"LMIC",0
+"Djibouti","DJI",20409,2023,0.0346,"LMIC",0
+"Djibouti","DJI",20414,2024,0.0346,"LMIC",0
+"Djibouti","DJI",20419,2025,0.0346,"LMIC",0
+"Djibouti","DJI",20360,2026,0.0346,"LMIC",0
+"Djibouti","DJI",20301,2027,0.0346,"LMIC",0
+"Djibouti","DJI",20243,2028,0.0346,"LMIC",0
+"Djibouti","DJI",20184,2029,0.0346,"LMIC",0
+"Djibouti","DJI",20125,2030,0.0346,"LMIC",0
+"Djibouti","DJI",20003,2031,0.0346,"LMIC",0
+"Djibouti","DJI",19881,2032,0.0346,"LMIC",0
+"Djibouti","DJI",19760,2033,0.0346,"LMIC",0
+"Djibouti","DJI",19638,2034,0.0346,"LMIC",0
+"Djibouti","DJI",19516,2035,0.0346,"LMIC",0
+"Djibouti","DJI",19374,2036,0.0346,"LMIC",0
+"Djibouti","DJI",19232,2037,0.0346,"LMIC",0
+"Djibouti","DJI",19090,2038,0.0346,"LMIC",0
+"Djibouti","DJI",18948,2039,0.0346,"LMIC",0
+"Djibouti","DJI",18806,2040,0.0346,"LMIC",0
+"Djibouti","DJI",18684,2041,0.0346,"LMIC",0
+"Djibouti","DJI",18562,2042,0.0346,"LMIC",0
+"Djibouti","DJI",18439,2043,0.0346,"LMIC",0
+"Djibouti","DJI",18317,2044,0.0346,"LMIC",0
+"Djibouti","DJI",18195,2045,0.0346,"LMIC",0
+"Djibouti","DJI",18104,2046,0.0346,"LMIC",0
+"Djibouti","DJI",18014,2047,0.0346,"LMIC",0
+"Djibouti","DJI",17923,2048,0.0346,"LMIC",0
+"Djibouti","DJI",17833,2049,0.0346,"LMIC",0
+"Djibouti","DJI",17742,2050,0.0346,"LMIC",0
+"Eritrea","ERI",153963,2020,0.0225,"LIC",0
+"Eritrea","ERI",155142,2021,0.0225,"LIC",0
+"Eritrea","ERI",156321,2022,0.0225,"LIC",0
+"Eritrea","ERI",157499,2023,0.0225,"LIC",0
+"Eritrea","ERI",158678,2024,0.0225,"LIC",0
+"Eritrea","ERI",159857,2025,0.0225,"LIC",0
+"Eritrea","ERI",161570,2026,0.0225,"LIC",0
+"Eritrea","ERI",163283,2027,0.0225,"LIC",0
+"Eritrea","ERI",164997,2028,0.0225,"LIC",0
+"Eritrea","ERI",166710,2029,0.0225,"LIC",0
+"Eritrea","ERI",168423,2030,0.0225,"LIC",0
+"Eritrea","ERI",170508,2031,0.0225,"LIC",0
+"Eritrea","ERI",172593,2032,0.0225,"LIC",0
+"Eritrea","ERI",174679,2033,0.0225,"LIC",0
+"Eritrea","ERI",176764,2034,0.0225,"LIC",0
+"Eritrea","ERI",178849,2035,0.0225,"LIC",0
+"Eritrea","ERI",180546,2036,0.0225,"LIC",0
+"Eritrea","ERI",182243,2037,0.0225,"LIC",0
+"Eritrea","ERI",183939,2038,0.0225,"LIC",0
+"Eritrea","ERI",185636,2039,0.0225,"LIC",0
+"Eritrea","ERI",187333,2040,0.0225,"LIC",0
+"Eritrea","ERI",188228,2041,0.0225,"LIC",0
+"Eritrea","ERI",189124,2042,0.0225,"LIC",0
+"Eritrea","ERI",190019,2043,0.0225,"LIC",0
+"Eritrea","ERI",190915,2044,0.0225,"LIC",0
+"Eritrea","ERI",191810,2045,0.0225,"LIC",0
+"Eritrea","ERI",192099,2046,0.0225,"LIC",0
+"Eritrea","ERI",192388,2047,0.0225,"LIC",0
+"Eritrea","ERI",192678,2048,0.0225,"LIC",0
+"Eritrea","ERI",192967,2049,0.0225,"LIC",0
+"Eritrea","ERI",193256,2050,0.0225,"LIC",0
+"Ethiopia","ETH",3147182,2020,0.0297,"LIC",0
+"Ethiopia","ETH",3172888,2021,0.0297,"LIC",0
+"Ethiopia","ETH",3198594,2022,0.0297,"LIC",0
+"Ethiopia","ETH",3224300,2023,0.0297,"LIC",0
+"Ethiopia","ETH",3250006,2024,0.0297,"LIC",0
+"Ethiopia","ETH",3275712,2025,0.0297,"LIC",0
+"Ethiopia","ETH",3289627,2026,0.0297,"LIC",0
+"Ethiopia","ETH",3303542,2027,0.0297,"LIC",0
+"Ethiopia","ETH",3317457,2028,0.0297,"LIC",0
+"Ethiopia","ETH",3331372,2029,0.0297,"LIC",0
+"Ethiopia","ETH",3345287,2030,0.0297,"LIC",0
+"Ethiopia","ETH",3352801,2031,0.0297,"LIC",0
+"Ethiopia","ETH",3360315,2032,0.0297,"LIC",0
+"Ethiopia","ETH",3367829,2033,0.0297,"LIC",0
+"Ethiopia","ETH",3375343,2034,0.0297,"LIC",0
+"Ethiopia","ETH",3382857,2035,0.0297,"LIC",0
+"Ethiopia","ETH",3383950,2036,0.0297,"LIC",0
+"Ethiopia","ETH",3385043,2037,0.0297,"LIC",0
+"Ethiopia","ETH",3386136,2038,0.0297,"LIC",0
+"Ethiopia","ETH",3387229,2039,0.0297,"LIC",0
+"Ethiopia","ETH",3388322,2040,0.0297,"LIC",0
+"Ethiopia","ETH",3387719,2041,0.0297,"LIC",0
+"Ethiopia","ETH",3387116,2042,0.0297,"LIC",0
+"Ethiopia","ETH",3386513,2043,0.0297,"LIC",0
+"Ethiopia","ETH",3385910,2044,0.0297,"LIC",0
+"Ethiopia","ETH",3385307,2045,0.0297,"LIC",0
+"Ethiopia","ETH",3380253,2046,0.0297,"LIC",0
+"Ethiopia","ETH",3375199,2047,0.0297,"LIC",0
+"Ethiopia","ETH",3370144,2048,0.0297,"LIC",0
+"Ethiopia","ETH",3365090,2049,0.0297,"LIC",0
+"Ethiopia","ETH",3360036,2050,0.0297,"LIC",0
+"Georgia","GEO",49984,2020,0.0112,"LMIC",0
+"Georgia","GEO",48924,2021,0.0112,"LMIC",0
+"Georgia","GEO",47864,2022,0.0112,"LMIC",0
+"Georgia","GEO",46804,2023,0.0112,"LMIC",0
+"Georgia","GEO",45744,2024,0.0112,"LMIC",0
+"Georgia","GEO",44684,2025,0.0112,"LMIC",0
+"Georgia","GEO",43956,2026,0.0112,"LMIC",0
+"Georgia","GEO",43227,2027,0.0112,"LMIC",0
+"Georgia","GEO",42499,2028,0.0112,"LMIC",0
+"Georgia","GEO",41770,2029,0.0112,"LMIC",0
+"Georgia","GEO",41042,2030,0.0112,"LMIC",0
+"Georgia","GEO",40815,2031,0.0112,"LMIC",0
+"Georgia","GEO",40587,2032,0.0112,"LMIC",0
+"Georgia","GEO",40360,2033,0.0112,"LMIC",0
+"Georgia","GEO",40132,2034,0.0112,"LMIC",0
+"Georgia","GEO",39905,2035,0.0112,"LMIC",0
+"Georgia","GEO",39976,2036,0.0112,"LMIC",0
+"Georgia","GEO",40046,2037,0.0112,"LMIC",0
+"Georgia","GEO",40117,2038,0.0112,"LMIC",0
+"Georgia","GEO",40187,2039,0.0112,"LMIC",0
+"Georgia","GEO",40258,2040,0.0112,"LMIC",0
+"Georgia","GEO",40235,2041,0.0112,"LMIC",0
+"Georgia","GEO",40212,2042,0.0112,"LMIC",0
+"Georgia","GEO",40188,2043,0.0112,"LMIC",0
+"Georgia","GEO",40165,2044,0.0112,"LMIC",0
+"Georgia","GEO",40142,2045,0.0112,"LMIC",0
+"Georgia","GEO",39764,2046,0.0112,"LMIC",0
+"Georgia","GEO",39386,2047,0.0112,"LMIC",0
+"Georgia","GEO",39009,2048,0.0112,"LMIC",0
+"Georgia","GEO",38631,2049,0.0112,"LMIC",0
+"Georgia","GEO",38253,2050,0.0112,"LMIC",0
+"Ghana","GHA",837469,2020,0.0227,"LMIC",0
+"Ghana","GHA",842902,2021,0.0227,"LMIC",0
+"Ghana","GHA",848335,2022,0.0227,"LMIC",0
+"Ghana","GHA",853768,2023,0.0227,"LMIC",0
+"Ghana","GHA",859201,2024,0.0227,"LMIC",0
+"Ghana","GHA",864634,2025,0.0227,"LMIC",0
+"Ghana","GHA",871274,2026,0.0227,"LMIC",0
+"Ghana","GHA",877913,2027,0.0227,"LMIC",0
+"Ghana","GHA",884553,2028,0.0227,"LMIC",0
+"Ghana","GHA",891192,2029,0.0227,"LMIC",0
+"Ghana","GHA",897832,2030,0.0227,"LMIC",0
+"Ghana","GHA",906207,2031,0.0227,"LMIC",0
+"Ghana","GHA",914582,2032,0.0227,"LMIC",0
+"Ghana","GHA",922958,2033,0.0227,"LMIC",0
+"Ghana","GHA",931333,2034,0.0227,"LMIC",0
+"Ghana","GHA",939708,2035,0.0227,"LMIC",0
+"Ghana","GHA",948180,2036,0.0227,"LMIC",0
+"Ghana","GHA",956652,2037,0.0227,"LMIC",0
+"Ghana","GHA",965123,2038,0.0227,"LMIC",0
+"Ghana","GHA",973595,2039,0.0227,"LMIC",0
+"Ghana","GHA",982067,2040,0.0227,"LMIC",0
+"Ghana","GHA",989811,2041,0.0227,"LMIC",0
+"Ghana","GHA",997556,2042,0.0227,"LMIC",0
+"Ghana","GHA",1005300,2043,0.0227,"LMIC",0
+"Ghana","GHA",1013045,2044,0.0227,"LMIC",0
+"Ghana","GHA",1020789,2045,0.0227,"LMIC",0
+"Ghana","GHA",1025931,2046,0.0227,"LMIC",0
+"Ghana","GHA",1031073,2047,0.0227,"LMIC",0
+"Ghana","GHA",1036216,2048,0.0227,"LMIC",0
+"Ghana","GHA",1041358,2049,0.0227,"LMIC",0
+"Ghana","GHA",1046500,2050,0.0227,"LMIC",0
+"Guinea","GIN",425302,2020,0.0211,"LIC",0
+"Guinea","GIN",432511,2021,0.0211,"LIC",0
+"Guinea","GIN",439720,2022,0.0211,"LIC",0
+"Guinea","GIN",446928,2023,0.0211,"LIC",0
+"Guinea","GIN",454137,2024,0.0211,"LIC",0
+"Guinea","GIN",461346,2025,0.0211,"LIC",0
+"Guinea","GIN",468417,2026,0.0211,"LIC",0
+"Guinea","GIN",475487,2027,0.0211,"LIC",0
+"Guinea","GIN",482558,2028,0.0211,"LIC",0
+"Guinea","GIN",489628,2029,0.0211,"LIC",0
+"Guinea","GIN",496699,2030,0.0211,"LIC",0
+"Guinea","GIN",503251,2031,0.0211,"LIC",0
+"Guinea","GIN",509804,2032,0.0211,"LIC",0
+"Guinea","GIN",516356,2033,0.0211,"LIC",0
+"Guinea","GIN",522909,2034,0.0211,"LIC",0
+"Guinea","GIN",529461,2035,0.0211,"LIC",0
+"Guinea","GIN",535388,2036,0.0211,"LIC",0
+"Guinea","GIN",541315,2037,0.0211,"LIC",0
+"Guinea","GIN",547242,2038,0.0211,"LIC",0
+"Guinea","GIN",553169,2039,0.0211,"LIC",0
+"Guinea","GIN",559096,2040,0.0211,"LIC",0
+"Guinea","GIN",564590,2041,0.0211,"LIC",0
+"Guinea","GIN",570084,2042,0.0211,"LIC",0
+"Guinea","GIN",575579,2043,0.0211,"LIC",0
+"Guinea","GIN",581073,2044,0.0211,"LIC",0
+"Guinea","GIN",586567,2045,0.0211,"LIC",0
+"Guinea","GIN",591382,2046,0.0211,"LIC",0
+"Guinea","GIN",596196,2047,0.0211,"LIC",0
+"Guinea","GIN",601011,2048,0.0211,"LIC",0
+"Guinea","GIN",605825,2049,0.0211,"LIC",0
+"Guinea","GIN",610640,2050,0.0211,"LIC",0
+"Gambia","GMB",77510,2020,0.0239,"LIC",0
+"Gambia","GMB",78832,2021,0.0239,"LIC",0
+"Gambia","GMB",80153,2022,0.0239,"LIC",0
+"Gambia","GMB",81475,2023,0.0239,"LIC",0
+"Gambia","GMB",82796,2024,0.0239,"LIC",0
+"Gambia","GMB",84118,2025,0.0239,"LIC",0
+"Gambia","GMB",85348,2026,0.0239,"LIC",0
+"Gambia","GMB",86578,2027,0.0239,"LIC",0
+"Gambia","GMB",87809,2028,0.0239,"LIC",0
+"Gambia","GMB",89039,2029,0.0239,"LIC",0
+"Gambia","GMB",90269,2030,0.0239,"LIC",0
+"Gambia","GMB",91373,2031,0.0239,"LIC",0
+"Gambia","GMB",92477,2032,0.0239,"LIC",0
+"Gambia","GMB",93582,2033,0.0239,"LIC",0
+"Gambia","GMB",94686,2034,0.0239,"LIC",0
+"Gambia","GMB",95790,2035,0.0239,"LIC",0
+"Gambia","GMB",96676,2036,0.0239,"LIC",0
+"Gambia","GMB",97562,2037,0.0239,"LIC",0
+"Gambia","GMB",98447,2038,0.0239,"LIC",0
+"Gambia","GMB",99333,2039,0.0239,"LIC",0
+"Gambia","GMB",100219,2040,0.0239,"LIC",0
+"Gambia","GMB",100809,2041,0.0239,"LIC",0
+"Gambia","GMB",101399,2042,0.0239,"LIC",0
+"Gambia","GMB",101989,2043,0.0239,"LIC",0
+"Gambia","GMB",102579,2044,0.0239,"LIC",0
+"Gambia","GMB",103169,2045,0.0239,"LIC",0
+"Gambia","GMB",103513,2046,0.0239,"LIC",0
+"Gambia","GMB",103857,2047,0.0239,"LIC",0
+"Gambia","GMB",104202,2048,0.0239,"LIC",0
+"Gambia","GMB",104546,2049,0.0239,"LIC",0
+"Gambia","GMB",104890,2050,0.0239,"LIC",0
+"Guinea-Bissau","GNB",60964,2020,0.0367,"LIC",0
+"Guinea-Bissau","GNB",61559,2021,0.0367,"LIC",0
+"Guinea-Bissau","GNB",62155,2022,0.0367,"LIC",0
+"Guinea-Bissau","GNB",62750,2023,0.0367,"LIC",0
+"Guinea-Bissau","GNB",63346,2024,0.0367,"LIC",0
+"Guinea-Bissau","GNB",63941,2025,0.0367,"LIC",0
+"Guinea-Bissau","GNB",64500,2026,0.0367,"LIC",0
+"Guinea-Bissau","GNB",65058,2027,0.0367,"LIC",0
+"Guinea-Bissau","GNB",65617,2028,0.0367,"LIC",0
+"Guinea-Bissau","GNB",66175,2029,0.0367,"LIC",0
+"Guinea-Bissau","GNB",66734,2030,0.0367,"LIC",0
+"Guinea-Bissau","GNB",67431,2031,0.0367,"LIC",0
+"Guinea-Bissau","GNB",68128,2032,0.0367,"LIC",0
+"Guinea-Bissau","GNB",68826,2033,0.0367,"LIC",0
+"Guinea-Bissau","GNB",69523,2034,0.0367,"LIC",0
+"Guinea-Bissau","GNB",70220,2035,0.0367,"LIC",0
+"Guinea-Bissau","GNB",70982,2036,0.0367,"LIC",0
+"Guinea-Bissau","GNB",71745,2037,0.0367,"LIC",0
+"Guinea-Bissau","GNB",72507,2038,0.0367,"LIC",0
+"Guinea-Bissau","GNB",73270,2039,0.0367,"LIC",0
+"Guinea-Bissau","GNB",74032,2040,0.0367,"LIC",0
+"Guinea-Bissau","GNB",74696,2041,0.0367,"LIC",0
+"Guinea-Bissau","GNB",75360,2042,0.0367,"LIC",0
+"Guinea-Bissau","GNB",76024,2043,0.0367,"LIC",0
+"Guinea-Bissau","GNB",76688,2044,0.0367,"LIC",0
+"Guinea-Bissau","GNB",77352,2045,0.0367,"LIC",0
+"Guinea-Bissau","GNB",77867,2046,0.0367,"LIC",0
+"Guinea-Bissau","GNB",78381,2047,0.0367,"LIC",0
+"Guinea-Bissau","GNB",78896,2048,0.0367,"LIC",0
+"Guinea-Bissau","GNB",79410,2049,0.0367,"LIC",0
+"Guinea-Bissau","GNB",79925,2050,0.0367,"LIC",0
+"Guyana","GUY",14984,2020,0.0172,"LMIC",0
+"Guyana","GUY",14888,2021,0.0172,"LMIC",0
+"Guyana","GUY",14793,2022,0.0172,"LMIC",0
+"Guyana","GUY",14697,2023,0.0172,"LMIC",0
+"Guyana","GUY",14602,2024,0.0172,"LMIC",0
+"Guyana","GUY",14506,2025,0.0172,"LMIC",0
+"Guyana","GUY",14363,2026,0.0172,"LMIC",0
+"Guyana","GUY",14220,2027,0.0172,"LMIC",0
+"Guyana","GUY",14077,2028,0.0172,"LMIC",0
+"Guyana","GUY",13934,2029,0.0172,"LMIC",0
+"Guyana","GUY",13791,2030,0.0172,"LMIC",0
+"Guyana","GUY",13634,2031,0.0172,"LMIC",0
+"Guyana","GUY",13477,2032,0.0172,"LMIC",0
+"Guyana","GUY",13320,2033,0.0172,"LMIC",0
+"Guyana","GUY",13163,2034,0.0172,"LMIC",0
+"Guyana","GUY",13006,2035,0.0172,"LMIC",0
+"Guyana","GUY",12856,2036,0.0172,"LMIC",0
+"Guyana","GUY",12706,2037,0.0172,"LMIC",0
+"Guyana","GUY",12556,2038,0.0172,"LMIC",0
+"Guyana","GUY",12406,2039,0.0172,"LMIC",0
+"Guyana","GUY",12256,2040,0.0172,"LMIC",0
+"Guyana","GUY",12127,2041,0.0172,"LMIC",0
+"Guyana","GUY",11999,2042,0.0172,"LMIC",0
+"Guyana","GUY",11870,2043,0.0172,"LMIC",0
+"Guyana","GUY",11742,2044,0.0172,"LMIC",0
+"Guyana","GUY",11613,2045,0.0172,"LMIC",0
+"Guyana","GUY",11489,2046,0.0172,"LMIC",0
+"Guyana","GUY",11365,2047,0.0172,"LMIC",0
+"Guyana","GUY",11240,2048,0.0172,"LMIC",0
+"Guyana","GUY",11116,2049,0.0172,"LMIC",0
+"Guyana","GUY",10992,2050,0.0172,"LMIC",0
+"Honduras","HND",193554,2020,0.0126,"LMIC",0
+"Honduras","HND",193619,2021,0.0126,"LMIC",0
+"Honduras","HND",193683,2022,0.0126,"LMIC",0
+"Honduras","HND",193748,2023,0.0126,"LMIC",0
+"Honduras","HND",193812,2024,0.0126,"LMIC",0
+"Honduras","HND",193877,2025,0.0126,"LMIC",0
+"Honduras","HND",193233,2026,0.0126,"LMIC",0
+"Honduras","HND",192590,2027,0.0126,"LMIC",0
+"Honduras","HND",191946,2028,0.0126,"LMIC",0
+"Honduras","HND",191303,2029,0.0126,"LMIC",0
+"Honduras","HND",190659,2030,0.0126,"LMIC",0
+"Honduras","HND",189399,2031,0.0126,"LMIC",0
+"Honduras","HND",188140,2032,0.0126,"LMIC",0
+"Honduras","HND",186880,2033,0.0126,"LMIC",0
+"Honduras","HND",185621,2034,0.0126,"LMIC",0
+"Honduras","HND",184361,2035,0.0126,"LMIC",0
+"Honduras","HND",182971,2036,0.0126,"LMIC",0
+"Honduras","HND",181581,2037,0.0126,"LMIC",0
+"Honduras","HND",180190,2038,0.0126,"LMIC",0
+"Honduras","HND",178800,2039,0.0126,"LMIC",0
+"Honduras","HND",177410,2040,0.0126,"LMIC",0
+"Honduras","HND",176173,2041,0.0126,"LMIC",0
+"Honduras","HND",174936,2042,0.0126,"LMIC",0
+"Honduras","HND",173698,2043,0.0126,"LMIC",0
+"Honduras","HND",172461,2044,0.0126,"LMIC",0
+"Honduras","HND",171224,2045,0.0126,"LMIC",0
+"Honduras","HND",170129,2046,0.0126,"LMIC",0
+"Honduras","HND",169034,2047,0.0126,"LMIC",0
+"Honduras","HND",167939,2048,0.0126,"LMIC",0
+"Honduras","HND",166844,2049,0.0126,"LMIC",0
+"Honduras","HND",165749,2050,0.0126,"LMIC",0
+"Haiti","HTI",246510,2020,0.0249,"LIC",0
+"Haiti","HTI",245651,2021,0.0249,"LIC",0
+"Haiti","HTI",244791,2022,0.0249,"LIC",0
+"Haiti","HTI",243932,2023,0.0249,"LIC",0
+"Haiti","HTI",243072,2024,0.0249,"LIC",0
+"Haiti","HTI",242213,2025,0.0249,"LIC",0
+"Haiti","HTI",241043,2026,0.0249,"LIC",0
+"Haiti","HTI",239873,2027,0.0249,"LIC",0
+"Haiti","HTI",238703,2028,0.0249,"LIC",0
+"Haiti","HTI",237533,2029,0.0249,"LIC",0
+"Haiti","HTI",236363,2030,0.0249,"LIC",0
+"Haiti","HTI",235047,2031,0.0249,"LIC",0
+"Haiti","HTI",233731,2032,0.0249,"LIC",0
+"Haiti","HTI",232416,2033,0.0249,"LIC",0
+"Haiti","HTI",231100,2034,0.0249,"LIC",0
+"Haiti","HTI",229784,2035,0.0249,"LIC",0
+"Haiti","HTI",228335,2036,0.0249,"LIC",0
+"Haiti","HTI",226886,2037,0.0249,"LIC",0
+"Haiti","HTI",225437,2038,0.0249,"LIC",0
+"Haiti","HTI",223988,2039,0.0249,"LIC",0
+"Haiti","HTI",222539,2040,0.0249,"LIC",0
+"Haiti","HTI",221090,2041,0.0249,"LIC",0
+"Haiti","HTI",219642,2042,0.0249,"LIC",0
+"Haiti","HTI",218193,2043,0.0249,"LIC",0
+"Haiti","HTI",216745,2044,0.0249,"LIC",0
+"Haiti","HTI",215296,2045,0.0249,"LIC",0
+"Haiti","HTI",213626,2046,0.0249,"LIC",0
+"Haiti","HTI",211956,2047,0.0249,"LIC",0
+"Haiti","HTI",210285,2048,0.0249,"LIC",0
+"Haiti","HTI",208615,2049,0.0249,"LIC",0
+"Haiti","HTI",206945,2050,0.0249,"LIC",0
+"Indonesia","IDN",4759395,2020,0.0132,"LMIC",0
+"Indonesia","IDN",4731937,2021,0.0132,"LMIC",0
+"Indonesia","IDN",4704479,2022,0.0132,"LMIC",0
+"Indonesia","IDN",4677020,2023,0.0132,"LMIC",0
+"Indonesia","IDN",4649562,2024,0.0132,"LMIC",0
+"Indonesia","IDN",4622104,2025,0.0132,"LMIC",0
+"Indonesia","IDN",4602100,2026,0.0132,"LMIC",0
+"Indonesia","IDN",4582097,2027,0.0132,"LMIC",0
+"Indonesia","IDN",4562093,2028,0.0132,"LMIC",0
+"Indonesia","IDN",4542090,2029,0.0132,"LMIC",0
+"Indonesia","IDN",4522086,2030,0.0132,"LMIC",0
+"Indonesia","IDN",4509254,2031,0.0132,"LMIC",0
+"Indonesia","IDN",4496422,2032,0.0132,"LMIC",0
+"Indonesia","IDN",4483589,2033,0.0132,"LMIC",0
+"Indonesia","IDN",4470757,2034,0.0132,"LMIC",0
+"Indonesia","IDN",4457925,2035,0.0132,"LMIC",0
+"Indonesia","IDN",4444300,2036,0.0132,"LMIC",0
+"Indonesia","IDN",4430674,2037,0.0132,"LMIC",0
+"Indonesia","IDN",4417049,2038,0.0132,"LMIC",0
+"Indonesia","IDN",4403423,2039,0.0132,"LMIC",0
+"Indonesia","IDN",4389798,2040,0.0132,"LMIC",0
+"Indonesia","IDN",4369608,2041,0.0132,"LMIC",0
+"Indonesia","IDN",4349417,2042,0.0132,"LMIC",0
+"Indonesia","IDN",4329227,2043,0.0132,"LMIC",0
+"Indonesia","IDN",4309036,2044,0.0132,"LMIC",0
+"Indonesia","IDN",4288846,2045,0.0132,"LMIC",0
+"Indonesia","IDN",4264395,2046,0.0132,"LMIC",0
+"Indonesia","IDN",4239943,2047,0.0132,"LMIC",0
+"Indonesia","IDN",4215492,2048,0.0132,"LMIC",0
+"Indonesia","IDN",4191040,2049,0.0132,"LMIC",0
+"Indonesia","IDN",4166589,2050,0.0132,"LMIC",0
+"India","IND",24231881,2020,0.023,"LMIC",0
+"India","IND",24178176,2021,0.023,"LMIC",0
+"India","IND",24124471,2022,0.023,"LMIC",0
+"India","IND",24070765,2023,0.023,"LMIC",0
+"India","IND",24017060,2024,0.023,"LMIC",0
+"India","IND",23963355,2025,0.023,"LMIC",0
+"India","IND",23872787,2026,0.023,"LMIC",0
+"India","IND",23782220,2027,0.023,"LMIC",0
+"India","IND",23691652,2028,0.023,"LMIC",0
+"India","IND",23601085,2029,0.023,"LMIC",0
+"India","IND",23510517,2030,0.023,"LMIC",0
+"India","IND",23347236,2031,0.023,"LMIC",0
+"India","IND",23183955,2032,0.023,"LMIC",0
+"India","IND",23020674,2033,0.023,"LMIC",0
+"India","IND",22857393,2034,0.023,"LMIC",0
+"India","IND",22694112,2035,0.023,"LMIC",0
+"India","IND",22495691,2036,0.023,"LMIC",0
+"India","IND",22297269,2037,0.023,"LMIC",0
+"India","IND",22098848,2038,0.023,"LMIC",0
+"India","IND",21900426,2039,0.023,"LMIC",0
+"India","IND",21702005,2040,0.023,"LMIC",0
+"India","IND",21538526,2041,0.023,"LMIC",0
+"India","IND",21375047,2042,0.023,"LMIC",0
+"India","IND",21211569,2043,0.023,"LMIC",0
+"India","IND",21048090,2044,0.023,"LMIC",0
+"India","IND",20884611,2045,0.023,"LMIC",0
+"India","IND",20762840,2046,0.023,"LMIC",0
+"India","IND",20641069,2047,0.023,"LMIC",0
+"India","IND",20519298,2048,0.023,"LMIC",0
+"India","IND",20397527,2049,0.023,"LMIC",0
+"India","IND",20275756,2050,0.023,"LMIC",0
+"Kenya","KEN",1485098,2020,0.0225,"LMIC",0
+"Kenya","KEN",1502738,2021,0.0225,"LMIC",0
+"Kenya","KEN",1520378,2022,0.0225,"LMIC",0
+"Kenya","KEN",1538019,2023,0.0225,"LMIC",0
+"Kenya","KEN",1555659,2024,0.0225,"LMIC",0
+"Kenya","KEN",1573299,2025,0.0225,"LMIC",0
+"Kenya","KEN",1591235,2026,0.0225,"LMIC",0
+"Kenya","KEN",1609171,2027,0.0225,"LMIC",0
+"Kenya","KEN",1627107,2028,0.0225,"LMIC",0
+"Kenya","KEN",1645043,2029,0.0225,"LMIC",0
+"Kenya","KEN",1662979,2030,0.0225,"LMIC",0
+"Kenya","KEN",1678107,2031,0.0225,"LMIC",0
+"Kenya","KEN",1693236,2032,0.0225,"LMIC",0
+"Kenya","KEN",1708364,2033,0.0225,"LMIC",0
+"Kenya","KEN",1723493,2034,0.0225,"LMIC",0
+"Kenya","KEN",1738621,2035,0.0225,"LMIC",0
+"Kenya","KEN",1749283,2036,0.0225,"LMIC",0
+"Kenya","KEN",1759945,2037,0.0225,"LMIC",0
+"Kenya","KEN",1770607,2038,0.0225,"LMIC",0
+"Kenya","KEN",1781269,2039,0.0225,"LMIC",0
+"Kenya","KEN",1791931,2040,0.0225,"LMIC",0
+"Kenya","KEN",1799178,2041,0.0225,"LMIC",0
+"Kenya","KEN",1806425,2042,0.0225,"LMIC",0
+"Kenya","KEN",1813672,2043,0.0225,"LMIC",0
+"Kenya","KEN",1820919,2044,0.0225,"LMIC",0
+"Kenya","KEN",1828166,2045,0.0225,"LMIC",0
+"Kenya","KEN",1834303,2046,0.0225,"LMIC",0
+"Kenya","KEN",1840440,2047,0.0225,"LMIC",0
+"Kenya","KEN",1846576,2048,0.0225,"LMIC",0
+"Kenya","KEN",1852713,2049,0.0225,"LMIC",0
+"Kenya","KEN",1858850,2050,0.0225,"LMIC",0
+"Kyrgyzstan","KGZ",141809,2020,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",139694,2021,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",137580,2022,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",135465,2023,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",133351,2024,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",131236,2025,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",129870,2026,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",128505,2027,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",127139,2028,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",125774,2029,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",124408,2030,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",124692,2031,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",124977,2032,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",125261,2033,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",125546,2034,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",125830,2035,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",126768,2036,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",127706,2037,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",128645,2038,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",129583,2039,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",130521,2040,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",130909,2041,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",131296,2042,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",131684,2043,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",132071,2044,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",132459,2045,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",131928,2046,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",131396,2047,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",130865,2048,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",130333,2049,0.0102,"LMIC",0
+"Kyrgyzstan","KGZ",129802,2050,0.0102,"LMIC",0
+"Cambodia","KHM",356337,2020,0.0119,"LMIC",0
+"Cambodia","KHM",353629,2021,0.0119,"LMIC",0
+"Cambodia","KHM",350921,2022,0.0119,"LMIC",0
+"Cambodia","KHM",348214,2023,0.0119,"LMIC",0
+"Cambodia","KHM",345506,2024,0.0119,"LMIC",0
+"Cambodia","KHM",342798,2025,0.0119,"LMIC",0
+"Cambodia","KHM",340517,2026,0.0119,"LMIC",0
+"Cambodia","KHM",338236,2027,0.0119,"LMIC",0
+"Cambodia","KHM",335955,2028,0.0119,"LMIC",0
+"Cambodia","KHM",333674,2029,0.0119,"LMIC",0
+"Cambodia","KHM",331393,2030,0.0119,"LMIC",0
+"Cambodia","KHM",330837,2031,0.0119,"LMIC",0
+"Cambodia","KHM",330281,2032,0.0119,"LMIC",0
+"Cambodia","KHM",329724,2033,0.0119,"LMIC",0
+"Cambodia","KHM",329168,2034,0.0119,"LMIC",0
+"Cambodia","KHM",328612,2035,0.0119,"LMIC",0
+"Cambodia","KHM",328578,2036,0.0119,"LMIC",0
+"Cambodia","KHM",328543,2037,0.0119,"LMIC",0
+"Cambodia","KHM",328509,2038,0.0119,"LMIC",0
+"Cambodia","KHM",328474,2039,0.0119,"LMIC",0
+"Cambodia","KHM",328440,2040,0.0119,"LMIC",0
+"Cambodia","KHM",327336,2041,0.0119,"LMIC",0
+"Cambodia","KHM",326233,2042,0.0119,"LMIC",0
+"Cambodia","KHM",325129,2043,0.0119,"LMIC",0
+"Cambodia","KHM",324026,2044,0.0119,"LMIC",0
+"Cambodia","KHM",322922,2045,0.0119,"LMIC",0
+"Cambodia","KHM",320568,2046,0.0119,"LMIC",0
+"Cambodia","KHM",318214,2047,0.0119,"LMIC",0
+"Cambodia","KHM",315859,2048,0.0119,"LMIC",0
+"Cambodia","KHM",313505,2049,0.0119,"LMIC",0
+"Cambodia","KHM",311151,2050,0.0119,"LMIC",0
+"Kiribati","KIR",3067,2020,0.0163,"LMIC",0
+"Kiribati","KIR",3075,2021,0.0163,"LMIC",0
+"Kiribati","KIR",3083,2022,0.0163,"LMIC",0
+"Kiribati","KIR",3090,2023,0.0163,"LMIC",0
+"Kiribati","KIR",3098,2024,0.0163,"LMIC",0
+"Kiribati","KIR",3106,2025,0.0163,"LMIC",0
+"Kiribati","KIR",3101,2026,0.0163,"LMIC",0
+"Kiribati","KIR",3096,2027,0.0163,"LMIC",0
+"Kiribati","KIR",3092,2028,0.0163,"LMIC",0
+"Kiribati","KIR",3087,2029,0.0163,"LMIC",0
+"Kiribati","KIR",3082,2030,0.0163,"LMIC",0
+"Kiribati","KIR",3083,2031,0.0163,"LMIC",0
+"Kiribati","KIR",3084,2032,0.0163,"LMIC",0
+"Kiribati","KIR",3084,2033,0.0163,"LMIC",0
+"Kiribati","KIR",3085,2034,0.0163,"LMIC",0
+"Kiribati","KIR",3086,2035,0.0163,"LMIC",0
+"Kiribati","KIR",3114,2036,0.0163,"LMIC",0
+"Kiribati","KIR",3142,2037,0.0163,"LMIC",0
+"Kiribati","KIR",3169,2038,0.0163,"LMIC",0
+"Kiribati","KIR",3197,2039,0.0163,"LMIC",0
+"Kiribati","KIR",3225,2040,0.0163,"LMIC",0
+"Kiribati","KIR",3265,2041,0.0163,"LMIC",0
+"Kiribati","KIR",3304,2042,0.0163,"LMIC",0
+"Kiribati","KIR",3344,2043,0.0163,"LMIC",0
+"Kiribati","KIR",3383,2044,0.0163,"LMIC",0
+"Kiribati","KIR",3423,2045,0.0163,"LMIC",0
+"Kiribati","KIR",3443,2046,0.0163,"LMIC",0
+"Kiribati","KIR",3462,2047,0.0163,"LMIC",0
+"Kiribati","KIR",3482,2048,0.0163,"LMIC",0
+"Kiribati","KIR",3501,2049,0.0163,"LMIC",0
+"Kiribati","KIR",3521,2050,0.0163,"LMIC",0
+"Lao People's Democratic Republic","LAO",152645,2020,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",151672,2021,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",150699,2022,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",149725,2023,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",148752,2024,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",147779,2025,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",146605,2026,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",145431,2027,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",144256,2028,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",143082,2029,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",141908,2030,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",140728,2031,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",139548,2032,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",138369,2033,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",137189,2034,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",136009,2035,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",134836,2036,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",133663,2037,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",132491,2038,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",131318,2039,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",130145,2040,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",128955,2041,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",127765,2042,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",126574,2043,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",125384,2044,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",124194,2045,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",122988,2046,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",121782,2047,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",120577,2048,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",119371,2049,0.0237,"LMIC",0
+"Lao People's Democratic Republic","LAO",118165,2050,0.0237,"LMIC",0
+"Liberia","LBR",153109,2020,0.0214,"LIC",0
+"Liberia","LBR",155773,2021,0.0214,"LIC",0
+"Liberia","LBR",158437,2022,0.0214,"LIC",0
+"Liberia","LBR",161100,2023,0.0214,"LIC",0
+"Liberia","LBR",163764,2024,0.0214,"LIC",0
+"Liberia","LBR",166428,2025,0.0214,"LIC",0
+"Liberia","LBR",169114,2026,0.0214,"LIC",0
+"Liberia","LBR",171800,2027,0.0214,"LIC",0
+"Liberia","LBR",174485,2028,0.0214,"LIC",0
+"Liberia","LBR",177171,2029,0.0214,"LIC",0
+"Liberia","LBR",179857,2030,0.0214,"LIC",0
+"Liberia","LBR",182339,2031,0.0214,"LIC",0
+"Liberia","LBR",184821,2032,0.0214,"LIC",0
+"Liberia","LBR",187302,2033,0.0214,"LIC",0
+"Liberia","LBR",189784,2034,0.0214,"LIC",0
+"Liberia","LBR",192266,2035,0.0214,"LIC",0
+"Liberia","LBR",194508,2036,0.0214,"LIC",0
+"Liberia","LBR",196751,2037,0.0214,"LIC",0
+"Liberia","LBR",198993,2038,0.0214,"LIC",0
+"Liberia","LBR",201236,2039,0.0214,"LIC",0
+"Liberia","LBR",203478,2040,0.0214,"LIC",0
+"Liberia","LBR",205441,2041,0.0214,"LIC",0
+"Liberia","LBR",207404,2042,0.0214,"LIC",0
+"Liberia","LBR",209367,2043,0.0214,"LIC",0
+"Liberia","LBR",211330,2044,0.0214,"LIC",0
+"Liberia","LBR",213293,2045,0.0214,"LIC",0
+"Liberia","LBR",215081,2046,0.0214,"LIC",0
+"Liberia","LBR",216869,2047,0.0214,"LIC",0
+"Liberia","LBR",218658,2048,0.0214,"LIC",0
+"Liberia","LBR",220446,2049,0.0214,"LIC",0
+"Liberia","LBR",222234,2050,0.0214,"LIC",0
+"Sri Lanka","LKA",305049,2020,0.0049,"LMIC",0
+"Sri Lanka","LKA",300899,2021,0.0049,"LMIC",0
+"Sri Lanka","LKA",296748,2022,0.0049,"LMIC",0
+"Sri Lanka","LKA",292598,2023,0.0049,"LMIC",0
+"Sri Lanka","LKA",288447,2024,0.0049,"LMIC",0
+"Sri Lanka","LKA",284297,2025,0.0049,"LMIC",0
+"Sri Lanka","LKA",281898,2026,0.0049,"LMIC",0
+"Sri Lanka","LKA",279499,2027,0.0049,"LMIC",0
+"Sri Lanka","LKA",277099,2028,0.0049,"LMIC",0
+"Sri Lanka","LKA",274700,2029,0.0049,"LMIC",0
+"Sri Lanka","LKA",272301,2030,0.0049,"LMIC",0
+"Sri Lanka","LKA",271377,2031,0.0049,"LMIC",0
+"Sri Lanka","LKA",270453,2032,0.0049,"LMIC",0
+"Sri Lanka","LKA",269528,2033,0.0049,"LMIC",0
+"Sri Lanka","LKA",268604,2034,0.0049,"LMIC",0
+"Sri Lanka","LKA",267680,2035,0.0049,"LMIC",0
+"Sri Lanka","LKA",266269,2036,0.0049,"LMIC",0
+"Sri Lanka","LKA",264858,2037,0.0049,"LMIC",0
+"Sri Lanka","LKA",263448,2038,0.0049,"LMIC",0
+"Sri Lanka","LKA",262037,2039,0.0049,"LMIC",0
+"Sri Lanka","LKA",260626,2040,0.0049,"LMIC",0
+"Sri Lanka","LKA",257527,2041,0.0049,"LMIC",0
+"Sri Lanka","LKA",254427,2042,0.0049,"LMIC",0
+"Sri Lanka","LKA",251328,2043,0.0049,"LMIC",0
+"Sri Lanka","LKA",248228,2044,0.0049,"LMIC",0
+"Sri Lanka","LKA",245129,2045,0.0049,"LMIC",0
+"Sri Lanka","LKA",241283,2046,0.0049,"LMIC",0
+"Sri Lanka","LKA",237438,2047,0.0049,"LMIC",0
+"Sri Lanka","LKA",233592,2048,0.0049,"LMIC",0
+"Sri Lanka","LKA",229747,2049,0.0049,"LMIC",0
+"Sri Lanka","LKA",225901,2050,0.0049,"LMIC",0
+"Lesotho","LSO",57929,2020,0.0195,"LMIC",0
+"Lesotho","LSO",57895,2021,0.0195,"LMIC",0
+"Lesotho","LSO",57862,2022,0.0195,"LMIC",0
+"Lesotho","LSO",57828,2023,0.0195,"LMIC",0
+"Lesotho","LSO",57795,2024,0.0195,"LMIC",0
+"Lesotho","LSO",57761,2025,0.0195,"LMIC",0
+"Lesotho","LSO",57597,2026,0.0195,"LMIC",0
+"Lesotho","LSO",57433,2027,0.0195,"LMIC",0
+"Lesotho","LSO",57270,2028,0.0195,"LMIC",0
+"Lesotho","LSO",57106,2029,0.0195,"LMIC",0
+"Lesotho","LSO",56942,2030,0.0195,"LMIC",0
+"Lesotho","LSO",56934,2031,0.0195,"LMIC",0
+"Lesotho","LSO",56926,2032,0.0195,"LMIC",0
+"Lesotho","LSO",56918,2033,0.0195,"LMIC",0
+"Lesotho","LSO",56910,2034,0.0195,"LMIC",0
+"Lesotho","LSO",56902,2035,0.0195,"LMIC",0
+"Lesotho","LSO",56954,2036,0.0195,"LMIC",0
+"Lesotho","LSO",57006,2037,0.0195,"LMIC",0
+"Lesotho","LSO",57057,2038,0.0195,"LMIC",0
+"Lesotho","LSO",57109,2039,0.0195,"LMIC",0
+"Lesotho","LSO",57161,2040,0.0195,"LMIC",0
+"Lesotho","LSO",57163,2041,0.0195,"LMIC",0
+"Lesotho","LSO",57164,2042,0.0195,"LMIC",0
+"Lesotho","LSO",57166,2043,0.0195,"LMIC",0
+"Lesotho","LSO",57167,2044,0.0195,"LMIC",0
+"Lesotho","LSO",57169,2045,0.0195,"LMIC",0
+"Lesotho","LSO",57039,2046,0.0195,"LMIC",0
+"Lesotho","LSO",56910,2047,0.0195,"LMIC",0
+"Lesotho","LSO",56780,2048,0.0195,"LMIC",0
+"Lesotho","LSO",56651,2049,0.0195,"LMIC",0
+"Lesotho","LSO",56521,2050,0.0195,"LMIC",0
+"Republic of Moldova","MDA",39564,2020,0.0079,"LMIC",0
+"Republic of Moldova","MDA",38625,2021,0.0079,"LMIC",0
+"Republic of Moldova","MDA",37685,2022,0.0079,"LMIC",0
+"Republic of Moldova","MDA",36746,2023,0.0079,"LMIC",0
+"Republic of Moldova","MDA",35806,2024,0.0079,"LMIC",0
+"Republic of Moldova","MDA",34867,2025,0.0079,"LMIC",0
+"Republic of Moldova","MDA",34186,2026,0.0079,"LMIC",0
+"Republic of Moldova","MDA",33506,2027,0.0079,"LMIC",0
+"Republic of Moldova","MDA",32825,2028,0.0079,"LMIC",0
+"Republic of Moldova","MDA",32145,2029,0.0079,"LMIC",0
+"Republic of Moldova","MDA",31464,2030,0.0079,"LMIC",0
+"Republic of Moldova","MDA",30986,2031,0.0079,"LMIC",0
+"Republic of Moldova","MDA",30509,2032,0.0079,"LMIC",0
+"Republic of Moldova","MDA",30031,2033,0.0079,"LMIC",0
+"Republic of Moldova","MDA",29554,2034,0.0079,"LMIC",0
+"Republic of Moldova","MDA",29076,2035,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28917,2036,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28758,2037,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28599,2038,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28440,2039,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28281,2040,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28232,2041,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28183,2042,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28134,2043,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28085,2044,0.0079,"LMIC",0
+"Republic of Moldova","MDA",28036,2045,0.0079,"LMIC",0
+"Republic of Moldova","MDA",27849,2046,0.0079,"LMIC",0
+"Republic of Moldova","MDA",27662,2047,0.0079,"LMIC",0
+"Republic of Moldova","MDA",27474,2048,0.0079,"LMIC",0
+"Republic of Moldova","MDA",27287,2049,0.0079,"LMIC",0
+"Republic of Moldova","MDA",27100,2050,0.0079,"LMIC",0
+"Madagascar","MDG",821379,2020,0.0182,"LIC",0
+"Madagascar","MDG",837476,2021,0.0182,"LIC",0
+"Madagascar","MDG",853574,2022,0.0182,"LIC",0
+"Madagascar","MDG",869671,2023,0.0182,"LIC",0
+"Madagascar","MDG",885769,2024,0.0182,"LIC",0
+"Madagascar","MDG",901866,2025,0.0182,"LIC",0
+"Madagascar","MDG",915851,2026,0.0182,"LIC",0
+"Madagascar","MDG",929836,2027,0.0182,"LIC",0
+"Madagascar","MDG",943821,2028,0.0182,"LIC",0
+"Madagascar","MDG",957806,2029,0.0182,"LIC",0
+"Madagascar","MDG",971791,2030,0.0182,"LIC",0
+"Madagascar","MDG",983517,2031,0.0182,"LIC",0
+"Madagascar","MDG",995243,2032,0.0182,"LIC",0
+"Madagascar","MDG",1006968,2033,0.0182,"LIC",0
+"Madagascar","MDG",1018694,2034,0.0182,"LIC",0
+"Madagascar","MDG",1030420,2035,0.0182,"LIC",0
+"Madagascar","MDG",1041640,2036,0.0182,"LIC",0
+"Madagascar","MDG",1052860,2037,0.0182,"LIC",0
+"Madagascar","MDG",1064081,2038,0.0182,"LIC",0
+"Madagascar","MDG",1075301,2039,0.0182,"LIC",0
+"Madagascar","MDG",1086521,2040,0.0182,"LIC",0
+"Madagascar","MDG",1098054,2041,0.0182,"LIC",0
+"Madagascar","MDG",1109586,2042,0.0182,"LIC",0
+"Madagascar","MDG",1121119,2043,0.0182,"LIC",0
+"Madagascar","MDG",1132651,2044,0.0182,"LIC",0
+"Madagascar","MDG",1144184,2045,0.0182,"LIC",0
+"Madagascar","MDG",1155356,2046,0.0182,"LIC",0
+"Madagascar","MDG",1166527,2047,0.0182,"LIC",0
+"Madagascar","MDG",1177699,2048,0.0182,"LIC",0
+"Madagascar","MDG",1188870,2049,0.0182,"LIC",0
+"Madagascar","MDG",1200042,2050,0.0182,"LIC",0
+"Mali","MLI",722225,2020,0.0325,"LIC",0
+"Mali","MLI",738109,2021,0.0325,"LIC",0
+"Mali","MLI",753994,2022,0.0325,"LIC",0
+"Mali","MLI",769878,2023,0.0325,"LIC",0
+"Mali","MLI",785763,2024,0.0325,"LIC",0
+"Mali","MLI",801647,2025,0.0325,"LIC",0
+"Mali","MLI",818657,2026,0.0325,"LIC",0
+"Mali","MLI",835667,2027,0.0325,"LIC",0
+"Mali","MLI",852678,2028,0.0325,"LIC",0
+"Mali","MLI",869688,2029,0.0325,"LIC",0
+"Mali","MLI",886698,2030,0.0325,"LIC",0
+"Mali","MLI",902448,2031,0.0325,"LIC",0
+"Mali","MLI",918198,2032,0.0325,"LIC",0
+"Mali","MLI",933948,2033,0.0325,"LIC",0
+"Mali","MLI",949698,2034,0.0325,"LIC",0
+"Mali","MLI",965448,2035,0.0325,"LIC",0
+"Mali","MLI",978700,2036,0.0325,"LIC",0
+"Mali","MLI",991952,2037,0.0325,"LIC",0
+"Mali","MLI",1005203,2038,0.0325,"LIC",0
+"Mali","MLI",1018455,2039,0.0325,"LIC",0
+"Mali","MLI",1031707,2040,0.0325,"LIC",0
+"Mali","MLI",1042337,2041,0.0325,"LIC",0
+"Mali","MLI",1052967,2042,0.0325,"LIC",0
+"Mali","MLI",1063596,2043,0.0325,"LIC",0
+"Mali","MLI",1074226,2044,0.0325,"LIC",0
+"Mali","MLI",1084856,2045,0.0325,"LIC",0
+"Mali","MLI",1093599,2046,0.0325,"LIC",0
+"Mali","MLI",1102343,2047,0.0325,"LIC",0
+"Mali","MLI",1111086,2048,0.0325,"LIC",0
+"Mali","MLI",1119830,2049,0.0325,"LIC",0
+"Mali","MLI",1128573,2050,0.0325,"LIC",0
+"Myanmar","MMR",898229,2020,0.02,"LMIC",0
+"Myanmar","MMR",898038,2021,0.02,"LMIC",0
+"Myanmar","MMR",897847,2022,0.02,"LMIC",0
+"Myanmar","MMR",897655,2023,0.02,"LMIC",0
+"Myanmar","MMR",897464,2024,0.02,"LMIC",0
+"Myanmar","MMR",897273,2025,0.02,"LMIC",0
+"Myanmar","MMR",896080,2026,0.02,"LMIC",0
+"Myanmar","MMR",894887,2027,0.02,"LMIC",0
+"Myanmar","MMR",893693,2028,0.02,"LMIC",0
+"Myanmar","MMR",892500,2029,0.02,"LMIC",0
+"Myanmar","MMR",891307,2030,0.02,"LMIC",0
+"Myanmar","MMR",886530,2031,0.02,"LMIC",0
+"Myanmar","MMR",881753,2032,0.02,"LMIC",0
+"Myanmar","MMR",876976,2033,0.02,"LMIC",0
+"Myanmar","MMR",872199,2034,0.02,"LMIC",0
+"Myanmar","MMR",867422,2035,0.02,"LMIC",0
+"Myanmar","MMR",860310,2036,0.02,"LMIC",0
+"Myanmar","MMR",853199,2037,0.02,"LMIC",0
+"Myanmar","MMR",846087,2038,0.02,"LMIC",0
+"Myanmar","MMR",838976,2039,0.02,"LMIC",0
+"Myanmar","MMR",831864,2040,0.02,"LMIC",0
+"Myanmar","MMR",824059,2041,0.02,"LMIC",0
+"Myanmar","MMR",816254,2042,0.02,"LMIC",0
+"Myanmar","MMR",808448,2043,0.02,"LMIC",0
+"Myanmar","MMR",800643,2044,0.02,"LMIC",0
+"Myanmar","MMR",792838,2045,0.02,"LMIC",0
+"Myanmar","MMR",786987,2046,0.02,"LMIC",0
+"Myanmar","MMR",781137,2047,0.02,"LMIC",0
+"Myanmar","MMR",775286,2048,0.02,"LMIC",0
+"Myanmar","MMR",769436,2049,0.02,"LMIC",0
+"Myanmar","MMR",763585,2050,0.02,"LMIC",0
+"Mongolia","MNG",67578,2020,0.0073,"LMIC",0
+"Mongolia","MNG",66440,2021,0.0073,"LMIC",0
+"Mongolia","MNG",65303,2022,0.0073,"LMIC",0
+"Mongolia","MNG",64165,2023,0.0073,"LMIC",0
+"Mongolia","MNG",63028,2024,0.0073,"LMIC",0
+"Mongolia","MNG",61890,2025,0.0073,"LMIC",0
+"Mongolia","MNG",61045,2026,0.0073,"LMIC",0
+"Mongolia","MNG",60201,2027,0.0073,"LMIC",0
+"Mongolia","MNG",59356,2028,0.0073,"LMIC",0
+"Mongolia","MNG",58512,2029,0.0073,"LMIC",0
+"Mongolia","MNG",57667,2030,0.0073,"LMIC",0
+"Mongolia","MNG",57420,2031,0.0073,"LMIC",0
+"Mongolia","MNG",57173,2032,0.0073,"LMIC",0
+"Mongolia","MNG",56927,2033,0.0073,"LMIC",0
+"Mongolia","MNG",56680,2034,0.0073,"LMIC",0
+"Mongolia","MNG",56433,2035,0.0073,"LMIC",0
+"Mongolia","MNG",56786,2036,0.0073,"LMIC",0
+"Mongolia","MNG",57139,2037,0.0073,"LMIC",0
+"Mongolia","MNG",57492,2038,0.0073,"LMIC",0
+"Mongolia","MNG",57845,2039,0.0073,"LMIC",0
+"Mongolia","MNG",58198,2040,0.0073,"LMIC",0
+"Mongolia","MNG",58790,2041,0.0073,"LMIC",0
+"Mongolia","MNG",59382,2042,0.0073,"LMIC",0
+"Mongolia","MNG",59975,2043,0.0073,"LMIC",0
+"Mongolia","MNG",60567,2044,0.0073,"LMIC",0
+"Mongolia","MNG",61159,2045,0.0073,"LMIC",0
+"Mongolia","MNG",61507,2046,0.0073,"LMIC",0
+"Mongolia","MNG",61855,2047,0.0073,"LMIC",0
+"Mongolia","MNG",62204,2048,0.0073,"LMIC",0
+"Mongolia","MNG",62552,2049,0.0073,"LMIC",0
+"Mongolia","MNG",62900,2050,0.0073,"LMIC",0
+"Mozambique","MOZ",1067674,2020,0.0191,"LIC",0
+"Mozambique","MOZ",1090674,2021,0.0191,"LIC",0
+"Mozambique","MOZ",1113673,2022,0.0191,"LIC",0
+"Mozambique","MOZ",1136673,2023,0.0191,"LIC",0
+"Mozambique","MOZ",1159672,2024,0.0191,"LIC",0
+"Mozambique","MOZ",1182672,2025,0.0191,"LIC",0
+"Mozambique","MOZ",1206345,2026,0.0191,"LIC",0
+"Mozambique","MOZ",1230017,2027,0.0191,"LIC",0
+"Mozambique","MOZ",1253690,2028,0.0191,"LIC",0
+"Mozambique","MOZ",1277362,2029,0.0191,"LIC",0
+"Mozambique","MOZ",1301035,2030,0.0191,"LIC",0
+"Mozambique","MOZ",1323503,2031,0.0191,"LIC",0
+"Mozambique","MOZ",1345971,2032,0.0191,"LIC",0
+"Mozambique","MOZ",1368440,2033,0.0191,"LIC",0
+"Mozambique","MOZ",1390908,2034,0.0191,"LIC",0
+"Mozambique","MOZ",1413376,2035,0.0191,"LIC",0
+"Mozambique","MOZ",1433084,2036,0.0191,"LIC",0
+"Mozambique","MOZ",1452791,2037,0.0191,"LIC",0
+"Mozambique","MOZ",1472499,2038,0.0191,"LIC",0
+"Mozambique","MOZ",1492206,2039,0.0191,"LIC",0
+"Mozambique","MOZ",1511914,2040,0.0191,"LIC",0
+"Mozambique","MOZ",1529552,2041,0.0191,"LIC",0
+"Mozambique","MOZ",1547190,2042,0.0191,"LIC",0
+"Mozambique","MOZ",1564827,2043,0.0191,"LIC",0
+"Mozambique","MOZ",1582465,2044,0.0191,"LIC",0
+"Mozambique","MOZ",1600103,2045,0.0191,"LIC",0
+"Mozambique","MOZ",1615939,2046,0.0191,"LIC",0
+"Mozambique","MOZ",1631775,2047,0.0191,"LIC",0
+"Mozambique","MOZ",1647612,2048,0.0191,"LIC",0
+"Mozambique","MOZ",1663448,2049,0.0191,"LIC",0
+"Mozambique","MOZ",1679284,2050,0.0191,"LIC",0
+"Mauritania","MRT",139397,2020,0.0271,"LMIC",0
+"Mauritania","MRT",141518,2021,0.0271,"LMIC",0
+"Mauritania","MRT",143638,2022,0.0271,"LMIC",0
+"Mauritania","MRT",145759,2023,0.0271,"LMIC",0
+"Mauritania","MRT",147879,2024,0.0271,"LMIC",0
+"Mauritania","MRT",150000,2025,0.0271,"LMIC",0
+"Mauritania","MRT",152071,2026,0.0271,"LMIC",0
+"Mauritania","MRT",154141,2027,0.0271,"LMIC",0
+"Mauritania","MRT",156212,2028,0.0271,"LMIC",0
+"Mauritania","MRT",158282,2029,0.0271,"LMIC",0
+"Mauritania","MRT",160353,2030,0.0271,"LMIC",0
+"Mauritania","MRT",162478,2031,0.0271,"LMIC",0
+"Mauritania","MRT",164603,2032,0.0271,"LMIC",0
+"Mauritania","MRT",166728,2033,0.0271,"LMIC",0
+"Mauritania","MRT",168853,2034,0.0271,"LMIC",0
+"Mauritania","MRT",170978,2035,0.0271,"LMIC",0
+"Mauritania","MRT",173127,2036,0.0271,"LMIC",0
+"Mauritania","MRT",175277,2037,0.0271,"LMIC",0
+"Mauritania","MRT",177426,2038,0.0271,"LMIC",0
+"Mauritania","MRT",179576,2039,0.0271,"LMIC",0
+"Mauritania","MRT",181725,2040,0.0271,"LMIC",0
+"Mauritania","MRT",183739,2041,0.0271,"LMIC",0
+"Mauritania","MRT",185754,2042,0.0271,"LMIC",0
+"Mauritania","MRT",187768,2043,0.0271,"LMIC",0
+"Mauritania","MRT",189783,2044,0.0271,"LMIC",0
+"Mauritania","MRT",191797,2045,0.0271,"LMIC",0
+"Mauritania","MRT",193592,2046,0.0271,"LMIC",0
+"Mauritania","MRT",195387,2047,0.0271,"LMIC",0
+"Mauritania","MRT",197183,2048,0.0271,"LMIC",0
+"Mauritania","MRT",198978,2049,0.0271,"LMIC",0
+"Mauritania","MRT",200773,2050,0.0271,"LMIC",0
+"Malawi","MWI",643324,2020,0.0218,"LIC",0
+"Malawi","MWI",655888,2021,0.0218,"LIC",0
+"Malawi","MWI",668453,2022,0.0218,"LIC",0
+"Malawi","MWI",681017,2023,0.0218,"LIC",0
+"Malawi","MWI",693582,2024,0.0218,"LIC",0
+"Malawi","MWI",706146,2025,0.0218,"LIC",0
+"Malawi","MWI",717712,2026,0.0218,"LIC",0
+"Malawi","MWI",729278,2027,0.0218,"LIC",0
+"Malawi","MWI",740845,2028,0.0218,"LIC",0
+"Malawi","MWI",752411,2029,0.0218,"LIC",0
+"Malawi","MWI",763977,2030,0.0218,"LIC",0
+"Malawi","MWI",773913,2031,0.0218,"LIC",0
+"Malawi","MWI",783849,2032,0.0218,"LIC",0
+"Malawi","MWI",793785,2033,0.0218,"LIC",0
+"Malawi","MWI",803721,2034,0.0218,"LIC",0
+"Malawi","MWI",813657,2035,0.0218,"LIC",0
+"Malawi","MWI",822851,2036,0.0218,"LIC",0
+"Malawi","MWI",832046,2037,0.0218,"LIC",0
+"Malawi","MWI",841240,2038,0.0218,"LIC",0
+"Malawi","MWI",850435,2039,0.0218,"LIC",0
+"Malawi","MWI",859629,2040,0.0218,"LIC",0
+"Malawi","MWI",868159,2041,0.0218,"LIC",0
+"Malawi","MWI",876689,2042,0.0218,"LIC",0
+"Malawi","MWI",885220,2043,0.0218,"LIC",0
+"Malawi","MWI",893750,2044,0.0218,"LIC",0
+"Malawi","MWI",902280,2045,0.0218,"LIC",0
+"Malawi","MWI",909745,2046,0.0218,"LIC",0
+"Malawi","MWI",917209,2047,0.0218,"LIC",0
+"Malawi","MWI",924674,2048,0.0218,"LIC",0
+"Malawi","MWI",932138,2049,0.0218,"LIC",0
+"Malawi","MWI",939603,2050,0.0218,"LIC",0
+"Niger","NER",966235,2020,0.0367,"LIC",0
+"Niger","NER",1001936,2021,0.0367,"LIC",0
+"Niger","NER",1037637,2022,0.0367,"LIC",0
+"Niger","NER",1073339,2023,0.0367,"LIC",0
+"Niger","NER",1109040,2024,0.0367,"LIC",0
+"Niger","NER",1144741,2025,0.0367,"LIC",0
+"Niger","NER",1184161,2026,0.0367,"LIC",0
+"Niger","NER",1223581,2027,0.0367,"LIC",0
+"Niger","NER",1263001,2028,0.0367,"LIC",0
+"Niger","NER",1302421,2029,0.0367,"LIC",0
+"Niger","NER",1341841,2030,0.0367,"LIC",0
+"Niger","NER",1383863,2031,0.0367,"LIC",0
+"Niger","NER",1425885,2032,0.0367,"LIC",0
+"Niger","NER",1467908,2033,0.0367,"LIC",0
+"Niger","NER",1509930,2034,0.0367,"LIC",0
+"Niger","NER",1551952,2035,0.0367,"LIC",0
+"Niger","NER",1595670,2036,0.0367,"LIC",0
+"Niger","NER",1639387,2037,0.0367,"LIC",0
+"Niger","NER",1683105,2038,0.0367,"LIC",0
+"Niger","NER",1726822,2039,0.0367,"LIC",0
+"Niger","NER",1770540,2040,0.0367,"LIC",0
+"Niger","NER",1814576,2041,0.0367,"LIC",0
+"Niger","NER",1858612,2042,0.0367,"LIC",0
+"Niger","NER",1902649,2043,0.0367,"LIC",0
+"Niger","NER",1946685,2044,0.0367,"LIC",0
+"Niger","NER",1990721,2045,0.0367,"LIC",0
+"Niger","NER",2033779,2046,0.0367,"LIC",0
+"Niger","NER",2076836,2047,0.0367,"LIC",0
+"Niger","NER",2119894,2048,0.0367,"LIC",0
+"Niger","NER",2162951,2049,0.0367,"LIC",0
+"Niger","NER",2206009,2050,0.0367,"LIC",0
+"Nigeria","NGA",6782835,2020,0.0429,"LMIC",0
+"Nigeria","NGA",6899468,2021,0.0429,"LMIC",0
+"Nigeria","NGA",7016102,2022,0.0429,"LMIC",0
+"Nigeria","NGA",7132735,2023,0.0429,"LMIC",0
+"Nigeria","NGA",7249369,2024,0.0429,"LMIC",0
+"Nigeria","NGA",7366002,2025,0.0429,"LMIC",0
+"Nigeria","NGA",7494100,2026,0.0429,"LMIC",0
+"Nigeria","NGA",7622197,2027,0.0429,"LMIC",0
+"Nigeria","NGA",7750295,2028,0.0429,"LMIC",0
+"Nigeria","NGA",7878392,2029,0.0429,"LMIC",0
+"Nigeria","NGA",8006490,2030,0.0429,"LMIC",0
+"Nigeria","NGA",8138017,2031,0.0429,"LMIC",0
+"Nigeria","NGA",8269544,2032,0.0429,"LMIC",0
+"Nigeria","NGA",8401071,2033,0.0429,"LMIC",0
+"Nigeria","NGA",8532598,2034,0.0429,"LMIC",0
+"Nigeria","NGA",8664125,2035,0.0429,"LMIC",0
+"Nigeria","NGA",8789091,2036,0.0429,"LMIC",0
+"Nigeria","NGA",8914058,2037,0.0429,"LMIC",0
+"Nigeria","NGA",9039024,2038,0.0429,"LMIC",0
+"Nigeria","NGA",9163991,2039,0.0429,"LMIC",0
+"Nigeria","NGA",9288957,2040,0.0429,"LMIC",0
+"Nigeria","NGA",9399500,2041,0.0429,"LMIC",0
+"Nigeria","NGA",9510044,2042,0.0429,"LMIC",0
+"Nigeria","NGA",9620587,2043,0.0429,"LMIC",0
+"Nigeria","NGA",9731131,2044,0.0429,"LMIC",0
+"Nigeria","NGA",9841674,2045,0.0429,"LMIC",0
+"Nigeria","NGA",9937547,2046,0.0429,"LMIC",0
+"Nigeria","NGA",10033421,2047,0.0429,"LMIC",0
+"Nigeria","NGA",10129294,2048,0.0429,"LMIC",0
+"Nigeria","NGA",10225168,2049,0.0429,"LMIC",0
+"Nigeria","NGA",10321041,2050,0.0429,"LMIC",0
+"Nicaragua","NIC",115937,2020,0.0074,"LMIC",0
+"Nicaragua","NIC",114708,2021,0.0074,"LMIC",0
+"Nicaragua","NIC",113479,2022,0.0074,"LMIC",0
+"Nicaragua","NIC",112251,2023,0.0074,"LMIC",0
+"Nicaragua","NIC",111022,2024,0.0074,"LMIC",0
+"Nicaragua","NIC",109793,2025,0.0074,"LMIC",0
+"Nicaragua","NIC",108757,2026,0.0074,"LMIC",0
+"Nicaragua","NIC",107721,2027,0.0074,"LMIC",0
+"Nicaragua","NIC",106684,2028,0.0074,"LMIC",0
+"Nicaragua","NIC",105648,2029,0.0074,"LMIC",0
+"Nicaragua","NIC",104612,2030,0.0074,"LMIC",0
+"Nicaragua","NIC",103658,2031,0.0074,"LMIC",0
+"Nicaragua","NIC",102704,2032,0.0074,"LMIC",0
+"Nicaragua","NIC",101749,2033,0.0074,"LMIC",0
+"Nicaragua","NIC",100795,2034,0.0074,"LMIC",0
+"Nicaragua","NIC",99841,2035,0.0074,"LMIC",0
+"Nicaragua","NIC",99035,2036,0.0074,"LMIC",0
+"Nicaragua","NIC",98229,2037,0.0074,"LMIC",0
+"Nicaragua","NIC",97422,2038,0.0074,"LMIC",0
+"Nicaragua","NIC",96616,2039,0.0074,"LMIC",0
+"Nicaragua","NIC",95810,2040,0.0074,"LMIC",0
+"Nicaragua","NIC",95039,2041,0.0074,"LMIC",0
+"Nicaragua","NIC",94268,2042,0.0074,"LMIC",0
+"Nicaragua","NIC",93498,2043,0.0074,"LMIC",0
+"Nicaragua","NIC",92727,2044,0.0074,"LMIC",0
+"Nicaragua","NIC",91956,2045,0.0074,"LMIC",0
+"Nicaragua","NIC",91185,2046,0.0074,"LMIC",0
+"Nicaragua","NIC",90414,2047,0.0074,"LMIC",0
+"Nicaragua","NIC",89643,2048,0.0074,"LMIC",0
+"Nicaragua","NIC",88872,2049,0.0074,"LMIC",0
+"Nicaragua","NIC",88101,2050,0.0074,"LMIC",0
+"Nepal","NPL",557548,2020,0.0184,"LIC",0
+"Nepal","NPL",555480,2021,0.0184,"LIC",0
+"Nepal","NPL",553412,2022,0.0184,"LIC",0
+"Nepal","NPL",551343,2023,0.0184,"LIC",0
+"Nepal","NPL",549275,2024,0.0184,"LIC",0
+"Nepal","NPL",547207,2025,0.0184,"LIC",0
+"Nepal","NPL",541710,2026,0.0184,"LIC",0
+"Nepal","NPL",536212,2027,0.0184,"LIC",0
+"Nepal","NPL",530715,2028,0.0184,"LIC",0
+"Nepal","NPL",525217,2029,0.0184,"LIC",0
+"Nepal","NPL",519720,2030,0.0184,"LIC",0
+"Nepal","NPL",511515,2031,0.0184,"LIC",0
+"Nepal","NPL",503310,2032,0.0184,"LIC",0
+"Nepal","NPL",495104,2033,0.0184,"LIC",0
+"Nepal","NPL",486899,2034,0.0184,"LIC",0
+"Nepal","NPL",478694,2035,0.0184,"LIC",0
+"Nepal","NPL",471374,2036,0.0184,"LIC",0
+"Nepal","NPL",464054,2037,0.0184,"LIC",0
+"Nepal","NPL",456735,2038,0.0184,"LIC",0
+"Nepal","NPL",449415,2039,0.0184,"LIC",0
+"Nepal","NPL",442095,2040,0.0184,"LIC",0
+"Nepal","NPL",437322,2041,0.0184,"LIC",0
+"Nepal","NPL",432548,2042,0.0184,"LIC",0
+"Nepal","NPL",427775,2043,0.0184,"LIC",0
+"Nepal","NPL",423001,2044,0.0184,"LIC",0
+"Nepal","NPL",418228,2045,0.0184,"LIC",0
+"Nepal","NPL",414444,2046,0.0184,"LIC",0
+"Nepal","NPL",410661,2047,0.0184,"LIC",0
+"Nepal","NPL",406877,2048,0.0184,"LIC",0
+"Nepal","NPL",403094,2049,0.0184,"LIC",0
+"Nepal","NPL",399310,2050,0.0184,"LIC",0
+"Pakistan","PAK",5061784,2020,0.0431,"LMIC",0
+"Pakistan","PAK",5055930,2021,0.0431,"LMIC",0
+"Pakistan","PAK",5050076,2022,0.0431,"LMIC",0
+"Pakistan","PAK",5044223,2023,0.0431,"LMIC",0
+"Pakistan","PAK",5038369,2024,0.0431,"LMIC",0
+"Pakistan","PAK",5032515,2025,0.0431,"LMIC",0
+"Pakistan","PAK",5021285,2026,0.0431,"LMIC",0
+"Pakistan","PAK",5010054,2027,0.0431,"LMIC",0
+"Pakistan","PAK",4998824,2028,0.0431,"LMIC",0
+"Pakistan","PAK",4987593,2029,0.0431,"LMIC",0
+"Pakistan","PAK",4976363,2030,0.0431,"LMIC",0
+"Pakistan","PAK",4983695,2031,0.0431,"LMIC",0
+"Pakistan","PAK",4991026,2032,0.0431,"LMIC",0
+"Pakistan","PAK",4998358,2033,0.0431,"LMIC",0
+"Pakistan","PAK",5005689,2034,0.0431,"LMIC",0
+"Pakistan","PAK",5013021,2035,0.0431,"LMIC",0
+"Pakistan","PAK",5034133,2036,0.0431,"LMIC",0
+"Pakistan","PAK",5055245,2037,0.0431,"LMIC",0
+"Pakistan","PAK",5076356,2038,0.0431,"LMIC",0
+"Pakistan","PAK",5097468,2039,0.0431,"LMIC",0
+"Pakistan","PAK",5118580,2040,0.0431,"LMIC",0
+"Pakistan","PAK",5127681,2041,0.0431,"LMIC",0
+"Pakistan","PAK",5136783,2042,0.0431,"LMIC",0
+"Pakistan","PAK",5145884,2043,0.0431,"LMIC",0
+"Pakistan","PAK",5154986,2044,0.0431,"LMIC",0
+"Pakistan","PAK",5164087,2045,0.0431,"LMIC",0
+"Pakistan","PAK",5149257,2046,0.0431,"LMIC",0
+"Pakistan","PAK",5134427,2047,0.0431,"LMIC",0
+"Pakistan","PAK",5119596,2048,0.0431,"LMIC",0
+"Pakistan","PAK",5104766,2049,0.0431,"LMIC",0
+"Pakistan","PAK",5089936,2050,0.0431,"LMIC",0
+"Papua New Guinea","PNG",215195,2020,0.0159,"LMIC",0
+"Papua New Guinea","PNG",217354,2021,0.0159,"LMIC",0
+"Papua New Guinea","PNG",219513,2022,0.0159,"LMIC",0
+"Papua New Guinea","PNG",221672,2023,0.0159,"LMIC",0
+"Papua New Guinea","PNG",223831,2024,0.0159,"LMIC",0
+"Papua New Guinea","PNG",225990,2025,0.0159,"LMIC",0
+"Papua New Guinea","PNG",227968,2026,0.0159,"LMIC",0
+"Papua New Guinea","PNG",229946,2027,0.0159,"LMIC",0
+"Papua New Guinea","PNG",231924,2028,0.0159,"LMIC",0
+"Papua New Guinea","PNG",233902,2029,0.0159,"LMIC",0
+"Papua New Guinea","PNG",235880,2030,0.0159,"LMIC",0
+"Papua New Guinea","PNG",237580,2031,0.0159,"LMIC",0
+"Papua New Guinea","PNG",239280,2032,0.0159,"LMIC",0
+"Papua New Guinea","PNG",240979,2033,0.0159,"LMIC",0
+"Papua New Guinea","PNG",242679,2034,0.0159,"LMIC",0
+"Papua New Guinea","PNG",244379,2035,0.0159,"LMIC",0
+"Papua New Guinea","PNG",245672,2036,0.0159,"LMIC",0
+"Papua New Guinea","PNG",246965,2037,0.0159,"LMIC",0
+"Papua New Guinea","PNG",248259,2038,0.0159,"LMIC",0
+"Papua New Guinea","PNG",249552,2039,0.0159,"LMIC",0
+"Papua New Guinea","PNG",250845,2040,0.0159,"LMIC",0
+"Papua New Guinea","PNG",251857,2041,0.0159,"LMIC",0
+"Papua New Guinea","PNG",252869,2042,0.0159,"LMIC",0
+"Papua New Guinea","PNG",253880,2043,0.0159,"LMIC",0
+"Papua New Guinea","PNG",254892,2044,0.0159,"LMIC",0
+"Papua New Guinea","PNG",255904,2045,0.0159,"LMIC",0
+"Papua New Guinea","PNG",256629,2046,0.0159,"LMIC",0
+"Papua New Guinea","PNG",257355,2047,0.0159,"LMIC",0
+"Papua New Guinea","PNG",258080,2048,0.0159,"LMIC",0
+"Papua New Guinea","PNG",258806,2049,0.0159,"LMIC",0
+"Papua New Guinea","PNG",259531,2050,0.0159,"LMIC",0
+"Dem. People's Republic of Korea","PRK",346549,2020,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",346596,2021,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",346643,2022,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",346690,2023,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",346737,2024,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",346784,2025,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",344789,2026,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",342794,2027,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",340799,2028,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",338804,2029,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",336809,2030,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",333231,2031,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",329654,2032,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",326076,2033,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",322499,2034,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",318921,2035,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",315489,2036,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",312058,2037,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",308626,2038,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",305195,2039,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",301763,2040,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",299953,2041,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",298143,2042,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",296333,2043,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",294523,2044,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",292713,2045,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",292399,2046,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",292084,2047,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",291770,2048,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",291455,2049,0.0135,"LIC",0
+"Dem. People's Republic of Korea","PRK",291141,2050,0.0135,"LIC",0
+"Rwanda","RWA",355966,2020,0.0173,"LIC",0
+"Rwanda","RWA",357081,2021,0.0173,"LIC",0
+"Rwanda","RWA",358196,2022,0.0173,"LIC",0
+"Rwanda","RWA",359312,2023,0.0173,"LIC",0
+"Rwanda","RWA",360427,2024,0.0173,"LIC",0
+"Rwanda","RWA",361542,2025,0.0173,"LIC",0
+"Rwanda","RWA",363939,2026,0.0173,"LIC",0
+"Rwanda","RWA",366337,2027,0.0173,"LIC",0
+"Rwanda","RWA",368734,2028,0.0173,"LIC",0
+"Rwanda","RWA",371132,2029,0.0173,"LIC",0
+"Rwanda","RWA",373529,2030,0.0173,"LIC",0
+"Rwanda","RWA",376794,2031,0.0173,"LIC",0
+"Rwanda","RWA",380059,2032,0.0173,"LIC",0
+"Rwanda","RWA",383323,2033,0.0173,"LIC",0
+"Rwanda","RWA",386588,2034,0.0173,"LIC",0
+"Rwanda","RWA",389853,2035,0.0173,"LIC",0
+"Rwanda","RWA",392046,2036,0.0173,"LIC",0
+"Rwanda","RWA",394239,2037,0.0173,"LIC",0
+"Rwanda","RWA",396433,2038,0.0173,"LIC",0
+"Rwanda","RWA",398626,2039,0.0173,"LIC",0
+"Rwanda","RWA",400819,2040,0.0173,"LIC",0
+"Rwanda","RWA",400720,2041,0.0173,"LIC",0
+"Rwanda","RWA",400621,2042,0.0173,"LIC",0
+"Rwanda","RWA",400521,2043,0.0173,"LIC",0
+"Rwanda","RWA",400422,2044,0.0173,"LIC",0
+"Rwanda","RWA",400323,2045,0.0173,"LIC",0
+"Rwanda","RWA",398552,2046,0.0173,"LIC",0
+"Rwanda","RWA",396781,2047,0.0173,"LIC",0
+"Rwanda","RWA",395011,2048,0.0173,"LIC",0
+"Rwanda","RWA",393240,2049,0.0173,"LIC",0
+"Rwanda","RWA",391469,2050,0.0173,"LIC",0
+"Sudan","SDN",1257141,2020,0.0244,"LMIC",0
+"Sudan","SDN",1276921,2021,0.0244,"LMIC",0
+"Sudan","SDN",1296701,2022,0.0244,"LMIC",0
+"Sudan","SDN",1316482,2023,0.0244,"LMIC",0
+"Sudan","SDN",1336262,2024,0.0244,"LMIC",0
+"Sudan","SDN",1356042,2025,0.0244,"LMIC",0
+"Sudan","SDN",1377082,2026,0.0244,"LMIC",0
+"Sudan","SDN",1398122,2027,0.0244,"LMIC",0
+"Sudan","SDN",1419161,2028,0.0244,"LMIC",0
+"Sudan","SDN",1440201,2029,0.0244,"LMIC",0
+"Sudan","SDN",1461241,2030,0.0244,"LMIC",0
+"Sudan","SDN",1480315,2031,0.0244,"LMIC",0
+"Sudan","SDN",1499389,2032,0.0244,"LMIC",0
+"Sudan","SDN",1518464,2033,0.0244,"LMIC",0
+"Sudan","SDN",1537538,2034,0.0244,"LMIC",0
+"Sudan","SDN",1556612,2035,0.0244,"LMIC",0
+"Sudan","SDN",1572163,2036,0.0244,"LMIC",0
+"Sudan","SDN",1587714,2037,0.0244,"LMIC",0
+"Sudan","SDN",1603266,2038,0.0244,"LMIC",0
+"Sudan","SDN",1618817,2039,0.0244,"LMIC",0
+"Sudan","SDN",1634368,2040,0.0244,"LMIC",0
+"Sudan","SDN",1647278,2041,0.0244,"LMIC",0
+"Sudan","SDN",1660189,2042,0.0244,"LMIC",0
+"Sudan","SDN",1673099,2043,0.0244,"LMIC",0
+"Sudan","SDN",1686010,2044,0.0244,"LMIC",0
+"Sudan","SDN",1698920,2045,0.0244,"LMIC",0
+"Sudan","SDN",1711081,2046,0.0244,"LMIC",0
+"Sudan","SDN",1723241,2047,0.0244,"LMIC",0
+"Sudan","SDN",1735402,2048,0.0244,"LMIC",0
+"Sudan","SDN",1747562,2049,0.0244,"LMIC",0
+"Sudan","SDN",1759723,2050,0.0244,"LMIC",0
+"Senegal","SEN",535148,2020,0.0245,"LIC",0
+"Senegal","SEN",542324,2021,0.0245,"LIC",0
+"Senegal","SEN",549500,2022,0.0245,"LIC",0
+"Senegal","SEN",556676,2023,0.0245,"LIC",0
+"Senegal","SEN",563852,2024,0.0245,"LIC",0
+"Senegal","SEN",571028,2025,0.0245,"LIC",0
+"Senegal","SEN",579268,2026,0.0245,"LIC",0
+"Senegal","SEN",587508,2027,0.0245,"LIC",0
+"Senegal","SEN",595747,2028,0.0245,"LIC",0
+"Senegal","SEN",603987,2029,0.0245,"LIC",0
+"Senegal","SEN",612227,2030,0.0245,"LIC",0
+"Senegal","SEN",621793,2031,0.0245,"LIC",0
+"Senegal","SEN",631360,2032,0.0245,"LIC",0
+"Senegal","SEN",640926,2033,0.0245,"LIC",0
+"Senegal","SEN",650493,2034,0.0245,"LIC",0
+"Senegal","SEN",660059,2035,0.0245,"LIC",0
+"Senegal","SEN",669954,2036,0.0245,"LIC",0
+"Senegal","SEN",679849,2037,0.0245,"LIC",0
+"Senegal","SEN",689743,2038,0.0245,"LIC",0
+"Senegal","SEN",699638,2039,0.0245,"LIC",0
+"Senegal","SEN",709533,2040,0.0245,"LIC",0
+"Senegal","SEN",718387,2041,0.0245,"LIC",0
+"Senegal","SEN",727242,2042,0.0245,"LIC",0
+"Senegal","SEN",736096,2043,0.0245,"LIC",0
+"Senegal","SEN",744951,2044,0.0245,"LIC",0
+"Senegal","SEN",753805,2045,0.0245,"LIC",0
+"Senegal","SEN",761250,2046,0.0245,"LIC",0
+"Senegal","SEN",768694,2047,0.0245,"LIC",0
+"Senegal","SEN",776139,2048,0.0245,"LIC",0
+"Senegal","SEN",783583,2049,0.0245,"LIC",0
+"Senegal","SEN",791028,2050,0.0245,"LIC",0
+"Solomon Islands","SLB",16720,2020,0.0176,"LMIC",0
+"Solomon Islands","SLB",16821,2021,0.0176,"LMIC",0
+"Solomon Islands","SLB",16922,2022,0.0176,"LMIC",0
+"Solomon Islands","SLB",17022,2023,0.0176,"LMIC",0
+"Solomon Islands","SLB",17123,2024,0.0176,"LMIC",0
+"Solomon Islands","SLB",17224,2025,0.0176,"LMIC",0
+"Solomon Islands","SLB",17376,2026,0.0176,"LMIC",0
+"Solomon Islands","SLB",17529,2027,0.0176,"LMIC",0
+"Solomon Islands","SLB",17681,2028,0.0176,"LMIC",0
+"Solomon Islands","SLB",17834,2029,0.0176,"LMIC",0
+"Solomon Islands","SLB",17986,2030,0.0176,"LMIC",0
+"Solomon Islands","SLB",18139,2031,0.0176,"LMIC",0
+"Solomon Islands","SLB",18291,2032,0.0176,"LMIC",0
+"Solomon Islands","SLB",18444,2033,0.0176,"LMIC",0
+"Solomon Islands","SLB",18596,2034,0.0176,"LMIC",0
+"Solomon Islands","SLB",18749,2035,0.0176,"LMIC",0
+"Solomon Islands","SLB",18854,2036,0.0176,"LMIC",0
+"Solomon Islands","SLB",18959,2037,0.0176,"LMIC",0
+"Solomon Islands","SLB",19064,2038,0.0176,"LMIC",0
+"Solomon Islands","SLB",19169,2039,0.0176,"LMIC",0
+"Solomon Islands","SLB",19274,2040,0.0176,"LMIC",0
+"Solomon Islands","SLB",19323,2041,0.0176,"LMIC",0
+"Solomon Islands","SLB",19372,2042,0.0176,"LMIC",0
+"Solomon Islands","SLB",19421,2043,0.0176,"LMIC",0
+"Solomon Islands","SLB",19470,2044,0.0176,"LMIC",0
+"Solomon Islands","SLB",19519,2045,0.0176,"LMIC",0
+"Solomon Islands","SLB",19523,2046,0.0176,"LMIC",0
+"Solomon Islands","SLB",19526,2047,0.0176,"LMIC",0
+"Solomon Islands","SLB",19530,2048,0.0176,"LMIC",0
+"Solomon Islands","SLB",19533,2049,0.0176,"LMIC",0
+"Solomon Islands","SLB",19537,2050,0.0176,"LMIC",0
+"Sierra Leone","SLE",236787,2020,0.0244,"LIC",0
+"Sierra Leone","SLE",238473,2021,0.0244,"LIC",0
+"Sierra Leone","SLE",240159,2022,0.0244,"LIC",0
+"Sierra Leone","SLE",241844,2023,0.0244,"LIC",0
+"Sierra Leone","SLE",243530,2024,0.0244,"LIC",0
+"Sierra Leone","SLE",245216,2025,0.0244,"LIC",0
+"Sierra Leone","SLE",246595,2026,0.0244,"LIC",0
+"Sierra Leone","SLE",247975,2027,0.0244,"LIC",0
+"Sierra Leone","SLE",249354,2028,0.0244,"LIC",0
+"Sierra Leone","SLE",250734,2029,0.0244,"LIC",0
+"Sierra Leone","SLE",252113,2030,0.0244,"LIC",0
+"Sierra Leone","SLE",252990,2031,0.0244,"LIC",0
+"Sierra Leone","SLE",253867,2032,0.0244,"LIC",0
+"Sierra Leone","SLE",254744,2033,0.0244,"LIC",0
+"Sierra Leone","SLE",255621,2034,0.0244,"LIC",0
+"Sierra Leone","SLE",256498,2035,0.0244,"LIC",0
+"Sierra Leone","SLE",256967,2036,0.0244,"LIC",0
+"Sierra Leone","SLE",257435,2037,0.0244,"LIC",0
+"Sierra Leone","SLE",257904,2038,0.0244,"LIC",0
+"Sierra Leone","SLE",258372,2039,0.0244,"LIC",0
+"Sierra Leone","SLE",258841,2040,0.0244,"LIC",0
+"Sierra Leone","SLE",258883,2041,0.0244,"LIC",0
+"Sierra Leone","SLE",258925,2042,0.0244,"LIC",0
+"Sierra Leone","SLE",258968,2043,0.0244,"LIC",0
+"Sierra Leone","SLE",259010,2044,0.0244,"LIC",0
+"Sierra Leone","SLE",259052,2045,0.0244,"LIC",0
+"Sierra Leone","SLE",258846,2046,0.0244,"LIC",0
+"Sierra Leone","SLE",258640,2047,0.0244,"LIC",0
+"Sierra Leone","SLE",258433,2048,0.0244,"LIC",0
+"Sierra Leone","SLE",258227,2049,0.0244,"LIC",0
+"Sierra Leone","SLE",258021,2050,0.0244,"LIC",0
+"Somalia","SOM",582896,2020,0.0355,"LIC",0
+"Somalia","SOM",597015,2021,0.0355,"LIC",0
+"Somalia","SOM",611134,2022,0.0355,"LIC",0
+"Somalia","SOM",625254,2023,0.0355,"LIC",0
+"Somalia","SOM",639373,2024,0.0355,"LIC",0
+"Somalia","SOM",653492,2025,0.0355,"LIC",0
+"Somalia","SOM",667480,2026,0.0355,"LIC",0
+"Somalia","SOM",681468,2027,0.0355,"LIC",0
+"Somalia","SOM",695457,2028,0.0355,"LIC",0
+"Somalia","SOM",709445,2029,0.0355,"LIC",0
+"Somalia","SOM",723433,2030,0.0355,"LIC",0
+"Somalia","SOM",737086,2031,0.0355,"LIC",0
+"Somalia","SOM",750739,2032,0.0355,"LIC",0
+"Somalia","SOM",764392,2033,0.0355,"LIC",0
+"Somalia","SOM",778045,2034,0.0355,"LIC",0
+"Somalia","SOM",791698,2035,0.0355,"LIC",0
+"Somalia","SOM",805093,2036,0.0355,"LIC",0
+"Somalia","SOM",818487,2037,0.0355,"LIC",0
+"Somalia","SOM",831882,2038,0.0355,"LIC",0
+"Somalia","SOM",845276,2039,0.0355,"LIC",0
+"Somalia","SOM",858671,2040,0.0355,"LIC",0
+"Somalia","SOM",872281,2041,0.0355,"LIC",0
+"Somalia","SOM",885891,2042,0.0355,"LIC",0
+"Somalia","SOM",899502,2043,0.0355,"LIC",0
+"Somalia","SOM",913112,2044,0.0355,"LIC",0
+"Somalia","SOM",926722,2045,0.0355,"LIC",0
+"Somalia","SOM",940165,2046,0.0355,"LIC",0
+"Somalia","SOM",953607,2047,0.0355,"LIC",0
+"Somalia","SOM",967050,2048,0.0355,"LIC",0
+"Somalia","SOM",980492,2049,0.0355,"LIC",0
+"Somalia","SOM",993935,2050,0.0355,"LIC",0
+"South Sudan","SSD",416107,2020,0.0301,"LIC",0
+"South Sudan","SSD",423051,2021,0.0301,"LIC",0
+"South Sudan","SSD",429994,2022,0.0301,"LIC",0
+"South Sudan","SSD",436938,2023,0.0301,"LIC",0
+"South Sudan","SSD",443881,2024,0.0301,"LIC",0
+"South Sudan","SSD",450825,2025,0.0301,"LIC",0
+"South Sudan","SSD",456576,2026,0.0301,"LIC",0
+"South Sudan","SSD",462327,2027,0.0301,"LIC",0
+"South Sudan","SSD",468079,2028,0.0301,"LIC",0
+"South Sudan","SSD",473830,2029,0.0301,"LIC",0
+"South Sudan","SSD",479581,2030,0.0301,"LIC",0
+"South Sudan","SSD",484442,2031,0.0301,"LIC",0
+"South Sudan","SSD",489303,2032,0.0301,"LIC",0
+"South Sudan","SSD",494163,2033,0.0301,"LIC",0
+"South Sudan","SSD",499024,2034,0.0301,"LIC",0
+"South Sudan","SSD",503885,2035,0.0301,"LIC",0
+"South Sudan","SSD",508459,2036,0.0301,"LIC",0
+"South Sudan","SSD",513033,2037,0.0301,"LIC",0
+"South Sudan","SSD",517606,2038,0.0301,"LIC",0
+"South Sudan","SSD",522180,2039,0.0301,"LIC",0
+"South Sudan","SSD",526754,2040,0.0301,"LIC",0
+"South Sudan","SSD",531293,2041,0.0301,"LIC",0
+"South Sudan","SSD",535832,2042,0.0301,"LIC",0
+"South Sudan","SSD",540370,2043,0.0301,"LIC",0
+"South Sudan","SSD",544909,2044,0.0301,"LIC",0
+"South Sudan","SSD",549448,2045,0.0301,"LIC",0
+"South Sudan","SSD",553602,2046,0.0301,"LIC",0
+"South Sudan","SSD",557755,2047,0.0301,"LIC",0
+"South Sudan","SSD",561909,2048,0.0301,"LIC",0
+"South Sudan","SSD",566062,2049,0.0301,"LIC",0
+"South Sudan","SSD",570216,2050,0.0301,"LIC",0
+"Sao Tome and Principe","STP",6452,2020,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6526,2021,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6600,2022,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6674,2023,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6748,2024,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6822,2025,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6909,2026,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",6995,2027,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7082,2028,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7168,2029,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7255,2030,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7332,2031,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7409,2032,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7487,2033,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7564,2034,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7641,2035,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7702,2036,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7763,2037,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7825,2038,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7886,2039,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7947,2040,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",7999,2041,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8052,2042,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8104,2043,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8157,2044,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8209,2045,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8250,2046,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8291,2047,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8333,2048,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8374,2049,0.0163,"LMIC",0
+"Sao Tome and Principe","STP",8415,2050,0.0163,"LMIC",0
+"Chad","TCD",578564,2020,0.0399,"LIC",0
+"Chad","TCD",589874,2021,0.0399,"LIC",0
+"Chad","TCD",601184,2022,0.0399,"LIC",0
+"Chad","TCD",612493,2023,0.0399,"LIC",0
+"Chad","TCD",623803,2024,0.0399,"LIC",0
+"Chad","TCD",635113,2025,0.0399,"LIC",0
+"Chad","TCD",645538,2026,0.0399,"LIC",0
+"Chad","TCD",655964,2027,0.0399,"LIC",0
+"Chad","TCD",666389,2028,0.0399,"LIC",0
+"Chad","TCD",676815,2029,0.0399,"LIC",0
+"Chad","TCD",687240,2030,0.0399,"LIC",0
+"Chad","TCD",696590,2031,0.0399,"LIC",0
+"Chad","TCD",705941,2032,0.0399,"LIC",0
+"Chad","TCD",715291,2033,0.0399,"LIC",0
+"Chad","TCD",724642,2034,0.0399,"LIC",0
+"Chad","TCD",733992,2035,0.0399,"LIC",0
+"Chad","TCD",742422,2036,0.0399,"LIC",0
+"Chad","TCD",750852,2037,0.0399,"LIC",0
+"Chad","TCD",759281,2038,0.0399,"LIC",0
+"Chad","TCD",767711,2039,0.0399,"LIC",0
+"Chad","TCD",776141,2040,0.0399,"LIC",0
+"Chad","TCD",783493,2041,0.0399,"LIC",0
+"Chad","TCD",790845,2042,0.0399,"LIC",0
+"Chad","TCD",798196,2043,0.0399,"LIC",0
+"Chad","TCD",805548,2044,0.0399,"LIC",0
+"Chad","TCD",812900,2045,0.0399,"LIC",0
+"Chad","TCD",819315,2046,0.0399,"LIC",0
+"Chad","TCD",825731,2047,0.0399,"LIC",0
+"Chad","TCD",832146,2048,0.0399,"LIC",0
+"Chad","TCD",838562,2049,0.0399,"LIC",0
+"Chad","TCD",844977,2050,0.0399,"LIC",0
+"Togo","TGO",247048,2020,0.0342,"LIC",0
+"Togo","TGO",250374,2021,0.0342,"LIC",0
+"Togo","TGO",253700,2022,0.0342,"LIC",0
+"Togo","TGO",257027,2023,0.0342,"LIC",0
+"Togo","TGO",260353,2024,0.0342,"LIC",0
+"Togo","TGO",263679,2025,0.0342,"LIC",0
+"Togo","TGO",267600,2026,0.0342,"LIC",0
+"Togo","TGO",271521,2027,0.0342,"LIC",0
+"Togo","TGO",275442,2028,0.0342,"LIC",0
+"Togo","TGO",279363,2029,0.0342,"LIC",0
+"Togo","TGO",283284,2030,0.0342,"LIC",0
+"Togo","TGO",287097,2031,0.0342,"LIC",0
+"Togo","TGO",290909,2032,0.0342,"LIC",0
+"Togo","TGO",294722,2033,0.0342,"LIC",0
+"Togo","TGO",298534,2034,0.0342,"LIC",0
+"Togo","TGO",302347,2035,0.0342,"LIC",0
+"Togo","TGO",305666,2036,0.0342,"LIC",0
+"Togo","TGO",308985,2037,0.0342,"LIC",0
+"Togo","TGO",312303,2038,0.0342,"LIC",0
+"Togo","TGO",315622,2039,0.0342,"LIC",0
+"Togo","TGO",318941,2040,0.0342,"LIC",0
+"Togo","TGO",321700,2041,0.0342,"LIC",0
+"Togo","TGO",324459,2042,0.0342,"LIC",0
+"Togo","TGO",327217,2043,0.0342,"LIC",0
+"Togo","TGO",329976,2044,0.0342,"LIC",0
+"Togo","TGO",332735,2045,0.0342,"LIC",0
+"Togo","TGO",335002,2046,0.0342,"LIC",0
+"Togo","TGO",337269,2047,0.0342,"LIC",0
+"Togo","TGO",339537,2048,0.0342,"LIC",0
+"Togo","TGO",341804,2049,0.0342,"LIC",0
+"Togo","TGO",344071,2050,0.0342,"LIC",0
+"Tajikistan","TJK",241078,2020,0.014,"LMIC",0
+"Tajikistan","TJK",240414,2021,0.014,"LMIC",0
+"Tajikistan","TJK",239750,2022,0.014,"LMIC",0
+"Tajikistan","TJK",239087,2023,0.014,"LMIC",0
+"Tajikistan","TJK",238423,2024,0.014,"LMIC",0
+"Tajikistan","TJK",237759,2025,0.014,"LMIC",0
+"Tajikistan","TJK",236937,2026,0.014,"LMIC",0
+"Tajikistan","TJK",236115,2027,0.014,"LMIC",0
+"Tajikistan","TJK",235293,2028,0.014,"LMIC",0
+"Tajikistan","TJK",234471,2029,0.014,"LMIC",0
+"Tajikistan","TJK",233649,2030,0.014,"LMIC",0
+"Tajikistan","TJK",234891,2031,0.014,"LMIC",0
+"Tajikistan","TJK",236133,2032,0.014,"LMIC",0
+"Tajikistan","TJK",237375,2033,0.014,"LMIC",0
+"Tajikistan","TJK",238617,2034,0.014,"LMIC",0
+"Tajikistan","TJK",239859,2035,0.014,"LMIC",0
+"Tajikistan","TJK",242550,2036,0.014,"LMIC",0
+"Tajikistan","TJK",245241,2037,0.014,"LMIC",0
+"Tajikistan","TJK",247932,2038,0.014,"LMIC",0
+"Tajikistan","TJK",250623,2039,0.014,"LMIC",0
+"Tajikistan","TJK",253314,2040,0.014,"LMIC",0
+"Tajikistan","TJK",255142,2041,0.014,"LMIC",0
+"Tajikistan","TJK",256970,2042,0.014,"LMIC",0
+"Tajikistan","TJK",258799,2043,0.014,"LMIC",0
+"Tajikistan","TJK",260627,2044,0.014,"LMIC",0
+"Tajikistan","TJK",262455,2045,0.014,"LMIC",0
+"Tajikistan","TJK",262065,2046,0.014,"LMIC",0
+"Tajikistan","TJK",261676,2047,0.014,"LMIC",0
+"Tajikistan","TJK",261286,2048,0.014,"LMIC",0
+"Tajikistan","TJK",260897,2049,0.014,"LMIC",0
+"Tajikistan","TJK",260507,2050,0.014,"LMIC",0
+"Timor-Leste","TLS",43114,2020,0.0178,"LMIC",0
+"Timor-Leste","TLS",43794,2021,0.0178,"LMIC",0
+"Timor-Leste","TLS",44475,2022,0.0178,"LMIC",0
+"Timor-Leste","TLS",45155,2023,0.0178,"LMIC",0
+"Timor-Leste","TLS",45836,2024,0.0178,"LMIC",0
+"Timor-Leste","TLS",46516,2025,0.0178,"LMIC",0
+"Timor-Leste","TLS",47138,2026,0.0178,"LMIC",0
+"Timor-Leste","TLS",47760,2027,0.0178,"LMIC",0
+"Timor-Leste","TLS",48383,2028,0.0178,"LMIC",0
+"Timor-Leste","TLS",49005,2029,0.0178,"LMIC",0
+"Timor-Leste","TLS",49627,2030,0.0178,"LMIC",0
+"Timor-Leste","TLS",50058,2031,0.0178,"LMIC",0
+"Timor-Leste","TLS",50488,2032,0.0178,"LMIC",0
+"Timor-Leste","TLS",50919,2033,0.0178,"LMIC",0
+"Timor-Leste","TLS",51349,2034,0.0178,"LMIC",0
+"Timor-Leste","TLS",51780,2035,0.0178,"LMIC",0
+"Timor-Leste","TLS",52052,2036,0.0178,"LMIC",0
+"Timor-Leste","TLS",52325,2037,0.0178,"LMIC",0
+"Timor-Leste","TLS",52597,2038,0.0178,"LMIC",0
+"Timor-Leste","TLS",52870,2039,0.0178,"LMIC",0
+"Timor-Leste","TLS",53142,2040,0.0178,"LMIC",0
+"Timor-Leste","TLS",53332,2041,0.0178,"LMIC",0
+"Timor-Leste","TLS",53522,2042,0.0178,"LMIC",0
+"Timor-Leste","TLS",53713,2043,0.0178,"LMIC",0
+"Timor-Leste","TLS",53903,2044,0.0178,"LMIC",0
+"Timor-Leste","TLS",54093,2045,0.0178,"LMIC",0
+"Timor-Leste","TLS",54225,2046,0.0178,"LMIC",0
+"Timor-Leste","TLS",54358,2047,0.0178,"LMIC",0
+"Timor-Leste","TLS",54490,2048,0.0178,"LMIC",0
+"Timor-Leste","TLS",54623,2049,0.0178,"LMIC",0
+"Timor-Leste","TLS",54755,2050,0.0178,"LMIC",0
+"United Republic of Tanzania","TZA",2087707,2020,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2133133,2021,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2178560,2022,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2223986,2023,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2269413,2024,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2314839,2025,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2365445,2026,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2416050,2027,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2466656,2028,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2517261,2029,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2567867,2030,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2620147,2031,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2672427,2032,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2724706,2033,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2776986,2034,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2829266,2035,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2879279,2036,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2929293,2037,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",2979306,2038,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3029320,2039,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3079333,2040,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3126270,2041,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3173206,2042,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3220143,2043,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3267079,2044,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3314016,2045,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3357292,2046,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3400567,2047,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3443843,2048,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3487118,2049,0.0224,"LIC",0
+"United Republic of Tanzania","TZA",3530394,2050,0.0224,"LIC",0
+"Uganda","UGA",1686604,2020,0.021,"LIC",0
+"Uganda","UGA",1725069,2021,0.021,"LIC",0
+"Uganda","UGA",1763534,2022,0.021,"LIC",0
+"Uganda","UGA",1801999,2023,0.021,"LIC",0
+"Uganda","UGA",1840464,2024,0.021,"LIC",0
+"Uganda","UGA",1878929,2025,0.021,"LIC",0
+"Uganda","UGA",1917438,2026,0.021,"LIC",0
+"Uganda","UGA",1955947,2027,0.021,"LIC",0
+"Uganda","UGA",1994455,2028,0.021,"LIC",0
+"Uganda","UGA",2032964,2029,0.021,"LIC",0
+"Uganda","UGA",2071473,2030,0.021,"LIC",0
+"Uganda","UGA",2107551,2031,0.021,"LIC",0
+"Uganda","UGA",2143629,2032,0.021,"LIC",0
+"Uganda","UGA",2179706,2033,0.021,"LIC",0
+"Uganda","UGA",2215784,2034,0.021,"LIC",0
+"Uganda","UGA",2251862,2035,0.021,"LIC",0
+"Uganda","UGA",2284488,2036,0.021,"LIC",0
+"Uganda","UGA",2317114,2037,0.021,"LIC",0
+"Uganda","UGA",2349739,2038,0.021,"LIC",0
+"Uganda","UGA",2382365,2039,0.021,"LIC",0
+"Uganda","UGA",2414991,2040,0.021,"LIC",0
+"Uganda","UGA",2445164,2041,0.021,"LIC",0
+"Uganda","UGA",2475338,2042,0.021,"LIC",0
+"Uganda","UGA",2505511,2043,0.021,"LIC",0
+"Uganda","UGA",2535685,2044,0.021,"LIC",0
+"Uganda","UGA",2565858,2045,0.021,"LIC",0
+"Uganda","UGA",2593361,2046,0.021,"LIC",0
+"Uganda","UGA",2620865,2047,0.021,"LIC",0
+"Uganda","UGA",2648368,2048,0.021,"LIC",0
+"Uganda","UGA",2675872,2049,0.021,"LIC",0
+"Uganda","UGA",2703375,2050,0.021,"LIC",0
+"Ukraine","UKR",456976,2020,0.0088,"LMIC",0
+"Ukraine","UKR",449226,2021,0.0088,"LMIC",0
+"Ukraine","UKR",441476,2022,0.0088,"LMIC",0
+"Ukraine","UKR",433726,2023,0.0088,"LMIC",0
+"Ukraine","UKR",425976,2024,0.0088,"LMIC",0
+"Ukraine","UKR",418226,2025,0.0088,"LMIC",0
+"Ukraine","UKR",410290,2026,0.0088,"LMIC",0
+"Ukraine","UKR",402354,2027,0.0088,"LMIC",0
+"Ukraine","UKR",394419,2028,0.0088,"LMIC",0
+"Ukraine","UKR",386483,2029,0.0088,"LMIC",0
+"Ukraine","UKR",378547,2030,0.0088,"LMIC",0
+"Ukraine","UKR",374444,2031,0.0088,"LMIC",0
+"Ukraine","UKR",370340,2032,0.0088,"LMIC",0
+"Ukraine","UKR",366237,2033,0.0088,"LMIC",0
+"Ukraine","UKR",362133,2034,0.0088,"LMIC",0
+"Ukraine","UKR",358030,2035,0.0088,"LMIC",0
+"Ukraine","UKR",359142,2036,0.0088,"LMIC",0
+"Ukraine","UKR",360254,2037,0.0088,"LMIC",0
+"Ukraine","UKR",361367,2038,0.0088,"LMIC",0
+"Ukraine","UKR",362479,2039,0.0088,"LMIC",0
+"Ukraine","UKR",363591,2040,0.0088,"LMIC",0
+"Ukraine","UKR",365944,2041,0.0088,"LMIC",0
+"Ukraine","UKR",368297,2042,0.0088,"LMIC",0
+"Ukraine","UKR",370650,2043,0.0088,"LMIC",0
+"Ukraine","UKR",373003,2044,0.0088,"LMIC",0
+"Ukraine","UKR",375356,2045,0.0088,"LMIC",0
+"Ukraine","UKR",374786,2046,0.0088,"LMIC",0
+"Ukraine","UKR",374217,2047,0.0088,"LMIC",0
+"Ukraine","UKR",373647,2048,0.0088,"LMIC",0
+"Ukraine","UKR",373078,2049,0.0088,"LMIC",0
+"Ukraine","UKR",372508,2050,0.0088,"LMIC",0
+"Uzbekistan","UZB",630319,2020,0.012,"LMIC",0
+"Uzbekistan","UZB",620830,2021,0.012,"LMIC",0
+"Uzbekistan","UZB",611340,2022,0.012,"LMIC",0
+"Uzbekistan","UZB",601851,2023,0.012,"LMIC",0
+"Uzbekistan","UZB",592361,2024,0.012,"LMIC",0
+"Uzbekistan","UZB",582872,2025,0.012,"LMIC",0
+"Uzbekistan","UZB",574631,2026,0.012,"LMIC",0
+"Uzbekistan","UZB",566389,2027,0.012,"LMIC",0
+"Uzbekistan","UZB",558148,2028,0.012,"LMIC",0
+"Uzbekistan","UZB",549906,2029,0.012,"LMIC",0
+"Uzbekistan","UZB",541665,2030,0.012,"LMIC",0
+"Uzbekistan","UZB",539436,2031,0.012,"LMIC",0
+"Uzbekistan","UZB",537207,2032,0.012,"LMIC",0
+"Uzbekistan","UZB",534979,2033,0.012,"LMIC",0
+"Uzbekistan","UZB",532750,2034,0.012,"LMIC",0
+"Uzbekistan","UZB",530521,2035,0.012,"LMIC",0
+"Uzbekistan","UZB",531371,2036,0.012,"LMIC",0
+"Uzbekistan","UZB",532220,2037,0.012,"LMIC",0
+"Uzbekistan","UZB",533070,2038,0.012,"LMIC",0
+"Uzbekistan","UZB",533919,2039,0.012,"LMIC",0
+"Uzbekistan","UZB",534769,2040,0.012,"LMIC",0
+"Uzbekistan","UZB",534313,2041,0.012,"LMIC",0
+"Uzbekistan","UZB",533857,2042,0.012,"LMIC",0
+"Uzbekistan","UZB",533401,2043,0.012,"LMIC",0
+"Uzbekistan","UZB",532945,2044,0.012,"LMIC",0
+"Uzbekistan","UZB",532489,2045,0.012,"LMIC",0
+"Uzbekistan","UZB",528431,2046,0.012,"LMIC",0
+"Uzbekistan","UZB",524373,2047,0.012,"LMIC",0
+"Uzbekistan","UZB",520316,2048,0.012,"LMIC",0
+"Uzbekistan","UZB",516258,2049,0.012,"LMIC",0
+"Uzbekistan","UZB",512200,2050,0.012,"LMIC",0
+"Viet Nam","VNM",1529103,2020,0.0101,"LMIC",0
+"Viet Nam","VNM",1523042,2021,0.0101,"LMIC",0
+"Viet Nam","VNM",1516981,2022,0.0101,"LMIC",0
+"Viet Nam","VNM",1510920,2023,0.0101,"LMIC",0
+"Viet Nam","VNM",1504859,2024,0.0101,"LMIC",0
+"Viet Nam","VNM",1498798,2025,0.0101,"LMIC",0
+"Viet Nam","VNM",1474549,2026,0.0101,"LMIC",0
+"Viet Nam","VNM",1450299,2027,0.0101,"LMIC",0
+"Viet Nam","VNM",1426050,2028,0.0101,"LMIC",0
+"Viet Nam","VNM",1401800,2029,0.0101,"LMIC",0
+"Viet Nam","VNM",1377551,2030,0.0101,"LMIC",0
+"Viet Nam","VNM",1358735,2031,0.0101,"LMIC",0
+"Viet Nam","VNM",1339918,2032,0.0101,"LMIC",0
+"Viet Nam","VNM",1321102,2033,0.0101,"LMIC",0
+"Viet Nam","VNM",1302285,2034,0.0101,"LMIC",0
+"Viet Nam","VNM",1283469,2035,0.0101,"LMIC",0
+"Viet Nam","VNM",1281411,2036,0.0101,"LMIC",0
+"Viet Nam","VNM",1279354,2037,0.0101,"LMIC",0
+"Viet Nam","VNM",1277296,2038,0.0101,"LMIC",0
+"Viet Nam","VNM",1275239,2039,0.0101,"LMIC",0
+"Viet Nam","VNM",1273181,2040,0.0101,"LMIC",0
+"Viet Nam","VNM",1279313,2041,0.0101,"LMIC",0
+"Viet Nam","VNM",1285445,2042,0.0101,"LMIC",0
+"Viet Nam","VNM",1291577,2043,0.0101,"LMIC",0
+"Viet Nam","VNM",1297709,2044,0.0101,"LMIC",0
+"Viet Nam","VNM",1303841,2045,0.0101,"LMIC",0
+"Viet Nam","VNM",1306472,2046,0.0101,"LMIC",0
+"Viet Nam","VNM",1309102,2047,0.0101,"LMIC",0
+"Viet Nam","VNM",1311733,2048,0.0101,"LMIC",0
+"Viet Nam","VNM",1314363,2049,0.0101,"LMIC",0
+"Viet Nam","VNM",1316994,2050,0.0101,"LMIC",0
+"Yemen","YEM",835173,2020,0.029,"LMIC",0
+"Yemen","YEM",837612,2021,0.029,"LMIC",0
+"Yemen","YEM",840051,2022,0.029,"LMIC",0
+"Yemen","YEM",842490,2023,0.029,"LMIC",0
+"Yemen","YEM",844929,2024,0.029,"LMIC",0
+"Yemen","YEM",847368,2025,0.029,"LMIC",0
+"Yemen","YEM",848039,2026,0.029,"LMIC",0
+"Yemen","YEM",848710,2027,0.029,"LMIC",0
+"Yemen","YEM",849380,2028,0.029,"LMIC",0
+"Yemen","YEM",850051,2029,0.029,"LMIC",0
+"Yemen","YEM",850722,2030,0.029,"LMIC",0
+"Yemen","YEM",850737,2031,0.029,"LMIC",0
+"Yemen","YEM",850752,2032,0.029,"LMIC",0
+"Yemen","YEM",850767,2033,0.029,"LMIC",0
+"Yemen","YEM",850782,2034,0.029,"LMIC",0
+"Yemen","YEM",850797,2035,0.029,"LMIC",0
+"Yemen","YEM",849620,2036,0.029,"LMIC",0
+"Yemen","YEM",848443,2037,0.029,"LMIC",0
+"Yemen","YEM",847266,2038,0.029,"LMIC",0
+"Yemen","YEM",846089,2039,0.029,"LMIC",0
+"Yemen","YEM",844912,2040,0.029,"LMIC",0
+"Yemen","YEM",842325,2041,0.029,"LMIC",0
+"Yemen","YEM",839738,2042,0.029,"LMIC",0
+"Yemen","YEM",837150,2043,0.029,"LMIC",0
+"Yemen","YEM",834563,2044,0.029,"LMIC",0
+"Yemen","YEM",831976,2045,0.029,"LMIC",0
+"Yemen","YEM",827795,2046,0.029,"LMIC",0
+"Yemen","YEM",823615,2047,0.029,"LMIC",0
+"Yemen","YEM",819434,2048,0.029,"LMIC",0
+"Yemen","YEM",815254,2049,0.029,"LMIC",0
+"Yemen","YEM",811073,2050,0.029,"LMIC",0
+"Zambia","ZMB",619466,2020,0.0209,"LMIC",0
+"Zambia","ZMB",634447,2021,0.0209,"LMIC",0
+"Zambia","ZMB",649428,2022,0.0209,"LMIC",0
+"Zambia","ZMB",664408,2023,0.0209,"LMIC",0
+"Zambia","ZMB",679389,2024,0.0209,"LMIC",0
+"Zambia","ZMB",694370,2025,0.0209,"LMIC",0
+"Zambia","ZMB",709377,2026,0.0209,"LMIC",0
+"Zambia","ZMB",724384,2027,0.0209,"LMIC",0
+"Zambia","ZMB",739392,2028,0.0209,"LMIC",0
+"Zambia","ZMB",754399,2029,0.0209,"LMIC",0
+"Zambia","ZMB",769406,2030,0.0209,"LMIC",0
+"Zambia","ZMB",783899,2031,0.0209,"LMIC",0
+"Zambia","ZMB",798392,2032,0.0209,"LMIC",0
+"Zambia","ZMB",812886,2033,0.0209,"LMIC",0
+"Zambia","ZMB",827379,2034,0.0209,"LMIC",0
+"Zambia","ZMB",841872,2035,0.0209,"LMIC",0
+"Zambia","ZMB",856263,2036,0.0209,"LMIC",0
+"Zambia","ZMB",870654,2037,0.0209,"LMIC",0
+"Zambia","ZMB",885046,2038,0.0209,"LMIC",0
+"Zambia","ZMB",899437,2039,0.0209,"LMIC",0
+"Zambia","ZMB",913828,2040,0.0209,"LMIC",0
+"Zambia","ZMB",928929,2041,0.0209,"LMIC",0
+"Zambia","ZMB",944029,2042,0.0209,"LMIC",0
+"Zambia","ZMB",959130,2043,0.0209,"LMIC",0
+"Zambia","ZMB",974230,2044,0.0209,"LMIC",0
+"Zambia","ZMB",989331,2045,0.0209,"LMIC",0
+"Zambia","ZMB",1004791,2046,0.0209,"LMIC",0
+"Zambia","ZMB",1020251,2047,0.0209,"LMIC",0
+"Zambia","ZMB",1035710,2048,0.0209,"LMIC",0
+"Zambia","ZMB",1051170,2049,0.0209,"LMIC",0
+"Zambia","ZMB",1066630,2050,0.0209,"LMIC",0
+"Zimbabwe","ZWE",504887,2020,0.0206,"LIC",0
+"Zimbabwe","ZWE",505620,2021,0.0206,"LIC",0
+"Zimbabwe","ZWE",506353,2022,0.0206,"LIC",0
+"Zimbabwe","ZWE",507087,2023,0.0206,"LIC",0
+"Zimbabwe","ZWE",507820,2024,0.0206,"LIC",0
+"Zimbabwe","ZWE",508553,2025,0.0206,"LIC",0
+"Zimbabwe","ZWE",511025,2026,0.0206,"LIC",0
+"Zimbabwe","ZWE",513497,2027,0.0206,"LIC",0
+"Zimbabwe","ZWE",515970,2028,0.0206,"LIC",0
+"Zimbabwe","ZWE",518442,2029,0.0206,"LIC",0
+"Zimbabwe","ZWE",520914,2030,0.0206,"LIC",0
+"Zimbabwe","ZWE",524900,2031,0.0206,"LIC",0
+"Zimbabwe","ZWE",528885,2032,0.0206,"LIC",0
+"Zimbabwe","ZWE",532871,2033,0.0206,"LIC",0
+"Zimbabwe","ZWE",536856,2034,0.0206,"LIC",0
+"Zimbabwe","ZWE",540842,2035,0.0206,"LIC",0
+"Zimbabwe","ZWE",544008,2036,0.0206,"LIC",0
+"Zimbabwe","ZWE",547174,2037,0.0206,"LIC",0
+"Zimbabwe","ZWE",550339,2038,0.0206,"LIC",0
+"Zimbabwe","ZWE",553505,2039,0.0206,"LIC",0
+"Zimbabwe","ZWE",556671,2040,0.0206,"LIC",0
+"Zimbabwe","ZWE",558063,2041,0.0206,"LIC",0
+"Zimbabwe","ZWE",559455,2042,0.0206,"LIC",0
+"Zimbabwe","ZWE",560848,2043,0.0206,"LIC",0
+"Zimbabwe","ZWE",562240,2044,0.0206,"LIC",0
+"Zimbabwe","ZWE",563632,2045,0.0206,"LIC",0
+"Zimbabwe","ZWE",563299,2046,0.0206,"LIC",0
+"Zimbabwe","ZWE",562967,2047,0.0206,"LIC",0
+"Zimbabwe","ZWE",562634,2048,0.0206,"LIC",0
+"Zimbabwe","ZWE",562302,2049,0.0206,"LIC",0
+"Zimbabwe","ZWE",561969,2050,0.0206,"LIC",0

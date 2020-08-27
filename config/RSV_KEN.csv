@@ -1,0 +1,15 @@
+"config_tag","scenario","intervention","efficacy_maternal","efficacy_infant","dur_protection_maternal","dur_protection_infant","price_mAb_sens_factor","year","country_iso","coverage_maternal","coverage_infant"
+"maternal_basecase","basecase","maternal",0.7,0,0.416666666666667,0,1,2020,"KEN",0.86,0
+"mAb_basecase","basecase","mAb",0,0.7,0,0.5,1,2020,"KEN",0,0.86
+"maternal_price_mAb_min","price_mAb_min","maternal",0.7,0,0.416666666666667,0,0.666666666666667,2020,"KEN",0.86,0
+"mAb_price_mAb_min","price_mAb_min","mAb",0,0.7,0,0.5,0.666666666666667,2020,"KEN",0,0.86
+"maternal_price_mAb_max","price_mAb_max","maternal",0.7,0,0.416666666666667,0,1.83333333333333,2020,"KEN",0.86,0
+"mAb_price_mAb_max","price_mAb_max","mAb",0,0.7,0,0.5,1.83333333333333,2020,"KEN",0,0.86
+"maternal_efficacy_min","efficacy_min","maternal",0.5,0,0.416666666666667,0,1,2020,"KEN",0.86,0
+"mAb_efficacy_min","efficacy_min","mAb",0,0.5,0,0.5,1,2020,"KEN",0,0.86
+"maternal_efficacy_max","efficacy_max","maternal",0.9,0,0.416666666666667,0,1,2020,"KEN",0.86,0
+"mAb_efficacy_max","efficacy_max","mAb",0,0.9,0,0.5,1,2020,"KEN",0,0.86
+"maternal_duration_min","duration_min","maternal",0.7,0,0.25,0,1,2020,"KEN",0.86,0
+"mAb_duration_min","duration_min","mAb",0,0.7,0,0.333333333333333,1,2020,"KEN",0,0.86
+"maternal_duration_max","duration_max","maternal",0.7,0,0.5,0,1,2020,"KEN",0.86,0
+"mAb_duration_max","duration_max","mAb",0,0.7,0,0.666666666666667,1,2020,"KEN",0,0.86
