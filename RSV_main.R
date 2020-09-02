@@ -24,6 +24,11 @@ rm(list=ls())
 # setwd("C:/User/path/to/the/rcode/folder") ## WINDOWS
 # setwd("/Users/path/to/the/rcode/folder") ## MAC
 
+# path
+library(rstudioapi); currentfile_path=rstudioapi::getActiveDocumentContext()$path
+currentfile_path=paste0(unlist(strsplit(currentfile_path,"\\/"))[1:(length(unlist(strsplit(currentfile_path,"\\/")))-1)],collapse="/")
+setwd(currentfile_path)
+
 #######################
 ## SETTINGS          ##
 #######################
