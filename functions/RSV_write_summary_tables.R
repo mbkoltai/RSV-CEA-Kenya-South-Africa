@@ -11,8 +11,7 @@
 ################################################################
 
 #run_tag <- 'RSV_gavi72'
-write_global_summary_tables <- function(sim_output_filename)
-{
+write_global_summary_tables <- function(sim_output_filename){
   
   cli_print('Create global summary table for',sim_output_filename)
   

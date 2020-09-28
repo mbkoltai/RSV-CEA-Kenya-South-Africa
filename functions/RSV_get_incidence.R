@@ -8,25 +8,19 @@
 
 #f_country_iso <- 'GBR' ; f_outputFileDir <- './output'; 
 get_incidence <- function(f_country_iso,f_outputFileDir){
-
   # filename
-  filenames    <- file.path(get_temp_output_folder(f_outputFileDir),paste0('df_',f_country_iso,'_all','.RData'))
-
+  filenames <- file.path(get_temp_output_folder(f_outputFileDir),paste0('df_',f_country_iso,'_all','.RData'))
     if(!file.exists(filenames)){
-    
       cli_print('GET COUNTRY SPECIFIC BURDEN FOR:',filenames)
-      
       filename_country_BoD <- 'input/RSV_burden_Shi_2017.csv'
-      
       #################################
       ##  UNCERTAINTY SPLINES        ##
       #################################
-      
       # original data format: long table
       spline_datafiles <- data.frame(incidence ='./input/incidence_lmic_ts_n5000.csv',   # LMIC only,  5000x
-                                     hosp_prob ='./input/hosp_prob_ts_n5000.csv',        # Nokes et al. 5000x, stdev = 2x standard error
-                                     hosp_cfr  ='./input/cfr_lmic_ts_n5000.csv',         # LMIC only,  5000x
-                                     stringsAsFactors = F) # hospital CRF
+                              hosp_prob='./input/hosp_prob_ts_n5000.csv',   # Nokes et al. 5000x, stdev = 2x standard error
+                              hosp_cfr='./input/cfr_lmic_ts_n5000.csv',    # LMIC only,  5000x
+                              stringsAsFactors=F) # hospital CRF
       
       #######################
       ##  CHECK FILES      ##
@@ -56,12 +50,9 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       ###########################
       ##  Deaths
       ###########################
-      
       # load rsv hospital rate by monthly age
       # => from uncertainty analysis Marina Antillon
       cfr_mat <- convert_pred_into_model_input(spline_datafiles$hosp_cfr)
-      
-      
       #####################
       # Country specific
       #####################
@@ -91,14 +82,18 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       population    <- under5_pop
       
       # cases = incidence per 1000 * population by age
-      country_rsv_cases      <- RSV_incidence / 1000 * population
+      country_rsv_cases <- (RSV_incidence/1000)*population
       # rsv rate = cases / total cases (per column)
-      country_rsv_rate       <- country_rsv_cases / rep(colSums(country_rsv_cases),each=dim(country_rsv_cases)[1])
+      # take # of cases in an age group and divide by TOTAL number of cases 
+      # --> this gives the FRACTION of RSV cases per age group out of ALL RSV cases
+      country_rsv_rate <- country_rsv_cases / rep(colSums(country_rsv_cases),each=dim(country_rsv_cases)[1])
       # country rate = rsv rate * country_reference per 1000 * country population
-      country_rsv_pred_cases <- country_rsv_rate * burden_country_reference / 1000 * sum(population)
+      # (burden_country_reference / 1000) is predicted burden per 1 million -->  x population = predicted total burden
+      # country_rsv_rate is the distribution of cases by age groups (as fractions of total) so product distributes total burden
+      country_rsv_pred_cases <- country_rsv_rate * (burden_country_reference / 1000) * sum(population)
+      # so the colsum is constant, being the total burden
       # rsv rate = rsv cases / population
       country_rsv_rate       <- data.frame(country_rsv_pred_cases  / population)
-      
       
       ###########################
       ## CHECK
@@ -106,10 +101,7 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
   
       pdf(sub('_gavi.RData','.pdf',filenames))
         # baseline RSV incidence
-        plot(0:59,incidence_mat[,1],type='l',
-             ylim=range(incidence_mat),
-             ylab='RSV incidence (baseline)',
-             xlab='age',col=0)
+        plot(0:59,incidence_mat[,1],type='l', ylim=range(incidence_mat), ylab='RSV incidence (baseline)', xlab='age',col=0)
         for(i in 1:dim(incidence_mat)[2]){
           lines(0:59,incidence_mat[,i],col=alpha(1,0.1))
         }
@@ -122,7 +114,7 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
         for(i in 1:dim(hosp_prob_mat)[2]){
           lines(0:59,hosp_prob_mat[,i],col=alpha(1,0.1))
         }
-  
+
         # HOSP CFR
         plot(0:59,cfr_mat[,1],type='l',
              ylim=range(cfr_mat),
@@ -163,27 +155,20 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
 # HELP FUNCTION TO CONVERT SPLINE PREDICTIONS INTO MODEL OUTPUT    #
 ####################################################################
 
+# this function reads in a data file eg. './input/incidence_lmic_ts_n5000.csv
+# this is a 300.000x4 dataframe, columns: X, pred, mos, iter. 
+# X=number of row, 'mos'=age groups, 60 unique vals, 'iter'=iteration, 6000 unique values 
 convert_pred_into_model_input <- function(prediction_file){
-  
   # load data
   raw_data <- read.table(prediction_file,sep=',',header=T)
-  dim(raw_data)
-  num_ages_raw <- length(unique(raw_data$mos))
+  dim(raw_data); num_ages_raw <- length(unique(raw_data$mos))
   num_sim_raw  <- length(unique(raw_data$iter)) 
-  
   # convert into matrix [sim,age]
   clean_data <- matrix(raw_data$pred,ncol=num_ages_raw,byrow=T)
-  
   # select first 60 age groups
   clean_data <- clean_data[,1:60]
-  
   # remove names and transpose
-  names(clean_data) <- NULL
-  clean_data <- data.frame(t(clean_data))
-
+  names(clean_data) <- NULL; clean_data <- data.frame(t(clean_data))
   # return results  
   return(clean_data)
-  
 }
-
-

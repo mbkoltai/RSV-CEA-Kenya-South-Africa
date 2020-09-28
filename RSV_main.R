@@ -132,31 +132,31 @@ country_year_opt      <- unique(country_year_opt)
 
 # make summary matrix, including the 5-year period notation
 country_period_opt    <- cbind(country_year_opt$country_iso,
-                                  t(sapply(country_year_opt$year,get_year_category)))
+                               t(sapply(country_year_opt$year,get_year_category)))
 
 # get life table for each [country, period] combination
 par_out <- foreach(i_life=1:nrow(country_period_opt),
                    .combine='rbind',
                    .packages=all_packages,.verbose=FALSE) %dopar%
-{
-  # print progress
-  cli_progress(i_life,nrow(country_period_opt),time_stamp)
-  
-  # life table with discounting
-  generate_life_table(country_period_opt[i_life,1],
-                 country_period_opt[i_life,3],
-                 output_dir,
-                 0.03)
-  
-  # life table without discounting
-  generate_life_table(country_period_opt[i_life,1],
-                 country_period_opt[i_life,3],
-                 output_dir,
-                 0)
-  
-  # dummy return, the results are printed to a file
-  return(0)
-}
+  {
+    # print progress
+    cli_progress(i_life,nrow(country_period_opt),time_stamp)
+    
+    # life table with discounting
+    generate_life_table(country_period_opt[i_life,1],
+                        country_period_opt[i_life,3],
+                        output_dir,
+                        0.03)
+    
+    # life table without discounting
+    generate_life_table(country_period_opt[i_life,1],
+                        country_period_opt[i_life,3],
+                        output_dir,
+                        0)
+    
+    # dummy return, the results are printed to a file
+    return(0)
+  }
 
 #######################################
 ## PRE-PROCESSING: incidence         ##
@@ -172,17 +172,17 @@ par_out <- foreach(i_country=1:nrow(country_opt),
                    .combine='rbind',
                    .packages=all_packages,
                    .verbose=FALSE) %dopar%
-{
-  # print progress
-  cli_progress(i_country,nrow(country_opt),time_stamp)
-  
-  # get country-specific incidence data
-  get_incidence(country_opt$country_iso[i_country],
-                output_dir)
-  
-  # dummy return, the results are printed to a file
-  return(0)
-}
+  {
+    # print progress
+    cli_progress(i_country,nrow(country_opt),time_stamp)
+    
+    # get country-specific incidence data
+    get_incidence(country_opt$country_iso[i_country],
+                  output_dir)
+    
+    # dummy return, the results are printed to a file
+    return(0)
+  }
 
 #######################################
 ## PROCESSING: burden                ##
@@ -195,21 +195,21 @@ sim_output <- foreach(i_scen    = 1:num_scen,
                       .combine  = 'rbind',
                       .packages = all_packages,
                       .verbose  = FALSE) %dopar%
-{
-  # print progress
-  cli_progress(i_scen,num_scen,time_stamp)
-  
-  # run burden function
-  run_output_long <- get_burden(sim_config_matrix[i_scen,])
-  
-  # write results to file
-  save(run_output_long,file=file.path(get_temp_output_folder(
-    sim_config_matrix$outputFileDir[i_scen],'burden'),
-    paste0('run_output_long_',i_scen,'.Rdata')))
-  
-  # dummy return, the results are printed to a fle
-  return(0)
-}
+  {
+    # print progress
+    cli_progress(i_scen,num_scen,time_stamp)
+    
+    # run burden function
+    run_output_long <- get_burden(sim_config_matrix[i_scen,])
+    
+    # write results to file
+    save(run_output_long,file=file.path(get_temp_output_folder(
+      sim_config_matrix$outputFileDir[i_scen],'burden'),
+      paste0('run_output_long_',i_scen,'.Rdata')))
+    
+    # dummy return, the results are printed to a fle
+    return(0)
+  }
 
 ###############################
 ## POST-PROCESSING           ##
@@ -223,21 +223,21 @@ check_parallel_workers()
 sim_output <- foreach(i_scen   = 1:num_scen,
                       .combine = 'rbind',
                       .verbose = FALSE) %dopar%
-{
-  # print progress
-  cli_progress(i_scen,num_scen,time_stamp)
-  
-  # get output name
-  var_name <- load(file.path(get_temp_output_folder(sim_config_matrix$outputFileDir[i_scen],
-                   'burden'),paste0('run_output_long_',i_scen,'.Rdata')))
-  
-  # load data and add scenario id
-  run_output_long             <- get(var_name)
-  run_output_long$scenario_id <- i_scen
-  
-  # return
-  return(run_output_long)
-}
+  {
+    # print progress
+    cli_progress(i_scen,num_scen,time_stamp)
+    
+    # get output name
+    var_name <- load(file.path(get_temp_output_folder(sim_config_matrix$outputFileDir[i_scen],
+                                                      'burden'),paste0('run_output_long_',i_scen,'.Rdata')))
+    
+    # load data and add scenario id
+    run_output_long             <- get(var_name)
+    run_output_long$scenario_id <- i_scen
+    
+    # return
+    return(run_output_long)
+  }
 
 # add config details to output
 sim_output <- merge(sim_config_matrix,sim_output,all=T)

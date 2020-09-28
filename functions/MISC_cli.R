@@ -6,7 +6,6 @@
 #  Copyright 2020, CHERMID, UNIVERSITY OF ANTWERP, BELGIUM
 #############################################################################
 
-
 #' @title Print message to command line interface
 #'
 #' @description Command line interface: print message
@@ -25,9 +24,9 @@ cli_print <- function(..., WARNING=F, FORCED=F) {
   
   #parse list => make character vector
   f_out <- ' '
-  for(i in 1:length(function_arguments)){
-    f_out <- cbind(f_out,eval(unlist(function_arguments[[i]]),envir = pf))
-  }
+for(i in 1:length(function_arguments)){ 
+  f_out <- cbind(f_out,eval(unlist(function_arguments[[i]]),envir = pf)) 
+}
   
   # add a space to each function arguments
   function_arguments <- paste(f_out,collapse = ' ')

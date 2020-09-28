@@ -10,46 +10,38 @@
 # f_country   country name
 # f_year      number => is converted into string with 5 year interval, such as 2015-2020
 # force_new   generate a new life table, irrespectively if there is a local copy (default = false)
-get_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly)
-{
-  
+get_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly){
   life_table_filename   <- get_life_table_filename(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly)
   if(!file.exists(life_table_filename)) {
     generate_life_table(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly)
-  } 
-  
+  }
   load(life_table_filename)
   return(life_table) #end
-
 }
 
 get_life_table_filename <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly){
  
   period <- get_year_category(f_year)[1]
   temp_output_folder   <- get_temp_output_folder(f_outputFileDir)
-  file_name_base       <- file.path(temp_output_folder,paste0('life_table_',f_country_iso,'_',period,'_disc',gsub("\\.",'p',f_disc_rate_qaly)))
+  file_name_base       <- file.path(temp_output_folder,
+                            paste0('life_table_',f_country_iso,'_',period,'_disc',gsub("\\.",'p',f_disc_rate_qaly)))
   life_table_filename <- paste0(file_name_base,'.RData')
   
   return(life_table_filename)
 }
 
-generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly)
-{
-
+###################
+generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly) {
   # get period
   period <- get_year_category(f_year)[1]
-  
   # filename
   life_table_filename   <- get_life_table_filename(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly)
-  
   if(!file.exists(life_table_filename))
-  {
-    # convert the country iso3 code into the country name (corresponding the wpp2017 package)
+  { # convert the country iso3 code into the country name (corresponding the wpp2017 package)
     f_country <- get_UN_country_name(f_country_iso,f_outputFileDir)
-    
     # load population data
     load_wpp2017_databases(f_outputFileDir)
-  
+
     if(!f_country %in% sexRatio$name){
       cli_print("Unknown country: ", f_country)
       cli_print("Make sure that the country name starts with a capital letter")
@@ -61,22 +53,23 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
     
     # get column for year interval
     sel_col     <- names(mxM) == sub("_","-",period)
-    
     # age: A character string representing an age interval (given by the starting age of the interval).
     # note: Data for ages 85-100+ are not the official UN data. While the published UN mortality datasets 
     # contain data only up to 85+, data for ages 85-100+ in this dataset were derived from UN published 
     # life table quantities.
-    wpp_data <- data.frame(age_group_min = mxM$age[mxM$name%in%f_country],
-                           mxM = mxM[mxM$name%in%f_country,sel_col],
-                           mxF = mxF[mxF$name%in%f_country,sel_col],
-                           sexRatio = sexRatio[sexRatio$name%in%f_country,sel_col])
+    wpp_data <- data.frame(age_group_min=mxM$age[mxM$name%in%f_country],
+                           mxM=mxM[mxM$name%in%f_country,sel_col],
+                           mxF=mxF[mxF$name%in%f_country,sel_col],
+                           sexRatio=sexRatio[sexRatio$name%in%f_country,sel_col])
     
     # Adjust ages
     wpp_data$age_group_mean <- wpp_data$age_group_min + diff(c(wpp_data$age_group_min,max(wpp_data$age_group_min+5)))/2
     
     # Account for gender balance
     # Estimates and projections of the sex ratio at birth derived as the number of female divided by the number of male.
-    wpp_data$prop_female <- wpp_data$sexRatio / 2
+    #
+    # M Koltai: this is wrong I think, sexRatio=males/females, and then prop_female=1/(1+sexRatio)
+    wpp_data$prop_female <- 1/(1+wpp_data$sexRatio) # wpp_data$sexRatio/2
     wpp_data$prop_male   <- 1 - wpp_data$prop_female
     
     # Get population nMx
@@ -93,10 +86,11 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
     
     # linear approximation for lx and life_expectancy
     num_months_year <- 12
-    lx_month                   <- approx(life_table_year$age*num_months_year,life_table_year$lx,xout=seq(0,100,1))
-    life_expectancy_month      <- approx(life_table_year$age*num_months_year,life_table_year$life_expectancy,xout=seq(0,100,1))
-    nMx_month                  <- approx(life_table_year$age*num_months_year,life_table_year$nMx,xout=seq(0,100,1))
-    life_table                 <- data.frame(lx_month)
+    # M Koltai:this is calculating for first 100 months?
+    lx_month              <- approx(life_table_year$age*num_months_year,life_table_year$lx,xout=seq(0,100,1))
+life_expectancy_month <- approx(life_table_year$age*num_months_year,life_table_year$life_expectancy,xout=seq(0,100,1))
+    nMx_month             <- approx(life_table_year$age*num_months_year,life_table_year$nMx,xout=seq(0,100,1))
+    life_table            <- data.frame(lx_month)
     life_table$life_expectancy <- life_expectancy_month$y
     life_table$nMx             <- nMx_month$y
     names(life_table)          <- c('age','lx','life_expectancy','nMx')
@@ -105,13 +99,11 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
     # discounted life expectancy
     life_table$life_expectancy_disc <-  NA
     for(i in 1:length(life_table$life_expectancy)){
-      
       tmp_years <- 1:floor(life_table$life_expectancy[i])
       life_expectancy_disc_floor <- sum(1/((1+f_disc_rate_qaly)^tmp_years))
-      
       tmp_years <- ceiling(life_table$life_expectancy[i])
-      life_expectancy_disc_remaining <- sum(1/((1+f_disc_rate_qaly)^tmp_years)) * (life_table$life_expectancy[i] - floor(life_table$life_expectancy[i]))
-      
+      life_expectancy_disc_remaining <- life_expectancy_disc_floor*(life_table$life_expectancy[i] - floor(life_table$life_expectancy[i]))
+                                      # sum(1/((1+f_disc_rate_qaly)^tmp_years))
       life_table$life_expectancy_disc[i] <- life_expectancy_disc_floor + life_expectancy_disc_remaining
     }
     
@@ -120,12 +112,11 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
       life_table$lx_rate  <- life_table$lx_rate[1]
       life_table$nMx      <- 0
     }
-    
     save(life_table,file=life_table_filename)
-    
   }
-  
 }
+
+###################
 
 get_country_list <- function()
 {
@@ -157,6 +148,8 @@ get_country_iso3 <- function(country_name,f_outputFileDir){
   return(UNcountries$iso3[flag])
 }
 
+###################
+
 create_UN_country_database <- function(f_outputFileDir){
   
   # filename for the [country name - iso3 code] database
@@ -171,15 +164,16 @@ create_UN_country_database <- function(f_outputFileDir){
     UNcountries      <- data.frame(name=UNlocations$name)
     UNcountries$iso3 <- countrycode(UNcountries$name,'country.name','iso3c',warn=F)
     UNcountries$iso3[is.na(UNcountries$iso3)] <- 0
-    
     save(UNcountries,file=dictionary_UN_countrynames_file)
     cli_print('UN country database completed')
   }
 
 }
 
+###################
+
 get_UN_country_database <- function(f_outputFileDir){
-  
+
   # filename for the [country name - iso3 code] database
   temp_output_folder              <- get_temp_output_folder(f_outputFileDir)
   dictionary_UN_countrynames_file <- file.path(temp_output_folder,'dictionary_UN_countrynames.RData')
@@ -195,6 +189,8 @@ get_UN_country_database <- function(f_outputFileDir){
   
   return(UNcountries)
 }
+
+###################
 
 load_UN_country_database <- function(f_outputFileDir){
   
@@ -221,8 +217,9 @@ load_UN_country_database <- function(f_outputFileDir){
   return(UNcountries)
 }
 
-load_wpp2017_databases <- function(f_outputFileDir)
-{
+###################
+
+load_wpp2017_databases <- function(f_outputFileDir){
   
   temp_output_folder <- get_temp_output_folder(f_outputFileDir)
   filename_wpp2017_values <- file.path(temp_output_folder,'wpp2017_values.RData')
@@ -238,14 +235,11 @@ load_wpp2017_databases <- function(f_outputFileDir)
 }
 
 ## FUNCTION TO COMPLETE LIFE TABLE BASED ON MORTALITY RATE
-create_full_life_table <- function(f_life_table)
-{
-
+create_full_life_table <- function(f_life_table){
   # Copy life table
   # age - years
   # nMx - age-specific death rate between ages x and x+n
   life_table_out <- f_life_table
-  
   # Convert rate to probability
   # nqx - probability of dying between ages x and x+n
   life_table_out$nqx=1-exp(-life_table_out$nMx)
@@ -264,24 +258,24 @@ create_full_life_table <- function(f_life_table)
     } else {
       life_table_out$lx[i_age]= life_table_out$lx[i_age-1] - life_table_out$ndx[i_age-1]  
     }
+    # # ppl dying = # ppl * prob of dying
     life_table_out$ndx[i_age] = life_table_out$lx[i_age] * life_table_out$nqx[i_age]
     life_table_out$nLx[i_age] = life_table_out$ndx[i_age] / life_table_out$nMx[i_age] 
   }
   
   # calculate Tx - person-years lived above age x
-  i_age = 1
-  num_ages = dim(life_table_out)[1]
+  i_age=1; num_ages=dim(life_table_out)[1]
   for(i_age in 1:num_ages){
     life_table_out$Tx[i_age] = sum(life_table_out$nLx[i_age:num_ages])
   }
-  
+
   # Calculate ex - expectation of life at age x  (by Ex=Tx/Lx)
   life_table_out$life_expectancy=life_table_out$Tx / life_table_out$lx
   
   return(life_table_out)
 }
 
-
+# input a year, then it'll give you the 5-year period. eg. 2011 --> 2010_2015
 get_year_category <- function(f_year)
 {
   year_cutoff <- (0:10)*5 + 2000

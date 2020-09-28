@@ -1,0 +1,285 @@
+country_iso,location_name,lower_CI,upper_CI,reference,variable,value
+AFG,Afghanistan,33.6,83.8,shi_et_al_2017,incidence_RSV_associated_ALRI,53.3
+DZA,Algeria,32.7,80.9,shi_et_al_2017,incidence_RSV_associated_ALRI,51.6
+AGO,Angola,34,84.1,shi_et_al_2017,incidence_RSV_associated_ALRI,53.7
+ATG,Antigua and Barbuda,29.7,73.4,shi_et_al_2017,incidence_RSV_associated_ALRI,46.8
+ARG,Argentina,30.7,75.8,shi_et_al_2017,incidence_RSV_associated_ALRI,48.3
+BHS,"Bahamas, The",30.5,75.4,shi_et_al_2017,incidence_RSV_associated_ALRI,48.2
+BHR,Bahrain,36,89.9,shi_et_al_2017,incidence_RSV_associated_ALRI,57.2
+BGD,Bangladesh,32.9,81.2,shi_et_al_2017,incidence_RSV_associated_ALRI,51.9
+BRB,Barbados,30.2,74.8,shi_et_al_2017,incidence_RSV_associated_ALRI,47.7
+BLZ,Belize,33.6,83,shi_et_al_2017,incidence_RSV_associated_ALRI,53
+BEN,Benin,36.1,90.5,shi_et_al_2017,incidence_RSV_associated_ALRI,57.4
+BTN,Bhutan,24.3,64.3,shi_et_al_2017,incidence_RSV_associated_ALRI,39.6
+BOL,Bolivia,31.7,78.7,shi_et_al_2017,incidence_RSV_associated_ALRI,50.2
+BWA,Botswana,37.6,94.2,shi_et_al_2017,incidence_RSV_associated_ALRI,60
+BRA,Brazil,32.5,80.3,shi_et_al_2017,incidence_RSV_associated_ALRI,51.4
+BFA,Burkina Faso,37.5,93.9,shi_et_al_2017,incidence_RSV_associated_ALRI,59.7
+BDI,Burundi,35.4,88.1,shi_et_al_2017,incidence_RSV_associated_ALRI,56
+KHM,Cambodia,32.3,80,shi_et_al_2017,incidence_RSV_associated_ALRI,51.1
+CMR,Cameroon,36.8,92.4,shi_et_al_2017,incidence_RSV_associated_ALRI,58.8
+999,Cape Verde,34.3,85.5,shi_et_al_2017,incidence_RSV_associated_ALRI,54.5
+CAF,Central African Republic,34.7,86.2,shi_et_al_2017,incidence_RSV_associated_ALRI,55
+TCD,Chad,36.2,90.7,shi_et_al_2017,incidence_RSV_associated_ALRI,57.7
+CHL,Chile,30.9,76.4,shi_et_al_2017,incidence_RSV_associated_ALRI,48.7
+CHN,China,18.7,50.8,shi_et_al_2017,incidence_RSV_associated_ALRI,31
+COL,Colombia,29.9,73.9,shi_et_al_2017,incidence_RSV_associated_ALRI,47.2
+COM,Comoros,39.3,99.1,shi_et_al_2017,incidence_RSV_associated_ALRI,62.8
+COG,"Congo, Rep.",35.7,88.9,shi_et_al_2017,incidence_RSV_associated_ALRI,56.7
+999,Cook Islands,31.6,79,shi_et_al_2017,incidence_RSV_associated_ALRI,50.3
+CRI,Costa Rica,24.5,65.6,shi_et_al_2017,incidence_RSV_associated_ALRI,40.3
+CIV,C_te d'Ivoire,32.8,81.5,shi_et_al_2017,incidence_RSV_associated_ALRI,51.9
+PRK,"Korea, Dem. People's Rep.",32.4,79.8,shi_et_al_2017,incidence_RSV_associated_ALRI,51.1
+COD,"Congo, Dem. Rep.",34.3,85.1,shi_et_al_2017,incidence_RSV_associated_ALRI,54.3
+DJI,Djibouti,36,90,shi_et_al_2017,incidence_RSV_associated_ALRI,57.3
+DMA,Dominica,30.8,76.2,shi_et_al_2017,incidence_RSV_associated_ALRI,48.7
+DOM,Dominican Republic,29.6,73.8,shi_et_al_2017,incidence_RSV_associated_ALRI,46.9
+ECU,Ecuador,29.5,73.1,shi_et_al_2017,incidence_RSV_associated_ALRI,46.6
+EGY,"Egypt, Arab Rep.",31.9,78.8,shi_et_al_2017,incidence_RSV_associated_ALRI,50.4
+SLV,El Salvador,34,84.1,shi_et_al_2017,incidence_RSV_associated_ALRI,53.7
+GNQ,Equatorial Guinea,35,86.9,shi_et_al_2017,incidence_RSV_associated_ALRI,55.3
+ERI,Eritrea,36.2,90.6,shi_et_al_2017,incidence_RSV_associated_ALRI,57.6
+ETH,Ethiopia,36.4,91.3,shi_et_al_2017,incidence_RSV_associated_ALRI,58
+FJI,Fiji,22.8,61,shi_et_al_2017,incidence_RSV_associated_ALRI,37.5
+GAB,Gabon,38,95.7,shi_et_al_2017,incidence_RSV_associated_ALRI,60.9
+GMB,"Gambia, The",36.5,91.7,shi_et_al_2017,incidence_RSV_associated_ALRI,58.3
+GHA,Ghana,33.4,82.9,shi_et_al_2017,incidence_RSV_associated_ALRI,52.8
+GRD,Grenada,30.6,75.6,shi_et_al_2017,incidence_RSV_associated_ALRI,48.3
+GTM,Guatemala,34.5,86.1,shi_et_al_2017,incidence_RSV_associated_ALRI,54.6
+GIN,Guinea,37.1,93.9,shi_et_al_2017,incidence_RSV_associated_ALRI,59.5
+GNB,Guinea-Bissau,36.6,91.5,shi_et_al_2017,incidence_RSV_associated_ALRI,58.2
+GUY,Guyana,35.3,87.8,shi_et_al_2017,incidence_RSV_associated_ALRI,56
+HTI,Haiti,33.2,82.3,shi_et_al_2017,incidence_RSV_associated_ALRI,52.6
+HND,Honduras,33,81.4,shi_et_al_2017,incidence_RSV_associated_ALRI,52
+IND,India,35.7,89,shi_et_al_2017,incidence_RSV_associated_ALRI,56.7
+IDN,Indonesia,31.6,78.5,shi_et_al_2017,incidence_RSV_associated_ALRI,50.1
+IRN,"Iran, Islamic Rep.",35.7,88.9,shi_et_al_2017,incidence_RSV_associated_ALRI,56.6
+IRQ,Iraq,34.6,86.2,shi_et_al_2017,incidence_RSV_associated_ALRI,54.8
+JAM,Jamaica,30.6,75.7,shi_et_al_2017,incidence_RSV_associated_ALRI,48.3
+JOR,Jordan,38.6,96.8,shi_et_al_2017,incidence_RSV_associated_ALRI,61.3
+KEN,Kenya,34,84.4,shi_et_al_2017,incidence_RSV_associated_ALRI,53.8
+KIR,Kiribati,23.2,62,shi_et_al_2017,incidence_RSV_associated_ALRI,38.2
+KWT,Kuwait,35.2,88.1,shi_et_al_2017,incidence_RSV_associated_ALRI,55.9
+LAO,Lao PDR,25,66.9,shi_et_al_2017,incidence_RSV_associated_ALRI,41
+LBN,Lebanon,35.5,88.3,shi_et_al_2017,incidence_RSV_associated_ALRI,56.2
+LSO,Lesotho,36.5,91.4,shi_et_al_2017,incidence_RSV_associated_ALRI,58.1
+LBR,Liberia,34.4,86,shi_et_al_2017,incidence_RSV_associated_ALRI,54.9
+LBY,Libya,34.8,86.4,shi_et_al_2017,incidence_RSV_associated_ALRI,55
+MDG,Madagascar,34.4,85.5,shi_et_al_2017,incidence_RSV_associated_ALRI,54.5
+MWI,Malawi,37.2,92.6,shi_et_al_2017,incidence_RSV_associated_ALRI,58.9
+MYS,Malaysia,23.2,62.1,shi_et_al_2017,incidence_RSV_associated_ALRI,38.1
+MDV,Maldives,28.1,70.2,shi_et_al_2017,incidence_RSV_associated_ALRI,44.4
+MLI,Mali,36.5,91.8,shi_et_al_2017,incidence_RSV_associated_ALRI,58.1
+MHL,Marshall Islands,24.3,65.1,shi_et_al_2017,incidence_RSV_associated_ALRI,39.9
+MRT,Mauritania,35.2,87.8,shi_et_al_2017,incidence_RSV_associated_ALRI,55.9
+MUS,Mauritius,33.7,83.6,shi_et_al_2017,incidence_RSV_associated_ALRI,53.3
+MEX,Mexico,30.1,74.3,shi_et_al_2017,incidence_RSV_associated_ALRI,47.4
+FSM,"Micronesia, Fed. Sts.",24.4,65.4,shi_et_al_2017,incidence_RSV_associated_ALRI,40.1
+MNG,Mongolia,22.5,60.1,shi_et_al_2017,incidence_RSV_associated_ALRI,37
+MAR,Morocco,34.5,86.2,shi_et_al_2017,incidence_RSV_associated_ALRI,54.8
+MOZ,Mozambique,36.9,91.8,shi_et_al_2017,incidence_RSV_associated_ALRI,58.6
+MMR,Myanmar,24.7,65.2,shi_et_al_2017,incidence_RSV_associated_ALRI,40.2
+NAM,Namibia,34.9,87.1,shi_et_al_2017,incidence_RSV_associated_ALRI,55.4
+NRU,Nauru,25.4,69.1,shi_et_al_2017,incidence_RSV_associated_ALRI,42.1
+NPL,Nepal,34.5,85.6,shi_et_al_2017,incidence_RSV_associated_ALRI,54.6
+NIC,Nicaragua,33.4,82.7,shi_et_al_2017,incidence_RSV_associated_ALRI,52.7
+NER,Niger,36.3,92.1,shi_et_al_2017,incidence_RSV_associated_ALRI,58.2
+NGA,Nigeria,34.9,87.3,shi_et_al_2017,incidence_RSV_associated_ALRI,55.6
+999,Niue,24.9,66.8,shi_et_al_2017,incidence_RSV_associated_ALRI,41
+OMN,Oman,35.9,89.4,shi_et_al_2017,incidence_RSV_associated_ALRI,57
+PAK,Pakistan,39.4,101.7,shi_et_al_2017,incidence_RSV_associated_ALRI,63.9
+PLW,Palau,22.9,61.2,shi_et_al_2017,incidence_RSV_associated_ALRI,37.5
+PAN,Panama,30.2,74.4,shi_et_al_2017,incidence_RSV_associated_ALRI,47.6
+PNG,Papua New Guinea,23.1,61.9,shi_et_al_2017,incidence_RSV_associated_ALRI,37.9
+PRY,Paraguay,33.1,81.7,shi_et_al_2017,incidence_RSV_associated_ALRI,52.3
+PER,Peru,30.6,75.6,shi_et_al_2017,incidence_RSV_associated_ALRI,48.3
+PHL,Philippines,37.5,93.9,shi_et_al_2017,incidence_RSV_associated_ALRI,59.8
+QAT,Qatar,35.2,87.6,shi_et_al_2017,incidence_RSV_associated_ALRI,55.8
+KOR,"Korea, Republic of",21.8,58.3,shi_et_al_2017,incidence_RSV_associated_ALRI,35.9
+RWA,Rwanda,31.9,79.6,shi_et_al_2017,incidence_RSV_associated_ALRI,50.6
+KNA,St. Kitts and Nevis,30.7,76.1,shi_et_al_2017,incidence_RSV_associated_ALRI,48.6
+LCA,St. Lucia,30.7,76.1,shi_et_al_2017,incidence_RSV_associated_ALRI,48.6
+VCT,St. Vincent and the Grenadines,30.8,76.3,shi_et_al_2017,incidence_RSV_associated_ALRI,48.6
+WSM,Samoa,22.5,60.3,shi_et_al_2017,incidence_RSV_associated_ALRI,36.9
+STP,S_o Tom_ and Principe,32.5,81,shi_et_al_2017,incidence_RSV_associated_ALRI,51.5
+SAU,Saudi Arabia,34.3,85.6,shi_et_al_2017,incidence_RSV_associated_ALRI,54.3
+SEN,Senegal,40.3,105.1,shi_et_al_2017,incidence_RSV_associated_ALRI,65.6
+SYC,Seychelles,33.5,83.4,shi_et_al_2017,incidence_RSV_associated_ALRI,53.1
+SLE,Sierra Leone,34.9,87.8,shi_et_al_2017,incidence_RSV_associated_ALRI,55.8
+SLB,Solomon Islands,24.1,64.6,shi_et_al_2017,incidence_RSV_associated_ALRI,39.7
+SOM,Somalia,30.8,76.9,shi_et_al_2017,incidence_RSV_associated_ALRI,48.7
+ZAF,South Africa,33.3,82.6,shi_et_al_2017,incidence_RSV_associated_ALRI,52.7
+LKA,Sri Lanka,24.1,65.5,shi_et_al_2017,incidence_RSV_associated_ALRI,39.9
+SDN,Sudan,35.7,89.4,shi_et_al_2017,incidence_RSV_associated_ALRI,56.9
+SUR,Suriname,30.2,74.8,shi_et_al_2017,incidence_RSV_associated_ALRI,47.7
+SWZ,Swaziland,37.2,93.1,shi_et_al_2017,incidence_RSV_associated_ALRI,59.3
+SYR,Syrian Arab Republic,36.3,90.5,shi_et_al_2017,incidence_RSV_associated_ALRI,57.5
+THA,Thailand,23.8,64.3,shi_et_al_2017,incidence_RSV_associated_ALRI,39.4
+TLS,Timor-Leste,26.5,66.9,shi_et_al_2017,incidence_RSV_associated_ALRI,42.2
+TGO,Togo,36.4,91.2,shi_et_al_2017,incidence_RSV_associated_ALRI,58
+TON,Tonga,22.2,59.5,shi_et_al_2017,incidence_RSV_associated_ALRI,36.6
+TTO,Trinidad and Tobago,30.3,75.2,shi_et_al_2017,incidence_RSV_associated_ALRI,47.9
+TUN,Tunisia,32.6,81.2,shi_et_al_2017,incidence_RSV_associated_ALRI,51.6
+TUV,Tuvalu,22.3,59.4,shi_et_al_2017,incidence_RSV_associated_ALRI,36.6
+UGA,Uganda,36.8,92,shi_et_al_2017,incidence_RSV_associated_ALRI,58.5
+ARE,United Arab Emirates,34.7,86.3,shi_et_al_2017,incidence_RSV_associated_ALRI,54.8
+TZA,Tanzania,35.6,89,shi_et_al_2017,incidence_RSV_associated_ALRI,56.8
+URY,Uruguay,31.3,77.4,shi_et_al_2017,incidence_RSV_associated_ALRI,49.4
+VUT,Vanuatu,23.2,62.2,shi_et_al_2017,incidence_RSV_associated_ALRI,38.1
+VEN,"Venezuela, RB",30.5,75.5,shi_et_al_2017,incidence_RSV_associated_ALRI,48.1
+VNM,Vietnam,21.4,57.6,shi_et_al_2017,incidence_RSV_associated_ALRI,35.3
+YEM,"Yemen, Rep.",35.9,89.9,shi_et_al_2017,incidence_RSV_associated_ALRI,57.2
+ZMB,Zambia,36.4,90.9,shi_et_al_2017,incidence_RSV_associated_ALRI,57.9
+ZWE,Zimbabwe,33.1,82,shi_et_al_2017,incidence_RSV_associated_ALRI,52.3
+ARM,Armenia,NA,NA,reference_Iran,incidence_RSV_associated_ALRI,56.6
+AZE,Azerbaijan,NA,NA,reference_Iraq,incidence_RSV_associated_ALRI,54.8
+CUB,Cuba,NA,NA,reference_Costa_Rica,incidence_RSV_associated_ALRI,40.3
+GEO,Georgia,NA,NA,reference_Iran,incidence_RSV_associated_ALRI,56.6
+KGZ,Kyrgyz Republic,NA,NA,mean_gavi_non_missing,incidence_RSV_associated_ALRI,52.8
+MDA,Moldova,NA,NA,mean_gavi_non_missing,incidence_RSV_associated_ALRI,52.8
+SSD,South Sudan,NA,NA,reference_Sudan,incidence_RSV_associated_ALRI,56
+TJK,Tajikistan,NA,NA,mean_gavi_non_missing,incidence_RSV_associated_ALRI,52.8
+UKR,Ukraine,NA,NA,mean_gavi_non_missing,incidence_RSV_associated_ALRI,52.8
+UZB,Uzbekistan,NA,NA,mean_gavi_non_missing,incidence_RSV_associated_ALRI,52.8
+AFG,Afghanistan,166462,414858,shi_et_al_2017,nrb_episodes,263677
+DZA,Algeria,150049,371261,shi_et_al_2017,nrb_episodes,236857
+AGO,Angola,160269,397001,shi_et_al_2017,nrb_episodes,253440
+ATG,Antigua and Barbuda,216,534,shi_et_al_2017,nrb_episodes,341
+ARG,Argentina,114110,281976,shi_et_al_2017,nrb_episodes,179694
+BHS,"Bahamas, The",889,2195,shi_et_al_2017,nrb_episodes,1402
+BHR,Bahrain,3918,9773,shi_et_al_2017,nrb_episodes,6217
+BGD,Bangladesh,504325,1245371,shi_et_al_2017,nrb_episodes,796123
+BRB,Barbados,525,1299,shi_et_al_2017,nrb_episodes,829
+BLZ,Belize,1324,3275,shi_et_al_2017,nrb_episodes,2092
+BEN,Benin,61677,154467,shi_et_al_2017,nrb_episodes,98087
+BTN,Bhutan,1600,4239,shi_et_al_2017,nrb_episodes,2611
+BOL,Bolivia,37562,93249,shi_et_al_2017,nrb_episodes,59473
+BWA,Botswana,10011,25088,shi_et_al_2017,nrb_episodes,15976
+BRA,Brazil,488993,1207125,shi_et_al_2017,nrb_episodes,773070
+BFA,Burkina Faso,117797,295328,shi_et_al_2017,nrb_episodes,187717
+BDI,Burundi,72992,181572,shi_et_al_2017,nrb_episodes,115475
+KHM,Cambodia,57236,141700,shi_et_al_2017,nrb_episodes,90538
+CMR,Cameroon,137476,345249,shi_et_al_2017,nrb_episodes,219742
+999,Cape Verde,1840,4581,shi_et_al_2017,nrb_episodes,2923
+CAF,Central African Republic,24558,61043,shi_et_al_2017,nrb_episodes,38958
+TCD,Chad,95236,238755,shi_et_al_2017,nrb_episodes,151768
+CHL,Chile,36187,89448,shi_et_al_2017,nrb_episodes,57031
+CHN,China,1552250,4229873,shi_et_al_2017,nrb_episodes,2581262
+COL,Colombia,111638,276234,shi_et_al_2017,nrb_episodes,176453
+COM,Comoros,4686,11820,shi_et_al_2017,nrb_episodes,7496
+COG,"Congo, Rep.",27084,67509,shi_et_al_2017,nrb_episodes,43059
+999,Cook Islands,66,166,shi_et_al_2017,nrb_episodes,106
+CRI,Costa Rica,8595,22989,shi_et_al_2017,nrb_episodes,14125
+CIV,C_te d'Ivoire,120415,298876,shi_et_al_2017,nrb_episodes,190408
+PRK,"Korea, Dem. People's Rep.",56599,139482,shi_et_al_2017,nrb_episodes,89280
+COD,"Congo, Dem. Rep.",475718,1180411,shi_et_al_2017,nrb_episodes,753225
+DJI,Djibouti,3672,9182,shi_et_al_2017,nrb_episodes,5848
+DMA,Dominica,188,464,shi_et_al_2017,nrb_episodes,297
+DOM,Dominican Republic,31480,78430,shi_et_al_2017,nrb_episodes,49802
+ECU,Ecuador,47574,117696,shi_et_al_2017,nrb_episodes,75053
+EGY,"Egypt, Arab Rep.",386798,955331,shi_et_al_2017,nrb_episodes,610777
+SLV,El Salvador,17674,43719,shi_et_al_2017,nrb_episodes,27939
+GNQ,Equatorial Guinea,4488,11137,shi_et_al_2017,nrb_episodes,7093
+ERI,Eritrea,29459,73808,shi_et_al_2017,nrb_episodes,46916
+ETH,Ethiopia,532193,1333188,shi_et_al_2017,nrb_episodes,846851
+FJI,Fiji,2011,5369,shi_et_al_2017,nrb_episodes,3299
+GAB,Gabon,9094,22881,shi_et_al_2017,nrb_episodes,14554
+GMB,"Gambia, The",13378,33601,shi_et_al_2017,nrb_episodes,21361
+GHA,Ghana,135362,336105,shi_et_al_2017,nrb_episodes,214075
+GRD,Grenada,304,752,shi_et_al_2017,nrb_episodes,480
+GTM,Guatemala,72104,179935,shi_et_al_2017,nrb_episodes,114073
+GIN,Guinea,75809,192047,shi_et_al_2017,nrb_episodes,121665
+GNB,Guinea-Bissau,10566,26435,shi_et_al_2017,nrb_episodes,16822
+GUY,Guyana,2372,5897,shi_et_al_2017,nrb_episodes,3758
+HTI,Haiti,41121,101880,shi_et_al_2017,nrb_episodes,65088
+HND,Honduras,26902,66384,shi_et_al_2017,nrb_episodes,42428
+IND,India,4420047,11010288,shi_et_al_2017,nrb_episodes,7013468
+IDN,Indonesia,786572,1951996,shi_et_al_2017,nrb_episodes,1245185
+IRN,"Iran, Islamic Rep.",244677,609112,shi_et_al_2017,nrb_episodes,387906
+IRQ,Iraq,197944,493979,shi_et_al_2017,nrb_episodes,313987
+JAM,Jamaica,6228,15419,shi_et_al_2017,nrb_episodes,9849
+JOR,Jordan,37877,94943,shi_et_al_2017,nrb_episodes,60063
+KEN,Kenya,243738,604648,shi_et_al_2017,nrb_episodes,385484
+KIR,Kiribati,342,916,shi_et_al_2017,nrb_episodes,563
+KWT,Kuwait,12261,30648,shi_et_al_2017,nrb_episodes,19450
+LAO,Lao PDR,20929,56091,shi_et_al_2017,nrb_episodes,34428
+LBN,Lebanon,16363,40710,shi_et_al_2017,nrb_episodes,25907
+LSO,Lesotho,10164,25433,shi_et_al_2017,nrb_episodes,16167
+LBR,Liberia,24112,60313,shi_et_al_2017,nrb_episodes,38516
+LBY,Libya,22581,56046,shi_et_al_2017,nrb_episodes,35686
+MDG,Madagascar,129713,322426,shi_et_al_2017,nrb_episodes,205554
+MWI,Malawi,109741,273602,shi_et_al_2017,nrb_episodes,174043
+MYS,Malaysia,57527,153910,shi_et_al_2017,nrb_episodes,94332
+MDV,Maldives,1049,2622,shi_et_al_2017,nrb_episodes,1660
+MLI,Mali,119269,300448,shi_et_al_2017,nrb_episodes,190123
+MHL,Marshall Islands,122,327,shi_et_al_2017,nrb_episodes,200
+MRT,Mauritania,21171,52756,shi_et_al_2017,nrb_episodes,33617
+MUS,Mauritius,2379,5905,shi_et_al_2017,nrb_episodes,3765
+MEX,Mexico,349207,863101,shi_et_al_2017,nrb_episodes,550902
+FSM,"Micronesia, Fed. Sts.",282,757,shi_et_al_2017,nrb_episodes,464
+MNG,Mongolia,7617,20319,shi_et_al_2017,nrb_episodes,12501
+MAR,Morocco,118086,294888,shi_et_al_2017,nrb_episodes,187360
+MOZ,Mozambique,177599,442050,shi_et_al_2017,nrb_episodes,282071
+MMR,Myanmar,112580,297556,shi_et_al_2017,nrb_episodes,183560
+NAM,Namibia,11809,29458,shi_et_al_2017,nrb_episodes,18744
+NRU,Nauru,24,66,shi_et_al_2017,nrb_episodes,40
+NPL,Nepal,96943,240359,shi_et_al_2017,nrb_episodes,153176
+NIC,Nicaragua,20210,50079,shi_et_al_2017,nrb_episodes,31940
+NER,Niger,150641,381852,shi_et_al_2017,nrb_episodes,241080
+NGA,Nigeria,1086317,2717239,shi_et_al_2017,nrb_episodes,1728622
+999,Niue,3,9,shi_et_al_2017,nrb_episodes,6
+OMN,Oman,13841,34454,shi_et_al_2017,nrb_episodes,21954
+PAK,Pakistan,972854,2507724,shi_et_al_2017,nrb_episodes,1575051
+PLW,Palau,46,122,shi_et_al_2017,nrb_episodes,75
+PAN,Panama,11114,27427,shi_et_al_2017,nrb_episodes,17533
+PNG,Papua New Guinea,22994,61670,shi_et_al_2017,nrb_episodes,37763
+PRY,Paraguay,22293,55074,shi_et_al_2017,nrb_episodes,35221
+PER,Peru,92275,228312,shi_et_al_2017,nrb_episodes,145886
+PHL,Philippines,422425,1057080,shi_et_al_2017,nrb_episodes,673244
+QAT,Qatar,4656,11593,shi_et_al_2017,nrb_episodes,7383
+KOR,"Korea, Republic of",49895,133456,shi_et_al_2017,nrb_episodes,82022
+RWA,Rwanda,54107,134839,shi_et_al_2017,nrb_episodes,85681
+KNA,St. Kitts and Nevis,141,349,shi_et_al_2017,nrb_episodes,223
+LCA,St. Lucia,423,1048,shi_et_al_2017,nrb_episodes,669
+VCT,St. Vincent and the Grenadines,262,649,shi_et_al_2017,nrb_episodes,414
+WSM,Samoa,543,1457,shi_et_al_2017,nrb_episodes,892
+STP,S_o Tom_ and Principe,962,2395,shi_et_al_2017,nrb_episodes,1523
+SAU,Saudi Arabia,108456,270632,shi_et_al_2017,nrb_episodes,171639
+SEN,Senegal,104861,273378,shi_et_al_2017,nrb_episodes,170579
+SYC,Seychelles,281,699,shi_et_al_2017,nrb_episodes,445
+SLE,Sierra Leone,35078,88184,shi_et_al_2017,nrb_episodes,56009
+SLB,Solomon Islands,1969,5284,shi_et_al_2017,nrb_episodes,3242
+SOM,Somalia,60642,151541,shi_et_al_2017,nrb_episodes,95964
+ZAF,South Africa,178994,443697,shi_et_al_2017,nrb_episodes,283103
+LKA,Sri Lanka,39649,107543,shi_et_al_2017,nrb_episodes,65633
+SDN,Sudan,212399,531922,shi_et_al_2017,nrb_episodes,338938
+SUR,Suriname,1456,3603,shi_et_al_2017,nrb_episodes,2299
+SWZ,Swaziland,6448,16151,shi_et_al_2017,nrb_episodes,10277
+SYR,Syrian Arab Republic,79599,198435,shi_et_al_2017,nrb_episodes,126112
+THA,Thailand,90537,244458,shi_et_al_2017,nrb_episodes,149676
+TLS,Timor-Leste,5396,13629,shi_et_al_2017,nrb_episodes,8597
+TGO,Togo,42204,105766,shi_et_al_2017,nrb_episodes,67291
+TON,Tonga,287,768,shi_et_al_2017,nrb_episodes,472
+TTO,Trinidad and Tobago,2913,7231,shi_et_al_2017,nrb_episodes,4602
+TUN,Tunisia,31977,79731,shi_et_al_2017,nrb_episodes,50711
+TUV,Tuvalu,22,60,shi_et_al_2017,nrb_episodes,37
+UGA,Uganda,267700,669329,shi_et_al_2017,nrb_episodes,425686
+ARE,United Arab Emirates,17053,42408,shi_et_al_2017,nrb_episodes,26947
+TZA,Tanzania,335007,836521,shi_et_al_2017,nrb_episodes,533967
+URY,Uruguay,7534,18643,shi_et_al_2017,nrb_episodes,11899
+VUT,Vanuatu,807,2162,shi_et_al_2017,nrb_episodes,1325
+VEN,"Venezuela, RB",90276,223432,shi_et_al_2017,nrb_episodes,142500
+VNM,Vietnam,166008,446120,shi_et_al_2017,nrb_episodes,273416
+YEM,"Yemen, Rep.",140904,352670,shi_et_al_2017,nrb_episodes,224628
+ZMB,Zambia,103789,259193,shi_et_al_2017,nrb_episodes,165095
+ZWE,Zimbabwe,82878,205315,shi_et_al_2017,nrb_episodes,131042
+ARM,Armenia,NA,NA,reference_Iran,nrb_episodes,NA
+AZE,Azerbaijan,NA,NA,reference_Iraq,nrb_episodes,NA
+CUB,Cuba,NA,NA,reference_Costa_Rica,nrb_episodes,NA
+GEO,Georgia,NA,NA,reference_Iran,nrb_episodes,NA
+KGZ,Kyrgyz Republic,NA,NA,mean_gavi_non_missing,nrb_episodes,NA
+MDA,Moldova,NA,NA,mean_gavi_non_missing,nrb_episodes,NA
+SSD,South Sudan,NA,NA,reference_Sudan,nrb_episodes,NA
+TJK,Tajikistan,NA,NA,mean_gavi_non_missing,nrb_episodes,NA
+UKR,Ukraine,NA,NA,mean_gavi_non_missing,nrb_episodes,NA
+UZB,Uzbekistan,NA,NA,mean_gavi_non_missing,nrb_episodes,NA
