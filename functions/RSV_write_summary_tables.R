@@ -39,17 +39,17 @@ write_global_summary_tables <- function(sim_output_filename){
   colnames_cost_averted <- paste0(names(sim_output)[col_cost],'_averted')
   sim_output[,colnames_cost_averted] <- -sim_output[,col_cost]
   sim_output[,col_cost] <- 0
-  
+
   col_burden_averted      <- grepl('averted',names(sim_output))
   colnames_burden_averted <- names(sim_output)[col_burden_averted]
   colnames_burden         <- gsub('_averted','',colnames_burden_averted)
   colnames_burden_intervention <- paste0(colnames_burden,'_intervention')
   names(sim_output)
-  
+
   # calculate burden with intervention
   sim_output_intervention <- sim_output[,colnames_burden] - sim_output[,colnames_burden_averted]
   sim_output[,colnames_burden_intervention] <- sim_output_intervention
-  
+
   # realisation id
   num_sim <- unique(sim_output$num_sim)
   sim_output$sim_id <- 1:num_sim
@@ -63,13 +63,15 @@ write_global_summary_tables <- function(sim_output_filename){
   }
  
   # aggregate: sum over all countries (by sim_id)
-  sim_data_global <- aggregate(. ~ config_tag + scenario + intervention + sim_id + outputFileDir, data=sim_output, sum, na.rm=TRUE, na.action = NULL)
-  
+  sim_data_global <- aggregate(. ~ config_tag + scenario + intervention + sim_id + outputFileDir, 
+                               data=sim_output, sum, na.rm=TRUE, na.action = NULL)
   # aggregate: summary statistics
-  sim_data_mean      <- aggregate(. ~ config_tag + scenario + intervention + outputFileDir, data=sim_data_global, mean, na.rm = TRUE, na.action = NULL) 
-  sim_data_CI_LR     <- aggregate(. ~ config_tag + scenario + intervention + outputFileDir, data=sim_data_global, quantile,0.025, na.rm = TRUE, na.action = NULL)
-  sim_data_CI_HR     <- aggregate(. ~ config_tag + scenario + intervention + outputFileDir, data=sim_data_global, quantile,0.975, na.rm = TRUE, na.action = NULL)
-  
+  sim_data_mean      <- aggregate(. ~ config_tag + scenario + intervention + outputFileDir, 
+                                  data=sim_data_global, mean, na.rm = TRUE, na.action = NULL) 
+  sim_data_CI_LR     <- aggregate(. ~ config_tag + scenario + intervention + outputFileDir, 
+                                  data=sim_data_global, quantile,0.025, na.rm = TRUE, na.action = NULL)
+  sim_data_CI_HR     <- aggregate(. ~ config_tag + scenario + intervention + outputFileDir, 
+                                  data=sim_data_global, quantile,0.975, na.rm = TRUE, na.action = NULL)
   # round => mean
   sim_data_mean  <- round_sim_data_scale(sim_data_mean,digits_x = 0, scale = 1)
   
@@ -182,7 +184,6 @@ write_global_summary_tables <- function(sim_output_filename){
  write.table(Table2,file.path(unique(sim_output$outputFileDir),paste0(run_tag,'_Table2.csv')),sep=',',row.names=F)
  }
 
-
 # round simulation data with given number of digits and rescale (optional) 
 round_sim_data_scale <- function(sim_data_x,digits_x=0,scale = 1){
   
@@ -220,11 +221,6 @@ generate_mean_CI_matrix <- function(f_mean,f_CI_LR,f_CI_HR,f_digits=0,f_scale = 
                                          '  [',specify_decimal(f_CI_LR[,col_out],f_digits),
                                          ' - ',specify_decimal(f_CI_HR[,col_out],f_digits),']')
   }
-  
   # return result
   return(f_data_all)
 }
-
-
-
-

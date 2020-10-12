@@ -34,7 +34,6 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       #######################
       ##  RSV CASES        ##
       #######################
-      
       # load RSV incidence by monthly age
       # => from uncertainty analysis Marina Antillon
       incidence_mat <- convert_pred_into_model_input(spline_datafiles$incidence)
@@ -42,7 +41,6 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       #######################
       ##  Hospitalizations ##
       #######################
-      
       # load rsv hospital probability by monthly age
       # => from uncertainty analysis Marina Antillon
       hosp_prob_mat <- convert_pred_into_model_input(spline_datafiles$hosp_prob)
@@ -70,7 +68,7 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
         flag <- burden_country$country_iso == 'KEN'
       }
       
-      # get reference incidence 
+      # get reference incidence SPECIFIC for country
       burden_country_reference <- burden_country$incidence_RSV_associated_ALRI[flag]
       
       # Life table
@@ -99,30 +97,19 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       ## CHECK
       ###########################
   
-      pdf(sub('_gavi.RData','.pdf',filenames))
+      # pdf(sub('_gavi.RData','.pdf',filenames))
+      pdf(sub('.RData','.pdf',filenames))
         # baseline RSV incidence
         plot(0:59,incidence_mat[,1],type='l', ylim=range(incidence_mat), ylab='RSV incidence (baseline)', xlab='age',col=0)
-        for(i in 1:dim(incidence_mat)[2]){
-          lines(0:59,incidence_mat[,i],col=alpha(1,0.1))
-        }
+        for(i in 1:dim(incidence_mat)[2]){           lines(0:59,incidence_mat[,i],col=alpha(1,0.1))         }
         
         # Hospitalisation probability
-        plot(0:59,hosp_prob_mat[,1],type='l',
-             ylim=range(hosp_prob_mat),
-             ylab='RSV hospitalisation probability',
-             xlab='age', col=0)
-        for(i in 1:dim(hosp_prob_mat)[2]){
-          lines(0:59,hosp_prob_mat[,i],col=alpha(1,0.1))
-        }
+        plot(0:59,hosp_prob_mat[,1],type='l', ylim=range(hosp_prob_mat),ylab='RSV hospitalisation probability', xlab='age', col=0)
+        for(i in 1:dim(hosp_prob_mat)[2]){           lines(0:59,hosp_prob_mat[,i],col=alpha(1,0.1))         }
 
         # HOSP CFR
-        plot(0:59,cfr_mat[,1],type='l',
-             ylim=range(cfr_mat),
-             ylab='CFR',
-             xlab='age', col=0)
-        for(i in 1:dim(cfr_mat)[2]){
-          lines(0:59,cfr_mat[,i],col=alpha(1,0.1))
-        }
+        plot(0:59,cfr_mat[,1],type='l', ylim=range(cfr_mat), ylab='CFR', xlab='age', col=0)
+        for(i in 1:dim(cfr_mat)[2]){           lines(0:59,cfr_mat[,i],col=alpha(1,0.1))         }
 
         par(mfrow=c(1,3))
         boxplot(colSums(incidence_mat),ylab='sum(RSV incidence per age)')
@@ -139,16 +126,12 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       df_country  <- list(rsv_rate  = country_rsv_rate,
                           hosp_prob = hosp_prob_mat,
                           hCFR_prob = cfr_mat)
-   
       save(df_country,file=filenames)
-      
       cli_print('CALCULATE BURDEN COMPLETE:',f_country_iso)
-  } 
-
+  }
   # load data and return
   load(filenames)
   return(df_country)
-
 }
 
 ####################################################################
@@ -161,11 +144,11 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
 convert_pred_into_model_input <- function(prediction_file){
   # load data
   raw_data <- read.table(prediction_file,sep=',',header=T)
-  dim(raw_data); num_ages_raw <- length(unique(raw_data$mos))
-  num_sim_raw  <- length(unique(raw_data$iter)) 
+  dim(raw_data); num_ages_raw <- length(unique(raw_data$mos)); num_sim_raw  <- length(unique(raw_data$iter)) 
   # convert into matrix [sim,age]
   clean_data <- matrix(raw_data$pred,ncol=num_ages_raw,byrow=T)
   # select first 60 age groups
+  # M Koltai: this seems unnecessary, it's 60 cols already
   clean_data <- clean_data[,1:60]
   # remove names and transpose
   names(clean_data) <- NULL; clean_data <- data.frame(t(clean_data))

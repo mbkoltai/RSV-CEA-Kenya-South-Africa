@@ -58,7 +58,7 @@ get_rsv_ce_config <- function(configList)
   config$hosp_CFR_DALYloss_disc   <- NA  # discount rate can vary, so computed in get_burden function  
   
   # BIRTHS
-  all_country_data <- read.table('./input/country_details_gavi72.csv',sep=',',header=T,stringsAsFactors = F)
+  all_country_data <- read.table('./input/country_details_gavi72.csv',sep=',',header=T,stringsAsFactors=F)
 
   # check if required country (and year) is present in the data base  
   flag  <- all_country_data$country_iso3 == configList$country_iso & all_country_data$year == configList$year 
@@ -82,7 +82,7 @@ get_rsv_ce_config <- function(configList)
   config$stillbirth_rate    <- all_country_data$stillbirth_rate[flag]
   config$income_region      <- as.factor(all_country_data$income_region[flag])
   
-  # BURDEN OF DISEASE 
+  # BURDEN OF DISEASE
   # Get country specific incidence
   df_country <- get_incidence(config$country_iso,config$outputFileDir)
 
@@ -110,10 +110,8 @@ get_rsv_ce_config <- function(configList)
   filename_cost_outpatient <- './input/cost_data_outpatient.csv'
   filename_cost_inpatient  <- './input/cost_data_inpatient.csv'
 
-  config$sample_outpatient_cost <- get_cost_data(configList$country_iso,config$num_sim,
-                                                   filename_cost_outpatient)
-  config$sample_inpatient_cost  <- get_cost_data(configList$country_iso,config$num_sim,
-                                                   filename_cost_inpatient)
+  config$sample_outpatient_cost <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_outpatient)
+  config$sample_inpatient_cost  <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_inpatient)
   config$sample_admin_cost      <- 0
   
   config$price_dose_maternal    <- 3     
@@ -143,7 +141,8 @@ get_rsv_ce_config <- function(configList)
   config$efficacy_maternal_lognormal  <- FALSE  # boolean to sample from (log)Normal distrubtion
   
   # update on 20190916:
-  # Sample from (log)normal distribution in 'get_burden' script, to NOT interfere with random sampling of other (burden) estimaties
+  # Sample from (log)normal distribution in 'get_burden' script, 
+  # to NOT interfere with random sampling of other (burden) estimates
   # do not (occasionally) sample efficacy values here here!!
   
   # monoclonal antibodies
@@ -175,40 +174,32 @@ get_rsv_ce_config <- function(configList)
           grepl('coverage',names(config))
   
   if(any(unlist(config[flag])>1,na.rm=T)){
-    cli_print('INCONSISTENT CONFIGURATION: EFFICACY, RATE, PROBABILITY OR COVERAGE > 1 WITH', configList$config_tag,WARNING=T,FORCED=T)
+    cli_print('INCONSISTENT CONFIGURATION: EFFICACY, RATE, PROBABILITY OR COVERAGE > 1 WITH', 
+              configList$config_tag,WARNING=T,FORCED=T)
   }
   
   # return config list
   return(config)
 }
-
-
+#########################################################
 # return the filename of the burden files
 get_burden_filename <- function()
-{
-   # Country adaptation input => take data from Shi 2017 BoD paper, 
+{ # Country adaptation input => take data from Shi 2017 BoD paper, 
   filename_burden_country <- "input/RSV_burden_Shi_2017.csv"
-  
   # return filenames
   return(filename_burden_country)
 }
 
-
 # sample from (log)Normal distribution
 sample_normal_dist <- function(f_num_samples,f_mean,f_sd,f_bool_lognormal=FALSE){
-  
   # sample from (log)Normal distrubtion
   if(any(f_bool_lognormal)){
     sample_all <- 1-exp(rnorm(f_num_samples,f_mean,f_sd))
-  } else{
+  } else {
     sample_all <- rnorm(f_num_samples,f_mean,f_sd)
   }
-  
   # truncate negative values
   sample_all[sample_all<0] <- 0 
-  
   #return samples
   return(sample_all)
-  
 }
-

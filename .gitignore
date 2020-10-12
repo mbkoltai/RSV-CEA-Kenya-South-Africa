@@ -1,0 +1,8 @@
+# gitignore
+input/hosp_prob_ts_n5000.csv
+input/hosp_prob_ts_n5000_pooled.csv
+input/incidence_lmic_ts_n5000.csv
+input/incidence_nokes2008.csv
+input/incidence_nokes2009.csv
+input/nokes2008_table.png
+input/popul_under5_132806.xls

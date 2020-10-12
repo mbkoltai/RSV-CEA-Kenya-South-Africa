@@ -52,7 +52,7 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
     }
     
     # get column for year interval
-    sel_col     <- names(mxM) == sub("_","-",period)
+    sel_col <- names(mxM) == sub("_","-",period)
     # age: A character string representing an age interval (given by the starting age of the interval).
     # note: Data for ages 85-100+ are not the official UN data. While the published UN mortality datasets 
     # contain data only up to 85+, data for ages 85-100+ in this dataset were derived from UN published 
@@ -68,8 +68,10 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
     # Account for gender balance
     # Estimates and projections of the sex ratio at birth derived as the number of female divided by the number of male.
     #
+    # originally: wpp_data$prop_female <- wpp_data$sexRatio/2
     # M Koltai: this is wrong I think, sexRatio=males/females, and then prop_female=1/(1+sexRatio)
-    wpp_data$prop_female <- 1/(1+wpp_data$sexRatio) # wpp_data$sexRatio/2
+    # corrected:
+    wpp_data$prop_female <- 1/(1+wpp_data$sexRatio) 
     wpp_data$prop_male   <- 1 - wpp_data$prop_female
     
     # Get population nMx
@@ -86,9 +88,12 @@ generate_life_table <- function(f_country_iso,f_year,f_outputFileDir,f_disc_rate
     
     # linear approximation for lx and life_expectancy
     num_months_year <- 12
-    # M Koltai:this is calculating for first 100 months?
+    # M Koltai:this is calculating for first 100 months
+    # infants left alive by months
     lx_month              <- approx(life_table_year$age*num_months_year,life_table_year$lx,xout=seq(0,100,1))
-life_expectancy_month <- approx(life_table_year$age*num_months_year,life_table_year$life_expectancy,xout=seq(0,100,1))
+    # expected life years left from age group (month)
+    life_expectancy_month <- approx(life_table_year$age*num_months_year,life_table_year$life_expectancy,xout=seq(0,100,1))
+    # mortality by age group
     nMx_month             <- approx(life_table_year$age*num_months_year,life_table_year$nMx,xout=seq(0,100,1))
     life_table            <- data.frame(lx_month)
     life_table$life_expectancy <- life_expectancy_month$y
@@ -98,15 +103,21 @@ life_expectancy_month <- approx(life_table_year$age*num_months_year,life_table_y
   
     # discounted life expectancy
     life_table$life_expectancy_disc <-  NA
-    for(i in 1:length(life_table$life_expectancy)){
-      tmp_years <- 1:floor(life_table$life_expectancy[i])
-      life_expectancy_disc_floor <- sum(1/((1+f_disc_rate_qaly)^tmp_years))
-      tmp_years <- ceiling(life_table$life_expectancy[i])
-      life_expectancy_disc_remaining <- life_expectancy_disc_floor*(life_table$life_expectancy[i] - floor(life_table$life_expectancy[i]))
-                                      # sum(1/((1+f_disc_rate_qaly)^tmp_years))
-      life_table$life_expectancy_disc[i] <- life_expectancy_disc_floor + life_expectancy_disc_remaining
-    }
-    
+    # for loop can be rewritten as sapply
+    integ_part=sapply(1:nrow(life_table),function(i) {sum(sapply(1:floor(life_table$life_expectancy[i]),function (x) {sum(1/((1+f_disc_rate_qaly)^x))}))})
+    decim_part=sapply(life_table$life_expectancy, function(x) {1/((1+f_disc_rate_qaly)^ceiling(x)) * (x-floor(x))})
+    life_table$life_expectancy_disc=integ_part+decim_part
+    # for(i in 1:length(life_table$life_expectancy)){
+    #   tmp_years <- 1:floor(life_table$life_expectancy[i])
+    #   life_expectancy_disc_floor <- sum(1/((1+f_disc_rate_qaly)^tmp_years))
+    #   tmp_years_ceil <- ceiling(life_table$life_expectancy[i])
+    #   # life_expectancy_disc_remaining <- 
+    #   # sum(1/((1+f_disc_rate_qaly)^tmp_years)) * (life_table$life_expectancy[i] - floor(life_table$life_expectancy[i]))
+    #   life_expectancy_disc_remaining <- sum(1/((1+f_disc_rate_qaly)^tmp_years_ceil)) * (life_table$life_expectancy[i] - floor(life_table$life_expectancy[i]))
+    #     # life_expectancy_disc_floor*(life_table$life_expectancy[i] - floor(life_table$life_expectancy[i]))
+    #   life_table$life_expectancy_disc[i] <- life_expectancy_disc_floor + life_expectancy_disc_remaining
+    # }
+
     if(exists('use_fixed_population') && use_fixed_population){
       life_table$lx       <- life_table$lx[1]
       life_table$lx_rate  <- life_table$lx_rate[1]

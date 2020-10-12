@@ -30,8 +30,7 @@ currentfile_path=paste0(unlist(strsplit(
   currentfile_path,"\\/"))[1:(length(unlist(strsplit(currentfile_path,"\\/")))-1)],collapse="/")
 setwd(currentfile_path)
 
-library(tidyverse); library(reshape2)
-
+library(tidyverse); library(reshape2); # library(readr); library(stringr); library(zoo)
 #######################
 ## SETTINGS          ##
 #######################
@@ -43,7 +42,7 @@ run_tag  <- 'RSV_gavi72_basecase'  # 72 Gavi countries (basecase)
 #run_tag <- 'RSV_gavi72_efficacy'  # 72 Gavi countries (severity-specific efficacy) 
 
 # number of stochastic samples in the probabilistic sensitivity analysis (PSA)
-num_sim <- 100
+num_sim <- 1000
 
 # random number generater seed
 rng_seed <- gsub('-','',Sys.Date()) # 20190118
@@ -76,8 +75,7 @@ config_filename <- paste0('./config/',run_tag,'.csv')
 time_stamp_main <- Sys.time()
 
 # always clear temporary results
-cli_print('Clear all temporary output')
-unlink(file.path(get_temp_output_folder(output_dir)),recursive = T)
+cli_print('Clear all temporary output'); unlink(file.path(get_temp_output_folder(output_dir)),recursive = T)
 
 # start parallel workers
 start_parallel_workers()
@@ -116,15 +114,15 @@ cli_print('START PRE-PROCESSING',run_tag); time_stamp <- Sys.time()
 create_UN_country_database(output_dir)
 # this loads UN world popul database
 # data("UNlocations",package='wpp2017')
-# creates a table 'UNcountries' with cntr names and iso3 codes
+# creates a table 'UNlocations' with cntr names and iso3 codes
 ###
 # list variables (but not functions): setdiff(ls(), lsf.str())
 
 # pre-process WPP2017 data
 load_wpp2017_databases(output_dir)
-# loads sex ratio and mortality by age groups
-# dataframes: sexratio, mxM, mxF
+# loads sex ratio and mortality by age groups; dataframes: sexratio, mxM, mxF
 # mort_all = mxF*(1/(1+sexratio) + mxM*sexratio/(1+sexratio)
+##############################################################################
 #######################################
 ## PRE-PROCESSING: life tables       ##
 #######################################
@@ -141,8 +139,7 @@ country_year_opt <- unique(country_year_opt)
 
 # make summary matrix, including the 5-year period notation
 # 3 columns: countries, '2020-25', 2020
-country_period_opt    <- cbind(country_year_opt$country_iso,
-                                  t(sapply(country_year_opt$year,get_year_category)))
+country_period_opt    <- cbind(country_year_opt$country_iso, t(sapply(country_year_opt$year,get_year_category)))
 ######################
 # get life table for each [country, period] combination
 # this needs to be run within 10 mins of starting parallel workers
@@ -176,11 +173,23 @@ load(paste(f_outputFileDir,"temp/life_table_KEN_2020_2025_disc0p03.RData",sep='/
 # for one country
 life_table_tidy=melt(life_table,id.vars='age')
 ggplot(life_table_tidy,aes(x=age,y=value)) + geom_line() + facet_wrap(~variable,scales='free')
+# ggplot(melt(life_table_year,id.vars='age'),aes(x=age,y=value)) + geom_line() + facet_wrap(~variable,scales='free')
 ggsave("output/life_table_KEN_2020_2025_disc0p03.png",width=30,height=18,units="cm") # ,device=grDevices::pdf
 # how foreach works
+# sequential
 # df_foreach=foreach(i_life=1:5,.combine='rbind',.packages=all_packages,.verbose=FALSE) %do% {runif(5)}
-#            foreach(i_life=1:5,.combine='rbind',.packages=all_packages,.verbose=FALSE) %dopar% {runif(5)}
+# parallel
+# foreach(i_life=1:5,.combine='rbind',.packages=all_packages,.verbose=FALSE) %dopar% {runif(5)}
 
+# life_table
+# "age","lx": # left alive, "life_expectancy", "nMx": mortality, "lx_rate": # left alive/(init popul), "life_expectancy_disc": disc life yrs
+# life_table_year:
+# nqx - probability of dying between ages x and x+n
+# lx - number of people left alive at age x
+# ndx - number of people dying between ages x and x+n
+# nLx - person-years lived between ages x and x+n  
+
+##############################################################################
 #######################################
 ## PRE-PROCESSING: incidence         ##
 #######################################
@@ -192,7 +201,6 @@ country_opt <- data.frame(country_iso = unique(sim_config_matrix$country_iso))
 
 # preprocess incidence data for each country
 # only for (eg) Kenya
-
 par_out <- foreach(i_country=1:nrow(country_opt),.combine='rbind', .packages=all_packages, .verbose=FALSE) %dopar% 
 { # print progress
   cli_progress(i_country,nrow(country_opt),time_stamp)
@@ -204,73 +212,103 @@ par_out <- foreach(i_country=1:nrow(country_opt),.combine='rbind', .packages=all
 
 # for one country
 ken_inds=which(country_opt$country_iso %in% 'KEN')
-z=get_incidence(country_opt$country_iso[ken_inds],output_dir)
+incidence_one_table=get_incidence(country_opt$country_iso[ken_inds],output_dir)
+# list of 3 elements
 # this contains: RSV_rate [60x5000 dataframe], hosp_prob [60x5000 dataframe], hCFR_prob [60x1000 dataframe]
 # incidence data is from
 RSV_burden_Shi_2017=read_csv('input/RSV_burden_Shi_2017.csv')
-# 'nrb episodes' is number of RSV episodes, incidence is incidence under 5yrs older/1000popul , bc eg for india
-# incidence is 56.7, nrb_episodes=7.013.468, popul=(nrb_episodes/incidence)*1000=123.694.300, which is correct
-
+# 'nrb episodes' is number of RSV episodes, incidence is incidence under 5yrs older/1000 popul. 
+# Eg for india incidence is 56.7, nrb_episodes=7.013.468, popul=(nrb_episodes/incidence)*1000=123.694.300, which is correct
+# Kenya: incidence 53.8, nrb_episodes=3.85e5, popul under 5yrs is 7 million
 # histogram of incidences. median=52.8. 
 ggplot(RSV_burden_Shi_2017,aes(x=incidence_RSV_associated_ALRI)) + geom_histogram(binwidth=2)
-# lineplot
-id_vars=c("country_iso","location_name","lower_Incidence", "upper_Incidence", "lower_episodes","uper_episodes","reference")
-RSV_burden_Shi_2017_tidy=melt(RSV_burden_Shi_2017,id.vars=id_vars)
-RSV_burden_Shi_2017_tidy[grepl('incidence',RSV_burden_Shi_2017_tidy$variable),
-                         grepl('episode',colnames(RSV_burden_Shi_2017_tidy))]=NA
-RSV_burden_Shi_2017_tidy[grepl('nrb',RSV_burden_Shi_2017_tidy$variable),
-                         grepl('Incidence',colnames(RSV_burden_Shi_2017_tidy))]=NA
-RSV_burden_Shi_2017_tidy=RSV_burden_Shi_2017_tidy %>% 
-  unite(lower_CI, c(lower_Incidence,lower_episodes), sep="",remove=TRUE,na.rm=TRUE) %>% 
-  unite(upper_CI,c(upper_Incidence,uper_episodes),sep="",remove=TRUE,na.rm=TRUE)
-RSV_burden_Shi_2017_tidy[,c('lower_CI','upper_CI')]=sapply(RSV_burden_Shi_2017_tidy[,c('lower_CI','upper_CI')],as.numeric)
-write_csv(RSV_burden_Shi_2017_tidy,path='output/RSV_burden_Shi_2017_tidy.csv')
+# lineplot: national averages with CIs
+RSV_burden_Shi_2017_tidy=read_csv('output/RSV_burden_Shi_2017_tidy.csv')
 ggplot(RSV_burden_Shi_2017_tidy,aes(x=location_name,y=value,group=1)) + geom_line() + geom_point(size=1) +
   geom_ribbon(aes(ymin=lower_CI,ymax=upper_CI),alpha=0.3,colour=NA,fill="red") + facet_wrap(~variable,nrow=2,scales='free') +
   theme(axis.text.x=element_text(angle=90,vjust=0.5,hjust=1,size=5)) + scale_y_continuous(trans='log10')
+#
 ggsave("output/RSV_burden_Shi_2017.png",width=30,height=18,units="cm")
 # intermediate steps: spline_datafiles contains the 3 input files
 # ./input/incidence_lmic_ts_n5000.csv [300.000x4], ./input/hosp_prob_ts_n5000.csv [300.000x4], 
 # ./input/cfr_lmic_ts_n5000.csv [60.000x4]
 
-# it is the fcn 'convert_pred_into_model_input' that takes the input file
+# fcn 'convert_pred_into_model_input' that takes the input files
 # 'incidence_lmic_ts_n5000.csv', 'hosp_prob_ts_n5000.csv', 'cfr_lmic_ts_n5000.csv'
-# and generates 60x5000 matrix (cfr_mat 60x1000)
+# and generates 60x5000, 60x5000, 60x1000 matrices
+
+#####
+# the incidence data is from input file: 'incidence_lmic_ts_n5000.csv', this is for all LMICs
+# for Kenya the incidence is 53.8 (this is per 1000 population)
+# intermediate dataframes: incidence_mat
+# incidence_mat=convert_pred_into_model_input("./input/incidence_lmic_ts_n5000.csv")
+incidence_lmic_ts_n5000=as.data.frame(read_csv("./input/incidence_lmic_ts_n5000.csv"))
+cfr_lmic_ts_n5000=as.data.frame(read_csv("./input/cfr_lmic_ts_n5000.csv"))
+hosp_prob_ts_n5000=as.data.frame(read_csv("input/hosp_prob_ts_n5000.csv"))
+# mean by month
+age_maxval=nrow(incidence_month_means)
+incidence_month_means=incidence_lmic_ts_n5000 %>% group_by(mos) %>% summarise(meanpred=mean(pred),minpred=mean(pred)-sd(pred),maxpred=mean(pred)+sd(pred))
+incidence_month_means$type='cases_per_1000'
+cfr_month_means=cfr_lmic_ts_n5000 %>% group_by(mos) %>% summarise(meanpred=mean(pred),minpred=mean(pred)-sd(pred),maxpred=mean(pred)+sd(pred))
+cfr_month_means$type='hospit_cfr'
+hosp_prob_means = hosp_prob_ts_n5000 %>% group_by(mos) %>% summarise(meanpred=mean(pred),minpred=mean(pred)-sd(pred),maxpred=mean(pred)+sd(pred))
+hosp_prob_means$type='probab_hospit'
+incidence_cfr_hospprob_means=rbind(incidence_month_means,cfr_month_means,hosp_prob_means)
+# plot LMIC mean + stdev
+ggplot(incidence_cfr_hospprob_means,aes(x=mos,y=meanpred)) + geom_line() + geom_point() +
+  geom_ribbon(aes(ymin=minpred,ymax=maxpred),alpha=0.3,colour=NA,fill="red") + theme_bw() + facet_wrap(~type,scales='free',nrow=2) + 
+  scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
+  theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),text=element_text(family="Calibri"),
+        plot.title=element_text(hjust=0.5,size=16),axis.text.x=element_text(size=11,angle=90,vjust=0.5)) + xlab('month') + ylab('incidence') + 
+  ggtitle('LMIC RSV incidence, CFR, hospitalisation (mean [-/+ stdev])')
+####
+ggsave("output/incidence_cfr_hospprob_lmic_ts_n5000.png",width=30,height=18,units="cm")
+
+# for ALL LMICs: take 25 samples from input files with 5000 iterations
+n_sample=25
+incidence_sample=incidence_lmic_ts_n5000[incidence_lmic_ts_n5000$iter<=n_sample,]; age_maxval=max(incidence_sample$mos)
+incidence_sample$type='num_cases_per_1000'
+cfr_sample=cfr_lmic_ts_n5000[cfr_lmic_ts_n5000$iter<=n_sample,]; cfr_sample$type='hospit_cfr'; colnames(cfr_sample)[1]='X1'; 
+hosp_prob_sample=hosp_prob_ts_n5000[hosp_prob_ts_n5000$iter<=n_sample,]
+hosp_prob_sample$type='probab_hospit'; colnames(hosp_prob_sample)[1]='X1';
+lmic_ts_all=rbind(incidence_sample,cfr_sample,hosp_prob_sample)
+# plot
+ggplot(lmic_ts_all,aes(x=mos,y=pred,group=iter,color=as.factor(iter))) + geom_line() + 
+  facet_wrap(~type,scales='free',nrow=2) + scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) + theme_bw() + 
+  theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),plot.title=element_text(hjust=0.5,size=16),
+     axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
+     axis.title=element_text(size=14), text=element_text(family="Calibri")) +
+  xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle('LMIC incidence (random samples)')
+#####
+ggsave("output/RSV_burden_lmic_randomsamples_prob_ts_n5000.png",width=30,height=18,units="cm")
 
 ###
-# how the total burden is distributed across age groups
-samples_burden_distrib=melt(as.matrix(country_rsv_pred_cases[,1:25])); samples_burden_distrib$type='burden_abs'
-samples_burden_permillion=melt(as.matrix(country_rsv_rate[,1:25])); samples_burden_permillion$type='burden_per_popul'
-hosp_prob_mat_tidy=melt(as.matrix(hosp_prob_mat[,1:25])); hosp_prob_mat_tidy$type='hosp'
-cfr_mat_tidy=melt(as.matrix(cfr_mat[,1:25])); cfr_mat_tidy$type='cfr'
-samples_burden_all=rbind(samples_burden_permillion,samples_burden_distrib,hosp_prob_mat_tidy,cfr_mat_tidy); 
-age_maxval=max(samples_burden_all$Var1)
-ggplot(samples_burden_all,aes(x=Var1,y=value,group=Var2,color=Var2)) + geom_line() + 
+# Kenya RSV data: scaled by data from 'RSV_burden_Shi_2017'
+# country_rsv_pred_cases, hosp_prob_mat, cfr_mat
+# write_csv(country_rsv_rate,'input/country_rsv_rate.csv'); write_csv(hosp_prob_mat,'input/hosp_prob_mat.csv')
+# write_csv(cfr_mat,'input/cfr_mat.csv')
+
+################
+country_rsv_pred_cases=read_csv('input/country_rsv_rate.csv');hosp_prob_mat=read_csv('input/hosp_prob_mat.csv');cfr_mat=read_csv('input/cfr_mat.csv') 
+age_maxval=nrow(country_rsv_pred_cases)
+kenya_burden_abs=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_pred_cases),sd=apply(country_rsv_pred_cases,1,sd),type='number_cases');
+kenya_burden_percap=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_rate),sd=apply(country_rsv_rate,1,sd),type='cases_per_cap')
+hosp_prob_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(hosp_prob_mat),sd=apply(hosp_prob_mat,1,sd),type='probab_hospit');
+cfr_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(cfr_mat),sd=apply(cfr_mat,1,sd),type='hospit_cfr')
+kenya_burden_all=rbind(kenya_burden_abs,kenya_burden_percap,hosp_prob_mat_tidy,cfr_mat_tidy)
+
+# plot KENYA mean with stdev
+ggplot(kenya_burden_all,aes(x=age,y=mean)) + geom_line() + geom_point() +
+  geom_ribbon(aes(ymin=mean-sd,ymax=mean+sd),alpha=0.3,colour=NA,fill="red") +
   facet_wrap(~type,scales='free',nrow=2) + theme_bw() + 
   scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
   theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),plot.title=element_text(hjust=0.5,size=16),
-  axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
-  axis.title=element_text(size=14), text=element_text(family="Calibri")) +
-  xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle('Kenya burden random samples')
-ggsave("output/RSV_burden_kenya_randomsamples.png",width=30,height=18,units="cm")
-
-#####
-# input file: incidence_lmic_ts_n5000
-incidence_sample=incidence_lmic_ts_n5000[incidence_lmic_ts_n5000$iter<=25,]; age_maxval=max(incidence_sample$mos)
-incidence_sample$type='incidence'
-cfr_lmic_ts_n5000=as.data.frame(read_csv("./input/cfr_lmic_ts_n5000.csv")); cfr_sample=cfr_lmic_ts_n5000[cfr_lmic_ts_n5000$iter<=25,]
-cfr_sample$type='cfr'; colnames(cfr_sample)[1]='X'; 
-hosp_prob_ts_n5000=as.data.frame(read_csv("input/hosp_prob_ts_n5000.csv")); hosp_prob_sample=hosp_prob_ts_n5000[hosp_prob_ts_n5000$iter<=25,]
-hosp_prob_sample$type='hosp'; colnames(hosp_prob_sample)[1]='X'; 
-lmic_ts_all=rbind(incidence_sample,cfr_sample,hosp_prob_sample)
-ggplot(lmic_ts_all,aes(x=mos,y=pred,group=iter,color=as.factor(iter))) + geom_line() + 
-  facet_wrap(~type,scales='free',nrow=2) + 
-  scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) + theme_bw() + 
-  theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),plot.title=element_text(hjust=0.5,size=16),
         axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
         axis.title=element_text(size=14), text=element_text(family="Calibri")) +
-  xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle('Kenya incidence (random samples)')
-ggsave("output/RSV_burden_kenya_randomsamples_prob_ts_n5000.png",width=30,height=18,units="cm")
+  xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle('Kenya RSV burden (mean +/- stdev)')
+ggsave("output/RSV_burden_kenya_randomsamples.png",width=30,height=18,units="cm") 
+
+##############################################################################
 #######################################
 ## PROCESSING: burden                ##
 #######################################
@@ -292,7 +330,6 @@ sim_output <- foreach(i_scen=ken_inds,.combine='rbind',.packages=all_packages,.v
   # dummy return, the results are printed to a fle
   return(0)
 }
-
 ###############################
 ## POST-PROCESSING           ##
 ###############################
@@ -301,6 +338,7 @@ cli_print('COLLECT BURDEN OUTPUT [FOREACH]:',run_tag); time_stamp <- Sys.time()
 # check parallel workers
 check_parallel_workers()
 
+num_scen=length(ken_inds)
 # loop over each scenario
 sim_output <- foreach(i_scen=ken_inds, .combine = 'rbind', .verbose = FALSE) %dopar% # 1:num_scen
 { # print progress
@@ -341,9 +379,9 @@ write_global_summary_tables(sim_output_filename)
 # stop parallel workers
 stop_parallel_workers()
 
-###
+##############################################################################
 # when output contains only 1 cntr (Kenya)
-sim_output_kenya = sim_output[sim_output$country_iso %in% 'KEN',]
+sim_output_kenya=sim_output[sim_output$country_iso %in% 'KEN',]
 df_datatypes=as.data.frame(sapply(1:ncol(sim_output_kenya), function(x){length(unique(sim_output_kenya[,x]))}))
 rownames(df_datatypes)=colnames(sim_output_kenya); colnames(df_datatypes)='unique_vals'
 View(df_datatypes)
@@ -354,13 +392,16 @@ ggplot(sim_output_kenya,aes(x=rsv_cases)) + geom_histogram(binwidth=20) +
 # 3.8e5 cases according to RSV
 mean(sim_output_kenya$rsv_cases)
 
+######################################################
 # mean rate for <5 yr olds from our own data
 N_under5_kenya=7e6
 kenya_data_path='../path_rsv_data/SARI_Rates_2010_2018/SARI_Rates_2010_2018_tidydata_cleaned.csv'
 SARI_Rates_2010_2018_tidydata=read_csv(kenya_data_path)
-kenya_rsv_data_means=SARI_Rates_2010_2018_tidydata[SARI_Rates_2010_2018_tidydata$age_in_months %in% "<60" & 
-                  SARI_Rates_2010_2018_tidydata$region %in% 'Kenya' & SARI_Rates_2010_2018_tidydata$RSV_association & 
-                  SARI_Rates_2010_2018_tidydata$period %in% '2010-2018',]
+kenya_rsv_data_means=SARI_Rates_2010_2018_tidydata[
+            SARI_Rates_2010_2018_tidydata$age_in_months %in% "<60" & 
+            SARI_Rates_2010_2018_tidydata$region %in% 'Kenya' & 
+              SARI_Rates_2010_2018_tidydata$RSV_association & 
+            SARI_Rates_2010_2018_tidydata$period %in% '2010-2018',]
 # 6.6e4 cases according to our kenya data
 sum(kenya_rsv_data_means$rate)*N_under5_kenya/1e5
 
