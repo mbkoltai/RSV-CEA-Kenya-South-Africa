@@ -130,8 +130,8 @@ load_wpp2017_databases(output_dir)
 cli_print('PRE-PROCESSING LIFE TABLES...'); time_stamp <- Sys.time()
 
 # construct matrix with all unique [country, year] combinations
+n_cntr=length(unique(sim_config_matrix$country_iso))
 country_year_opt <- sim_config_matrix[,c('country_iso','year')]
-
 # add [country, 2015] to derive the reference incidence, based on Shi et al (2017)
 country_year_opt <- rbind(country_year_opt, cbind(country_iso=country_year_opt$country_iso, year=2015))
 # get unique combinations: this creates a table with 72 cntrs with dates 2015 and 2020

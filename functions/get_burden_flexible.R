@@ -4,14 +4,9 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   ###############################
   # Configuration               #
   ###############################
-  
-  select_1to5y <- function(x){    x_1to5y=x*0; x_1to5y[13:60,]=x[13:60,]; return(x_1to5y) }
-  
-  select_0to1y <- function(x){
-    x_0to1y<-x*0; x_0to1y[1:12,] <- x[1:12,];     return(x_0to1y)
-  }
-  
-  
+  select_1to5y <- function(x){ x_1to5y=x*0; x_1to5y[13:60,]=x[13:60,]; return(x_1to5y) }
+  select_0to1y <- function(x){ x_0to1y<-x*0; x_0to1y[1:12,] <- x[1:12,];     return(x_0to1y)  }
+
   # get model parameters (based on country, year, num_sim, etc... as specified in configList)
   config <- get_rsv_ce_config(configList)
   # this loads costs/efficacy but also
@@ -19,7 +14,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   # load own data if it was supplied to the functions
   if (!is.null(dim(own_rate_matrix)) & !is.null(dim(own_hosp_matrix))){
     print('check if first matrix is per capita rate of RSV, second is rate of hospitalisation!')
-    config$rsv_rate = own_rate_matrix; config$hosp_prob=own_hosp_matrix
+    config$rsv_rate = data.frame(own_rate_matrix); config$hosp_prob=data.frame(own_hosp_matrix)
   }
   
   ###############################

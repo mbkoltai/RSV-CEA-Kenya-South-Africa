@@ -63,8 +63,7 @@ get_rsv_ce_config <- function(configList)
   # check if required country (and year) is present in the data base  
   flag  <- all_country_data$country_iso3 == configList$country_iso & all_country_data$year == configList$year 
   if(!any(flag))
-  { 
-    flag_country            <- all_country_data$country_iso3 == configList$country_iso
+  { flag_country            <- all_country_data$country_iso3 == configList$country_iso
     country_years           <- all_country_data$year[flag_country]
     country_year_selection  <- country_years[which.min(abs(country_years - as.numeric(configList$year)))]
     flag_year               <- all_country_data$year == country_year_selection
