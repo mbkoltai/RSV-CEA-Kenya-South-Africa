@@ -59,7 +59,11 @@ get_rsv_ce_config <- function(configList)
   
   # BIRTHS
   all_country_data <- read.table('./input/country_details_gavi72.csv',sep=',',header=T,stringsAsFactors=F)
-
+  if (any(all_country_data$country_iso3 %in% configList$country_iso)){
+    print(paste0('loading data for ',configList$country_iso, ' (not in original gavi 72)'))
+    all_country_data <- read.table('./input/country_details_gavi72_expanded.csv',sep=',',header=T,stringsAsFactors=F)
+  }
+  
   # check if required country (and year) is present in the data base  
   flag  <- all_country_data$country_iso3 == configList$country_iso & all_country_data$year == configList$year 
   if(!any(flag))
