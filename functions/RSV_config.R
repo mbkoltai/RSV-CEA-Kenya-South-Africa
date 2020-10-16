@@ -59,9 +59,9 @@ get_rsv_ce_config <- function(configList)
   
   # BIRTHS
   all_country_data <- read.table('./input/country_details_gavi72.csv',sep=',',header=T,stringsAsFactors=F)
-  if (any(all_country_data$country_iso3 %in% configList$country_iso)){
+  if (!any(all_country_data$country_iso3 %in% configList$country_iso)){
     print(paste0('loading data for ',configList$country_iso, ' (not in original gavi 72)'))
-    all_country_data <- read.table('./input/country_details_gavi72_expanded.csv',sep=',',header=T,stringsAsFactors=F)
+    all_country_data <- data.frame(read_csv('./input/country_details_gavi72_expanded.csv'))
   }
   
   # check if required country (and year) is present in the data base  
@@ -110,11 +110,10 @@ get_rsv_ce_config <- function(configList)
   # COST parameters      #
   ########################
   
-  filename_cost_outpatient <- './input/cost_data_outpatient.csv'
-  filename_cost_inpatient  <- './input/cost_data_inpatient.csv'
-
+  filename_cost_outpatient='./input/cost_data_outpatient.csv'; filename_cost_inpatient='./input/cost_data_inpatient.csv'
   config$sample_outpatient_cost <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_outpatient)
   config$sample_inpatient_cost  <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_inpatient)
+  
   config$sample_admin_cost      <- 0
   
   config$price_dose_maternal    <- 3     

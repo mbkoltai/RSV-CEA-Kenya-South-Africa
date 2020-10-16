@@ -392,6 +392,51 @@ stillbirth_rate_s_afr=as.numeric(stillbirth_rate_data[stillbirth_rate_data$Count
 s_afr_lifebirths=s_afr_births*(1-stillbirth_rate_s_afr)
 
 # c("country","country_iso3","target_population","year","stillbirth_rate","income_region", "incomplete_maternal_transfer_rate")
-s_afr_targetpop_df=data.frame(cbind('South Africa','ZAF',s_afr_lifebirths,2020:2050,stillbirth_rate_s_afr,'LMIC',0))
-colnames(s_afr_targetpop_df)=colnames(all_country_data)
+s_afr_targetpop_df=data.frame(cbind('South Africa','ZAF',s_afr_lifebirths,2020:2050,stillbirth_rate_s_afr,'LMIC',0),stringsAsFactors=F)
+colnames(s_afr_targetpop_df)=colnames(all_country_data); s_afr_targetpop_df$target_population=round(as.numeric(s_afr_targetpop_df$target_population))
 write_csv(rbind(all_country_data,s_afr_targetpop_df),'input/country_details_gavi72_expanded.csv')
+
+#######
+# we don't have inpatient/outpatient cost for south africa
+filename_cost_outpatient='./input/cost_data_outpatient.csv'; filename_cost_inpatient='./input/cost_data_inpatient.csv'
+# config$sample_outpatient_cost <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_outpatient)
+# config$sample_inpatient_cost  <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_inpatient)
+# head(read.table(filename_cost_outpatient,sep=','))[,1:11]
+cost_data_outpatient=read.table(filename_cost_outpatient,sep=','); cost_data_inpatient=read.table(filename_cost_inpatient,sep=',')
+cost_treatment_gavi=data.frame(round(cbind(rowMeans(cost_data_outpatient),rowMeans(cost_data_inpatient), 
+                        apply(cost_data_outpatient,1,sd),apply(cost_data_inpatient,1,sd) ),2))
+cost_treatment_gavi=cbind(iso3c=rownames(cost_treatment_gavi),cost_treatment_gavi); rownames(cost_treatment_gavi)=c()
+colnames(cost_treatment_gavi)[2:ncol(cost_treatment_gavi)]=c('mean_outpat','mean_hosp','stdev_outpat','stdev_hosp')
+# package for econ data
+install.packages('WDI')
+gdp_per_cap = WDI(indicator='NY.GDP.PCAP.KD', country=c(unique(all_country_data$country_iso3),'ZAF'),start=2010,end=2019,extra=TRUE)
+gdp_per_cap_aver_2010_2020=gdp_per_cap[,c('iso3c','country',"NY.GDP.PCAP.KD")] %>% group_by(iso3c) %>% 
+  summarise(gdp_per_cap_time_aver=mean(NY.GDP.PCAP.KD))
+gdp_per_cap_aver_2010_2020=gdp_per_cap_aver_2010_2020[!is.na(gdp_per_cap_aver_2010_2020$gdp_per_cap_time_aver),]
+cost_treatment_gdp=left_join(gdp_per_cap_aver_2010_2020,cost_treatment_gavi,by='iso3c')
+# cost_treatment_gdp=melt(cost_treatment_gdp,id.vars='iso3c')
+ggplot(cost_treatment_gdp) + geom_point(aes(x=gdp_per_cap_time_aver,y=mean_outpat),color='blue') + 
+  geom_point(aes(x=gdp_per_cap_time_aver,y=mean_hosp),color='red') + xlim(c(0,6e3)) + ylim(c(0,650)) # + labs(color='zz')
+# 65 and 80% correlation
+# linear regression: x <- rnorm(15); y <- x + rnorm(15); z=predict(lm(y ~ x))
+predicted_outpat_cost=predict(lm(cost_treatment_gdp$mean_outpat ~ cost_treatment_gdp$gdp_per_cap_time_aver),
+                                newdata=cost_treatment_gdp[,c('gdp_per_cap_time_aver','mean_outpat')])
+predicted_hosp_cost=predict(lm(cost_treatment_gdp$mean_hosp ~ cost_treatment_gdp$gdp_per_cap_time_aver),
+                              newdata=cost_treatment_gdp[,c('gdp_per_cap_time_aver','mean_hosp')])
+s_afr_mean_outpat_hosp_pred=c(predicted_outpat_cost[gdp_per_cap_aver_2010_2020$iso3c %in% 'ZAF'],
+                              predicted_hosp_cost[gdp_per_cap_aver_2010_2020$iso3c %in% 'ZAF'])
+s_afr_std_outpat_hosp_pred=s_afr_mean_outpat_hosp_pred/2
+alpha_outpat_hosp_cost_gammadistrib=(s_afr_mean_outpat_hosp_pred/s_afr_std_outpat_hosp_pred)^2 # shape param
+beta_outpat_hosp_cost_gammadistrib=s_afr_mean_outpat_hosp_pred/s_afr_std_outpat_hosp_pred^2 # rate param
+# generate gamma distrib random samples
+outpat_hosp_rand_samples=sapply(1:2, function(k) {rgamma(5e3,shape=alpha_outpat_hosp_cost_gammadistrib[k],
+                                                         rate=beta_outpat_hosp_cost_gammadistrib[k])})
+# outpat
+cost_data_outpatient_expanded=rbind(cost_data_outpatient,outpat_hosp_rand_samples[,1]); 
+rownames(cost_data_outpatient_expanded)[nrow(cost_data_outpatient_expanded)]='ZAF'
+# inpat
+cost_data_inpatient_expanded=rbind(cost_data_inpatient,outpat_hosp_rand_samples[,2]) 
+rownames(cost_data_inpatient_expanded)[nrow(cost_data_inpatient_expanded)]='ZAF'
+# save
+write.table(cost_data_outpatient_expanded,'./input/cost_data_outpatient_expanded.csv',sep = ',')
+write.table(cost_data_inpatient_expanded,'./input/cost_data_inpatient_expanded.csv',sep = ',')
