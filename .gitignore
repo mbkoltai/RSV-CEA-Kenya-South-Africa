@@ -19,4 +19,4 @@ input/hosp_prob_mat.csv
 input/kenya_rsv_rate.csv
 input/RSV_burden_Shi_2017_tidy.csv
 input/stillbirth_rate_data.csv
-output/
+output/*.png
