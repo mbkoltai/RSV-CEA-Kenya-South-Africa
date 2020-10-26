@@ -1,3 +1,5 @@
+# !diagnostics off
+
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
                      plot.title=element_text(hjust=0.5,size=16),
                      axis.text.x=element_text(size=9,angle=90),axis.text.y=element_text(size=9),
@@ -188,7 +190,6 @@ ggsave("output/RSV_burden_kenya_data_pred_compare_datasources.png",width=32,heig
 # ggsave("output/RSV_burden_kenya_data_pred_compare_nokes2008_2009.pdf",width=30,height=24,units="cm",device=grDevices::pdf) 
 
 #############################################################################
-####
 ### PROCESS RESULTS
 # add net cost per DALY averted
 # daly for severe and nonsevere
@@ -228,7 +229,7 @@ KEMRI_kenya_rsv_incidence_ageinf=KEMRI_kenya_rsv_incidence
 KEMRI_kenya_rsv_incidence_ageinf$age_inf=as.character(KEMRI_kenya_rsv_incidence_ageinf$age_in_months)
 KEMRI_kenya_rsv_incidence_ageinf$age_inf[KEMRI_kenya_rsv_incidence_ageinf$age_inf %in% "<1"]='0'
 # library(matrixStats)
-KEMRI_kenya_rsv_incidence_ageinf$freq=1; 
+KEMRI_kenya_rsv_incidence_ageinf[,'freq']=1; 
 KEMRI_kenya_rsv_incidence_ageinf$freq[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)]=
   rowDiffs(matrix(as.numeric(unlist(strsplit(KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)],'-'))),ncol=2,byrow=T))+1
 KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)]=
@@ -292,7 +293,101 @@ ggplot(kemri_mcmarcel_compar,aes(x=age_inf,y=rate,color=interaction(datatype,tim
 # 
 ggsave("output/kemri_mcmarcel_compar.png",width=24,height=18,units="cm") 
 
-#############################
+####
+# kenya incidence matrix
+ggplot(melt(kemri_incid_rate_matrix[,1:60]),aes(x=Var1,y=value,group=Var2,color=Var2)) + geom_line()
+#############################################################################
+# What distribution was used in mcmarcel to generate random samples?
+# histogram
+# mcmarcel data
+# config <- get_rsv_ce_config(sel_interv)
+library(fitdistrplus)
+safr_rsv_incid_mcmarcel_kemri=melt(data.frame(rbind(data.frame(config$rsv_rate),data.frame(s_afr_incid_rate_matrix)),
+                    source=array(sapply(c('mcmarcel','kemri'),function(x) {rep(x,age_maxval)})),age_mts=rep(1:age_maxval,2)),
+                    id.vars=c('age_mts','source'))
+# histograms
+ggplot(safr_rsv_incid_mcmarcel_kemri[safr_rsv_incid_mcmarcel_kemri$age_mts<=18,],aes(x=value,color=source,group=source)) + 
+  geom_freqpoly() + facet_wrap(~age_mts) + theme_bw() + standard_theme + 
+  ggtitle('incidence distribution for Shi_et_al vs own data')
+# ggsave(paste0('output/',cntr_sel,'_incidence_distrib.png'),width=30,height=18,units="cm")
+for (sel_age in 1:age_maxval){
+incid_params=fitdist(as.numeric(config$rsv_rate[sel_age,]),distr='gamma')
+if (sel_age==1) {incid_simul=data.frame(); shape_rate_param_est=data.frame()}
+incid_simul=rbind(incid_simul,data.frame(age_mts=sel_age,source='simul',
+              value=rgamma(5000,shape=incid_params$estimate['shape'],incid_params$estimate['rate'])))
+shapeval=as.numeric(incid_params$estimate['shape']); rateval=as.numeric(incid_params$estimate['rate'])
+shape_rate_param_est=rbind(shape_rate_param_est, c(sel_age,shapeval,rateval)) }
+colnames(shape_rate_param_est)=c('age_mts','shape','rate')
+#### plot predicted (gamma distrib) and actual distributions
+agelim=24; rowsel=safr_rsv_incid_mcmarcel_kemri$age_mts<=agelim & safr_rsv_incid_mcmarcel_kemri$source %in% 'mcmarcel'
+dataplot=rbind(safr_rsv_incid_mcmarcel_kemri[rowsel,c('age_mts','source','value')],incid_simul[incid_simul$age_mts<=agelim,])
+ggplot(dataplot,aes(x=value,color=source,linetype=source)) + geom_freqpoly(size=1.2,bins=30) + facet_wrap(~age_mts) + 
+  theme_bw() + standard_theme
+# ggsave(paste0('output/',f_country_iso,'_incidence_distrib_gamma_fit.png'),width=30,height=18,units="cm")
+
+# what distrib is it in original data? mean vs stdev plot
+means_stdevs_incidence=rbind(data.frame(mean=apply(config$rsv_rate,1,mean),
+ stdev=apply(config$rsv_rate,1,sd),coeffvar=apply(config$rsv_rate,1,sd)/apply(config$rsv_rate,1,mean),age=1:60,source='mcmarcel'),
+ data.frame(mean=apply(s_afr_incid_rate_matrix,1,mean),
+    stdev=apply(s_afr_incid_rate_matrix,1,sd),coeffvar=apply(config$rsv_rate,1,sd)/apply(config$rsv_rate,1,mean),age=1:60,source='own'))
+ggplot(means_stdevs_incidence, aes(x=mean,y=stdev,color=age)) + facet_wrap(~source) + geom_path(size=1.2) + 
+  theme_bw() + standard_theme + ggtitle('incidence random samples')
+# ggsave(paste0('output/',f_country_iso,'_incid_randomsamples_mean_stdev.png'),width=30,height=18,units="cm")
+## mean-stdev plot
+ggplot(melt(means_stdevs_incidence,id.vars=c('age','source')),aes(x=age,y=value,group=variable,color=variable)) + 
+  facet_wrap(~source) + geom_line() + theme_bw() + standard_theme + ggtitle() 
+# ggsave(paste0('output/',f_country_iso,'_incid_randomsamples_mean_stdev_coeffvar.png'),width=30,height=18,units="cm")
+
+# compare actual means & stdevs w those predicted from gamma distrib
+means_stdevs_incidence_gammafit=rbind(
+  means_stdevs_incidence[means_stdevs_incidence$source %in% 'mcmarcel',c("age","mean","stdev","source")],
+      data.frame(age=shape_rate_param_est$age_mts,mean=shape_rate_param_est$shape/shape_rate_param_est$rate,
+                 stdev=sqrt(shape_rate_param_est$shape)/shape_rate_param_est$rate,source='pred_gamma_distrib'))
+# PLOT: predicted and actual means and stdevs
+ggplot(melt(means_stdevs_incidence_gammafit,id.vars=c('age','source')),aes(x=age,y=value,color=source,linetype=source)) + 
+  geom_line(size=1.2) + facet_wrap(~variable,nrow=2,scales='free') + # geom_point(aes(shape=source),fill=NA) + 
+  scale_x_continuous(labels=as.character(seq(0,age_maxval,4)),breaks=seq(0,age_maxval,4)) +
+  theme_bw() + standard_theme + xlab('age (months)') + ylab('')
+# ggsave(paste0('output/',f_country_iso,'_incid_randomsamples_mean_stdev_fit_gammadistrib.png'),width=30,height=18,units="cm")
+### gamma distrib fits the mcmarcel data very well!
+
+# PLOT
+ggplot(melt(shape_rate_param_est,id.vars='age_mts'), aes(x=age_mts,y=value,color=variable)) + geom_line() + geom_point() +
+scale_x_continuous(labels=as.character(seq(0,age_maxval,4)),breaks=seq(0,age_maxval,4)) +
+  theme_bw() + standard_theme + xlab('age (months)') + ylab('')
+# ggsave(paste0('output/',f_country_iso,'_gamma_shape_rate_param.png'),width=30,height=18,units="cm")
+# scatterplot
+ggplot(shape_rate_param_est, aes(x=shape,y=rate,color=age_mts)) + geom_point() +
+  # scale_x_continuous(labels=as.character(seq(0,age_maxval,4)),breaks=seq(0,age_maxval,4)) +
+  theme_bw() + standard_theme + xlab('shape') + ylab('rate')
+# ggsave(paste0('output/',f_country_iso,'_gamma_shape_rate_param_scatter.png'),width=30,height=18,units="cm")
+
+# can we infer gamma distrib parameters from CI95 values? use 'gamma.parms.from.quantiles()' function
+# kemri_rsv_incidence_per_capita; kemri_rsv_incidence_CIs
+# s_afr_incid_rate_matrix=sapply(1:n_iter, function(iters) {sapply(1:age_maxval, 
+#          function(x) {rnorm(1,mean=s_afr_nat_average_totalcases$rate[x],sd=s_afr_nat_average_totalcases$stdev[x])})})
+s_afr_incid_rate_matrix_gammadistr=matrix(NA,nrow=age_maxval,ncol=5e3)
+for (k in 1:nrow(s_afr_nat_average_totalcases)) {
+  if (k==1) {s_afr_gamma_estim=data.frame()}
+  gammavals=gamma.parms.from.quantiles(q=c(s_afr_nat_average_totalcases$rate_CI_lower[k],
+                                           s_afr_nat_average_totalcases$rate_CI_upper[k]),p=c(0.025,0.975))
+  s_afr_gamma_estim=rbind(s_afr_gamma_estim,c(gammavals$shape,gammavals$rate))
+  s_afr_incid_rate_matrix_gammadistr[k,]=rgamma(5e3,shape=gammavals$shape,rate=gammavals$rate)  }
+colnames(s_afr_gamma_estim)=c('rate','shape')
+
+# histograms
+safr_rsv_incid_mcmarcel_normal_gamma=melt(data.frame(rbind(data.frame(s_afr_incid_rate_matrix_gammadistr),
+                                                           data.frame(s_afr_incid_rate_matrix)), 
+    source=array(sapply(c('gamma','normal'),function(x) {rep(x,age_maxval)})),
+    age_mts=rep(1:age_maxval,2)),id.vars=c('age_mts','source'))
+# histograms
+ggplot(safr_rsv_incid_mcmarcel_normal_gamma[safr_rsv_incid_mcmarcel_normal_gamma$age_mts<=18,],
+       aes(x=value,color=source,group=source,linetype=source)) + geom_freqpoly(size=1.2) + facet_wrap(~age_mts,scales='free') + 
+  theme_bw() + standard_theme + ggtitle('incidence distribution normal vs gamma')
+# rm(safr_rsv_incid_mcmarcel_normal_gamma)
+ggsave(paste0('output/',f_country_iso,'_gamma_normal_simul_histograms.png'),width=30,height=18,units="cm")
+
+#############################################################################
 # S Afr data
 s_afr_incidence_data=read_csv('../path_rsv_data/SRI_RSV_PATHproject09102020_tidy.csv')
 summary_categs=c("0-6m","6-11m","12-23m","24-59","<1y","<5y")
@@ -321,7 +416,7 @@ write_csv(safr_hosp_rate_province_means,'safr_hosp_rate_province_means.csv')
 # create all age groups from 1 to 60
 # s_afr_incidence_data[,'hosp_rate']=NaN; s_afr_incidence_data$hosp_rate=
 s_afr_incidence_data$age_inf=gsub('m','',s_afr_incidence_data$age)x
-s_afr_incidence_data$freq=1; s_afr_incidence_data$freq[grepl('-',s_afr_incidence_data$age_inf)]=
+s_afr_incidence_data[,'freq']=1; s_afr_incidence_data$freq[grepl('-',s_afr_incidence_data$age_inf)]=
   rowDiffs(matrix(as.numeric(unlist(strsplit(
     s_afr_incidence_data$age_inf[grepl('-',s_afr_incidence_data$age_inf)],'-'))),ncol=2,byrow=T))+1
 s_afr_incidence_data$age_inf[grepl('-',s_afr_incidence_data$age_inf)]=

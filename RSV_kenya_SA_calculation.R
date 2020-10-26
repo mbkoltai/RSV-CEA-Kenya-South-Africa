@@ -1,15 +1,17 @@
 #' ---
 #' title: RSV burden&cost calculations with incidence data from Kenya and South Africa 
 #' author: Mihaly Koltai
-#' date: October
+#' date: October 2020
 #' output:
 #'    html_document:
 #'      toc: true
 #'      highlight: zenburn
+#'      fig_width: 15
+#'      fig_height: 10
 #' ---
-# libraries
+# Libraries
 # to render as html: rmarkdown::render("RSV_kenya_SA_calculation.R",output_dir='output/cea_plots/')
-library(tidyverse); library(reshape2); library(matrixStats); library(rstudioapi)
+library(tidyverse); library(reshape2); library(matrixStats); library(rstudioapi); # library(fitdistrplus)
 currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path)
 # path
 setwd(currentdir_path)
@@ -78,34 +80,47 @@ rdata_prefix=paste0('life_table_',f_country_iso,'_2020_2025_disc0')
 if (f_disc_rate_qaly>0) {rdata_filename=paste(rdata_prefix,'p03','.RData',sep='')} else {rdata_filename=paste(rdata_prefix,'.RData',sep='')}
 # load life_table
 load(paste(f_outputFileDir,"temp",rdata_filename,sep='/'))
-# life_table contains: "age","lx": # left alive, "life_expectancy", "nMx": mortality, "lx_rate": # left alive/(init popul), "life_expectancy_disc": disc life yrs
-# life_table_year:
-# nqx - probability of dying between ages x and x+n; lx - number of people left alive at age x
-# ndx - number of people dying between ages x and x+n; nLx - person-years lived between ages x and x+n  
+# life_table contains: "age","lx": # left alive, "life_expectancy", "nMx": mortality, "lx_rate": # left alive/(init popul)
+# "life_expectancy_disc": disc life yrs
 if (f_disc_rate_qaly==0){
 life_table_tidy=data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)} else {
 life_table_tidy=rbind(life_table_tidy,data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)) }
 }
 ####
 # plot life tables
-#+ fig.width=15, fig.height=10
-ggplot(life_table_tidy,aes(x=age,y=value,group=disc_rate,color=factor(disc_rate),linetype=factor(disc_rate))) + geom_line(size=1.2) +
-  facet_wrap(~variable,scales='free') + theme_bw() + standard_theme
-# ggsave(paste0("output/life_table_",f_country_iso,"_2020_2025_disc0p03.png"),width=30,height=18,units="cm") # ,device=grDevices::pdf
+lifetable_varlist=list(as.character(unique(life_table_tidy$variable)),
+                       c('alive/100.000 births','life expectancy','mortality','alive/birth','discounted life expectancy'))
+life_table_tidy$variable_expl=as.character(life_table_tidy$variable)
+for (k in unique(life_table_tidy$variable)){
+  life_table_tidy$variable_expl[life_table_tidy$variable %in% k]=lifetable_varlist[[2]][lifetable_varlist[[1]] %in% k]
+  }
+ggplot(life_table_tidy,aes(x=age,y=value,group=disc_rate,color=factor(disc_rate),linetype=factor(disc_rate))) + 
+  geom_line(size=1.2) + facet_wrap(~variable_expl,scales='free') + 
+  theme_bw() + standard_theme + xlab('age (in months)') + ylab('') + 
+  ggtitle(paste(cntr_sel,'demographics')) + labs(color='discount rate',linetype='discount rate')
+# ggsave(paste0("output/life_table_",f_country_iso,"_2020_2025_disc0p03.png"),width=30,height=18,units="cm")
 ######################################################
 # get unique country codes
 country_opt <- data.frame(country_iso = unique(sim_config_matrix$country_iso)); 
 burden_cntr_ind=which(country_opt$country_iso %in% cntr_sel)
 incidence_one_table=get_incidence(country_opt$country_iso[burden_cntr_ind],output_dir)
 # incidence data for all LMICs
-RSV_burden_Shi_2017=read_csv('input/RSV_burden_Shi_2017.csv')
+# RSV_burden_Shi_2017=read_csv('input/RSV_burden_Shi_2017.csv')
 # histogram: ggplot(RSV_burden_Shi_2017,aes(x=incidence_RSV_associated_ALRI)) + geom_histogram(binwidth=2)
 # lineplot: national averages with CIs
 RSV_burden_Shi_2017_tidy=read_csv('input/RSV_burden_Shi_2017_tidy.csv')
-#+ fig.width=15, fig.height=10
-ggplot(RSV_burden_Shi_2017_tidy,aes(x=location_name,y=value,group=1)) + geom_line() + geom_point(size=1) +
-  geom_ribbon(aes(ymin=lower_CI,ymax=upper_CI),alpha=0.3,colour=NA,fill="red") + facet_wrap(~variable,nrow=2,scales='free') +
-  theme(axis.text.x=element_text(angle=90,vjust=0.5,hjust=1,size=5)) + scale_y_continuous(trans='log10')
+RSV_burden_Shi_2017_tidy$variable[grepl('incidence',RSV_burden_Shi_2017_tidy$variable)]='incidence of RSV-assoc. ALRI per 1000'
+RSV_burden_Shi_2017_tidy$variable[grepl('episode',RSV_burden_Shi_2017_tidy$variable)]='number of episodes'
+standard_theme_mod=standard_theme; standard_theme_mod$axis.text.x$size=4.5; standard_theme_mod$axis.text.x$hjust=0.99
+standard_theme_mod$axis.text.x$vjust=0.5
+non_na_vals=!(is.na(RSV_burden_Shi_2017_tidy$value) | is.na(RSV_burden_Shi_2017_tidy$lower_CI))
+ggplot(RSV_burden_Shi_2017_tidy[non_na_vals,],aes(x=location_name,y=value,ymin=lower_CI,ymax=upper_CI,group=1)) + 
+  geom_pointrange(aes(color=variable),size=0.6,fatten=0.1,fill="white",shape=22) + scale_color_manual(values=c('blue','red')) +
+  facet_wrap(~variable,nrow=2,scales='free') + theme_bw() + standard_theme_mod + 
+  scale_y_continuous(trans='log10') + xlab('') + ylab('') + guides(color=FALSE)
+# ggsave('output/incid_per_cntr.png',width=30,height=18,units="cm")
+# theme(axis.text.x=element_text(angle=90,vjust=0.5,hjust=1,size=5))
+# coord_cartesian(ylim=c(0, 7))
 ######################################################
 #' ## Incidence data from partners
 #' ### Kenya
@@ -138,12 +153,13 @@ popul_denom=1e5; CI95_const=1.96
 if (max(kemri_rsv_incidence_per_capita>1)){ kemri_rsv_incidence_per_capita=kemri_rsv_incidence_per_capita/popul_denom }
 kemri_rsv_incidence_CIs=KEMRI_kenya_rsv_incidence_ageinf[KEMRI_kenya_rsv_incidence_ageinf$period %in% '2010-2018'&
                                   KEMRI_kenya_rsv_incidence_ageinf$hospitalisation==FALSE,c('CI_lower','CI_upper')]/popul_denom
-# CI_lower = mu - 1.96*stdev
+# CI_lower = mu - 1.96*stdev/sqrt(sample size)
 stdev_est=cbind((kemri_rsv_incidence_per_capita-kemri_rsv_incidence_CIs[,1])/CI95_const,
                 (kemri_rsv_incidence_CIs[,2] - kemri_rsv_incidence_per_capita)/CI95_const)
 kemri_rsv_incidence_stdevs=rowMeans(stdev_est)
 # create matrix with 5000 iterations; max age in months is 60 (5yrs)
 n_iter=5e3; age_maxval=60
+# what distribution are we assuming? McMarcel data is gamma-distributed
 kemri_incid_rate_matrix=sapply(1:n_iter, function(iters) {
   sapply(1:age_maxval, function(x) {rnorm(1,mean=kemri_rsv_incidence_per_capita[x],sd=kemri_rsv_incidence_stdevs[x] )})})
 # write_csv(kemri_incid_rate_matrix,'input/kemri_incid_rate_matrix.csv')
@@ -170,7 +186,7 @@ if (max(s_afr_nat_average_totalcases$rate)>1){ s_afr_nat_average_totalcases[,c("
 # st devs from CI95s
 s_afr_nat_average_totalcases[,"stdev"]=rowMeans(cbind((s_afr_nat_average_totalcases$rate-s_afr_nat_average_totalcases$rate_CI_lower)/CI95_const,
                                      (s_afr_nat_average_totalcases$rate_CI_upper - s_afr_nat_average_totalcases$rate)/CI95_const))
-# we need a 60x5000 matrix of per capita RSV cases
+# we need a 60x5000 matrix of per capita RSV cases - need to pick a distribution to generate random samples
 s_afr_incid_rate_matrix=sapply(1:n_iter, function(iters) {
   sapply(1:age_maxval, function(x) {rnorm(1,mean=s_afr_nat_average_totalcases$rate[x],sd=s_afr_nat_average_totalcases$stdev[x])})})
 # hosp rate
@@ -224,7 +240,6 @@ mean_intercepts=burden_mcmarcel_owndata_comp %>%  group_by(source,variable) %>% 
 mean_intercepts[,'colorval']='red'; mean_intercepts$colorval[mean_intercepts$source %in% 'kemri']='green'
 # PLOT histograms
 if (n_interv==1) {interv_tag='_Mat_Vacc' } else {interv_tag='_monocl_Ab'}
-#+ fig.width=15, fig.height=10
 ggplot(burden_mcmarcel_owndata_comp,aes(x=value,group=source)) +
   # geom_histogram(aes(y=..density..,fill=source),color="NA",size=0.4) + 
   geom_freqpoly(aes(color=source),size=1.2) + 
