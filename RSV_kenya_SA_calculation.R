@@ -53,7 +53,7 @@ sim_config_matrix$rng_seed <- rng_seed; sim_config_matrix$outputFileDir <- get_o
 #' ## Load demographic data
 cntrs_cea=c('KEN','ZAF'); 
 ##### SELECT COUNTRY
-n_cntr_output=1; cntr_sel=cntrs_cea[n_cntr_output]
+n_cntr_output=2; cntr_sel=cntrs_cea[n_cntr_output]
 ### Append South Africa to cntr list -------------------------
 # S Afr is not in the original study so needs to be appended
 if (!cntr_sel %in% sim_config_matrix$country_iso) {
@@ -282,12 +282,14 @@ ggplot(burden_mcmarcel_owndata_comp,aes(x=value,group=source)) +
   geom_rect(data=subset(burden_mcmarcel_owndata_comp, variable %in% icercolname),fill=NA,colour="blue",
             size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) + 
   ggtitle(paste(sel_interv$country_iso,'RSV burden & intervention estimates:',gsub('_','',interv_tag))) +
-  labs(color='data source',linetype='mean') + guides(xintercept=FALSE,linetype=guide_legend(ncol=2)) # xlab('')+ylab('')
+  labs(color='data source',linetype='mean') + guides(xintercept=FALSE,linetype=guide_legend(ncol=2)) 
+# xlab('')+ylab('')
 # save plot
 cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_burden_estimates_1000samples",
                         interv_tag,'_',randsampl_distrib_type,'samples',".png",sep="")
 # if (!dir.exists('output/cea_plots')) {dir.create('output/cea_plots')}
-# ggsave(cea_plot_filename,width=30,height=18,units="cm")
+# SAVE
+ggsave(cea_plot_filename,width=30,height=18,units="cm")
 ### average net cost/daly averted -------------------------
 burden_mcmarcel_owndata_comp[burden_mcmarcel_owndata_comp$variable %in% 'net_cost/DALY_averted',] %>% 
-  group_by(source) %>% summarise(mean(value))
+  group_by(source) %>% summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
