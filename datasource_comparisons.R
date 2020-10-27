@@ -1,15 +1,13 @@
 # !diagnostics off
 
+
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
                      plot.title=element_text(hjust=0.5,size=16),
                      axis.text.x=element_text(size=9,angle=90),axis.text.y=element_text(size=9),
                      axis.title=element_text(size=14), text=element_text(family="Calibri"))
-# Kenya RSV data
+####### RSV data for 1 country from Shi2017 ------------------------------------------------
 # LMIC incidence by age scaled by data from 'RSV_burden_Shi_2017'
-kenya_rate_files=c('input/country_rsv_rate.csv', 'input/hosp_prob_mat.csv', 'input/cfr_mat.csv')
-# country_rsv_rate=read_csv(kenya_rate_files[1]);
-hosp_prob_mat=read_csv(kenya_rate_files[2]); cfr_mat=read_csv(kenya_rate_files[3])
-f_country_iso='KEN'; f_outputFileDir="output/1005164300_RSV_gavi72_basecase_n100" 
+f_country_iso='ZAF'; f_outputFileDir="output/1027174825_RSV_gavi72_basecase_n1000" 
 burden_country <- read.csv('input/RSV_burden_Shi_2017.csv',stringsAsFactors = FALSE);
 burden_country_reference <- burden_country$incidence_RSV_associated_ALRI[burden_country$country_iso==f_country_iso]
 # Life table
@@ -31,55 +29,59 @@ country_rsv_pred_cases <- country_rsv_fraction * (burden_country_reference / 100
 # rsv rate = rsv cases / population (cases/capita)
 country_rsv_rate=data.frame(country_rsv_pred_cases/under5_pop); age_maxval=nrow(country_rsv_rate)
 # collate the tables
-kenya_burden_abs=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_pred_cases),
-                            sd=apply(country_rsv_pred_cases,1,sd),type='number_of_cases');
-kenya_burden_percap=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_rate),sd=apply(country_rsv_rate,1,sd),type='case_per_capita')
-hosp_prob_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(hosp_prob_mat),
-                              sd=apply(hosp_prob_mat,1,sd),type='hosp_admissions_per_capita');
-cfr_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(cfr_mat),sd=apply(cfr_mat,1,sd),type='cfr_hosp_admissions')
-kenya_burden_all=rbind(kenya_burden_abs,kenya_burden_percap,hosp_prob_mat_tidy,cfr_mat_tidy)
-# KENYA RSV incidence rates
-ggplot(kenya_burden_all,aes(x=age,y=mean)) + geom_line() + geom_point() +
+cntr_burden_abs=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_pred_cases),
+                           sd=apply(country_rsv_pred_cases,1,sd),type='number_of_cases');
+cntr_burden_percap=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_rate),sd=apply(country_rsv_rate,1,sd),type='case_per_capita')
+hosp_prob_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(config$hosp_prob),
+                              sd=apply(config$hosp_prob,1,sd),type='hosp_admissions_per_capita');
+cfr_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(config$hosp_CFR),sd=apply(config$hosp_CFR,1,sd),type='cfr_hosp_admissions')
+cntr_burden_all=rbind(cntr_burden_abs,cntr_burden_percap,hosp_prob_mat_tidy,cfr_mat_tidy)
+# cntr RSV incidence rates
+ggplot(cntr_burden_all,aes(x=age,y=mean)) + geom_line() + geom_point() +
   geom_ribbon(aes(ymin=mean-sd,ymax=mean+sd),alpha=0.3,colour=NA,fill="red") +
   facet_wrap(~type,scales='free',nrow=2) + scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
   theme_bw() + theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),plot.title=element_text(hjust=0.5,size=16),
                      axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
                      axis.title=element_text(size=14), text=element_text(family="Calibri")) +
-  xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle('Kenya RSV burden (mean +/- stdev)')
-# ggsave("output/RSV_burden_kenya_randomsamples.png",width=30,height=18,units="cm") 
+  xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle(paste(f_country_iso,'RSV burden (mean +/- stdev)'))
+# ggsave("output/RSV_burden_cntr_randomsamples.png",width=30,height=18,units="cm") 
 
 #####
-# normalise Kenya data to /1000 ppl
-lmic_kenya_burden=kenya_burden_all; case_cols=lmic_kenya_burden$type %in% 'number_of_cases'
-lmic_kenya_burden=lmic_kenya_burden[!case_cols,]
+# normalise cntr data to /1000 ppl
+lmic_cntr_burden=cntr_burden_all; case_cols=lmic_cntr_burden$type %in% 'number_of_cases'
+lmic_cntr_burden=lmic_cntr_burden[!case_cols,]
 # scale to 1000
-if (max(lmic_kenya_burden$mean)<1){
+if (max(lmic_cntr_burden$mean)<1){
   # to have incidence per 1000, multiply per capita rate by 1e3
-  lmic_kenya_burden[c('mean','sd')]=lmic_kenya_burden[,c('mean','sd')]*1e3
+  lmic_cntr_burden[c('mean','sd')]=lmic_cntr_burden[,c('mean','sd')]*1e3
   # to have incidence per 1000, divide case number (which was for 100e3) by 100
-  # lmic_kenya_burden[case_cols,c('mean','SD')]=lmic_kenya_burden[case_cols,c('mean','sd')]/1e2
-  lmic_kenya_burden$type=str_replace_all(str_replace_all(lmic_kenya_burden$type,'cfr','deaths_per_1000'),'per_capita','per_1000')
-  lmic_kenya_burden$type=str_replace_all(lmic_kenya_burden$type,'case','cases')
+  # lmic_cntr_burden[case_cols,c('mean','SD')]=lmic_cntr_burden[case_cols,c('mean','sd')]/1e2
+  lmic_cntr_burden$type=str_replace_all(str_replace_all(lmic_cntr_burden$type,'cfr','deaths_per_1000'),'per_capita','per_1000')
+  lmic_cntr_burden$type=str_replace_all(lmic_cntr_burden$type,'case','cases')
 }
 # collate with all LMIC data
-lmic_kenya_burden$country='Kenya'
+lmic_cntr_burden$country=f_country_iso
 lmic_incidence_means=data.frame(age=1:age_maxval,mean=rowMeans(incidence_mat),sd=apply(incidence_mat,1,sd),type='cases_per_1000')
 lmic_incidence_means$country='lmic'
 # rbind two dfs
-if (length(unique(lmic_kenya_burden$country))==1){ lmic_kenya_burden=rbind(lmic_kenya_burden,lmic_incidence_means) }
+if (length(unique(lmic_cntr_burden$country))==1){ lmic_cntr_burden=rbind(lmic_cntr_burden,lmic_incidence_means) }
 
 ### plot
-ggplot(lmic_kenya_burden,aes(x=age,y=mean,color=country)) + geom_line() + geom_point() +
+lmic_cntr_burden$country=factor(lmic_cntr_burden$country,levels=unique(lmic_cntr_burden$country))
+ggplot(lmic_cntr_burden,aes(x=age,y=mean,color=country)) + geom_line() + geom_point() +
   geom_ribbon(aes(ymin=mean-sd,ymax=mean+sd,fill=country),alpha=0.3,colour=NA) +
-  facet_wrap(~type,scales='free',nrow=2)+ scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
-  theme_bw() + theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),plot.title=element_text(hjust=0.5,size=16),
+  facet_wrap(~type,scales='free',nrow=2) + # scale_color_manual(values=)
+  scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
+  theme_bw() + theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
+                     plot.title=element_text(hjust=0.5,size=16),
                      axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
                      axis.title=element_text(size=14), text=element_text(family="Calibri")) +
-  xlab('Age (month)') + ylab('incidence') + labs(color="Samples") + ggtitle('Kenya RSV burden (mean +/- stdev)')
-ggsave("output/RSV_incidence_kenya_lmic_comparison.png",width=30,height=18,units="cm") 
+  xlab('Age (month)') + ylab('incidence') + labs(color="Samples") + 
+  ggtitle(paste0(f_country_iso,' RSV burden (mean +/- stdev)'))
 
-#############################################################################
-# our own data from KEMRI
+ggsave(paste0("output/RSV_incidence_",f_country_iso,"_lmic_comparison.png"),width=30,height=18,units="cm") 
+
+####### our own data from KEMRI ------------------------------------------------
 kenya_data_path='../path_rsv_data/SARI_Rates_2010_2018/SARI_Rates_2010_2018_tidydata_cleaned.csv'
 SARI_Rates_2010_2018_tidydata=read_csv(kenya_data_path)
 nonsumm_truthvals=!grepl("<|24-59|12-23",SARI_Rates_2010_2018_tidydata$age_in_months) | 
@@ -203,7 +205,7 @@ ggsave("output/RSV_burden_kenya_data_pred_compare_datasources.png",width=32,heig
 # CFR
 # ggplot(data.frame(rowMeans(config$hosp_CFR)),aes(x=1:60,y=rowMeans(config$hosp_CFR)*100)) + geom_line()
 
-# our own RSV-SARI incidence data
+####### own RSV-SARI incidence data ------------------------------------------------
 nonsumm_truthvals=!grepl("<|24-59|12-23",SARI_Rates_2010_2018_tidydata$age_in_months) | 
   grepl("<1$",SARI_Rates_2010_2018_tidydata$age_in_months)
 KEMRI_kenya_rsv_incidence=SARI_Rates_2010_2018_tidydata[nonsumm_truthvals & # don't include summary variables that subsume others
@@ -296,27 +298,26 @@ ggsave("output/kemri_mcmarcel_compar.png",width=24,height=18,units="cm")
 ####
 # kenya incidence matrix
 ggplot(melt(kemri_incid_rate_matrix[,1:60]),aes(x=Var1,y=value,group=Var2,color=Var2)) + geom_line()
-#############################################################################
-# What distribution was used in mcmarcel to generate random samples?
+####### What distribution was used in mcmarcel to generate random samples? ------------------------------------------------
 # histogram
 # mcmarcel data
 # config <- get_rsv_ce_config(sel_interv)
 library(fitdistrplus)
 safr_rsv_incid_mcmarcel_kemri=melt(data.frame(rbind(data.frame(config$rsv_rate),data.frame(s_afr_incid_rate_matrix)),
-                    source=array(sapply(c('mcmarcel','kemri'),function(x) {rep(x,age_maxval)})),age_mts=rep(1:age_maxval,2)),
-                    id.vars=c('age_mts','source'))
+                                              source=array(sapply(c('mcmarcel','kemri'),function(x) {rep(x,age_maxval)})),age_mts=rep(1:age_maxval,2)),
+                                   id.vars=c('age_mts','source'))
 # histograms
 ggplot(safr_rsv_incid_mcmarcel_kemri[safr_rsv_incid_mcmarcel_kemri$age_mts<=18,],aes(x=value,color=source,group=source)) + 
   geom_freqpoly() + facet_wrap(~age_mts) + theme_bw() + standard_theme + 
   ggtitle('incidence distribution for Shi_et_al vs own data')
 # ggsave(paste0('output/',cntr_sel,'_incidence_distrib.png'),width=30,height=18,units="cm")
 for (sel_age in 1:age_maxval){
-incid_params=fitdist(as.numeric(config$rsv_rate[sel_age,]),distr='gamma')
-if (sel_age==1) {incid_simul=data.frame(); shape_rate_param_est=data.frame()}
-incid_simul=rbind(incid_simul,data.frame(age_mts=sel_age,source='simul',
-              value=rgamma(5000,shape=incid_params$estimate['shape'],incid_params$estimate['rate'])))
-shapeval=as.numeric(incid_params$estimate['shape']); rateval=as.numeric(incid_params$estimate['rate'])
-shape_rate_param_est=rbind(shape_rate_param_est, c(sel_age,shapeval,rateval)) }
+  incid_params=fitdist(as.numeric(config$rsv_rate[sel_age,]),distr='gamma')
+  if (sel_age==1) {incid_simul=data.frame(); shape_rate_param_est=data.frame()}
+  incid_simul=rbind(incid_simul,data.frame(age_mts=sel_age,source='simul',
+                                           value=rgamma(5000,shape=incid_params$estimate['shape'],incid_params$estimate['rate'])))
+  shapeval=as.numeric(incid_params$estimate['shape']); rateval=as.numeric(incid_params$estimate['rate'])
+  shape_rate_param_est=rbind(shape_rate_param_est, c(sel_age,shapeval,rateval)) }
 colnames(shape_rate_param_est)=c('age_mts','shape','rate')
 #### plot predicted (gamma distrib) and actual distributions
 agelim=24; rowsel=safr_rsv_incid_mcmarcel_kemri$age_mts<=agelim & safr_rsv_incid_mcmarcel_kemri$source %in% 'mcmarcel'
@@ -327,9 +328,9 @@ ggplot(dataplot,aes(x=value,color=source,linetype=source)) + geom_freqpoly(size=
 
 # what distrib is it in original data? mean vs stdev plot
 means_stdevs_incidence=rbind(data.frame(mean=apply(config$rsv_rate,1,mean),
- stdev=apply(config$rsv_rate,1,sd),coeffvar=apply(config$rsv_rate,1,sd)/apply(config$rsv_rate,1,mean),age=1:60,source='mcmarcel'),
- data.frame(mean=apply(s_afr_incid_rate_matrix,1,mean),
-    stdev=apply(s_afr_incid_rate_matrix,1,sd),coeffvar=apply(config$rsv_rate,1,sd)/apply(config$rsv_rate,1,mean),age=1:60,source='own'))
+                                        stdev=apply(config$rsv_rate,1,sd),coeffvar=apply(config$rsv_rate,1,sd)/apply(config$rsv_rate,1,mean),age=1:60,source='mcmarcel'),
+                             data.frame(mean=apply(s_afr_incid_rate_matrix,1,mean),
+                                        stdev=apply(s_afr_incid_rate_matrix,1,sd),coeffvar=apply(config$rsv_rate,1,sd)/apply(config$rsv_rate,1,mean),age=1:60,source='own'))
 ggplot(means_stdevs_incidence, aes(x=mean,y=stdev,color=age)) + facet_wrap(~source) + geom_path(size=1.2) + 
   theme_bw() + standard_theme + ggtitle('incidence random samples')
 # ggsave(paste0('output/',f_country_iso,'_incid_randomsamples_mean_stdev.png'),width=30,height=18,units="cm")
@@ -341,8 +342,8 @@ ggplot(melt(means_stdevs_incidence,id.vars=c('age','source')),aes(x=age,y=value,
 # compare actual means & stdevs w those predicted from gamma distrib
 means_stdevs_incidence_gammafit=rbind(
   means_stdevs_incidence[means_stdevs_incidence$source %in% 'mcmarcel',c("age","mean","stdev","source")],
-      data.frame(age=shape_rate_param_est$age_mts,mean=shape_rate_param_est$shape/shape_rate_param_est$rate,
-                 stdev=sqrt(shape_rate_param_est$shape)/shape_rate_param_est$rate,source='pred_gamma_distrib'))
+  data.frame(age=shape_rate_param_est$age_mts,mean=shape_rate_param_est$shape/shape_rate_param_est$rate,
+             stdev=sqrt(shape_rate_param_est$shape)/shape_rate_param_est$rate,source='pred_gamma_distrib'))
 # PLOT: predicted and actual means and stdevs
 ggplot(melt(means_stdevs_incidence_gammafit,id.vars=c('age','source')),aes(x=age,y=value,color=source,linetype=source)) + 
   geom_line(size=1.2) + facet_wrap(~variable,nrow=2,scales='free') + # geom_point(aes(shape=source),fill=NA) + 
@@ -353,7 +354,7 @@ ggplot(melt(means_stdevs_incidence_gammafit,id.vars=c('age','source')),aes(x=age
 
 # PLOT
 ggplot(melt(shape_rate_param_est,id.vars='age_mts'), aes(x=age_mts,y=value,color=variable)) + geom_line() + geom_point() +
-scale_x_continuous(labels=as.character(seq(0,age_maxval,4)),breaks=seq(0,age_maxval,4)) +
+  scale_x_continuous(labels=as.character(seq(0,age_maxval,4)),breaks=seq(0,age_maxval,4)) +
   theme_bw() + standard_theme + xlab('age (months)') + ylab('')
 # ggsave(paste0('output/',f_country_iso,'_gamma_shape_rate_param.png'),width=30,height=18,units="cm")
 # scatterplot
@@ -378,8 +379,8 @@ colnames(s_afr_gamma_estim)=c('rate','shape')
 # histograms
 safr_rsv_incid_mcmarcel_normal_gamma=melt(data.frame(rbind(data.frame(s_afr_incid_rate_matrix_gammadistr),
                                                            data.frame(s_afr_incid_rate_matrix)), 
-    source=array(sapply(c('gamma','normal'),function(x) {rep(x,age_maxval)})),
-    age_mts=rep(1:age_maxval,2)),id.vars=c('age_mts','source'))
+                                                     source=array(sapply(c('gamma','normal'),function(x) {rep(x,age_maxval)})),
+                                                     age_mts=rep(1:age_maxval,2)),id.vars=c('age_mts','source'))
 # histograms
 ggplot(safr_rsv_incid_mcmarcel_normal_gamma[safr_rsv_incid_mcmarcel_normal_gamma$age_mts<=18,],
        aes(x=value,color=source,group=source,linetype=source)) + geom_freqpoly(size=1.2) + facet_wrap(~age_mts,scales='free') + 
@@ -399,10 +400,10 @@ s_afr_incidence_data$data_type=str_replace_all(s_afr_incidence_data$data_type,' 
 s_afr_incidence_data=s_afr_incidence_data[!grepl('Non-hospitalised',s_afr_incidence_data$data_type),]
 # PLOT
 ggplot(safr_plot_data,aes(x=age,y=rate,group=data_type,color=data_type)) + geom_line() + 
- geom_ribbon(aes(ymin=rate_CI_lower,ymax=rate_CI_upper,fill=data_type),alpha=0.3,colour=NA) + geom_point(color='black',size=0.2) +
- facet_wrap(~Province) + theme_bw() + standard_theme + xlab('age (months)') + ylab('incidence') +
+  geom_ribbon(aes(ymin=rate_CI_lower,ymax=rate_CI_upper,fill=data_type),alpha=0.3,colour=NA) + geom_point(color='black',size=0.2) +
+  facet_wrap(~Province) + theme_bw() + standard_theme + xlab('age (months)') + ylab('incidence') +
   ggtitle('South Africa RSV incidence per 100.000 (2011-2016)') + geom_rect(data=subset(safr_plot_data, Province %in% 'South Africa'),fill=NA,
-            colour="blue",size=1.25,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf)
+                                                                            colour="blue",size=1.25,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf)
 # ggsave("output/south_africa_rsv_incidence.png",width=28,height=18,units="cm") 
 
 # hospit rate
@@ -433,7 +434,7 @@ ggplot(s_afr_incidence_data,aes(x=age_inf,y=rate,group=data_type,color=data_type
   geom_ribbon(aes(ymin=rate_CI_lower,ymax=rate_CI_upper,fill=data_type),alpha=0.3,colour=NA) + 
   geom_point(color='black',size=0.1) + scale_y_log10() + facet_wrap(~Province) +
   geom_text(data=data.frame(safr_hosp_rate_province_means,data_type=unique(s_afr_incidence_data$data_type)[1]),
-          aes(x=5,y=1.9e4,label=paste0('hosp. rate=',round(mean_hosp_rate,2))),color='black',hjust=0,size=3.5,show.legend=FALSE) +
+            aes(x=5,y=1.9e4,label=paste0('hosp. rate=',round(mean_hosp_rate,2))),color='black',hjust=0,size=3.5,show.legend=FALSE) +
   theme_bw() + standard_theme + xlab('age (months)') + ylab('incidence') +
   scale_x_continuous(labels=as.character(seq(0,age_maxval,4)),breaks=seq(0,age_maxval,4)) +
   ggtitle('South Africa RSV incidence per 100.000 (2011-2016)')+labs(color='hospitalisation status',fill='hospitalisation status')+
@@ -474,7 +475,7 @@ data("tfrprojMed"); data("popproj")
 # https://population.un.org/wpp/Download/Files/1_Indicators%20(Standard)/EXCEL_FILES/1_Population/WPP2019_POP_F03_RATE_OF_NATURAL_INCREASE.xlsx
 crude_birthrates=read_csv('input/crude_birth_rate_kenya_safr.csv')
 s_afr_crude_birthrates=crude_birthrates[crude_birthrates$`Region, subregion, country or area` %in% 'South Africa',
-                 which(colnames(crude_birthrates) %in% '2020-2025'):which(colnames(crude_birthrates) %in% '2045-2050')]
+                                        which(colnames(crude_birthrates) %in% '2020-2025'):which(colnames(crude_birthrates) %in% '2045-2050')]
 s_afr_crude_birthrates_inf=approx(seq(2020,2050,6),as.numeric(s_afr_crude_birthrates),n=31)[[2]]
 s_afr_popproj=popproj[popproj$name %in% 'South Africa',which(colnames(popproj) %in% '2020'):which(colnames(popproj) %in% '2050')]
 s_afr_popproj_inf=approx(colnames(s_afr_popproj),as.numeric(s_afr_popproj),n=length(2020:2050))
@@ -499,7 +500,7 @@ filename_cost_outpatient='./input/cost_data_outpatient.csv'; filename_cost_inpat
 # head(read.table(filename_cost_outpatient,sep=','))[,1:11]
 cost_data_outpatient=read.table(filename_cost_outpatient,sep=','); cost_data_inpatient=read.table(filename_cost_inpatient,sep=',')
 cost_treatment_gavi=data.frame(round(cbind(rowMeans(cost_data_outpatient),rowMeans(cost_data_inpatient), 
-                        apply(cost_data_outpatient,1,sd),apply(cost_data_inpatient,1,sd) ),2))
+                                           apply(cost_data_outpatient,1,sd),apply(cost_data_inpatient,1,sd) ),2))
 cost_treatment_gavi=cbind(iso3c=rownames(cost_treatment_gavi),cost_treatment_gavi); rownames(cost_treatment_gavi)=c()
 colnames(cost_treatment_gavi)[2:ncol(cost_treatment_gavi)]=c('mean_outpat','mean_hosp','stdev_outpat','stdev_hosp')
 # package for econ data
@@ -515,9 +516,9 @@ ggplot(cost_treatment_gdp) + geom_point(aes(x=gdp_per_cap_time_aver,y=mean_outpa
 # 65 and 80% correlation
 # linear regression: x <- rnorm(15); y <- x + rnorm(15); z=predict(lm(y ~ x))
 predicted_outpat_cost=predict(lm(cost_treatment_gdp$mean_outpat ~ cost_treatment_gdp$gdp_per_cap_time_aver),
-                                newdata=cost_treatment_gdp[,c('gdp_per_cap_time_aver','mean_outpat')])
+                              newdata=cost_treatment_gdp[,c('gdp_per_cap_time_aver','mean_outpat')])
 predicted_hosp_cost=predict(lm(cost_treatment_gdp$mean_hosp ~ cost_treatment_gdp$gdp_per_cap_time_aver),
-                              newdata=cost_treatment_gdp[,c('gdp_per_cap_time_aver','mean_hosp')])
+                            newdata=cost_treatment_gdp[,c('gdp_per_cap_time_aver','mean_hosp')])
 s_afr_mean_outpat_hosp_pred=c(predicted_outpat_cost[gdp_per_cap_aver_2010_2020$iso3c %in% 'ZAF'],
                               predicted_hosp_cost[gdp_per_cap_aver_2010_2020$iso3c %in% 'ZAF'])
 s_afr_std_outpat_hosp_pred=s_afr_mean_outpat_hosp_pred/2
