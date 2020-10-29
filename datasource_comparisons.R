@@ -1,40 +1,68 @@
 # !diagnostics off
-
-
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
                      plot.title=element_text(hjust=0.5,size=16),
                      axis.text.x=element_text(size=9,angle=90),axis.text.y=element_text(size=9),
                      axis.title=element_text(size=14), text=element_text(family="Calibri"))
-####### RSV data for 1 country from Shi2017 ------------------------------------------------
+
+####### country-specific RSV incidence from Shi2017 ------------------------------------------------
 # LMIC incidence by age scaled by data from 'RSV_burden_Shi_2017'
-f_country_iso='ZAF'; f_outputFileDir="output/1027174825_RSV_gavi72_basecase_n1000" 
-burden_country <- read.csv('input/RSV_burden_Shi_2017.csv',stringsAsFactors = FALSE);
-burden_country_reference <- burden_country$incidence_RSV_associated_ALRI[burden_country$country_iso==f_country_iso]
-# Life table
-life_table <- get_life_table(f_country_iso,2015,f_outputFileDir,0); under5_pop <- life_table$lx[1:60]
-# incidence matrix for all LMICs
-incidence_mat <- convert_pred_into_model_input("./input/incidence_lmic_ts_n5000.csv") # spline_datafiles$incidence
-# cases = incidence per 1000 * population by age
-country_rsv_cases <- (incidence_mat/1000)*under5_pop
-# rsv rate = cases / total cases (per column)
-# take # of cases in an age group and divide by TOTAL number of cases 
-# --> this gives the FRACTION of RSV cases per age group out of ALL RSV cases
-country_rsv_fraction <- country_rsv_cases / rep(colSums(country_rsv_cases),each=dim(country_rsv_cases)[1])
-# country rate = (rsv rate) * (country_reference per 1000) * (country population)
-# (burden_country_reference / 1000) is predicted burden per 1 million -->  x population = predicted total burden
-# country_rsv_rate is the distribution of cases by age groups (as fractions of total) so product distributes total burden
-# this is cases per age group, but # of ppl in age groups not the same!
-country_rsv_pred_cases <- country_rsv_fraction * (burden_country_reference / 1000) * sum(under5_pop)
-# so the colsum is constant, being the total burden
-# rsv rate = rsv cases / population (cases/capita)
-country_rsv_rate=data.frame(country_rsv_pred_cases/under5_pop); age_maxval=nrow(country_rsv_rate)
+
+# steps of calculation
+# f_country_iso='ZAF'; f_outputFileDir="output/1027174825_RSV_gavi72_basecase_n1000" 
+# burden_country <- read.csv('input/RSV_burden_Shi_2017.csv',stringsAsFactors = FALSE);
+# burden_country_reference <- burden_country$incidence_RSV_associated_ALRI[burden_country$country_iso==f_country_iso]
+# # Life table
+# disc_rate=0.03; life_table <- get_life_table(f_country_iso,2015,f_outputFileDir,disc_rate); under5_pop <- life_table$lx[1:60]
+# # incidence matrix for all LMICs
+# incidence_mat <- convert_pred_into_model_input("./input/incidence_lmic_ts_n5000.csv") # spline_datafiles$incidence
+# # cases = incidence per 1000 * population by age
+# country_rsv_cases <- (incidence_mat/1000)*under5_pop
+# # rsv rate = cases / total cases (per column)
+# # take # of cases in an age group and divide by TOTAL number of cases 
+# # --> this gives the FRACTION of RSV cases per age group out of ALL RSV cases
+# country_rsv_fraction <- country_rsv_cases / rep(colSums(country_rsv_cases),each=dim(country_rsv_cases)[1])
+# # country rate = (rsv rate) * (country_reference per 1000) * (country population)
+# # (burden_country_reference / 1000) is predicted burden per 1 million -->  x population = predicted total burden
+# # country_rsv_rate is the distribution of cases by age groups (as fractions of total) so product distributes total burden
+# # this is cases per age group, but # of ppl in age groups not the same!
+# country_rsv_pred_cases <- country_rsv_fraction * (burden_country_reference / 1000) * sum(under5_pop)
+# # so the colsum is constant, being the total burden
+# # rsv rate = rsv cases / population (cases/capita)
+# country_rsv_rate=data.frame(country_rsv_pred_cases/under5_pop); age_maxval=nrow(country_rsv_rate)
 # collate the tables
-cntr_burden_abs=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_pred_cases),
-                           sd=apply(country_rsv_pred_cases,1,sd),type='number_of_cases');
-cntr_burden_percap=data.frame(age=1:age_maxval,mean=rowMeans(country_rsv_rate),sd=apply(country_rsv_rate,1,sd),type='case_per_capita')
+
+# get rates from 'config' list
+sim_config_matrix=read.table("./config/RSV_gavi72_basecase.csv",sep=',', dec='.',stringsAsFactors=F,header=T)
+sim_config_matrix$num_sim<-num_sim; sim_config_matrix$scenario_id<-1:nrow(sim_config_matrix)
+sim_config_matrix$rng_seed<-rng_seed; sim_config_matrix$outputFileDir<-get_output_folder(output_dir)
+cntrs_cea=c('KEN','ZAF'); n_cntr_output=2; cntr_sel=cntrs_cea[n_cntr_output]
+# append S Afr
+if (!cntr_sel %in% sim_config_matrix$country_iso) { 
+  df_append=sim_config_matrix[(nrow(sim_config_matrix)-1):nrow(sim_config_matrix),]
+  df_append$country_iso=cntr_sel; sim_config_matrix=rbind(sim_config_matrix,df_append) }
+burden_cntr_ind=which(sim_config_matrix$country_iso %in% cntrs_cea[n_cntr_output])
+# MV=sim_config_matrix[burden_cntr_ind[1],]; mAb=sim_config_matrix[burden_cntr_ind[2],]
+# which intervention? 1=MatVacc, 2=monocl Abs
+n_interv=1; sel_interv=sim_config_matrix[burden_cntr_ind[n_interv],]; config <- get_rsv_ce_config(sel_interv)
+# get life_table by (run in other file):
+# life_table_ZAF_2020_2025_disc0p03.RData
+# load(paste(f_outputFileDir,"temp",rdata_filename,sep='/'))
+
+# number of cases
+cntr_burden_abs=data.frame(age=1:age_maxval,mean=apply(config$rsv_rate,1,mean)*life_table$lx[1:60],
+                           sd=apply(config$rsv_rate*life_table$lx[1:60],1,sd),type='number_of_cases')
+# no. cases per capita
+cntr_burden_percap=data.frame(age=1:age_maxval,mean=apply(config$rsv_rate,1,mean),
+                              sd=apply(config$rsv_rate,1,sd),type='case_per_capita')
+# hospitalisation rate
 hosp_prob_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(config$hosp_prob),
-                              sd=apply(config$hosp_prob,1,sd),type='hosp_admissions_per_capita');
-cfr_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(config$hosp_CFR),sd=apply(config$hosp_CFR,1,sd),type='cfr_hosp_admissions')
+                              sd=apply(config$hosp_prob,1,sd),type='hosp_admissions_per_capita')
+# hospitalisations per capita
+# hosp_percap_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(config$hosp_prob)*apply(config$rsv_rate,1,mean),
+#                           sd=apply(config$hosp_prob*config$rsv_rate,1,sd),type='hosp_admissions_per_capita')
+# cfr in hospital
+cfr_mat_tidy=data.frame(age=1:age_maxval,mean=rowMeans(config$hosp_CFR),
+                        sd=apply(config$hosp_CFR,1,sd),type='cfr_hosp_admissions')
 cntr_burden_all=rbind(cntr_burden_abs,cntr_burden_percap,hosp_prob_mat_tidy,cfr_mat_tidy)
 # cntr RSV incidence rates
 ggplot(cntr_burden_all,aes(x=age,y=mean)) + geom_line() + geom_point() +
@@ -44,9 +72,22 @@ ggplot(cntr_burden_all,aes(x=age,y=mean)) + geom_line() + geom_point() +
                      axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
                      axis.title=element_text(size=14), text=element_text(family="Calibri")) +
   xlab('Age (month)') + ylab('Total burden') + labs(color="Samples") + ggtitle(paste(f_country_iso,'RSV burden (mean +/- stdev)'))
-# ggsave("output/RSV_burden_cntr_randomsamples.png",width=30,height=18,units="cm") 
+# ggsave(paste0("output/RSV_incidence_",f_country_iso,"_lmic_comparison.png"),width=30,height=18,units="cm") 
 
-#####
+### ### ### ### ### ### ### ### ###
+# compare to own data (s_afr_incid_rate_matrix from other file)
+own_data_matrix=kemri_incid_rate_matrix # s_afr_incid_rate_matrix
+incid_data_compar=rbind(
+  data.frame(age=1:60,mean=apply(own_data_matrix,1,mean),sd=apply(own_data_matrix,1,sd),source='own'),
+  data.frame(cntr_burden_percap[,1:3],source='mcmarcel'))
+ggplot(incid_data_compar,aes(x=age,y=mean,group=source,color=source)) + geom_line() + geom_point() +
+  geom_ribbon(aes(ymin=mean-sd,ymax=mean+sd,fill=source),alpha=0.3,colour=NA) +
+  scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
+  theme_bw() + standard_theme + xlab('Age (month)') + ylab('incidence per capita') + 
+  ggtitle(paste0(f_country_iso,' RSV incidence per capita'))
+# ggsave(paste0('output/',f_country_iso,'_incidence_mcmarcel_owndata.png'),width=30,height=18,units="cm")
+
+### ### ### ### ### ### ### ### ###
 # normalise cntr data to /1000 ppl
 lmic_cntr_burden=cntr_burden_all; case_cols=lmic_cntr_burden$type %in% 'number_of_cases'
 lmic_cntr_burden=lmic_cntr_burden[!case_cols,]
@@ -72,13 +113,8 @@ ggplot(lmic_cntr_burden,aes(x=age,y=mean,color=country)) + geom_line() + geom_po
   geom_ribbon(aes(ymin=mean-sd,ymax=mean+sd,fill=country),alpha=0.3,colour=NA) +
   facet_wrap(~type,scales='free',nrow=2) + # scale_color_manual(values=)
   scale_x_continuous(labels=as.character(seq(0,age_maxval,2)),breaks=seq(0,age_maxval,2)) +
-  theme_bw() + theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
-                     plot.title=element_text(hjust=0.5,size=16),
-                     axis.text.x=element_text(size=11,angle=90,vjust=0.5),axis.text.y=element_text(size=11),
-                     axis.title=element_text(size=14), text=element_text(family="Calibri")) +
-  xlab('Age (month)') + ylab('incidence') + labs(color="Samples") + 
+  theme_bw() + standard_theme + xlab('Age (month)') + ylab('incidence') + labs(color="Samples") + 
   ggtitle(paste0(f_country_iso,' RSV burden (mean +/- stdev)'))
-
 ggsave(paste0("output/RSV_incidence_",f_country_iso,"_lmic_comparison.png"),width=30,height=18,units="cm") 
 
 ####### our own data from KEMRI ------------------------------------------------
@@ -106,8 +142,7 @@ if (length(unique(kenya_pred_data_comb$hospitalisation))==2){
   kenya_pred_data_comb=rbind(kenya_pred_data_comb,datasum) 
 }
 kenya_pred_data_comb$datasource='KEMRI_data'
-##########################
-# MCMARCEL predictions
+### MCMARCEL predictions --------------
 kenya_pred=kenya_burden_all[kenya_burden_all$type %in% 'cases_per_cap',c("age","mean","sd")]; 
 kenya_pred$CI_lower=kenya_pred$mean-kenya_pred$sd; kenya_pred$CI_upper=kenya_pred$mean+kenya_pred$sd
 kenya_pred=kenya_pred[,c('age','mean','CI_lower','CI_upper')]; kenya_pred$hospitalisation='RSV_LRTI'
@@ -187,11 +222,10 @@ ggplot(data_plot,aes(x=age_inf,y=rate,color=hospitalisation,shape=datasource)) +
   xlab('Age (month)') + ylab('incidence') + ggtitle('Kenya RSV incidence under 5yr') 
 # ylim=c(-0.5,ymaxval),expand=F
 # labs(color="Data source",fill="Data source")
-#######
+### ### SAVE 
 ggsave("output/RSV_burden_kenya_data_pred_compare_datasources.png",width=32,height=20,units="cm") 
 # ggsave("output/RSV_burden_kenya_data_pred_compare_nokes2008_2009.pdf",width=30,height=24,units="cm",device=grDevices::pdf) 
 
-#############################################################################
 ### PROCESS RESULTS
 # add net cost per DALY averted
 # daly for severe and nonsevere
@@ -249,7 +283,7 @@ ggplot(KEMRI_kenya_rsv_incidence_ageinf,aes(x=age_inf,y=rate,color=hospitalisati
                      axis.title=element_text(size=14), text=element_text(family="Calibri")) + ggtitle('Kenya RSV incidence per 100k popul')
 # ggsave("output/KEMRI_kenya_rsv_incidence_infdatapoints.png",width=30,height=18,units="cm") 
 
-#####
+### Compare own incid data w MCMARCEL ------
 # we want to input our own incidence and hosp data to get_burden_flexible()
 # currently it is
 # config$rsv_rate [60*5000]: this is a RATE, so per capita
@@ -304,8 +338,8 @@ ggplot(melt(kemri_incid_rate_matrix[,1:60]),aes(x=Var1,y=value,group=Var2,color=
 # config <- get_rsv_ce_config(sel_interv)
 library(fitdistrplus)
 safr_rsv_incid_mcmarcel_kemri=melt(data.frame(rbind(data.frame(config$rsv_rate),data.frame(s_afr_incid_rate_matrix)),
-                                              source=array(sapply(c('mcmarcel','kemri'),function(x) {rep(x,age_maxval)})),age_mts=rep(1:age_maxval,2)),
-                                   id.vars=c('age_mts','source'))
+          source=array(sapply(c('mcmarcel','kemri'),function(x) {rep(x,age_maxval)})),age_mts=rep(1:age_maxval,2)),
+          id.vars=c('age_mts','source'))
 # histograms
 ggplot(safr_rsv_incid_mcmarcel_kemri[safr_rsv_incid_mcmarcel_kemri$age_mts<=18,],aes(x=value,color=source,group=source)) + 
   geom_freqpoly() + facet_wrap(~age_mts) + theme_bw() + standard_theme + 
@@ -388,8 +422,8 @@ ggplot(safr_rsv_incid_mcmarcel_normal_gamma[safr_rsv_incid_mcmarcel_normal_gamma
 # rm(safr_rsv_incid_mcmarcel_normal_gamma)
 ggsave(paste0('output/',f_country_iso,'_gamma_normal_simul_histograms.png'),width=30,height=18,units="cm")
 
-#############################################################################
-# S Afr data
+### ### ### ### ### ### ### ### ### ### ### ###
+# S Afr data -----------------------------
 s_afr_incidence_data=read_csv('../path_rsv_data/SRI_RSV_PATHproject09102020_tidy.csv')
 summary_categs=c("0-6m","6-11m","12-23m","24-59","<1y","<5y")
 s_afr_incidence_data=s_afr_incidence_data[!s_afr_incidence_data$age %in% summary_categs,
@@ -403,7 +437,7 @@ ggplot(safr_plot_data,aes(x=age,y=rate,group=data_type,color=data_type)) + geom_
   geom_ribbon(aes(ymin=rate_CI_lower,ymax=rate_CI_upper,fill=data_type),alpha=0.3,colour=NA) + geom_point(color='black',size=0.2) +
   facet_wrap(~Province) + theme_bw() + standard_theme + xlab('age (months)') + ylab('incidence') +
   ggtitle('South Africa RSV incidence per 100.000 (2011-2016)') + geom_rect(data=subset(safr_plot_data, Province %in% 'South Africa'),fill=NA,
-                                                                            colour="blue",size=1.25,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf)
+          colour="blue",size=1.25,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf)
 # ggsave("output/south_africa_rsv_incidence.png",width=28,height=18,units="cm") 
 
 # hospit rate
@@ -426,7 +460,7 @@ s_afr_incidence_data=s_afr_incidence_data %>% uncount(weights=freq, .id="n",.rem
 s_afr_incidence_data$age_inf=as.numeric(s_afr_incidence_data$age_inf)+(s_afr_incidence_data$n-1)
 s_afr_incidence_data=s_afr_incidence_data[,!colnames(s_afr_incidence_data) %in% c("freq","n")]
 write_csv(s_afr_incidence_data,'../path_rsv_data/s_afr_incidence_data.csv')
-#####
+### ###
 age_maxval=max(s_afr_incidence_data$age_inf)
 ##
 # PLOT
@@ -466,7 +500,7 @@ ggplot(s_afr_incidence_data,aes(x=age_inf,y=rate,group=Province,color=nat_aver))
 # ggsave("output/south_africa_rsv_incidence_age_inf_NAT_AVER.png",width=28,height=14,units="cm")
 ggsave("output/south_africa_rsv_incidence_age_inf_NAT_AVER_linscale.png",width=28,height=14,units="cm")
 
-#####
+### ###
 # birth rates and other data in: 
 all_country_data <- read.table('./input/country_details_gavi72.csv',sep=',',header=T,stringsAsFactors=F)
 # for south africa we don't have the birth rates. load total fertility rate
@@ -492,7 +526,7 @@ s_afr_targetpop_df=data.frame(cbind('South Africa','ZAF',s_afr_lifebirths,2020:2
 colnames(s_afr_targetpop_df)=colnames(all_country_data); s_afr_targetpop_df$target_population=round(as.numeric(s_afr_targetpop_df$target_population))
 write_csv(rbind(all_country_data,s_afr_targetpop_df),'input/country_details_gavi72_expanded.csv')
 
-#######
+### ### ###
 # we don't have inpatient/outpatient cost for south africa
 filename_cost_outpatient='./input/cost_data_outpatient.csv'; filename_cost_inpatient='./input/cost_data_inpatient.csv'
 # config$sample_outpatient_cost <- get_cost_data(configList$country_iso,config$num_sim, filename_cost_outpatient)
@@ -536,3 +570,36 @@ rownames(cost_data_inpatient_expanded)[nrow(cost_data_inpatient_expanded)]='ZAF'
 # save
 write.table(cost_data_outpatient_expanded,'./input/cost_data_outpatient_expanded.csv',sep = ',')
 write.table(cost_data_inpatient_expanded,'./input/cost_data_inpatient_expanded.csv',sep = ',')
+
+### Nyiro 2018 (Nokes) hospitalisation data ---------------------------
+nyiro2018_figure4=read_csv("../path_rsv_data/nyiro2018/figure4.csv")
+nyiro2018_figure4_tidy=melt(nyiro2018_figure4,id.vars=c("id","month","year","age_months","Agegrp_mths"))
+nyiro2018_figure4_tidy=nyiro2018_figure4_tidy[!is.na(nyiro2018_figure4_tidy$value),
+                                              !colnames(nyiro2018_figure4_tidy) %in% 'value']
+nyiro2018_figure4_tidy$Agegrp_mths=factor(nyiro2018_figure4_tidy$Agegrp_mths,
+  levels=c("0-5M","6-11M","12-23M","24-35M","36-59M","5-9Y","10-19Y",">=20Y"))
+# cases by age group and virus
+nyiro2018_figure4_rates=nyiro2018_figure4_tidy %>% group_by(Agegrp_mths,variable) %>% tally()
+nyiro2018_figure4_rates=dcast(nyiro2018_figure4_rates,Agegrp_mths ~ variable)
+nyiro2018_figure4_rates[,'rsv_total']=rowSums(nyiro2018_figure4_rates[,c('rsva_positive','rsvb_positive')],na.rm=T)
+nyiro2018_figure4_rates[,'n_agegroup']=rowSums(nyiro2018_figure4_rates[,2:ncol(nyiro2018_figure4_rates)],na.rm=T)
+standard_theme_mod=standard_theme; standard_theme_mod$axis.text.x$size=16; standard_theme_mod$axis.text.y$size=16
+ggplot(nyiro2018_figure4_rates,aes(x=Agegrp_mths,y=rsv_total/n_agegroup,group=1)) + geom_line(colour='blue') + geom_point() +
+  theme_bw() + standard_theme_mod + xlab('age group') + ylab('RSV A+B incidence per capita') + 
+  ggtitle('Kenya RSV incidence (Nyiro 2018)')
+ggsave("output/kenya_nyiro2018_figure4_RSV_incidence.png",width=20,height=15,units="cm") 
+
+### figure 5
+nyiro2018_figure5=read_csv("../path_rsv_data/nyiro2018/figure5.csv")
+nyiro2018_figure5_tidy=melt(nyiro2018_figure5,id.vars=c("id","month","year","sample_tested","sample_positives" ))
+nyiro2018_figure5_tidy=nyiro2018_figure5_tidy[!is.na(nyiro2018_figure5_tidy$value),
+                      !colnames(nyiro2018_figure5_tidy) %in% c('value',"sample_tested","sample_positives")]
+nyiro2018_figure5_rates=nyiro2018_figure5_tidy %>% group_by(month,variable) %>% tally()
+nyiro2018_figure5_rates=dcast(nyiro2018_figure5_rates,month ~ variable)
+nyiro2018_figure5_rates[,'rsv_total']=rowSums(nyiro2018_figure5_rates[,c('rsva_positive','rsvb_positive')],na.rm=T)
+nyiro2018_figure5_rates[,'n_agegroup']=rowSums(nyiro2018_figure5_rates[,2:ncol(nyiro2018_figure5_rates)],na.rm=T)
+### ###
+ggplot(nyiro2018_figure5_rates,aes(x=month,y=rsv_total/n_agegroup,group=1)) + geom_line(colour='blue') + geom_point() +
+  theme_bw() + standard_theme_mod + xlab('age (months)') + ylab('RSV A+B incidence per capita') + 
+  scale_x_continuous(breaks=1:12) + scale_y_continuous(breaks=(0:6)/20) + ggtitle('Kenya RSV incidence (Nyiro 2018)')
+ggsave("output/kenya_nyiro2018_figure5_RSV_incidence.png",width=24,height=15,units="cm") 
