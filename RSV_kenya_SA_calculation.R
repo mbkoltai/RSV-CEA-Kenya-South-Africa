@@ -1,7 +1,7 @@
 #' ---
 #' title: RSV burden&cost calculations with incidence data from Kenya and South Africa 
 #' author: Mihaly Koltai
-#' date: October 2020
+#' date: 29/October 2020
 #' output:
 #'    html_document:
 #'      toc: true
@@ -55,7 +55,7 @@ sim_config_matrix$rng_seed <- rng_seed; sim_config_matrix$outputFileDir <- get_o
 #' ## Load demographic data
 cntrs_cea=c('KEN','ZAF'); 
 ##### SELECT COUNTRY
-n_cntr_output=2; cntr_sel=cntrs_cea[n_cntr_output]
+n_cntr_output=1; cntr_sel=cntrs_cea[n_cntr_output]
 ### Append South Africa to cntr list -------------------------
 # S Afr is not in the original study so needs to be appended
 if (!cntr_sel %in% sim_config_matrix$country_iso) {
@@ -181,7 +181,6 @@ if (randsampl_distrib_type %in% 'normal'){
   kenya_gamma_estim=rbind(kenya_gamma_estim,c(gammavals$shape,gammavals$rate))
   kemri_incid_rate_matrix[k,]=rgamma(5e3,shape=gammavals$shape,rate=gammavals$rate)}
 }
-
 # write_csv(kemri_incid_rate_matrix,'input/kemri_incid_rate_matrix.csv')
 ####
 # kemri hospitalisation rate
@@ -281,16 +280,23 @@ quantls_min_max=burden_mcmarcel_owndata_comp %>% group_by(variable,source) %>%
   summarise(value=quantile(value,quantl_vals),q=quantl_vals) %>% group_by(variable,q) %>% 
   summarise(min_q=min(value),max_q=max(value)) %>% group_by(variable) %>% summarise(min_q=min(min_q),max_q=max(max_q))
 # create x axis limits
-quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths',
-                                                'total_medical_cost_0to1y','total_medical_cost_averted'),2]=0
-quantls_min_max[quantls_min_max$variable %in% 'rsv_cases',3]=3.2e5
-quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','hosp_cases_averted',
-                            'rsv_deaths_averted','total_DALY_0to1y_averted'),2]=c(-1e4,-5e6,-1e3,-200,-1e4)
-quantls_min_max[quantls_min_max$variable %in% c('incremental_cost_0to1y','net_cost/DALY_averted'),3]=c(1e7,3e3)
+if (f_country_iso=='ZAF'){
+quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),2]=0
+quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted',
+                  'hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted'),2]=c(-1e4,-5e6,-1e6,-1e3,-200,-1e4)
+quantls_min_max[quantls_min_max$variable %in% 
+        c('rsv_cases','incremental_cost_0to1y','hosp_cases_averted','net_cost/DALY_averted'),3]=c(3.2e5,1e7,2.5e4,3e3)} else {
+# KEN
+quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),2]=0
+quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted',
+  'hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted'),2]=
+  c(-1e4,-1e6,-1e5,-1e3,-200,-1e4,-5e2)
+quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','incremental_cost_0to1y',
+                            'hosp_cases_averted','net_cost/DALY_averted'),3]=c(4e5,6e6,2.5e4,4e3)
+}
 scales_list=list(); for (k in 1:length(cols_burden_sel)) {
   scales_list[[k]]=scale_override(k,scale_x_continuous(limits=c(quantls_min_max[k,]$min_q,quantls_min_max[k,]$max_q))) }
-# package 
-# devtools::install_github("zeehio/facetscales")
+### ###
 # PLOT histograms
 if (n_interv==1) {interv_tag='_Mat_Vacc' } else {interv_tag='_monocl_Ab'}
 ggplot(burden_mcmarcel_owndata_comp,aes(x=value,group=source)) + geom_freqpoly(aes(color=source),size=1.2) + 
