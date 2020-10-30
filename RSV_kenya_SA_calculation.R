@@ -12,12 +12,14 @@
 # Libraries
 # to render as html: rmarkdown::render("RSV_kenya_SA_calculation.R",output_dir='output/cea_plots/')
 library(tidyverse); library(reshape2); library(matrixStats); library(rstudioapi); # library(fitdistrplus)
-source('functions/GammaParmsFromQuantiles.R')
 # from: http://www.medicine.mcgill.ca/epidemiology/Joseph/PBelisle/GammaParmsFromQuantiles.html
 # sessionInfo()
-currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path)
 # path
-setwd(currentdir_path)
+currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
+# base MCMARCEL functions
+source('functions/RSV_load_all.R')
+# custom made functions
+source('functions/GammaParmsFromQuantiles.R');source('functions/get_burden_flexible.R');source('functions/facet_wrap_fcns.R')
 # clear vars: rm(list=ls())
 # plotting theme I reuse
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
@@ -27,35 +29,13 @@ standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",si
 run_tag  <- 'RSV_gavi72_basecase'  # 72 Gavi countries (basecase) 
 # number of stochastic samples in the probabilistic sensitivity analysis (PSA)
 num_sim <- 5000
-# random number generater seed
-rng_seed <- gsub('-','',Sys.Date()) # 20190118
-# option to create geographical and country-specific plots # note: this might require substantial processing time
-boolean_country_plots <- FALSE; boolean_map_plots <- FALSE # TRUE
-source('functions/RSV_load_all.R')
-# output directory postfix
-output_dir_postfix <- paste0(run_tag,'_n',num_sim)
-# add timestap to output directory name
-output_dir <- paste0('output/',format(Sys.time(),'%m%d%H%M%S_'),output_dir_postfix)
-# set seed
-set.seed(rng_seed)
-# config filename
-config_filename <- paste0('./config/',run_tag,'.csv'); time_stamp_main <- Sys.time()
-# always clear temporary results
-cli_print('Clear all temporary output'); unlink(file.path(get_temp_output_folder(output_dir)),recursive = T)
-# start parallel workers: if running for many cntrs and we want to parallelise
+source('functions/load_config_pars.R')
+# if running for many cntrs and we want to parallelise
 # start_parallel_workers()
-# 144x12 table
-sim_config_matrix <- read.table(config_filename,sep=',', dec='.',stringsAsFactors = F,header = T)
-# set output file name prefix
-sim_output_filename  <- file.path(output_dir,run_tag)
-# add simulation details
-sim_config_matrix$num_sim <- num_sim; sim_config_matrix$scenario_id <- 1:nrow(sim_config_matrix)
-sim_config_matrix$rng_seed <- rng_seed; sim_config_matrix$outputFileDir <- get_output_folder(output_dir)
 ### Demographic data -------------------------
 #' ## Load demographic data
-cntrs_cea=c('KEN','ZAF'); 
 ##### SELECT COUNTRY
-n_cntr_output=1; cntr_sel=cntrs_cea[n_cntr_output]
+cntrs_cea=c('KEN','ZAF'); n_cntr_output=2; cntr_sel=cntrs_cea[n_cntr_output]
 ### Append South Africa to cntr list -------------------------
 # S Afr is not in the original study so needs to be appended
 if (!cntr_sel %in% sim_config_matrix$country_iso) {
@@ -86,8 +66,7 @@ for (f_disc_rate_qaly in c(0,0.03)) {
   load(paste(f_outputFileDir,"temp",rdata_filename,sep='/'))
   # life_table contains: "age","lx": # left alive, "life_expectancy", "nMx": mortality, "lx_rate": # left alive/(init popul)
   # "life_expectancy_disc": disc life yrs
-  if (f_disc_rate_qaly==0){
-    life_table_tidy=data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)} else {
+  if (f_disc_rate_qaly==0){ life_table_tidy=data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)} else {
       life_table_tidy=rbind(life_table_tidy,data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)) }
 }
 ####
@@ -96,8 +75,7 @@ lifetable_varlist=list(as.character(unique(life_table_tidy$variable)),
                        c('alive/100.000 births','life expectancy','mortality','alive/birth','discounted life expectancy'))
 life_table_tidy$variable_expl=as.character(life_table_tidy$variable)
 for (k in unique(life_table_tidy$variable)){
-  life_table_tidy$variable_expl[life_table_tidy$variable %in% k]=lifetable_varlist[[2]][lifetable_varlist[[1]] %in% k]
-}
+  life_table_tidy$variable_expl[life_table_tidy$variable %in% k]=lifetable_varlist[[2]][lifetable_varlist[[1]] %in% k] }
 ggplot(life_table_tidy,aes(x=age,y=value,group=disc_rate,color=factor(disc_rate),linetype=factor(disc_rate))) + 
   geom_line(size=1.2) + facet_wrap(~variable_expl,scales='free') + 
   theme_bw() + standard_theme + xlab('age (in months)') + ylab('') + 
@@ -115,16 +93,13 @@ incidence_one_table=get_incidence(country_opt$country_iso[burden_cntr_ind],outpu
 RSV_burden_Shi_2017_tidy=read_csv('input/RSV_burden_Shi_2017_tidy.csv')
 RSV_burden_Shi_2017_tidy$variable[grepl('incidence',RSV_burden_Shi_2017_tidy$variable)]='incidence of RSV-assoc. ALRI per 1000'
 RSV_burden_Shi_2017_tidy$variable[grepl('episode',RSV_burden_Shi_2017_tidy$variable)]='number of episodes'
-standard_theme_mod=standard_theme; standard_theme_mod$axis.text.x$size=4.5; standard_theme_mod$axis.text.x$hjust=0.99
-standard_theme_mod$axis.text.x$vjust=0.5
-non_na_vals=!(is.na(RSV_burden_Shi_2017_tidy$value) | is.na(RSV_burden_Shi_2017_tidy$lower_CI))
+standard_theme_mod=standard_theme; standard_theme_mod$axis.text.x$size=6; standard_theme_mod$axis.text.x$hjust=0.99
+standard_theme_mod$axis.text.x$vjust=0.5; non_na_vals=!(is.na(RSV_burden_Shi_2017_tidy$value) | is.na(RSV_burden_Shi_2017_tidy$lower_CI))
 ggplot(RSV_burden_Shi_2017_tidy[non_na_vals,],aes(x=location_name,y=value,ymin=lower_CI,ymax=upper_CI,group=1)) + 
   geom_pointrange(aes(color=variable),size=0.6,fatten=0.1,fill="white",shape=22) + scale_color_manual(values=c('blue','red')) +
   facet_wrap(~variable,nrow=2,scales='free') + theme_bw() + standard_theme_mod + 
   scale_y_continuous(trans='log10') + xlab('') + ylab('') + guides(color=FALSE)
 # ggsave('output/incid_per_cntr.png',width=30,height=18,units="cm")
-# theme(axis.text.x=element_text(angle=90,vjust=0.5,hjust=1,size=5))
-# coord_cartesian(ylim=c(0, 7))
 ### OWN BURDEN DATA --------------------------------------------------
 #' ## Incidence data from partners
 ### Kenya incidence data -------------------------
@@ -135,34 +110,32 @@ SARI_Rates_2010_2018_tidydata=read_csv(kenya_data_path)
 nonsumm_truthvals=!grepl("<|24-59|12-23",SARI_Rates_2010_2018_tidydata$age_in_months) | 
   grepl("<1$",SARI_Rates_2010_2018_tidydata$age_in_months)
 KEMRI_kenya_rsv_incidence_ageinf=SARI_Rates_2010_2018_tidydata[nonsumm_truthvals & # don't include summary variables
-                                                                 SARI_Rates_2010_2018_tidydata$region %in% 'Kenya' & # national average
-                                                                 SARI_Rates_2010_2018_tidydata$RSV_association,] # RSV-associated
+                                      SARI_Rates_2010_2018_tidydata$region %in% 'Kenya' & # national average
+                                      SARI_Rates_2010_2018_tidydata$RSV_association,] # RSV-associated
 KEMRI_kenya_rsv_incidence_ageinf$age_in_months=factor(KEMRI_kenya_rsv_incidence_ageinf$age_in_months,
                                                       levels=unique(KEMRI_kenya_rsv_incidence_ageinf$age_in_months))
-KEMRI_kenya_rsv_incidence_ageinf$period=factor(KEMRI_kenya_rsv_incidence_ageinf$period,
-                                               levels=unique(KEMRI_kenya_rsv_incidence_ageinf$period))
+KEMRI_kenya_rsv_incidence_ageinf$period=factor(KEMRI_kenya_rsv_incidence_ageinf$period,levels=unique(KEMRI_kenya_rsv_incidence_ageinf$period))
 KEMRI_kenya_rsv_incidence_ageinf$age_inf=as.character(KEMRI_kenya_rsv_incidence_ageinf$age_in_months)
 KEMRI_kenya_rsv_incidence_ageinf$age_inf[KEMRI_kenya_rsv_incidence_ageinf$age_inf %in% "<1"]='0'
-KEMRI_kenya_rsv_incidence_ageinf$freq=1; 
+KEMRI_kenya_rsv_incidence_ageinf[,'freq']=1
 KEMRI_kenya_rsv_incidence_ageinf$freq[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)]=
   rowDiffs(matrix(as.numeric(unlist(strsplit(KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',
           KEMRI_kenya_rsv_incidence_ageinf$age_inf)],'-'))),ncol=2,byrow=T))+1
 KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)]=
   as.numeric(sapply(strsplit(KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)],'-'),'[[',1))
 KEMRI_kenya_rsv_incidence_ageinf=KEMRI_kenya_rsv_incidence_ageinf %>% uncount(weights=freq, .id="n",.remove=F)
-KEMRI_kenya_rsv_incidence_ageinf$age_inf=as.numeric(KEMRI_kenya_rsv_incidence_ageinf$age_inf)+
-  (KEMRI_kenya_rsv_incidence_ageinf$n-1)
+KEMRI_kenya_rsv_incidence_ageinf$age_inf=as.numeric(KEMRI_kenya_rsv_incidence_ageinf$age_inf)+(KEMRI_kenya_rsv_incidence_ageinf$n-1)
 # create per capita matrix
 kemri_rsv_incidence_per_capita=array(t(KEMRI_kenya_rsv_incidence_ageinf[
   KEMRI_kenya_rsv_incidence_ageinf$period %in% '2010-2018'& KEMRI_kenya_rsv_incidence_ageinf$hospitalisation==FALSE,'rate']))
-popul_denom=1e5; 
+popul_denom=1e5
 if (max(kemri_rsv_incidence_per_capita>1)){kemri_rsv_incidence_per_capita=kemri_rsv_incidence_per_capita/popul_denom }
 kemri_rsv_incidence_CIs=KEMRI_kenya_rsv_incidence_ageinf[KEMRI_kenya_rsv_incidence_ageinf$period %in% '2010-2018'&
         KEMRI_kenya_rsv_incidence_ageinf$hospitalisation==FALSE,c('CI_lower','CI_upper')]/popul_denom
 # generate random samples from gamma or normal distribution
 # create matrix with 5000 iterations; max age in months is 60 (5yrs)
 n_iter=5e3; age_maxval=60; CI95_const=1.96
-# what distribution are we assuming? McMarcel data is gamma-distributed
+# what distribution are we assuming? McMarcel can be fit well by gamma distrib
 randsampl_distrib_type='gamma'
 if (randsampl_distrib_type %in% 'normal'){
   # CI_lower = mu - 1.96*stdev/sqrt(sample size)
@@ -245,9 +218,7 @@ n_interv=1; sel_interv=sim_config_matrix[burden_cntr_ind[n_interv],]; config <- 
 # with original MCMARCEL: 
 # sim_output=get_burden(sel_interv)
 ####
-# need to provide config$rsv_rate [60*5e3], config$hosp_prob [60*5e3] as arguments to get_burden_flexible
-source('functions/get_burden_flexible.R') # source('functions/RSV_get_cost_data.R')
-# for own data
+# need to provide config$rsv_rate [60*5e3], config$hosp_prob [60*5e3] as arguments to get_burden_flexible() for own data
 sim_output_flexible=get_burden_flexible(sel_interv,burden_list_own_data[[n_cntr_output]][[1]],
                                         burden_list_own_data[[n_cntr_output]][[2]])
 # for original
@@ -283,9 +254,9 @@ quantls_min_max=burden_mcmarcel_owndata_comp %>% group_by(variable,source) %>%
 if (f_country_iso=='ZAF'){
 quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),2]=0
 quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted',
-                  'hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted'),2]=c(-1e4,-5e6,-1e6,-1e3,-200,-1e4)
+        'hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted'),2]=c(-1e4,-5e6,-1e6,-1e3,-200,-1e4)
 quantls_min_max[quantls_min_max$variable %in% 
-        c('rsv_cases','incremental_cost_0to1y','hosp_cases_averted','net_cost/DALY_averted'),3]=c(3.2e5,1e7,2.5e4,3e3)} else {
+  c('rsv_cases','incremental_cost_0to1y','hosp_cases_averted','net_cost/DALY_averted'),3]=c(3.2e5,1e7,2.5e4,3e3)} else {
 # KEN
 quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),2]=0
 quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted',
@@ -318,6 +289,6 @@ cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_bu
 # if (!dir.exists('output/cea_plots')) {dir.create('output/cea_plots')}
 # SAVE
 # ggsave(cea_plot_filename,width=30,height=18,units="cm")
-### Net cost/DALY averted -------------------------
+### Net cost/DALY averted (mean, median, stdev) -------------------------
 burden_mcmarcel_owndata_comp[burden_mcmarcel_owndata_comp$variable %in% 'net_cost/DALY_averted',] %>% 
   group_by(source) %>% summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
