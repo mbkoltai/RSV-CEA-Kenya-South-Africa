@@ -14,8 +14,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   # load own data if it was supplied to the functions
   if (!is.null(dim(own_rate_matrix)) & !is.null(dim(own_hosp_matrix))){
     print('check if first matrix is per capita rate of RSV, second is rate of hospitalisation!')
-    config$rsv_rate = data.frame(own_rate_matrix); config$hosp_prob=data.frame(own_hosp_matrix)
-  }
+    config$rsv_rate = data.frame(own_rate_matrix); config$hosp_prob=data.frame(own_hosp_matrix) }
   
   ###############################
   # Pre-processing              #
@@ -45,7 +44,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   # Parameter uncertainty: BURDEN  #
   ##################################
   # sample num_sim indices
-  # config$rsv_rate is the dataframe of rsv cases/person adjust to the given country
+  # config$rsv_rate is the dataframe of rsv cases/person adjusted to the given country
   # iterations to select
   # selecting num_sim samples from 
   sample_rsv_rate_ind      <- sample(ncol(config$rsv_rate),config$num_sim,replace=T)

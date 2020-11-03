@@ -19,192 +19,51 @@ currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(curren
 # base MCMARCEL functions
 source('functions/RSV_load_all.R')
 # custom made functions
-source('functions/GammaParmsFromQuantiles.R');source('functions/get_burden_flexible.R');source('functions/facet_wrap_fcns.R')
+source('functions/GammaParmsFromQuantiles.R'); source('functions/get_burden_flexible.R');source('functions/facet_wrap_fcns.R')
 # clear vars: rm(list=ls())
-# plotting theme I reuse
+# plotting theme
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
       plot.title=element_text(hjust=0.5,size=16),axis.text.x=element_text(size=9,angle=90),axis.text.y=element_text(size=9),
+      legend.title=element_text(size=14),legend.text=element_text(size=12),
       axis.title=element_text(size=14), text=element_text(family="Calibri"))
 # run tag
 run_tag  <- 'RSV_gavi72_basecase'  # 72 Gavi countries (basecase) 
-# number of stochastic samples in the probabilistic sensitivity analysis (PSA)
+# number of stochastic samples in the probabilistic sensitivity analysis (PSA).
 num_sim <- 5000
+##### SELECT COUNTRY
+cntrs_cea=c('KEN','ZAF')
+n_cntr_output=2; cntr_sel=cntrs_cea[n_cntr_output]
+# load config params
 source('functions/load_config_pars.R')
 # if running for many cntrs and we want to parallelise
 # start_parallel_workers()
 ### Demographic data -------------------------
 #' ## Load demographic data
-##### SELECT COUNTRY
-cntrs_cea=c('KEN','ZAF'); n_cntr_output=2; cntr_sel=cntrs_cea[n_cntr_output]
-### Append South Africa to cntr list -------------------------
-# S Afr is not in the original study so needs to be appended
-if (!cntr_sel %in% sim_config_matrix$country_iso) {
-  df_append=sim_config_matrix[(nrow(sim_config_matrix)-1):nrow(sim_config_matrix),]
-  df_append$country_iso=cntr_sel; sim_config_matrix=rbind(sim_config_matrix,df_append) }
-# create UN country data (calls wpp package)
-create_UN_country_database(output_dir)
-# pre-process WPP2017 data
-load_wpp2017_databases(output_dir)
-# loads sex ratio and mortality by age groups; dataframes: sexratio, mxM, mxF
-n_cntr=length(unique(sim_config_matrix$country_iso))
-country_period_opt=data.frame(country_iso=rep(unique(sim_config_matrix$country_iso),2),
-                              year=unlist(lapply(c(2020,2015),function(x){rep(x,n_cntr)})))
-country_period_opt<-cbind(as.character(country_period_opt$country_iso), t(sapply(country_period_opt$year,get_year_category)))
-# generate life table
-# select country
-i_life=which(country_period_opt[,1] %in% cntr_sel)[1]; f_country_iso=country_period_opt[i_life,1]
-f_year=country_period_opt[i_life,3]; f_outputFileDir=output_dir
-# with or without discounting
-for (f_disc_rate_qaly in c(0,0.03)) {
-  # this saves into an Rdata file
-  generate_life_table(f_country_iso,f_year,f_outputFileDir,f_disc_rate_qaly)
-  # 'life_table_KEN_2020_2025_disc0' ,'p03','.RData' # , 'life_table_KEN_2020_2025_disc0.RData'
-  rdata_prefix=paste0('life_table_',f_country_iso,'_2020_2025_disc0')
-  if (f_disc_rate_qaly>0) {rdata_filename=paste(rdata_prefix,'p03','.RData',sep='')} else {
-    rdata_filename=paste(rdata_prefix,'.RData',sep='')}
-  # load life_table
-  load(paste(f_outputFileDir,"temp",rdata_filename,sep='/'))
-  # life_table contains: "age","lx": # left alive, "life_expectancy", "nMx": mortality, "lx_rate": # left alive/(init popul)
-  # "life_expectancy_disc": disc life yrs
-  if (f_disc_rate_qaly==0){ life_table_tidy=data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)} else {
-      life_table_tidy=rbind(life_table_tidy,data.frame(melt(life_table,id.vars='age'),disc_rate=f_disc_rate_qaly)) }
-}
-####
-# plot life tables
-lifetable_varlist=list(as.character(unique(life_table_tidy$variable)),
-                       c('alive/100.000 births','life expectancy','mortality','alive/birth','discounted life expectancy'))
-life_table_tidy$variable_expl=as.character(life_table_tidy$variable)
-for (k in unique(life_table_tidy$variable)){
-  life_table_tidy$variable_expl[life_table_tidy$variable %in% k]=lifetable_varlist[[2]][lifetable_varlist[[1]] %in% k] }
-ggplot(life_table_tidy,aes(x=age,y=value,group=disc_rate,color=factor(disc_rate),linetype=factor(disc_rate))) + 
-  geom_line(size=1.2) + facet_wrap(~variable_expl,scales='free') + 
-  theme_bw() + standard_theme + xlab('age (in months)') + ylab('') + 
-  ggtitle(paste(cntr_sel,'demographics')) + labs(color='discount rate',linetype='discount rate')
-# ggsave(paste0("output/life_table_",f_country_iso,"_2020_2025_disc0p03.png"),width=30,height=18,units="cm")
-### Shi incidence data -------------------------
-# get unique country codes
-country_opt <- data.frame(country_iso = unique(sim_config_matrix$country_iso)); 
-burden_cntr_ind=which(country_opt$country_iso %in% cntr_sel)
-incidence_one_table=get_incidence(country_opt$country_iso[burden_cntr_ind],output_dir)
-# incidence data for all LMICs
-# RSV_burden_Shi_2017=read_csv('input/RSV_burden_Shi_2017.csv')
-# histogram: ggplot(RSV_burden_Shi_2017,aes(x=incidence_RSV_associated_ALRI)) + geom_histogram(binwidth=2)
-# lineplot: national averages with CIs
-RSV_burden_Shi_2017_tidy=read_csv('input/RSV_burden_Shi_2017_tidy.csv')
-RSV_burden_Shi_2017_tidy$variable[grepl('incidence',RSV_burden_Shi_2017_tidy$variable)]='incidence of RSV-assoc. ALRI per 1000'
-RSV_burden_Shi_2017_tidy$variable[grepl('episode',RSV_burden_Shi_2017_tidy$variable)]='number of episodes'
-standard_theme_mod=standard_theme; standard_theme_mod$axis.text.x$size=6; standard_theme_mod$axis.text.x$hjust=0.99
-standard_theme_mod$axis.text.x$vjust=0.5; non_na_vals=!(is.na(RSV_burden_Shi_2017_tidy$value) | is.na(RSV_burden_Shi_2017_tidy$lower_CI))
-ggplot(RSV_burden_Shi_2017_tidy[non_na_vals,],aes(x=location_name,y=value,ymin=lower_CI,ymax=upper_CI,group=1)) + 
-  geom_pointrange(aes(color=variable),size=0.6,fatten=0.1,fill="white",shape=22) + scale_color_manual(values=c('blue','red')) +
-  facet_wrap(~variable,nrow=2,scales='free') + theme_bw() + standard_theme_mod + 
-  scale_y_continuous(trans='log10') + xlab('') + ylab('') + guides(color=FALSE)
-# ggsave('output/incid_per_cntr.png',width=30,height=18,units="cm")
+#### Load life tables and incidence used by MCMARCEL (this is not needed for CEA below)
+source('functions/load_incidence_lifetables.R')
+# plot lifetable
+fcn_plot_lifetable('')
+# plot incidence for cntrs (Set argument to 'save' to save)
+fcn_plot_lmic_incidence('')
 ### OWN BURDEN DATA --------------------------------------------------
 #' ## Incidence data from partners
+source('functions/load_own_data.R')
 ### Kenya incidence data -------------------------
 #' ### Kenya
 kenya_data_path='../path_rsv_data/SARI_Rates_2010_2018/SARI_Rates_2010_2018_tidydata_cleaned.csv'
-SARI_Rates_2010_2018_tidydata=read_csv(kenya_data_path)
-# remove summary age groups
-nonsumm_truthvals=!grepl("<|24-59|12-23",SARI_Rates_2010_2018_tidydata$age_in_months) | 
-  grepl("<1$",SARI_Rates_2010_2018_tidydata$age_in_months)
-KEMRI_kenya_rsv_incidence_ageinf=SARI_Rates_2010_2018_tidydata[nonsumm_truthvals & # don't include summary variables
-                                      SARI_Rates_2010_2018_tidydata$region %in% 'Kenya' & # national average
-                                      SARI_Rates_2010_2018_tidydata$RSV_association,] # RSV-associated
-KEMRI_kenya_rsv_incidence_ageinf$age_in_months=factor(KEMRI_kenya_rsv_incidence_ageinf$age_in_months,
-                                                      levels=unique(KEMRI_kenya_rsv_incidence_ageinf$age_in_months))
-KEMRI_kenya_rsv_incidence_ageinf$period=factor(KEMRI_kenya_rsv_incidence_ageinf$period,levels=unique(KEMRI_kenya_rsv_incidence_ageinf$period))
-KEMRI_kenya_rsv_incidence_ageinf$age_inf=as.character(KEMRI_kenya_rsv_incidence_ageinf$age_in_months)
-KEMRI_kenya_rsv_incidence_ageinf$age_inf[KEMRI_kenya_rsv_incidence_ageinf$age_inf %in% "<1"]='0'
-KEMRI_kenya_rsv_incidence_ageinf[,'freq']=1
-KEMRI_kenya_rsv_incidence_ageinf$freq[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)]=
-  rowDiffs(matrix(as.numeric(unlist(strsplit(KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',
-          KEMRI_kenya_rsv_incidence_ageinf$age_inf)],'-'))),ncol=2,byrow=T))+1
-KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)]=
-  as.numeric(sapply(strsplit(KEMRI_kenya_rsv_incidence_ageinf$age_inf[grepl('-',KEMRI_kenya_rsv_incidence_ageinf$age_inf)],'-'),'[[',1))
-KEMRI_kenya_rsv_incidence_ageinf=KEMRI_kenya_rsv_incidence_ageinf %>% uncount(weights=freq, .id="n",.remove=F)
-KEMRI_kenya_rsv_incidence_ageinf$age_inf=as.numeric(KEMRI_kenya_rsv_incidence_ageinf$age_inf)+(KEMRI_kenya_rsv_incidence_ageinf$n-1)
-# create per capita matrix
-kemri_rsv_incidence_per_capita=array(t(KEMRI_kenya_rsv_incidence_ageinf[
-  KEMRI_kenya_rsv_incidence_ageinf$period %in% '2010-2018'& KEMRI_kenya_rsv_incidence_ageinf$hospitalisation==FALSE,'rate']))
-popul_denom=1e5
-if (max(kemri_rsv_incidence_per_capita>1)){kemri_rsv_incidence_per_capita=kemri_rsv_incidence_per_capita/popul_denom }
-kemri_rsv_incidence_CIs=KEMRI_kenya_rsv_incidence_ageinf[KEMRI_kenya_rsv_incidence_ageinf$period %in% '2010-2018'&
-        KEMRI_kenya_rsv_incidence_ageinf$hospitalisation==FALSE,c('CI_lower','CI_upper')]/popul_denom
-# generate random samples from gamma or normal distribution
-# create matrix with 5000 iterations; max age in months is 60 (5yrs)
-n_iter=5e3; age_maxval=60; CI95_const=1.96
-# what distribution are we assuming? McMarcel can be fit well by gamma distrib
-randsampl_distrib_type='gamma'
-if (randsampl_distrib_type %in% 'normal'){
-  # CI_lower = mu - 1.96*stdev/sqrt(sample size)
-  stdev_est=cbind((kemri_rsv_incidence_per_capita-kemri_rsv_incidence_CIs[,1])/CI95_const,
-                  (kemri_rsv_incidence_CIs[,2] - kemri_rsv_incidence_per_capita)/CI95_const)
-  kemri_rsv_incidence_stdevs=rowMeans(stdev_est)
-  kemri_incid_rate_matrix=sapply(1:n_iter, function(iters) {
-    sapply(1:age_maxval, function(x) {
-      rnorm(1,mean=kemri_rsv_incidence_per_capita[x],sd=kemri_rsv_incidence_stdevs[x] )})})} else {
-# inferring gamma distrib from CIs
-        kemri_incid_rate_matrix=matrix(NA,nrow=age_maxval,ncol=n_iter)
-  for (k in 1:length(kemri_rsv_incidence_per_capita)) {
-  if (k==1) {kenya_gamma_estim=data.frame()}
-  gammavals=gamma.parms.from.quantiles(q=c(kemri_rsv_incidence_CIs[k,1],
-                                           kemri_rsv_incidence_CIs[k,2]),p=c(0.025,0.975))
-  kenya_gamma_estim=rbind(kenya_gamma_estim,c(gammavals$shape,gammavals$rate))
-  kemri_incid_rate_matrix[k,]=rgamma(5e3,shape=gammavals$shape,rate=gammavals$rate)}
-}
-# write_csv(kemri_incid_rate_matrix,'input/kemri_incid_rate_matrix.csv')
-####
-# kemri hospitalisation rate
-kemri_hosp_rate=KEMRI_kenya_rsv_incidence_ageinf %>% group_by(age_in_months,period) %>%
-  summarise(hosp_rate=rate[hospitalisation==TRUE]/(rate[hospitalisation==FALSE]+rate[hospitalisation==TRUE]))
-kemri_hosp_val=as.numeric(unique(round(array(kemri_hosp_rate[kemri_hosp_rate$period %in% '2010-2018','hosp_rate']),2)))
-# how much variation around this value? we dont know, lets use values from mcmarcel (there mean is 9%, ours is 24%)
-kemri_hosp_rate_stdev=0.05656925 # value from: unique(apply(config$hosp_prob,1,sd))
-# generate a hosp matrix with 5000 samples from our data
-kemri_hosp_rate_matrix=sapply(1:n_iter, function(x) {rep(rnorm(1,mean=kemri_hosp_val,
-                              sd=unique(round(rep(kemri_hosp_rate_stdev,age_maxval),4))),age_maxval)})
-# write_csv(kemri_hosp_rate_matrix,'input/kemri_hosp_rate_matrix.csv')
-### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### S Afr incidence data -------------------------
+n_iter=5e3; age_maxval=60; CI95_const=1.96; CI_intervals=c(0.025,0.975); randsampl_distrib_type='gamma'
+kenya_hosp_rate_stdev=0.05656925 # value from: unique(apply(config$hosp_prob,1,sd))
+# a list of incidence and hospit rate matrices: list(kemri_incid_rate_matrix,kemri_hosp_rate_matrix)
+kenya_incid_hosp_rate=fcn_load_kenya(kenya_data_path,n_iter,age_maxval,
+                                     CI95_const,CI_intervals,kenya_hosp_rate_stdev,randsampl_distrib_type)
 #' ### South Africa
-s_afr_incidence_data=read_csv('../path_rsv_data/s_afr_incidence_data.csv')
-s_afr_nat_average_totalcases=s_afr_incidence_data[s_afr_incidence_data$Province %in% 'South Africa' 
-                                                  & s_afr_incidence_data$data_type %in% 'total',]
-safr_hosp_rate_province_means=read_csv('input/safr_hosp_rate_province_means.csv')
-# the incidence rate in data file is per 100K, normalize to per capita
-if (max(s_afr_nat_average_totalcases$rate)>1){ s_afr_nat_average_totalcases[,c("rate","rate_CI_lower","rate_CI_upper")]=
-  s_afr_nat_average_totalcases[,c("rate","rate_CI_lower","rate_CI_upper")]/popul_denom}
-# st devs from CI95s
-s_afr_nat_average_totalcases[,"stdev"]=rowMeans(cbind((s_afr_nat_average_totalcases$rate-s_afr_nat_average_totalcases$rate_CI_lower)/CI95_const,
-                          (s_afr_nat_average_totalcases$rate_CI_upper-s_afr_nat_average_totalcases$rate)/CI95_const))
-# we need a 60x5000 matrix of per capita RSV cases - need to pick a distribution to generate random samples
-# normal distribution, assuming n=1
-randsampl_distrib_type='gamma'
-if (randsampl_distrib_type %in% 'normal'){
-s_afr_incid_rate_matrix=sapply(1:n_iter, function(iters) {
-  sapply(1:age_maxval, function(x) {rnorm(1,mean=s_afr_nat_average_totalcases$rate[x],
-                                          sd=s_afr_nat_average_totalcases$stdev[x])})})} else {
-# inferring gamma distrib from CIs
-s_afr_incid_rate_matrix=matrix(NA,nrow=age_maxval,ncol=n_iter)
-for (k in 1:nrow(s_afr_nat_average_totalcases)) {
-  if (k==1) {s_afr_gamma_estim=data.frame()}
-  gammavals=gamma.parms.from.quantiles(q=c(s_afr_nat_average_totalcases$rate_CI_lower[k],
-                                           s_afr_nat_average_totalcases$rate_CI_upper[k]),p=c(0.025,0.975))
-  s_afr_gamma_estim=rbind(s_afr_gamma_estim,c(gammavals$shape,gammavals$rate))
-  s_afr_incid_rate_matrix[k,]=rgamma(5e3,shape=gammavals$shape,rate=gammavals$rate)  }
-}
-# hosp rate
-# we don't have a stdev value, we'll use MCMARCEL again
-safr_hosp_rate_stdev=kemri_hosp_rate_stdev
-s_afr_hosp_rate_matrix=sapply(1:n_iter, function(x) {
-  rep(rnorm(1,mean=safr_hosp_rate_province_means$mean_hosp_rate[safr_hosp_rate_province_means$Province %in% 'South Africa'],
-            sd=safr_hosp_rate_stdev),age_maxval)})
+safr_data_path='../path_rsv_data/s_afr_incidence_data.csv'; s_afr_province_means_filepath='input/safr_hosp_rate_province_means.csv'
+s_afr_incid_hosp_rate=fcn_load_s_afr(safr_data_path,n_iter,age_maxval,CI95_const,CI_intervals,
+                        kenya_hosp_rate_stdev,randsampl_distrib_type)
 ####
 # put all matrices into 1 list; 1 matrix: burden_list_own_data[[2]][[2]]
-burden_list_own_data=list(list(kemri_incid_rate_matrix,kemri_hosp_rate_matrix),
-                          list(s_afr_incid_rate_matrix,s_afr_hosp_rate_matrix))
+burden_list_own_data=list(list(kenya_incid_hosp_rate[[1]],kenya_incid_hosp_rate[[2]]),
+                          list(s_afr_incid_hosp_rate[[1]],s_afr_incid_hosp_rate[[2]]))
 ### BURDEN & CEA CALCULATION --------------------------------------------------
 #' ## BURDEN CALCULATION with OWN DATA
 # South Africa was not in the original analysis, so we cannot compare to default mcmarcel output
@@ -212,73 +71,45 @@ burden_list_own_data=list(list(kemri_incid_rate_matrix,kemri_hosp_rate_matrix),
 # read in config parameters for burden calculation
 burden_cntr_ind=which(sim_config_matrix$country_iso %in% cntrs_cea[n_cntr_output])
 # MV=sim_config_matrix[burden_cntr_ind[1],]; mAb=sim_config_matrix[burden_cntr_ind[2],]
-# which intervention? 1=MatVacc, 2=monocl Abs
-n_interv=1; sel_interv=sim_config_matrix[burden_cntr_ind[n_interv],]; config <- get_rsv_ce_config(sel_interv)
+# SELECT INTERVENTION: 1=MatVacc, 2=monocl Abs
+n_interv=1; sel_interv=sim_config_matrix[burden_cntr_ind[n_interv],]; # config <- get_rsv_ce_config(sel_interv)
 # if (n_cntr_output==2){sel_interv$country_iso=cntrs_cea[n_cntr_output]}
 # with original MCMARCEL: 
 # sim_output=get_burden(sel_interv)
 ####
-# need to provide config$rsv_rate [60*5e3], config$hosp_prob [60*5e3] as arguments to get_burden_flexible() for own data
+# own data: need to provide incidence matrix [60*5e3] and hospitalisation matrix [60*5e3] as arguments
 sim_output_flexible=get_burden_flexible(sel_interv,burden_list_own_data[[n_cntr_output]][[1]],
                                         burden_list_own_data[[n_cntr_output]][[2]])
 # for original
 sim_output=get_burden_flexible(sel_interv,NA,NA)
 ### Plot results -------------------------
 #' ## Process & plot results
-# calculate ICER
-icercolname='net_cost/DALY_averted'; icercols=c('incremental_cost_0to1y','total_DALY_0to1y_averted')
-sim_output[,icercolname]=sim_output[,icercols[1]]/sim_output[,icercols[2]]
-sim_output_flexible[,icercolname]=sim_output_flexible[,icercols[1]]/sim_output_flexible[,icercols[2]]
 # outputs to display
 cols_burden_sel=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y',
-                  "cost_rsv_hosp_0to1y",'total_medical_cost_0to1y','incremental_cost_0to1y','total_medical_cost_averted',
+                  'cost_rsv_hosp_0to1y','total_medical_cost_0to1y','incremental_cost_0to1y','total_medical_cost_averted',
                   "hosp_cases_averted", "rsv_deaths_averted", "total_DALY_0to1y_averted",icercolname) 
 # "total_YLD_1to5y_averted","total_YLL_1to5y_averted",
-# histograms: mcmarcel vs kemri
-burden_mcmarcel_owndata_comp=melt(
-  rbind(cbind(sim_output[,cols_burden_sel],data.frame(source='mcmarcel',iter=1:nrow(sim_output))),
-        cbind(sim_output_flexible[,cols_burden_sel],
-              data.frame(source=paste0(sel_interv$country_iso,' (own)')),iter=1:nrow(sim_output_flexible) ) ),
-        id.vars=c('iter','source'))
+# source('functions/set_xlims_cea.R')
+burden_mcmarcel_owndata_comp=fcn_process_burden_output(sim_output_flexible,sim_output,sel_interv,cols_burden_sel)
 # we'll show mean values by vertical lines
-mean_intercepts=burden_mcmarcel_owndata_comp %>%  group_by(source,variable) %>% summarize(int = mean(value))
-mean_intercepts[,'colorval']='red'; mean_intercepts$colorval[mean_intercepts$source %in% 'kemri']='green'
-# set xlimits by 2% quantiles
-# quantls=burden_mcmarcel_owndata_comp %>% group_by(variable,source) %>% 
-# summarise(value=quantile(value,quantl_vals),q=quantl_vals)
-quantl_vals=c(0.01,0.99) 
-quantls_min_max=burden_mcmarcel_owndata_comp %>% group_by(variable,source) %>% 
-  summarise(value=quantile(value,quantl_vals),q=quantl_vals) %>% group_by(variable,q) %>% 
-  summarise(min_q=min(value),max_q=max(value)) %>% group_by(variable) %>% summarise(min_q=min(min_q),max_q=max(max_q))
-# create x axis limits
-if (f_country_iso=='ZAF'){
-quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),2]=0
-quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted',
-        'hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted'),2]=c(-1e4,-5e6,-1e6,-1e3,-200,-1e4)
-quantls_min_max[quantls_min_max$variable %in% 
-  c('rsv_cases','incremental_cost_0to1y','hosp_cases_averted','net_cost/DALY_averted'),3]=c(3.2e5,1e7,2.5e4,3e3)} else {
-# KEN
-quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),2]=0
-quantls_min_max[quantls_min_max$variable %in% c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted',
-  'hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted'),2]=
-  c(-1e4,-1e6,-1e5,-1e3,-200,-1e4,-5e2)
-quantls_min_max[quantls_min_max$variable %in% c('rsv_cases','incremental_cost_0to1y',
-                            'hosp_cases_averted','net_cost/DALY_averted'),3]=c(4e5,6e6,2.5e4,4e3)
-}
-scales_list=list(); for (k in 1:length(cols_burden_sel)) {
-  scales_list[[k]]=scale_override(k,scale_x_continuous(limits=c(quantls_min_max[k,]$min_q,quantls_min_max[k,]$max_q))) }
-### ###
-# PLOT histograms
+color_vals=c('red','green'); mean_intercepts=fcn_mean_intercepts(burden_mcmarcel_owndata_comp,color_vals)
+# set xlimits by quantiles
+quantl_vals=c(0.01,0.99); xlimvals=list(); xlimvals_cols=list()
+xlimvals[['KEN']]=list(0,c(-1e4,-1e6,-1e5,-1e3,-200,-1e4,-5e2),c(4e5,  6e6,2.5e4,4e3))
+# xlimvals[['ZAF']]=list(0,c(-1e4,-5e6,-1e6,-1e3,-200,-1e4),     c(3.2e5,1e7,2.5e4,3e3))
+xlimvals_cols[['KEN']]=list(c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),
+      c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted','hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted'),
+      c('rsv_cases','incremental_cost_0to1y', 'hosp_cases_averted','net_cost/DALY_averted'))
+# xlimvals_cols[['ZAF']]= list(xlimvals_cols[['KEN']][[1]],xlimvals_cols[['KEN']][[2]][1:6],xlimvals_cols[['KEN']][[3]])
+# define xlims (leave xlimvals_cols, xlimvals)
+scales_list=fcn_set_xlims(f_country_iso,burden_mcmarcel_owndata_comp,quantl_vals,xlimvals_cols,xlimvals)
+### Plot CEA histograms ------------------
 if (n_interv==1) {interv_tag='_Mat_Vacc' } else {interv_tag='_monocl_Ab'}
 ggplot(burden_mcmarcel_owndata_comp,aes(x=value,group=source)) + geom_freqpoly(aes(color=source),size=1.2) + 
   geom_vline(data=mean_intercepts,aes(xintercept=int,linetype=source),size=0.8) + # geom_blank(data=dummy) +
   # facet_wrap(~variable,scales='free',labeller=label_wrap_gen(width=10)) + # ,ncol=3
   facet_wrap_custom(~variable,scales='free',scale_overrides=scales_list,labeller=label_wrap_gen(width=10)) +
-  theme_bw() + theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
-                  plot.title=element_text(hjust=0.5,size=16),
-                     axis.text.x=element_text(size=9,angle=90),axis.text.y=element_text(size=7),
-                     axis.title=element_text(size=14),text=element_text(family="Calibri")) +
-  scale_linetype_manual(values=c('solid','dotdash')) +
+  theme_bw() + standard_theme + scale_linetype_manual(values=c('solid','dotdash')) +
   geom_rect(data=subset(burden_mcmarcel_owndata_comp, variable %in% icercolname),fill=NA,colour="blue",
             size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) + 
   ggtitle(paste(sel_interv$country_iso,'RSV burden & intervention estimates:',gsub('_','',interv_tag))) +
@@ -292,3 +123,62 @@ cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_bu
 ### Net cost/DALY averted (mean, median, stdev) -------------------------
 burden_mcmarcel_owndata_comp[burden_mcmarcel_owndata_comp$variable %in% 'net_cost/DALY_averted',] %>% 
   group_by(source) %>% summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### Extrapolation to other countries -------------------------
+
+# fraction of cases by age groups
+kenya_agegroup_fractions=rowMeans(kenya_incid_hosp_rate[[1]]/colSums(kenya_incid_hosp_rate[[1]]))
+if (!sum(kenya_agegroup_fractions)==1){kenya_agegroup_fractions=kenya_agegroup_fractions/sum(kenya_agegroup_fractions)}
+# S Afr
+s_afr_agegroup_fractions=rowMeans(s_afr_incid_hosp_rate[[1]]/colSums(s_afr_incid_hosp_rate[[1]]))
+if (!sum(s_afr_agegroup_fractions)==1){s_afr_agegroup_fractions=s_afr_agegroup_fractions/sum(s_afr_agegroup_fractions)}
+# mean incidence
+RSV_burden_Shi_2017=read_csv('input/RSV_burden_Shi_2017.csv')
+# sub-Saharan Afr countries
+sub_sah_afr_cntrs=c("Angola","Benin","Botswana","Burkina Faso","Burundi","Cameroon","Cape Verde","Central African Republic",
+"Chad","Comoros","Congo, Rep.","Congo, Dem. Rep.","C_te d'Ivoire","Djibouti","Equatorial Guinea","Eritrea","Ethiopia","Gabon",
+"Gambia, The","Ghana","Guinea","Guinea-Bissau","Kenya","Lesotho","Liberia","Madagascar","Malawi","Mali","Mauritania","Mauritius",
+"Mozambique","Namibia","Niger","Nigeria","Rwanda","S_o Tom_ and Principe","Senegal","Seychelles","Sierra Leone","Somalia",
+"South Africa","Sudan","South Sudan","Swaziland","Tanzania","Togo","Uganda","Zambia","Zimbabwe")
+# convert to ISO3
+sub_sah_afr_cntrs_iso3=RSV_burden_Shi_2017$country_iso[RSV_burden_Shi_2017$location_name %in% sub_sah_afr_cntrs]
+sub_sah_afr_cntrs_iso3=sub_sah_afr_cntrs_iso3[sub_sah_afr_cntrs_iso3 %in% sim_config_matrix$country_iso]
+# which intervention?
+n_interv=1
+### Calculate CEA  -------------------------
+set.seed(as.integer(format(Sys.Date(), "%Y%m%d")))
+start_parallel_workers()
+foreach(k=1:length(sub_sah_afr_cntrs_iso3),.combine='rbind',.packages=all_packages,.verbose=FALSE) %dopar% {
+# for (k in 1:10){
+  # LOOP through SubSah cntrs
+  # ptm <- proc.time()
+  cntr_name=sub_sah_afr_cntrs_iso3[k]; df_country <- get_incidence(cntr_name,output_dir)
+  # Set config values
+  config=list(); config$rsv_rate <- df_country[[1]]; config$hosp_prob <- df_country[[2]]; config$hosp_CFR <- df_country[[3]]
+  rsv_rate_fractions=sapply(1:ncol(config$rsv_rate),function(x) {config$rsv_rate[,x]/sum(config$rsv_rate[,x])})
+  # this can generate values x>1 or x<0
+  subsah_incid_redist=sapply(1:n_iter, function(x)
+  {(rsv_rate_fractions[,x]/rowMeans(rsv_rate_fractions))*kenya_agegroup_fractions*sum(config$rsv_rate[,x])})
+  # generates low noise:
+  # matrix(unlist(lapply(colSums(config$rsv_rate),function(x) {kenya_agegroup_fractions*x})),ncol=n_iter)
+  sel_interv=sim_config_matrix[which(sim_config_matrix$country_iso %in% cntr_name)[n_interv],] 
+  if (!is.na(sel_interv$rng_seed)){
+  write_csv(get_burden_flexible(sel_interv,subsah_incid_redist,config$hosp_prob),
+            paste0("output/sub_sah_afr_proj/",cntr_name,"_own_data.csv"))
+  print(paste("done with",cntr_name,"own data",sep=" "))
+  # mcmarcel_outputs=get_burden_flexible(sel_interv,NA,NA)}
+  write_csv(get_burden_flexible(sel_interv,NA,NA),paste0("output/sub_sah_afr_proj/",cntr_name,"_mcmarcel.csv"))
+  }
+  # proc.time() - ptm
+}
+
+#### Process extrapolation results  -------------------------
+
+folder_projection='output/'
+burden_mcmarcel_owndata_comp=fcn_process_burden_output(sim_output_flexible,sim_output,sel_interv,cols_burden_sel)
+# we'll show mean values by vertical lines
+color_vals=c('red','green'); mean_intercepts=fcn_mean_intercepts(burden_mcmarcel_owndata_comp,color_vals)
+# set xlimits by quantiles
+quantl_vals=c(0.01,0.99); xlimvals=list(); xlimvals_cols=list()
+scales_list=fcn_set_xlims(f_country_iso,burden_mcmarcel_owndata_comp,quantl_vals,'','')

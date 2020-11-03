@@ -61,7 +61,7 @@ get_incidence <- function(f_country_iso,f_outputFileDir){
       
       # select details for the given country
       flag <- burden_country$country_iso == f_country_iso
-      
+
       if(!any(flag)){
         cli_print('!! Reference data missing in ', filename_country_BoD, 'for: ',f_country_iso,'  !!')
         cli_print('!! USE KENYA !!')

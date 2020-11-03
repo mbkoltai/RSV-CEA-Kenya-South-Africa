@@ -18,6 +18,7 @@ input/kenya_rsv_rate.csv
 input/RSV_burden_Shi_2017_tidy.csv
 input/stillbirth_rate_data.csv
 output/*.png
+output/sub_sah_afr_proj
 output/*RSV_gavi*
 *RData
 *Rhistory

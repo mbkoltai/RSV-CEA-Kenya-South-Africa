@@ -603,3 +603,50 @@ ggplot(nyiro2018_figure5_rates,aes(x=month,y=rsv_total/n_agegroup,group=1)) + ge
   theme_bw() + standard_theme_mod + xlab('age (months)') + ylab('RSV A+B incidence per capita') + 
   scale_x_continuous(breaks=1:12) + scale_y_continuous(breaks=(0:6)/20) + ggtitle('Kenya RSV incidence (Nyiro 2018)')
 ggsave("output/kenya_nyiro2018_figure5_RSV_incidence.png",width=24,height=15,units="cm") 
+
+### ### ### ### ### ###### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+##### SELECT COUNTRY
+# cntrs_cea=c('KEN','ZAF')
+n_cntr_output=1; cntr_sel=cntrs_cea[n_cntr_output]
+# abs number of RSV cases from mcmarcel data
+burden_cntr_ind=which(sim_config_matrix$country_iso %in% cntr_sel)
+# data on stillbirths etc
+all_country_data <- data.frame(read_csv('./input/country_details_gavi72_expanded.csv'))
+target_population=all_country_data$target_population[all_country_data$country_iso3 %in% cntr_sel & all_country_data$year==2020]
+stillbirth_rate=all_country_data$stillbirth_rate[all_country_data$country_iso3 %in% cntr_sel & all_country_data$year==2020]
+target_population_lifebirth <- target_population*(1-stillbirth_rate)
+# to generate life_table
+source('functions/load_incidence_lifetables.R')
+target_popul_agedistrib <- (life_table$lx_rate[1:age_maxval]*target_population_lifebirth)/12 # fix 2018-01-11
+# abs number of RSV cases: here OWN DATA introduced
+rsv_cases=colSums(target_popul_agedistrib*burden_list_own_data[[n_cntr_output]][[1]]) # config$rsv_rate
+# colSums(config$rsv_rate*rep(1,60))
+
+# calculate burden with default MCMARCEL: # sim_output=get_burden(sel_interv)
+
+# get incidence for a country (MCMARCEL data)
+# df_country <- get_incidence(config$country_iso,config$outputFileDir)
+df_country <- get_incidence('KEN',output_dir)
+# Set config values
+config=list(); config$rsv_rate <- df_country[[1]]; config$hosp_prob <- df_country[[2]]; config$hosp_CFR <- df_country[[3]]
+mcmarcel_agegroup_fractions=rowMeans(config$rsv_rate/colSums(config$rsv_rate))
+if (!sum(mcmarcel_agegroup_fractions)==1){mcmarcel_agegroup_fractions=mcmarcel_agegroup_fractions/sum(mcmarcel_agegroup_fractions)}
+#
+age_distribs_owndata=melt(data.frame(age_groups=1:60,kenya=kenya_agegroup_fractions,s_afr=s_afr_agegroup_fractions,
+                                     mcmarcel_lmic=mcmarcel_agegroup_fractions),id.vars='age_groups')
+# plot age group fractions
+ggplot(age_distribs_owndata,aes(x=age_groups,y=value,group=variable,color=variable)) + geom_line() + geom_point() +
+  theme_bw() + standard_theme + scale_x_continuous(breaks=seq(0,60,2)) + scale_y_continuous(breaks=seq(0,0.16,0.01)) +
+  xlab('age in months') + ylab('% of cases') + labs(color='country') + coord_cartesian(xlim=c(2,58))
+# ggsave('output/own_data_agegroup_fractions.png',width=24,height=18,units="cm")
+
+####
+# Senegal original vs redistributed incidence
+age_distribs_SEN_redistr=melt(data.frame(age_groups=1:60,SEN_mcmarcel=rowMeans(config$rsv_rate),
+                                         SEN_redistr=rowMeans(subsah_incid_redist)),id.vars=c('age_groups')) 
+age_distribs_SEN_redistr[,"stdev"]=c(sd_mcmarcel=apply(config$rsv_rate,1,sd),sd_redist=apply(subsah_incid_redist,1,sd))
+ggplot(age_distribs_SEN_redistr,aes(x=age_groups,y=value,group=variable,color=variable)) + geom_line() + geom_point() +
+  geom_ribbon(aes(ymin=value-stdev,ymax=value+stdev,fill=variable),alpha=0.3,colour=NA) + theme_bw() + standard_theme +
+  scale_x_continuous(breaks=seq(0,60,2)) + scale_y_continuous(breaks=seq(0,1,0.05)) +
+  xlab('age in months') + ylab('per capita incidence') + labs(color='age distributions') + 
+  coord_cartesian(xlim=c(2,58),ylim=c(0.02,1))

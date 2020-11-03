@@ -330,7 +330,7 @@ get_burden <- function(configList) {
 	## OUTPUT                      ##
 	#################################
 	## FUNCTION TO AGGREGATE BURDEN OUTPUT
-	# note: fix to get age-specific results, withough duplicating code
+	# note: fix to get age-specific results, without duplicating code
 	aggregate_output <- function(age_function,age_tag){
 	  output_all <- data.frame(
 	    rsv_cases      = colSums(age_function(rsv_cases)),

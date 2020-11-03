@@ -20,3 +20,10 @@ sim_output_filename  <- file.path(output_dir,run_tag)
 # add simulation details
 sim_config_matrix$num_sim <- num_sim; sim_config_matrix$scenario_id <- 1:nrow(sim_config_matrix)
 sim_config_matrix$rng_seed <- rng_seed; sim_config_matrix$outputFileDir <- get_output_folder(output_dir)
+
+### Append South Africa to cntr list -------------------------
+# S Afr is not in the original study so needs to be appended
+if (!cntr_sel %in% sim_config_matrix$country_iso) {
+  df_append=sim_config_matrix[(nrow(sim_config_matrix)-1):nrow(sim_config_matrix),]
+  df_append$country_iso=cntr_sel; sim_config_matrix=rbind(sim_config_matrix,df_append) 
+  rownames(sim_config_matrix)=1:nrow(sim_config_matrix)}
