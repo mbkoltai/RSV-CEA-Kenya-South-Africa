@@ -90,32 +90,32 @@ cols_burden_sel=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y',
                   "hosp_cases_averted", "rsv_deaths_averted", "total_DALY_0to1y_averted",icercolname) 
 # "total_YLD_1to5y_averted","total_YLL_1to5y_averted",
 # source('functions/set_xlims_cea.R')
-burden_mcmarcel_owndata_comp=fcn_process_burden_output(sim_output_flexible,sim_output,sel_interv,cols_burden_sel)
+burden_mcmarcel_owndata_comp=fcn_process_burden_output(sim_output_flexible,sim_output,sel_cntr,cols_burden_sel)
 # we'll show mean values by vertical lines
 color_vals=c('red','green'); mean_intercepts=fcn_mean_intercepts(burden_mcmarcel_owndata_comp,color_vals)
 # set xlimits by quantiles
 quantl_vals=c(0.01,0.99); xlimvals=list(); xlimvals_cols=list()
 xlimvals[['KEN']]=list(0,c(-1e4,-1e6,-1e5,-1e3,-200,-1e4,-5e2),c(4e5,  6e6,2.5e4,4e3))
-# xlimvals[['ZAF']]=list(0,c(-1e4,-5e6,-1e6,-1e3,-200,-1e4),     c(3.2e5,1e7,2.5e4,3e3))
 xlimvals_cols[['KEN']]=list(c('rsv_cases','hosp_cases','rsv_deaths','total_medical_cost_0to1y'),
-      c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted','hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted'),
-      c('rsv_cases','incremental_cost_0to1y', 'hosp_cases_averted','net_cost/DALY_averted'))
+c('total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_averted','hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted'),
+    c('rsv_cases','incremental_cost_0to1y', 'hosp_cases_averted','net_cost/DALY_averted'))
+# xlimvals[['ZAF']]=list(0,c(-1e4,-5e6,-1e6,-1e3,-200,-1e4),     c(3.2e5,1e7,2.5e4,3e3))
 # xlimvals_cols[['ZAF']]= list(xlimvals_cols[['KEN']][[1]],xlimvals_cols[['KEN']][[2]][1:6],xlimvals_cols[['KEN']][[3]])
 # define xlims (leave xlimvals_cols, xlimvals)
 scales_list=fcn_set_xlims(f_country_iso,burden_mcmarcel_owndata_comp,quantl_vals,xlimvals_cols,xlimvals)
 ### Plot CEA histograms ------------------
 if (n_interv==1) {interv_tag='_Mat_Vacc' } else {interv_tag='_monocl_Ab'}
 ggplot(burden_mcmarcel_owndata_comp,aes(x=value,group=source)) + geom_freqpoly(aes(color=source),size=1.2) + 
-  geom_vline(data=mean_intercepts,aes(xintercept=int,linetype=source),size=0.8) + # geom_blank(data=dummy) +
+  geom_vline(data=mean_intercepts,aes(xintercept=int,linetype=source),size=0.8) + 
   # facet_wrap(~variable,scales='free',labeller=label_wrap_gen(width=10)) + # ,ncol=3
   facet_wrap_custom(~variable,scales='free',scale_overrides=scales_list,labeller=label_wrap_gen(width=10)) +
   theme_bw() + standard_theme + scale_linetype_manual(values=c('solid','dotdash')) +
   geom_rect(data=subset(burden_mcmarcel_owndata_comp, variable %in% icercolname),fill=NA,colour="blue",
             size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) + 
   ggtitle(paste(sel_interv$country_iso,'RSV burden & intervention estimates:',gsub('_','',interv_tag))) +
-  labs(color='data source',linetype='mean') + guides(xintercept=FALSE,linetype=guide_legend(ncol=2)) 
+  labs(color='data source',linetype='mean') + guides(xintercept=FALSE,linetype=guide_legend(ncol=2))
 # save plot
-cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_burden_estimates_1000samples",
+cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_burden_estimates_n",n_iter,
                         interv_tag,'_',randsampl_distrib_type,'samples',".png",sep="")
 # if (!dir.exists('output/cea_plots')) {dir.create('output/cea_plots')}
 # SAVE
@@ -125,7 +125,7 @@ burden_mcmarcel_owndata_comp[burden_mcmarcel_owndata_comp$variable %in% 'net_cos
   group_by(source) %>% summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### Extrapolation to other countries -------------------------
+### Extrapolation to other Sub-Sah Afr countries -------------------------
 
 # fraction of cases by age groups
 kenya_agegroup_fractions=rowMeans(kenya_incid_hosp_rate[[1]]/colSums(kenya_incid_hosp_rate[[1]]))
@@ -174,11 +174,45 @@ foreach(k=1:length(sub_sah_afr_cntrs_iso3),.combine='rbind',.packages=all_packag
 }
 
 #### Process extrapolation results  -------------------------
+folder_projection='output/sub_sah_afr_proj/'
+cea_file_list=list.files(folder_projection); cea_file_id=sapply(strsplit(cea_file_list,"_"),'[[',1)
+icer_col="net_cost/DALY_averted"
+burden_comparison_all_subsah_afr=list()
+for (k in 1:length(sub_sah_afr_cntrs_iso3)){
+  sel_cntr=sub_sah_afr_cntrs_iso3[k]; CEA_files_indcntr=cea_file_list[cea_file_id %in% sel_cntr]
+  sel_cntr_fullname=RSV_burden_Shi_2017$location_name[RSV_burden_Shi_2017$country_iso %in% sel_cntr]
+  burden_mcmarcel_owndata=fcn_process_burden_output(read_csv(paste0(folder_projection,CEA_files_indcntr[[2]])),
+                          read_csv(paste0(folder_projection,CEA_files_indcntr[[1]])),sel_cntr,cols_burden_sel)
+  # set xlimits by quantiles
+  quantl_vals=c(0.01,0.99); # xlimvals=list(); xlimvals_cols=list()
+  scales_list=fcn_set_xlims(sel_cntr,burden_mcmarcel_owndata,quantl_vals,'','')
+  # PLOT distribution (density plot)
+  data_to_plot=burden_mcmarcel_owndata; data_to_plot$source=gsub("\\(|\\)","",gsub(sel_cntr,"",data_to_plot$source))
+  ## we'll show mean values by vertical lines
+  mean_intercepts=fcn_mean_intercepts(data_to_plot,color_vals)
+  # leave 'scales_list' empty to have default x axes
+  save_flag='yes'
+  fcn_plot_cea_distribs(data_to_plot,mean_intercepts,scales_list, standard_theme,n_interv,sel_cntr_fullname,save_flag)
+  # box plot
+  # ggplot(data_to_plot,aes(x=source,y=value,color=source)) + 
+  #   # geom_boxplot(outlier.size = 0.1) +
+  #   # geom_pointrange(aes(ymin=upper,ymax=lower),size=0.6,fatten=0.1,fill="white",shape=22) +
+  #   geom_violin(draw_quantiles=c(0.25,0.5,0.75)) +
+  #   geom_hline(data=mean_intercepts,aes(yintercept=int,color=source),size=0.8) + 
+  #   # facet_wrap_custom(~variable,scales='free',scale_overrides=scales_list,labeller=label_wrap_gen(width=10)) + #
+  #   facet_wrap(~variable,scales="free",ncol=5) + theme_bw() + standard_theme +
+  #   geom_rect(data=subset(data_to_plot, variable %in% icer_col),fill=NA,colour="blue",
+  #             size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) + xlab('') + ylab('') + # scale_y_log10() + 
+  #   ggtitle(paste('RSV burden & intervention estimates',gsub('_','',interv_tag),": ",sel_cntr_fullname)) +
+  #   labs(color='mean value') # + guides(xintercept=FALSE,linetype=guide_legend(ncol=2)) # ,linetype='mean'
+  
+  ## mean/median/stdev
+  # burden_comparison_median=burden_mcmarcel_owndata %>% group_by(variable,source) %>% 
+  #   summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
+  # burden_comparison_median[,"country"]=sapply(strsplit(as.character(burden_comparison_median$source)," "),"[[",1)
+  # burden_comparison_median$source=gsub("\\(|\\)","",sapply(strsplit(as.character(burden_comparison_median$source)," "),"[[",2))
+  # list_all_subsah_afr[[k]]=burden_comparison_median
+}
 
-folder_projection='output/'
-burden_mcmarcel_owndata_comp=fcn_process_burden_output(sim_output_flexible,sim_output,sel_interv,cols_burden_sel)
-# we'll show mean values by vertical lines
-color_vals=c('red','green'); mean_intercepts=fcn_mean_intercepts(burden_mcmarcel_owndata_comp,color_vals)
-# set xlimits by quantiles
-quantl_vals=c(0.01,0.99); xlimvals=list(); xlimvals_cols=list()
-scales_list=fcn_set_xlims(f_country_iso,burden_mcmarcel_owndata_comp,quantl_vals,'','')
+burden_comparison_all_subsah_afr=do.call(rbind,list_all_subsah_afr)
+write_csv(burden_comparison_all_subsah_afr,'output/sub_sah_afr_proj/burden_comparison_all_subsah_afr.csv')

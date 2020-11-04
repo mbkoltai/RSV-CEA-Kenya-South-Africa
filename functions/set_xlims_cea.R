@@ -19,7 +19,7 @@ scales_list
 }
 
 ### process burden calc output
-fcn_process_burden_output<-function(sim_output_flexible,sim_output,sel_interv,cols_burden_sel){
+fcn_process_burden_output<-function(sim_output_flexible,sim_output,sel_cntr,cols_burden_sel){
   icercolname='net_cost/DALY_averted'; icercols=c('incremental_cost_0to1y','total_DALY_0to1y_averted')
   sim_output[,icercolname]=sim_output[,icercols[1]]/sim_output[,icercols[2]]
   sim_output_flexible[,icercolname]=sim_output_flexible[,icercols[1]]/sim_output_flexible[,icercols[2]]
@@ -31,16 +31,42 @@ fcn_process_burden_output<-function(sim_output_flexible,sim_output,sel_interv,co
   # histograms: mcmarcel vs kemri
   burden_mcmarcel_owndata_comp=melt(
     rbind( cbind(sim_output[,cols_burden_sel],
-                data.frame(source=paste0(sel_interv$country_iso,' (mcmarcel)'),iter=1:nrow(sim_output))),
+                data.frame(source=paste0(sel_cntr,' (mcmarcel)'),iter=1:nrow(sim_output))),
            cbind(sim_output_flexible[,cols_burden_sel],
-                data.frame(source=paste0(sel_interv$country_iso,' (own)'),iter=1:nrow(sim_output_flexible) ) ) ),
+                data.frame(source=paste0(sel_cntr,' (own)'),iter=1:nrow(sim_output_flexible) ) ) ),
     id.vars=c('iter','source'))
   burden_mcmarcel_owndata_comp
 }
 
-### calculate mean values as intercepts
+### calculate mean values as intercepts --------------
 fcn_mean_intercepts=function(burden_mcmarcel_owndata_comp,color_vals){
 mean_intercepts=burden_mcmarcel_owndata_comp %>% group_by(source,variable) %>% summarize(int = mean(value))
 mean_intercepts[,'colorval']=color_vals[1]; mean_intercepts$colorval[grepl('own',mean_intercepts$source)]=color_vals[2]
 mean_intercepts
+}
+
+### plot distributions ---------
+fcn_plot_cea_distribs <- function(burden_mcmarcel_owndata_comp,mean_intercepts,scales_list,
+                                standard_theme,n_interv,sel_cntr_fullname,save_flag){
+  if (n_interv==1) {interv_tag='_Mat_Vacc' } else {interv_tag='_monocl_Ab'}
+p<-ggplot(burden_mcmarcel_owndata_comp,aes(x=value,group=source,color=source)) + geom_freqpoly(size=1.2) + 
+  geom_vline(data=mean_intercepts,aes(xintercept=int,color=source),size=0.8) + 
+  theme_bw() + standard_theme + scale_linetype_manual(values=c('solid','dotdash')) +
+  geom_rect(data=subset(burden_mcmarcel_owndata_comp, variable %in% "net_cost/DALY_averted"),fill=NA,colour="blue",
+            size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) +
+  ggtitle(paste('RSV burden & intervention estimates',gsub('_','',interv_tag),": ",sel_cntr_fullname)) +
+  labs(color='data source',linetype='mean') + guides(xintercept=FALSE,linetype=guide_legend(ncol=2))
+
+if (length(scales_list)>1){
+p <- p+ facet_wrap_custom(~variable,scales='free',scale_overrides=scales_list,labeller=label_wrap_gen(width=10))} else {
+p <- p + facet_wrap(~variable,scales = "free") }
+
+if (nchar(save_flag)>1){
+  print('saving')
+  cea_plot_filename=paste("output/sub_sah_afr_proj/plots/",gsub(" ","_",sel_cntr_fullname),
+                          "_burden_estimates_n",n_iter,interv_tag,".png",sep="")
+  # SAVE
+  ggsave(cea_plot_filename,width=30,height=18,units="cm")
+}
+p
 }
