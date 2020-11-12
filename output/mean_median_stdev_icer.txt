@@ -1,0 +1,9 @@
+  source         meanvals medianval stdevvals
+  <fct>             <dbl>     <dbl>     <dbl>
+1 ZAF (mcmarcel)     690      379.     1260
+2 ZAF (own)         -312     -255      230
+
+  source         meanvals medianval stdevvals
+  <fct>             <dbl>     <dbl>     <dbl>
+1 KEN (mcmarcel)    1516.     1085     1492
+2 KEN (own)          392      339      231

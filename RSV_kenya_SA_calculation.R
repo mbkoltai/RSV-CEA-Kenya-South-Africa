@@ -12,14 +12,14 @@
 # Libraries
 # to render as html: rmarkdown::render("RSV_kenya_SA_calculation.R",output_dir='output/cea_plots/')
 library(tidyverse); library(reshape2); library(matrixStats); library(rstudioapi); # library(fitdistrplus)
-# from: http://www.medicine.mcgill.ca/epidemiology/Joseph/PBelisle/GammaParmsFromQuantiles.html
 # sessionInfo()
 # path
 currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
 # base MCMARCEL functions
 source('functions/RSV_load_all.R')
 # custom made functions
-source('functions/GammaParmsFromQuantiles.R'); source('functions/get_burden_flexible.R');source('functions/facet_wrap_fcns.R')
+# from: http://www.medicine.mcgill.ca/epidemiology/Joseph/PBelisle/GammaParmsFromQuantiles.html
+source('functions/GammaParmsFromQuantiles.R'); source('functions/get_burden_flexible.R'); source('functions/facet_wrap_fcns.R')
 # clear vars: rm(list=ls())
 # plotting theme
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
@@ -67,12 +67,12 @@ burden_list_own_data=list(list(kenya_incid_hosp_rate[[1]],kenya_incid_hosp_rate[
 ### BURDEN & CEA CALCULATION --------------------------------------------------
 #' ## BURDEN CALCULATION with OWN DATA
 # South Africa was not in the original analysis, so we cannot compare to default mcmarcel output
-# cntrs_cea=c('KEN','ZAF'); n_cntr_output=2
+# cntrs_cea=c('KEN','ZAF'); n_cntr_output=1
 # read in config parameters for burden calculation
 burden_cntr_ind=which(sim_config_matrix$country_iso %in% cntrs_cea[n_cntr_output])
 # MV=sim_config_matrix[burden_cntr_ind[1],]; mAb=sim_config_matrix[burden_cntr_ind[2],]
 # SELECT INTERVENTION: 1=MatVacc, 2=monocl Abs
-n_interv=1; sel_interv=sim_config_matrix[burden_cntr_ind[n_interv],]; # config <- get_rsv_ce_config(sel_interv)
+n_interv=2; sel_interv=sim_config_matrix[burden_cntr_ind[n_interv],]; # config <- get_rsv_ce_config(sel_interv)
 # if (n_cntr_output==2){sel_interv$country_iso=cntrs_cea[n_cntr_output]}
 # with original MCMARCEL: 
 # sim_output=get_burden(sel_interv)
@@ -124,7 +124,7 @@ cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_bu
 # SAVE
 # ggsave(cea_plot_filename,width=30,height=18,units="cm")
 ### Net cost/DALY averted (mean, median, stdev) -------------------------
-burden_mcmarcel_owndata_comp[burden_mcmarcel_owndata_comp$variable %in% 'net_cost/DALY_averted',] %>% 
+burden_mcmarcel_owndata[burden_mcmarcel_owndata$variable %in% 'net_cost/DALY_averted',] %>% 
   group_by(source) %>% summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
