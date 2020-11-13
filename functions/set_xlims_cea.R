@@ -6,8 +6,7 @@ fcn_calc_quantls_minmax=function(burden_mcmarcel_owndata_comp,quantl_vals){
 
 # manually modify x axis limits
 fcn_set_xlims<-function(sel_cntr,burden_mcmarcel_owndata_comp,quantls_min_max,xmin_adj_vars,xmin_adj_values,
-                        xmax_adj_vars,icer_maxval,scale_max_val,man_adj_flag){
-  # xlimvals_cols,xlimvals
+                        xmax_adj_vars,icer_maxval,scale_max_val,man_adj_flag){ # xlimvals_cols,xlimvals
   if (nchar(man_adj_flag)>0){
   xlimvals=list(); xlimvals_cols=list()
   xlimvals_cols[[sel_cntr]][[1]]=xmin_adj_vars; xlimvals[[sel_cntr]][[1]]=xmin_adj_values
@@ -79,4 +78,29 @@ if (nchar(save_flag)>1){ print('saving plot')
   cea_plot_filename=paste(folderpath,gsub(" ","_",sel_cntr_fullname),"_burden_estimates_n",n_iter,interv_tag,".png",sep="")
   ggsave(cea_plot_filename,width=30,height=18,units="cm") }
 p
+}
+
+###
+# calculate burden median, mean, stdev for subsah afr projection
+fcn_burden_median_mean=function(burden_mcmarcel_owndata){
+burden_comparison_median=burden_mcmarcel_owndata %>% group_by(variable,source) %>%
+  summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
+burden_comparison_quants=burden_mcmarcel_owndata %>% group_by(variable,source) %>% 
+  summarise(value=quantile(value,probs=quantl_vals_90),q=quantl_vals_90) %>% group_by(variable,source,q) %>% 
+  summarise(min_q=min(value),max_q=max(value)) %>% group_by(variable,source) %>% summarise(min_q=min(min_q),max_q=max(max_q))
+burden_comparison_median=merge(burden_comparison_median,burden_comparison_quants,by=c("variable","source"))
+burden_comparison_median[,"country"]=sapply(strsplit(as.character(burden_comparison_median$source)," "),"[[",1)
+burden_comparison_median$source=gsub("\\(|\\)","",sapply(strsplit(as.character(burden_comparison_median$source)," "),"[[",2))
+burden_comparison_median
+# list_all_subsah_afr[[k]]=burden_comparison_median
+}
+
+fcn_process_median_burden <- function(list_all_subsah_afr,interv_tag){
+burden_comparison_all_subsah_afr=data.frame(do.call(rbind,list_all_subsah_afr))
+# source of the age distribution
+burden_comparison_all_subsah_afr[,'age_distrib']=age_distrib_used; burden_comparison_all_subsah_afr[,"intervention"]=interv_tag
+colclass=sapply(1:ncol(burden_comparison_all_subsah_afr), function(x) {is.numeric(burden_comparison_all_subsah_afr[,x])})
+# no point in storing decimals beyond the first (numbers are 10^2 --> 10^7), so round to 1st decimal
+burden_comparison_all_subsah_afr[,colclass]=round(burden_comparison_all_subsah_afr[,colclass],1)
+burden_comparison_all_subsah_afr
 }

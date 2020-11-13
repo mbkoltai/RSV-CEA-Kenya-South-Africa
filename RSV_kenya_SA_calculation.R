@@ -90,7 +90,6 @@ cols_burden_sel=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y',
                   'cost_rsv_hosp_0to1y','total_medical_cost_0to1y','incremental_cost_0to1y','total_medical_cost_averted',
                   "hosp_cases_averted", "rsv_deaths_averted", "total_DALY_0to1y_averted",icercolname) 
 # "total_YLD_1to5y_averted","total_YLL_1to5y_averted",
-# source('functions/set_xlims_cea.R')
 burden_mcmarcel_owndata=fcn_process_burden_output(sim_output_flexible,sim_output,sel_interv$country_iso,cols_burden_sel)
 # we'll show mean values by vertical lines
 color_vals=c('red','green'); mean_intercepts=fcn_mean_intercepts(burden_mcmarcel_owndata,color_vals)
@@ -114,7 +113,7 @@ ggplot(burden_mcmarcel_owndata,aes(x=value,group=source)) + geom_freqpoly(aes(co
   facet_wrap_custom(~variable,scales='free',scale_overrides=scales_list,labeller=label_wrap_gen(width=10)) +
   theme_bw() + standard_theme + scale_linetype_manual(values=c('solid','dotdash')) +
   geom_rect(data=subset(burden_mcmarcel_owndata, variable %in% icercolname),fill=NA,colour="blue",
-            size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) + 
+            size=2,xmin=-Inf,xmax=Inf,ymin=-Inf,ymax=Inf) + # geom_text(aes(x=mean(value),y=100,label=mean(value))) +
   ggtitle(paste(sel_interv$country_iso,'RSV burden & intervention estimates:',gsub('_','',interv_tag))) +
   labs(color='data source',linetype='mean') + guides(xintercept=FALSE,linetype=guide_legend(ncol=2))
 # save plot
@@ -122,10 +121,12 @@ cea_plot_filename=paste("output/cea_plots/",sel_interv$country_iso,"_mcmarcel_bu
                         interv_tag,'_',randsampl_distrib_type,'samples',".png",sep="")
 # if (!dir.exists('output/cea_plots')) {dir.create('output/cea_plots')}
 # SAVE
-# ggsave(cea_plot_filename,width=30,height=18,units="cm")
+ggsave(cea_plot_filename,width=30,height=18,units="cm")
 ### Net cost/DALY averted (mean, median, stdev) -------------------------
-burden_mcmarcel_owndata[burden_mcmarcel_owndata$variable %in% 'net_cost/DALY_averted',] %>% 
-  group_by(source) %>% summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
+cea_csv_filename=gsub('.png','.csv',cea_plot_filename)
+cea_summary=burden_mcmarcel_owndata %>% group_by(source,variable) %>% 
+  summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
+write_csv(cea_summary,cea_csv_filename)
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### Extrapolation to other Sub-Sah Afr countries -------------------------
@@ -137,7 +138,7 @@ if (!sum(kenya_agegroup_fractions)==1){kenya_agegroup_fractions=kenya_agegroup_f
 s_afr_agegroup_fractions=rowMeans(s_afr_incid_hosp_rate[[1]]/colSums(s_afr_incid_hosp_rate[[1]]))
 if (!sum(s_afr_agegroup_fractions)==1){s_afr_agegroup_fractions=s_afr_agegroup_fractions/sum(s_afr_agegroup_fractions)}
 # SELECT AGE DISTRIBUTION
-age_distrib_used=c('KEN','ZAF')[1]
+n_age_distrib=1; age_distrib_used=c('KEN','ZAF')[n_age_distrib]; age_distrib_names=c('kenya_age_distrib','s_afr_age_distrib')
 # SELECT FOLDER TO SAVE/WRITE FILES TO
 if (age_distrib_used %in% 'ZAF') {
   agegroup_fractions=s_afr_agegroup_fractions; folder_projection='output/sub_sah_afr_proj/s_afr_age_distrib/' } else {
@@ -154,7 +155,7 @@ sub_sah_afr_cntrs=c("Angola","Benin","Botswana","Burkina Faso","Burundi","Camero
 sub_sah_afr_cntrs_iso3=RSV_burden_Shi_2017$country_iso[RSV_burden_Shi_2017$location_name %in% sub_sah_afr_cntrs]
 sub_sah_afr_cntrs_iso3=sub_sah_afr_cntrs_iso3[sub_sah_afr_cntrs_iso3 %in% sim_config_matrix$country_iso]
 # which intervention?
-n_interv=1
+n_interv=2; interv_tags_list=c('mat_vacc','monocl_Ab'); interv_tag=interv_tags_list[n_interv]
 ### Calculate CEA  -------------------------
 set.seed(as.integer(format(Sys.Date(), "%Y%m%d")))
 start_parallel_workers(); all_packages=append(all_packages,'readr')
@@ -172,31 +173,36 @@ foreach(k=1:length(sub_sah_afr_cntrs_iso3),.combine='rbind',.packages=all_packag
 # sapply(1:n_iter, function(x){ (rsv_rate_fractions[,x]/rowMeans(rsv_rate_fractions))*agegroup_fractions*sum(config$rsv_rate[,x]) })
 # generates low noise: matrix(unlist(lapply(colSums(config$rsv_rate),function(x) {agegroup_fractions*x})),ncol=n_iter)
   sel_interv=sim_config_matrix[which(sim_config_matrix$country_iso %in% cntr_name)[n_interv],] 
-  if (!is.na(sel_interv$rng_seed)){ write_csv(get_burden_flexible(sel_interv,subsah_incid_redist,config$hosp_prob),
-            paste0(folder_projection,"indiv_countries/",cntr_name,"_own_data.csv"))
-  print(paste("done with",cntr_name,"own data",sep=" ")) # mcmarcel_outputs=get_burden_flexible(sel_interv,NA,NA)}
-  write_csv(get_burden_flexible(sel_interv,NA,NA),paste0(folder_projection,"indiv_countries/",cntr_name,"_mcmarcel.csv")) }
+  if (!is.na(sel_interv$rng_seed)){ 
+    write_csv(get_burden_flexible(sel_interv,subsah_incid_redist,config$hosp_prob),
+            paste0(paste0(folder_projection,interv_tag,"/"),cntr_name,"_own_data.csv"))
+    print(paste("done with",cntr_name,"own data",sep=" ")) # mcmarcel_outputs=get_burden_flexible(sel_interv,NA,NA)}
+    write_csv(get_burden_flexible(sel_interv,NA,NA), paste0(paste0(folder_projection,interv_tag,"/"),cntr_name,"_mcmarcel.csv")) }
 }
 # proc.time() - ptm
 
 #### Process extrapolation results  -------------------------
 # select datafiles
-cea_file_list=list.files(paste0(folder_projection,'indiv_countries')); cea_file_list=cea_file_list[grepl('.csv',cea_file_list)]
+# folder_projection="output/sub_sah_afr_proj/kenya_age_distrib/" # "output/sub_sah_afr_proj/s_afr_age_distrib/"
+# check if input and output folders are aligned
+if (grepl(folder_projection,paste0(folder_projection,interv_tag,"/"))) {print('folders OK.')} else {
+  paste0(folder_projection,interv_tag,"/")=paste0(folder_projection,interv_tag,"/") }
+cea_file_list=list.files(paste0(folder_projection,'/',interv_tag)); cea_file_list=cea_file_list[grepl('.csv',cea_file_list)]
 cea_file_id=sapply(strsplit(cea_file_list,"_"),'[[',1); burden_comparison_all_subsah_afr=list()
 # x axis limits
-icercolname="net_cost/DALY_averted"
-# cols_burden_sel=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y',
-#                   'cost_rsv_hosp_0to1y','total_medical_cost_0to1y','incremental_cost_0to1y','total_medical_cost_averted',
-#                   "hosp_cases_averted", "rsv_deaths_averted", "total_DALY_0to1y_averted",icercolname) 
-# xmin_adj_vars=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_0to1y',
-#   'total_medical_cost_averted','hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted')
-# xmax_adj_vars=c('rsv_cases','incremental_cost_0to1y','net_cost/DALY_averted')
+icercolname="net_cost/DALY_averted"; cols_burden_sel=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y',
+              'cost_rsv_hosp_0to1y','total_medical_cost_0to1y','incremental_cost_0to1y','total_medical_cost_averted',
+              "hosp_cases_averted", "rsv_deaths_averted", "total_DALY_0to1y_averted",icercolname)
+xmin_adj_vars=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y','cost_rsv_hosp_0to1y','total_medical_cost_0to1y',
+  'total_medical_cost_averted','hosp_cases_averted','rsv_deaths_averted','total_DALY_0to1y_averted','net_cost/DALY_averted')
+xmax_adj_vars=c('rsv_cases','incremental_cost_0to1y','net_cost/DALY_averted')
 # PLOT CONFIG
 # quantile to draw x-axis limits
 quantl_vals=c(0.01,0.99); color_vals=c('red','green')
 # quantiles to store in csv file
 quantl_vals_90=c(0.05,0.9)
 # minvals for x-axis, maxval for ICER, scaling of maxvals of x-axis
+source('functions/set_xlims_cea.R')
 xmin_adj_values=c(0,0,-1e2,-1e3,-1e6,-1e6,-1e6,-1e3,-10,-2e3,-1e3); icer_maxval=3e3; scale_max_val=2
 save_flag='save'; list_all_subsah_afr=list()
 for (k in 1:length(sub_sah_afr_cntrs_iso3)){
@@ -204,8 +210,8 @@ for (k in 1:length(sub_sah_afr_cntrs_iso3)){
   sel_cntr_fullname=RSV_burden_Shi_2017$location_name[RSV_burden_Shi_2017$country_iso %in% sel_cntr]
   # own data will be always the 2nd of the two files for each country
   burden_mcmarcel_owndata=fcn_process_burden_output(
-        read_csv(paste0(folder_projection,'indiv_countries/',CEA_files_indcntr[[2]])),
-        read_csv(paste0(folder_projection,'indiv_countries/',CEA_files_indcntr[[1]])),sel_cntr,cols_burden_sel)
+    read_csv( paste0(paste0(folder_projection,interv_tag,"/"),CEA_files_indcntr[[2]]) ), 
+    read_csv( paste0(paste0(folder_projection,interv_tag,"/"),CEA_files_indcntr[[1]]) ), sel_cntr,cols_burden_sel)
   # PLOT distribution (density plot)
   data_to_plot=burden_mcmarcel_owndata; data_to_plot$source=gsub(' ','',gsub("\\(|\\)","",gsub(sel_cntr,"",data_to_plot$source)))
   ## we'll show mean values by vertical lines
@@ -217,47 +223,38 @@ for (k in 1:length(sub_sah_afr_cntrs_iso3)){
                xmax_adj_vars,icer_maxval,scale_max_val,'man_adj_flag')
   # leave 'scales_list' empty to have default x axes
   # PLOT distributions of variables for selected country
-  # fcn_plot_cea_distribs(data_to_plot,mean_intercepts,scales_list, standard_theme,n_interv, # scales_list
-  #                       sel_cntr_fullname,paste0(folder_projection,'plots/'),save_flag) # save_flag
-  ## WRITE TABLE WITH mean/median/stdev + QUINTILES
-  burden_comparison_median=burden_mcmarcel_owndata %>% group_by(variable,source) %>%
-    summarise(meanvals=mean(value),medianval=median(value),stdevvals=sd(value))
-  burden_comparison_quants=burden_mcmarcel_owndata %>% group_by(variable,source) %>% 
-    summarise(value=quantile(value,probs=quantl_vals_90),q=quantl_vals_90) %>% group_by(variable,source,q) %>% 
-    summarise(min_q=min(value),max_q=max(value)) %>% group_by(variable,source) %>% summarise(min_q=min(min_q),max_q=max(max_q))
-  burden_comparison_median=merge(burden_comparison_median,burden_comparison_quants,by=c("variable","source"))
-  burden_comparison_median[,"country"]=sapply(strsplit(as.character(burden_comparison_median$source)," "),"[[",1)
- burden_comparison_median$source=gsub("\\(|\\)","",sapply(strsplit(as.character(burden_comparison_median$source)," "),"[[",2))
-  list_all_subsah_afr[[k]]=burden_comparison_median
+  if (!dir.exists(paste0(paste0(folder_projection,interv_tag,"/"),'plots/'))) {
+    dir.create(paste0(paste0(folder_projection,interv_tag,"/"),'plots/'))}
+  fcn_plot_cea_distribs(data_to_plot,mean_intercepts,scales_list,standard_theme,n_interv, # scales_list
+              sel_cntr_fullname,paste0(paste0(folder_projection,interv_tag,"/"),'plots/'),save_flag)
+ ## WRITE TABLE WITH mean/median/stdev + QUINTILES
+ list_all_subsah_afr[[k]]=fcn_burden_median_mean(burden_mcmarcel_owndata)
 }
 
-burden_comparison_all_subsah_afr=data.frame(do.call(rbind,list_all_subsah_afr))
-# source of the age distribution
-burden_comparison_all_subsah_afr[,'age_distrib']=age_distrib_used
-#''; burden_comparison_all_subsah_afr[burden_comparison_all_subsah_afr$source %in% "own",'age_distrib']=
-colclass=sapply(1:ncol(burden_comparison_all_subsah_afr), function(x) {is.numeric(burden_comparison_all_subsah_afr[,x])})
-# no point in storing decimals beyond the first (numbers are 10^2 --> 10^7), so round to 1st decimal
-burden_comparison_all_subsah_afr[,colclass]=round(burden_comparison_all_subsah_afr[,colclass],1)
-write_csv(burden_comparison_all_subsah_afr,paste0(folder_projection,'burden_comparison_all_subsah_afr.csv'))
+burden_comparison_all_subsah_afr=fcn_process_median_burden(list_all_subsah_afr,interv_tag)
+burden_summary_filename=paste0(folder_projection,'burden_comparison_all_subsah_afr_',interv_tag,'.csv')
+write_csv(burden_comparison_all_subsah_afr,burden_summary_filename)
 
-### combine two tables with diff age distributions --------------------
-burden_comparison_all_subsah_afr=rbind(read_csv('output/sub_sah_afr_proj/s_afr_age_distrib/burden_comparison_all_subsah_afr.csv'),
-      read_csv('output/sub_sah_afr_proj/kenya_age_distrib/burden_comparison_all_subsah_afr.csv'))
-write_csv(burden_comparison_all_subsah_afr,'output/sub_sah_afr_proj/burden_comparison_all_subsah_afr.csv')
+### combine two tables with diff age distributions (same intervention) --------------------
+if (length(unique(burden_comparison_all_subsah_afr$age_distrib))==1){
+burden_comparison_all_subsah_afr=rbind(read_csv(burden_summary_filename),
+  read_csv(gsub(age_distrib_names[n_age_distrib],age_distrib_names[setdiff(c(1:2),n_age_distrib)],burden_summary_filename)))}
+filename_combined_agedistr_interv=paste0('output/sub_sah_afr_proj/burden_comparison_all_subsah_afr_',interv_tag,'.csv')
+if (!file.exists(filename_combined_agedistr_interv)) {write_csv(burden_comparison_all_subsah_afr,filename_combined_agedistr_interv)}
 
 # read in results using both age distribs
-burden_comparison_all_subsah_afr=read_csv('output/sub_sah_afr_proj/burden_comparison_all_subsah_afr.csv')
+# burden_comparison_all_subsah_afr=read_csv(filename_combined_agedistr_interv)
 # the results from two cntrs with mcmarcel age distrib have to be the same, removing one of them
-mcmarcel_agedistrib_dupl_rows=burden_comparison_all_subsah_afr$source %in% 'mcmarcel' & 
-  burden_comparison_all_subsah_afr$age_distrib %in% "KEN"
+mcmarcel_agedistrib_dupl_rows=burden_comparison_all_subsah_afr$source %in% 'mcmarcel' & burden_comparison_all_subsah_afr$age_distrib %in% "KEN"
 burden_comparison_all_subsah_afr=burden_comparison_all_subsah_afr[!mcmarcel_agedistrib_dupl_rows,]
 burden_comparison_all_subsah_afr$age_distrib[burden_comparison_all_subsah_afr$source %in% 'mcmarcel']='Shi2017'
 # set order by factoring
 burden_comparison_all_subsah_afr$variable=factor(burden_comparison_all_subsah_afr$variable,levels = cols_burden_sel)
 burden_comparison_all_subsah_afr$age_distrib=factor(burden_comparison_all_subsah_afr$age_distrib,levels=c("Shi2017","ZAF","KEN"))
 # filter out cntrs below X million
-# using "wpp2017" and "countrycode"
-sub_sah_afr_cntrs_popul2020=popproj[popproj$country_code %in% countrycode(sub_sah_afr_cntrs_iso3,origin='iso3c',destination='iso3n'),"2020"]
+# using "wpp2019" and "countrycode": 
+# library(wpp2019); library(countrycode); data("pop")
+sub_sah_afr_cntrs_popul2020=pop[pop$country_code %in% countrycode(sub_sah_afr_cntrs_iso3,origin='iso3c',destination='iso3n'),"2020"]
 cntr_list=popproj[popproj$country_code %in% countrycode(sub_sah_afr_cntrs_iso3,origin='iso3c',destination='iso3n'),"name"]
 # data.frame(cntrs=cntr_list,popul=sub_sah_afr_cntrs_popul2020)
 # cntrs with popul larger than 5 million
@@ -267,7 +264,7 @@ cntr_list_popul_lt=countrycode(cntr_list,origin='country.name',destination='iso3
 burden_vars=cols_burden_sel[1:6]; interv_vars=cols_burden_sel[7:length(cols_burden_sel)]
 # select vars to plot
 varselect=burden_comparison_all_subsah_afr$country %in% cntr_list_popul_lt & 
-  burden_comparison_all_subsah_afr$variable %in% burden_vars
+  (burden_comparison_all_subsah_afr$variable %in% interv_vars)
 #
 ggplot(burden_comparison_all_subsah_afr[varselect,],aes(x=country,y=medianval,ymin=min_q,ymax=max_q)) + # medianval-stdevvals
  geom_pointrange(aes(color=age_distrib,shape=age_distrib,linetype=age_distrib),
@@ -280,6 +277,8 @@ ggplot(burden_comparison_all_subsah_afr[varselect,],aes(x=country,y=medianval,ym
 ####
 # save
 if (any(burden_comparison_all_subsah_afr$variable[varselect] %in% interv_vars)) {
-    ggsave('output/sub_sah_afr_proj/plots/intervention_variable_faceted.png',width=50,height=30,units="cm")} else {
-    ggsave('output/sub_sah_afr_proj/plots/burden_variable_faceted.png',width=50,height=30,units="cm")
+  ggsave(paste0('output/sub_sah_afr_proj/summary_plots/intervention_variable_faceted_',interv_tag,'.png'),
+         width=50,height=30,units="cm")
+} else {
+  ggsave(paste0('output/sub_sah_afr_proj/summary_plots/burden_variable_faceted_',interv_tag,'.png'),width=50,height=30,units="cm")
 }
