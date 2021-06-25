@@ -1,3 +1,8 @@
+library(tidyverse); library(matrixStats); library(rstudioapi); # library(fitdistrplus); library(reshape2); 
+# sessionInfo()
+# path
+currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
+# base MCMARCEL functions
 # !diagnostics off
 standard_theme=theme(panel.grid=element_line(linetype="dashed",colour="black",size=0.1),
                      plot.title=element_text(hjust=0.5,size=16),
@@ -118,7 +123,9 @@ ggplot(lmic_cntr_burden,aes(x=age,y=mean,color=country)) + geom_line() + geom_po
 ggsave(paste0("output/RSV_incidence_",f_country_iso,"_lmic_comparison.png"),width=30,height=18,units="cm") 
 
 ####### our own data from KEMRI ------------------------------------------------
-kenya_data_path='../path_rsv_data/SARI_Rates_2010_2018/SARI_Rates_2010_2018_tidydata_cleaned.csv'
+# kenya_data_path='../path_rsv_data/SARI_Rates_2010_2018/SARI_Rates_2010_2018_tidydata_cleaned.csv'
+kenya_data_path='../path_rsv_data/SARI_Rates_2010_2018_updated/ARI_SARI_Rates_2010_2018_tidydata.csv'
+
 SARI_Rates_2010_2018_tidydata=read_csv(kenya_data_path)
 nonsumm_truthvals=!grepl("<|24-59|12-23",SARI_Rates_2010_2018_tidydata$age_in_months) | 
   grepl("<1$",SARI_Rates_2010_2018_tidydata$age_in_months)
@@ -573,36 +580,61 @@ write.table(cost_data_inpatient_expanded,'./input/cost_data_inpatient_expanded.c
 
 ### Nyiro 2018 (Nokes) hospitalisation data ---------------------------
 nyiro2018_figure4=read_csv("../path_rsv_data/nyiro2018/figure4.csv")
-nyiro2018_figure4_tidy=melt(nyiro2018_figure4,id.vars=c("id","month","year","age_months","Agegrp_mths"))
-nyiro2018_figure4_tidy=nyiro2018_figure4_tidy[!is.na(nyiro2018_figure4_tidy$value),
-                                              !colnames(nyiro2018_figure4_tidy) %in% 'value']
+nyiro2018_figure4_tidy=nyiro2018_figure4 %>% pivot_longer(!c("id","month","year","age_months","Agegrp_mths"))
+nyiro2018_figure4_tidy=nyiro2018_figure4_tidy[!is.na(nyiro2018_figure4_tidy$value),!colnames(nyiro2018_figure4_tidy) %in% 'value']
 nyiro2018_figure4_tidy$Agegrp_mths=factor(nyiro2018_figure4_tidy$Agegrp_mths,
   levels=c("0-5M","6-11M","12-23M","24-35M","36-59M","5-9Y","10-19Y",">=20Y"))
-# cases by age group and virus
-nyiro2018_figure4_rates=nyiro2018_figure4_tidy %>% group_by(Agegrp_mths,variable) %>% tally()
-nyiro2018_figure4_rates=dcast(nyiro2018_figure4_rates,Agegrp_mths ~ variable)
-nyiro2018_figure4_rates[,'rsv_total']=rowSums(nyiro2018_figure4_rates[,c('rsva_positive','rsvb_positive')],na.rm=T)
-nyiro2018_figure4_rates[,'n_agegroup']=rowSums(nyiro2018_figure4_rates[,2:ncol(nyiro2018_figure4_rates)],na.rm=T)
-standard_theme_mod=standard_theme; standard_theme_mod$axis.text.x$size=16; standard_theme_mod$axis.text.y$size=16
-ggplot(nyiro2018_figure4_rates,aes(x=Agegrp_mths,y=rsv_total/n_agegroup,group=1)) + geom_line(colour='blue') + geom_point() +
-  theme_bw() + standard_theme_mod + xlab('age group') + ylab('RSV A+B incidence per capita') + 
-  ggtitle('Kenya RSV incidence (Nyiro 2018)')
-ggsave("output/kenya_nyiro2018_figure4_RSV_incidence.png",width=20,height=15,units="cm") 
+nyiro2018_figure4_tidy[,"name_merged_rsv"]=nyiro2018_figure4_tidy$name; 
+nyiro2018_figure4_tidy$name_merged_rsv[grepl("rsv",nyiro2018_figure4_tidy$name_merged_rsv)]="rsv"
+# sum rsv A and B
+nyiro2018_figure4_rates_fineresol=nyiro2018_figure4_tidy %>% group_by(year,age_months,name_merged_rsv) %>% tally()
+truthval_rsv=nyiro2018_figure4_rates_fineresol$name_merged_rsv %in% "rsv" & nyiro2018_figure4_rates_fineresol$age_months<60
+ggplot(nyiro2018_figure4_rates_fineresol[truthval_rsv,],aes(x=age_months,y=n)) + geom_line() + geom_point() + 
+  scale_x_continuous(breaks=0:60,minor_breaks=0:60) + scale_y_continuous(breaks=0:10,minor_breaks=0:10,limits = c(0,10)) +
+  # facet_wrap(~name_rsv_sum,scales="free") + 
+  theme_bw() + standard_theme + xlab('age group') + ylab('# cases/(age group duration)') + ggtitle('Kenya RSV incidence (Nyiro 2018)')
 
-### figure 5
+# cases by age group and virus
+nyiro2018_figure4_rates=nyiro2018_figure4_tidy %>% group_by(Agegrp_mths,name) %>% tally()
+nyiro2018_figure4_rates[,"name_rsv_sum"]=nyiro2018_figure4_rates$name; nyiro2018_figure4_rates$name_rsv_sum[grepl("rsv",nyiro2018_figure4_rates$name) ]="rsv"
+nyiro2018_figure4_rates=nyiro2018_figure4_rates %>% group_by(Agegrp_mths,name_rsv_sum) %>% summarise(n_summed_rsv=sum(n))
+nyiro2018_figure4_rates[,"agegr_unit"]=sapply(strsplit(as.character(nyiro2018_figure4_rates$Agegrp_mths), ""), tail, 1)
+nyiro2018_figure4_rates[,"agegr_start"]=as.numeric(sapply(strsplit(as.character(nyiro2018_figure4_rates$Agegrp_mths),"-"),'[[',1))
+nyiro2018_figure4_rates$agegr_start[grepl(">",nyiro2018_figure4_rates$Agegrp_mths)]=20
+nyiro2018_figure4_rates[,"agegr_stop"]=NA
+nyiro2018_figure4_rates$agegr_stop=as.numeric(gsub('.{1}$','',as.character(t(as.data.frame(strsplit(as.character(nyiro2018_figure4_rates$Agegrp_mths),"-")))[,2])))
+nyiro2018_figure4_rates$agegr_stop[grepl(">",nyiro2018_figure4_rates$Agegrp_mths)]=99
+dur_fact=rep(1,nrow(nyiro2018_figure4_rates)); dur_fact[nyiro2018_figure4_rates$agegr_unit %in% "Y"]=12
+nyiro2018_figure4_rates[,"agegr_duration"]=(nyiro2018_figure4_rates$agegr_stop-nyiro2018_figure4_rates$agegr_start)*dur_fact
+nyiro2018_figure4_rates[,"n_div_agegr_dur"]=nyiro2018_figure4_rates$n_summed_rsv/nyiro2018_figure4_rates$agegr_duration
+truthval_rsv=nyiro2018_figure4_rates$name_rsv_sum %in% "rsv"
+ggplot(nyiro2018_figure4_rates[truthval_rsv,],aes(x=Agegrp_mths,y=n_div_agegr_dur,group=name_rsv_sum)) + 
+  geom_line(colour='blue') + geom_point() + # facet_wrap(~name_rsv_sum,scales="free") + 
+  theme_bw() + standard_theme + xlab('age group') + ylab('# cases/(age group duration)') + ggtitle('Kenya RSV incidence (Nyiro 2018)')
+# ggsave("output/kenya_nyiro2018_figure4_all_viruses.png",width=20,height=15,units="cm")
+ggsave("output/kenya_nyiro2018_figure4_rsv_casenumber_agegroups.png",width=20,height=15,units="cm") 
+
+### figure 5 (this is for months of the year!!!!)
 nyiro2018_figure5=read_csv("../path_rsv_data/nyiro2018/figure5.csv")
-nyiro2018_figure5_tidy=melt(nyiro2018_figure5,id.vars=c("id","month","year","sample_tested","sample_positives" ))
+nyiro2018_figure5_tidy=nyiro2018_figure5 %>% pivot_longer(!c("id","month","year","sample_tested","sample_positives" ))
+  # melt(nyiro2018_figure5,id.vars=c("id","month","year","sample_tested","sample_positives" ))
 nyiro2018_figure5_tidy=nyiro2018_figure5_tidy[!is.na(nyiro2018_figure5_tidy$value),
                       !colnames(nyiro2018_figure5_tidy) %in% c('value',"sample_tested","sample_positives")]
-nyiro2018_figure5_rates=nyiro2018_figure5_tidy %>% group_by(month,variable) %>% tally()
-nyiro2018_figure5_rates=dcast(nyiro2018_figure5_rates,month ~ variable)
-nyiro2018_figure5_rates[,'rsv_total']=rowSums(nyiro2018_figure5_rates[,c('rsva_positive','rsvb_positive')],na.rm=T)
-nyiro2018_figure5_rates[,'n_agegroup']=rowSums(nyiro2018_figure5_rates[,2:ncol(nyiro2018_figure5_rates)],na.rm=T)
+nyiro2018_figure5_rates=nyiro2018_figure5_tidy %>% group_by(month,name) %>% tally()
+nyiro2018_figure5_rates[,"name_rsv_sum"]=nyiro2018_figure5_rates$name;nyiro2018_figure5_rates$name_rsv_sum[grepl("rsv",nyiro2018_figure5_rates$name) ]="rsv"
+nyiro2018_figure5_rates=nyiro2018_figure5_rates %>% group_by(month,name_rsv_sum) %>% summarise(n_summed_rsv=sum(n))
+nyiro2018_figure5_rates$month_name=factor(format(ISOdate(2017,1:12,1),"%B")[nyiro2018_figure5_rates$month],
+                                          levels=format(ISOdate(2017,1:12,1),"%B"))
 ### ###
-ggplot(nyiro2018_figure5_rates,aes(x=month,y=rsv_total/n_agegroup,group=1)) + geom_line(colour='blue') + geom_point() +
-  theme_bw() + standard_theme_mod + xlab('age (months)') + ylab('RSV A+B incidence per capita') + 
-  scale_x_continuous(breaks=1:12) + scale_y_continuous(breaks=(0:6)/20) + ggtitle('Kenya RSV incidence (Nyiro 2018)')
-ggsave("output/kenya_nyiro2018_figure5_RSV_incidence.png",width=24,height=15,units="cm") 
+rsv_truthvals=nyiro2018_figure5_rates$name_rsv_sum %in% "rsv"
+ggplot(nyiro2018_figure5_rates[rsv_truthvals,],aes(x=month_name,y=n_summed_rsv,group=name_rsv_sum)) + geom_line(colour='blue') + geom_point() + 
+  # facet_wrap(~name_rsv_sum,scales="free") + 
+  theme_bw() + standard_theme + xlab('age (months)') + ylab('RSV A+B incidence per capita') + 
+  ggtitle('respiratory virus hospital cases by month')
+#scale_x_continuous(breaks=1:12) + scale_y_continuous(breaks=(0:6)/20) + 
+# This is months of the year!!!!
+# ggsave("output/kenya_nyiro2018_figure5_resp_virus_incidence.png",width=24,height=15,units="cm") 
+ggsave("output/kenya_nyiro2018_figure5_RSV_incidence_bymonth.png",width=24,height=15,units="cm") 
 
 ### ### ### ### ### ###### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ##### SELECT COUNTRY
@@ -650,3 +682,7 @@ ggplot(age_distribs_SEN_redistr,aes(x=age_groups,y=value,group=variable,color=va
   scale_x_continuous(breaks=seq(0,60,2)) + scale_y_continuous(breaks=seq(0,1,0.05)) +
   xlab('age in months') + ylab('per capita incidence') + labs(color='age distributions') + 
   coord_cartesian(xlim=c(2,58),ylim=c(0.02,1))
+
+#############
+# data from Marina
+load("../Re_RSV_age_dependency/forMihaly/window_results_Mihaly.Rdata")

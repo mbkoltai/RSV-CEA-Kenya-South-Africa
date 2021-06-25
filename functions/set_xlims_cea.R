@@ -5,14 +5,15 @@ fcn_calc_quantls_minmax=function(burden_mcmarcel_owndata_comp,quantl_vals){
 }
 
 # manually modify x axis limits
-fcn_set_xlims<-function(sel_cntr,burden_mcmarcel_owndata_comp,quantls_min_max,xmin_adj_vars,xmin_adj_values,
+fcn_set_xlims<-function(sel_cntr,burden_mcmarcel_owndata_comp,quantls_min_max,xmin_adj_vars,
                         xmax_adj_vars,icer_maxval,scale_max_val,man_adj_flag){ # xlimvals_cols,xlimvals
   if (nchar(man_adj_flag)>0){
-  xlimvals=list(); xlimvals_cols=list()
-  xlimvals_cols[[sel_cntr]][[1]]=xmin_adj_vars; xlimvals[[sel_cntr]][[1]]=xmin_adj_values
-  minvals=quantls_min_max$min_q[quantls_min_max$variable %in% xmin_adj_vars]
+  xlimvals=list(); xlimvals_cols=list(); xmin_adj_values=array(xmin_adj_vars)
+  xlimvals_cols[[sel_cntr]][[1]]=names(xmin_adj_vars); xlimvals[[sel_cntr]][[1]]=xmin_adj_values
+  minvals=quantls_min_max$min_q[quantls_min_max$variable %in% names(xmin_adj_vars)]
   overshoot_xmin_vals = xmin_adj_values > minvals # overshoot_xmin_vals[length(overshoot_xmin_vals)]=F
   xlimvals[[sel_cntr]][[1]][overshoot_xmin_vals]=minvals[overshoot_xmin_vals] # -1.5*abs()
+  print(xlimvals)
   # if the minimum stretches the axis too much (too low value)
   kxmin=10; neg_overshoot=(xmin_adj_values<(-kxmin*(abs(minvals-1)))); neg_overshoot[length(neg_overshoot)]=F
   # print(rbind(xmin_adj_values,minvals,-kxmin*(abs(minvals-1)),neg_overshoot))
@@ -33,22 +34,18 @@ fcn_set_xlims<-function(sel_cntr,burden_mcmarcel_owndata_comp,quantls_min_max,xm
 }
 
 ### process burden calc output
-fcn_process_burden_output<-function(sim_output_flexible,sim_output,sel_cntr,cols_burden_sel){
-  icercolname='net_cost/DALY_averted'; icercols=c('incremental_cost_0to1y','total_DALY_0to1y_averted')
-  sim_output[,icercolname]=sim_output[,icercols[1]]/sim_output[,icercols[2]]
-  sim_output_flexible[,icercolname]=sim_output_flexible[,icercols[1]]/sim_output_flexible[,icercols[2]]
-  # outputs to display
-  # cols_burden_sel=c('rsv_cases','hosp_cases','rsv_deaths','total_DALY_0to1y',
-  #                   'cost_rsv_hosp_0to1y','total_medical_cost_0to1y','incremental_cost_0to1y','total_medical_cost_averted',
-  #                   "hosp_cases_averted", "rsv_deaths_averted", "total_DALY_0to1y_averted",icercolname) 
-  # "total_YLD_1to5y_averted","total_YLL_1to5y_averted",
+fcn_process_burden_output <- function(user_output,default_output,sel_cntr,cols_burden_sel,plot_labels,icercolname,icercols){
+  default_output[,icercolname]=default_output[,icercols[1]]/default_output[,icercols[2]]
+  user_output[,icercolname]=user_output[,icercols[1]]/user_output[,icercols[2]]
   # histograms: mcmarcel vs kemri
-  burden_mcmarcel_owndata_comp=melt(
-    rbind( cbind(sim_output[,cols_burden_sel],
-                data.frame(source=paste0(sel_cntr,' (mcmarcel)'),iter=1:nrow(sim_output))),
-           cbind(sim_output_flexible[,cols_burden_sel],
-                data.frame(source=paste0(sel_cntr,' (own)'),iter=1:nrow(sim_output_flexible) ) ) ),
-    id.vars=c('iter','source'))
+  if (nchar(cols_burden_sel)==0 | is.na(cols_burden_sel)) {
+    cols_burden_sel_default=colnames(default_output)[sapply(1:ncol(default_output), function(x) {class(default_output[,x])})=="numeric"]
+    cols_burden_sel_user=colnames(user_output)[sapply(1:ncol(user_output), function(x) {class(user_output[,x])})=="numeric"]
+    print(cols_burden_sel_default)}
+  burden_mcmarcel_owndata_comp=bind_rows(
+    cbind(default_output[,cols_burden_sel_default],data.frame(source=plot_labels["mcmarcel"],iter=1:nrow(default_output))),
+    cbind(user_output[,cols_burden_sel_user],data.frame(source=plot_labels["own"],iter=1:nrow(user_output) ) ) ) %>%
+    pivot_longer(cols=!c(iter,source),names_to="variable")
   burden_mcmarcel_owndata_comp
 }
 

@@ -1,4 +1,5 @@
-get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
+###### get_burden_flexible ------------------------------------
+get_burden_flexible <- function(configList,incid_matrix,hosp_prob_matrix,dose_price) {
   # set RNG seed
   set.seed(configList$rng_seed)
   ###############################
@@ -12,9 +13,10 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   # this loads costs/efficacy but also
   
   # load own data if it was supplied to the functions
-  if (!is.null(dim(own_rate_matrix)) & !is.null(dim(own_hosp_matrix))){
-    print('check if first matrix is per capita rate of RSV, second is rate of hospitalisation!')
-    config$rsv_rate = data.frame(own_rate_matrix); config$hosp_prob=data.frame(own_hosp_matrix) }
+  flag_own_data=""
+  if (!is.null(dim(incid_matrix)) & !is.null(dim(hosp_prob_matrix))){
+    print('check if first matrix is RSV disease episode/person year, second is rate of hospitalisation/person year!')
+    config$rsv_rate=data.frame(incid_matrix); config$hosp_prob=data.frame(hosp_prob_matrix); flag_own_data="yes"}
   
   ###############################
   # Pre-processing              #
@@ -35,7 +37,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   life_table <- get_life_table(config$country_iso,config$year,config$outputFileDir,config$disc_rate_effect)
   # select the target ages	
   life_table <- life_table[1:config$nMonthsOfAges,]
-  # adjust for target population PER MONTH = (% ppl left)*(lifebirth)/12
+  # adjust for target population PER MONTH = (% ppl left)*(livebirth)/12
   life_table$pop <- life_table$lx_rate * config$target_population_lifebirth / config$monthsInYear #fix 2018-01-11
   config$hosp_CFR_DALYloss      <- life_table$life_expectancy
   config$hosp_CFR_DALYloss_disc <- life_table$life_expectancy_disc
@@ -69,8 +71,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
     config$hosp_prob     <- as.matrix(config$hosp_prob,ncol=1)
     config$hosp_comm_CFR <- as.matrix(config$hosp_comm_CFR,ncol=1)   }
   
-  # SAMPLE DALY VALUES
-  # gamma distribution. mean=alpha/beta
+  # SAMPLE DALY VALUES: gamma distribution. mean=alpha/beta
   sample_rgamma <- function(mean,stdev,num_sim){
     alpha <- (mean^2) / (stdev^2) # shape parameter
     beta  <- (stdev^2) / (mean) # rate parameter (beta=1/theta)
@@ -78,17 +79,17 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   }
   
   # duration illness, LRTI DALY sampled from a gamma distribution
-  config$duration_illness   <- sample_rgamma(config$duration_illness_mean,config$duration_illness_stdev,config$num_sim)
-  config$severe_LRTI_DALY   <- sample_rgamma(config$severe_LRTI_DALY_mean,config$severe_LRTI_DALY_stdev,config$num_sim)
+  config$duration_illness <- sample_rgamma(config$duration_illness_mean,config$duration_illness_stdev,config$num_sim)
+  config$severe_LRTI_DALY <- sample_rgamma(config$severe_LRTI_DALY_mean,config$severe_LRTI_DALY_stdev,config$num_sim)
   config$moderate_LRTI_DALY <- sample_rgamma(config$moderate_LRTI_DALY_mean,config$moderate_LRTI_DALY_stdev,config$num_sim)
   # DALY loss
   config$severe_rsv_DALYloss      <- config$severe_LRTI_DALY*config$duration_illness
   config$non_severe_rsv_DALYloss  <- config$moderate_LRTI_DALY*config$duration_illness
   
   ###############################
-  # Infant protection
+  # Infant protection (this is for antibodies)
   ###############################
-  # convert duration of protecion from years to months
+  # convert duration of protection from years to months
   dur_prot_infant <- round(config$monthsInYear*config$dur_protection_infant)
   
   # Calculate the effective protection
@@ -99,22 +100,23 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   # Fill matrices
   # i_eff <- 1
   for(i_eff in 1:config$num_sim){
-    iAgeEffectiveProtection_primary[1:dur_prot_infant,i_eff]  <- config$efficacy_infant_primary[i_eff]*config$coverage_infant 
+    iAgeEffectiveProtection_primary[1:dur_prot_infant,i_eff]  <- config$efficacy_infant_primary[i_eff]*config$coverage_infant
     iAgeEffectiveProtection_hospital[1:dur_prot_infant,i_eff] <- config$efficacy_infant_hospital[i_eff]*config$coverage_infant
-    iAgeEffectiveProtection_cfr[1:dur_prot_infant,i_eff]      <- config$efficacy_infant_cfr[i_eff]*config$coverage_infant   }
+    iAgeEffectiveProtection_cfr[1:dur_prot_infant,i_eff]      <- config$efficacy_infant_cfr[i_eff]*config$coverage_infant
+    }
   
-  #############################
-  # Maternal protection         #
-  ###############################
-  # convert duration of protecion from years to months
+###############################
+# Maternal protection         #
+###############################
+# convert duration of protection from years to months
   dur_prot_maternal <- round(config$monthsInYear*config$dur_protection_maternal)
   
-  # Calculate the effective protection
-  # init matrices
-  mAgeEffectiveProtection_primary <- matrix(0,ncol=config$num_sim,nrow=config$nMonthsOfAges)  #dummy
-  mAgeEffectiveProtection_hospital=mAgeEffectiveProtection_primary;mAgeEffectiveProtection_cfr=mAgeEffectiveProtection_primary #dummy
+# Calculate the effective protection # init matrices
+mAgeEffectiveProtection_primary <- matrix(0,ncol=config$num_sim,nrow=config$nMonthsOfAges)  #dummy
+mAgeEffectiveProtection_hospital <- mAgeEffectiveProtection_primary
+mAgeEffectiveProtection_cfr <- mAgeEffectiveProtection_primary # dummy
   
-  # if no maternal efficacy present yet, sample from (log)normal distribution
+# if no maternal efficacy present yet, sample from (log)normal distribution
   if(any(is.na(config$efficacy_maternal_primary))){ 
     # dependent samples for all-cause, hospital and cfr efficacy ==>> use identical random-stream
     set.seed(configList$rng_seed)
@@ -125,16 +127,15 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
     config$efficacy_maternal_hospital <- sample_normal_dist(config$num_sim,configList$efficacy_maternal_hosp_mean,
                                                             configList$efficacy_maternal_hosp_stdev,
                                                             configList$efficacy_maternal_lognormal)
-    set.seed(configList$rng_seed); 
+    set.seed(configList$rng_seed)
     config$efficacy_maternal_cfr <- sample_normal_dist(config$num_sim,configList$efficacy_maternal_cfr_mean,
                                                        configList$efficacy_maternal_cfr_stdev,
                                                        configList$efficacy_maternal_lognormal)
   }
-  
-  # Fill matrices
-  # i_eff <- 1
-  for(i_eff in 1:config$num_sim){ 
-    mAgeEffectiveProtection_primary[1:dur_prot_maternal,i_eff]=config$efficacy_maternal_primary[i_eff]*config$coverage_maternal
+
+  # Fill matrices # i_eff <- 1
+  for(i_eff in 1:config$num_sim){
+    mAgeEffectiveProtection_primary[1:dur_prot_maternal,i_eff] <- config$efficacy_maternal_primary[i_eff]*config$coverage_maternal
     mAgeEffectiveProtection_hospital[1:dur_prot_maternal,i_eff] <- config$efficacy_maternal_hospital[i_eff]*config$coverage_maternal
     mAgeEffectiveProtection_cfr[1:dur_prot_maternal,i_eff] <- config$efficacy_maternal_cfr[i_eff]*config$coverage_maternal }
   
@@ -174,15 +175,19 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   ##################################
   # Parameter uncertainty: COSTS   #
   ##################################
+  print("calculating costs")
   # reshape the cost parameter into a [age, sim] structure
   config$outpatient_cost  <- matrix(rep(config$sample_outpatient_cost,each=config$nMonthsOfAges),ncol=config$num_sim)
+  # ggplot(data.frame(value=config$sample_outpatient_cost)) + geom_density(aes(x=value)) + theme_bw() + xlab("outpatient cost")
   config$hosp_cost <- matrix(rep(config$sample_inpatient_cost,each=config$nMonthsOfAges),ncol=config$num_sim)
-  
+  # ggplot(data.frame(value=config$hosp_cost[1,])) + geom_density(aes(x=value)) + theme_bw() + xlab("inpatient cost")
   config$admin_cost_maternal <- matrix(0,nrow=config$nMonthsOfAges,ncol=config$num_sim)
+  # input price data
+  if (is.numeric(dose_price) & length(dose_price)>1) {config$price_dose_maternal<-dose_price["mat_vacc"];config$price_dose_mAb<-dose_price["mAb"]}
   config$admin_cost_maternal[1,]  <- config$sample_admin_cost + (config$price_dose_maternal*(1+config$wastage_maternal))
   
   config$admin_cost_mAb <- matrix(0,nrow=config$nMonthsOfAges,ncol=config$num_sim)
-  config$admin_cost_mAb[1,] <- config$sample_admin_cost + (config$price_dose_mAb*(1+config$wastage_mAb) * config$price_mAb_sens_factor)
+  config$admin_cost_mAb[1,] <- config$sample_admin_cost + (config$price_dose_mAb*(1+config$wastage_mAb)*config$price_mAb_sens_factor)
   ##############################
   # Discounting                #
   ##############################
@@ -195,9 +200,9 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   ###############################	
   # Cases
   rsv_cases <- life_table$pop*config$rsv_rate 
-  non_hosp_cases       <- rsv_cases                 * (1-config$hosp_prob)
-  hosp_cases           <- rsv_cases                 * config$hosp_prob
-  rsv_deaths           <- hosp_cases                * config$hosp_comm_CFR
+  non_hosp_cases       <- rsv_cases* (1-config$hosp_prob)
+  hosp_cases           <- rsv_cases* config$hosp_prob
+  rsv_deaths           <- hosp_cases* config$hosp_comm_CFR
   # discounted
   rsv_cases_disc            <- colSums(rsv_cases       * disc_time_effect)
   non_hosp_cases_disc       <- colSums(non_hosp_cases  * disc_time_effect)
@@ -224,6 +229,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   ###############################
   # Averted Burden              #
   ###############################	
+  print("calculating averted burden")
   # Averted Cases
   rsv_cases_averted            <- rsv_cases             * totalAgeEffectiveProtection_primary
   hosp_cases_averted           <- hosp_cases            * totalAgeEffectiveProtection_hospital
@@ -271,8 +277,9 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   # Costs                       #
   ###############################
   # medical costs: baseline
+  print("calculating total costs")
   cost_rsv_outpatient <- non_hosp_cases * config$outpatient_cost 
-  cost_rsv_hosp       <- hosp_cases     * config$hosp_cost   
+  cost_rsv_hosp       <- hosp_cases* config$hosp_cost   
   # total medical cost
   total_medical_cost <- cost_rsv_outpatient + cost_rsv_hosp
   # medical costs: averted
@@ -303,6 +310,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
   ## OUTPUT                      ##
   #################################
   ## FUNCTION TO AGGREGATE BURDEN OUTPUT
+  print("aggregating output")
   # note: fix to get age-specific results, withough duplicating code
   aggregate_output <- function(age_function,age_tag){
     output_all <- data.frame(
@@ -314,12 +322,12 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
       non_hosp_cases_disc,
       hosp_cases_disc,
       rsv_deaths_disc,
-      
+      # years of life with disab
       non_hosp_YLD            = colSums(age_function(non_hosp_YLD)),
       hosp_YLD                = colSums(age_function(hosp_YLD)),
       non_hosp_YLD_disc       = colSums(age_function(non_hosp_YLD_disc)),
       hosp_YLD_disc           = colSums(age_function(hosp_YLD_disc)),
-      
+      # cases averted
       rsv_cases_averted       = colSums(age_function(rsv_cases_averted)),
       non_hosp_cases_averted  = colSums(age_function(non_hosp_cases_averted)),
       hosp_cases_averted      = colSums(age_function(hosp_cases_averted)),
@@ -369,6 +377,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
       total_YLL_disc_averted           = colSums(age_function(total_YLL_disc_averted)),
       total_DALY_disc_averted          = colSums(age_function(total_DALY_disc_averted))
     )
+    message("adjusting column names")
     # adjust column names
     if(nchar(age_tag)>0){
       # names(output_all) <- paste(names(output_all),age_tag,sep='_')
@@ -384,7 +393,7 @@ get_burden_flexible <- function(configList,own_rate_matrix,own_hosp_matrix) {
     }
     # return
     return(output_all)
-  } 
+  }
   
   output_all <- data.frame(aggregate_output(select_0to5y,''),
                            aggregate_output(select_0to1y,'0to1y'),

@@ -7,17 +7,15 @@
 #############################################################################
 
 # Main function to retrieve model settings
-get_rsv_ce_config <- function(configList)
-{
-  
+get_rsv_ce_config <- function(configList){
   # Initialize config variable
-  config <- list(efficacy = NA)
+  config <- list(efficacy=NA)
   
   # Add directory names for input and output
   config$inputFileDir              <- "./input/"
   config$outputFileDir             <- configList$outputFileDir
 
-  # time horizion and param
+  # time horizon and param
   config$nYearsOfAges   <- 5
   config$monthsInYear   <- 12
   

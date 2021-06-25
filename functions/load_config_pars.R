@@ -23,7 +23,8 @@ sim_config_matrix$rng_seed <- rng_seed; sim_config_matrix$outputFileDir <- get_o
 
 ### Append South Africa to cntr list -------------------------
 # S Afr is not in the original study so needs to be appended
-if (!cntr_sel %in% sim_config_matrix$country_iso) {
+# if (!cntr_sel %in% sim_config_matrix$country_iso) {
   df_append=sim_config_matrix[(nrow(sim_config_matrix)-1):nrow(sim_config_matrix),]
-  df_append$country_iso=cntr_sel; sim_config_matrix=rbind(sim_config_matrix,df_append) 
-  rownames(sim_config_matrix)=1:nrow(sim_config_matrix)}
+  df_append$country_iso="ZAF"; sim_config_matrix=rbind(sim_config_matrix,df_append) 
+  rownames(sim_config_matrix)=1:nrow(sim_config_matrix)
+  #}
