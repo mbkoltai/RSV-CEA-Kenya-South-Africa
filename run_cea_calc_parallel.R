@@ -1,10 +1,10 @@
 source("functions/get_burden_flexible_ari_sari.R")
 # loop thru: cntrs * interventions * dose prices
 # n_cntr_output=1:length(cntrs_cea); n_interv=1:2
-par_table=expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[2]
-subfolder_name="new_price_efficacy/"
+par_table=expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
+subfolder_name="new_price_efficacy_kenyadeaths_CIs/"; kenya_deaths_input=TRUE
 cl=parallel::makeCluster(8); registerDoParallel(cl)
-foreach (k_par=1:nrow(par_table),.packages=c("dplyr","ggplot2","tidyr","readr")) %dopar% {
+foreach (k_par=1:nrow(par_table),.packages=c("dplyr","ggplot2","tidyr","readr","rriskDistributions")) %dopar% {
     n_cntr_output=par_table$n_cntr_output[k_par]; n_interv=par_table$n_interv[k_par]
     # intervention config table
     sel_interv=sim_config_matrix[which(sim_config_matrix$country_iso %in% cntrs_cea[n_cntr_output])[n_interv],]
@@ -21,9 +21,12 @@ foreach (k_par=1:nrow(par_table),.packages=c("dplyr","ggplot2","tidyr","readr"))
         if (cntrs_cea[n_cntr_output]=="ZAF") {
           cost_input <- list("inpatient"=s_afr_inpatient_cost %>% filter(name %in% "total"),"outpatient"=s_afr_outpatient_cost)} else {
             cost_input<-NA }
+        # input death data if available
+        if (kenya_deaths_input) {print("using propr death data"); kenya_nonhosp_hosp_incid_ari_sari$deaths$hosp=kenya_deaths_incid$hosp
+          kenya_nonhosp_hosp_incid_ari_sari$deaths$non_hosp=kenya_deaths_incid$nonhosp }
     sim_output_user_input_ari_sari=get_burden_flexible_ari_sari(sel_interv,
           list(kenya_nonhosp_hosp_incid_ari_sari,sa_nonhosp_hosp_incid_ari_sari)[[n_cntr_output]],
-          efficacy_figures,doseprice,cost_data=cost_input)
+          efficacy_figures,effic_prob=T,doseprice,cost_data=cost_input)
   ### Plot results -------------------------
   # are nonhosp SARIs accounted as SARIs? (or as nonhosp = mild cases)
   burden_mcmarcel_owndata=fcn_process_burden_output(user_output=sim_output_user_input_ari_sari,default_output=sim_output,

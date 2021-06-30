@@ -1,6 +1,7 @@
 # clean up workspace
 rm(list=ls())
 library(tidyverse); library(rstudioapi); library(fitdistrplus); library(matrixStats); library(ungeviz); library(stringi)
+library(rriskDistributions)
 # sessionInfo()
 # path
 currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
@@ -28,7 +29,7 @@ kenya_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), function(x)
 # ggplot(data.frame(age=0:59,nonhosp=rowMeans(kenya_nonhosp_hosp_incid_ari_sari$ARI$nonhosp_incid),
 #   hosp=rowMeans(kenya_nonhosp_hosp_incid_ari_sari$ARI$hosp_incid) ) %>% mutate(age=factor(age)) %>% pivot_longer(!age)) +
 #   geom_bar(aes(x=age,y=value,group=name,fill=name),position="stack",stat="identity") + theme_bw()
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ###
 # analyse Kenya data
 kenya_data=bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
                      fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="SARI")$rsv_incidence_ageinf) %>% 
@@ -36,17 +37,6 @@ kenya_data=bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_dis
   mutate(disease_type_medic_status=gsub("SARI medically attended","SARI hospitalised",disease_type_medic_status)) %>%
   mutate(disease_type_medic_status=gsub("SARI not attended","SARI non-hospitalised",disease_type_medic_status)) %>%
   dplyr::select(!c(age_in_months,RSV_assoc,freq,n)) %>% relocate(age_inf,.before=variable) %>% relocate(metric_per_popul,.after=value)
-# subtract SARIs from ARIs (don't do this - they're already excluded)
-# ARI_SARI_Rates_2010_2018_tidydata = read_csv(kenya_data_file_path)
-# tr_vals=ARI_SARI_Rates_2010_2018_tidydata$disease_type == "ARI" & ARI_SARI_Rates_2010_2018_tidydata$RSV_assoc =="yes"  
-# ARI_SARI_Rates_2010_2018_tidydata[tr_vals,c("value","CI_95_lower","CI_95_upper")] = 
-# ARI_SARI_Rates_2010_2018_tidydata %>% filter(disease_type=="ARI" & RSV_assoc=="yes") %>% 
-#     dplyr::select(c(value,CI_95_lower,CI_95_upper)) -
-# (ARI_SARI_Rates_2010_2018_tidydata %>% filter(disease_type=="SARI" & RSV_assoc=="yes") %>% 
-#     dplyr::select(c(value,CI_95_lower,CI_95_upper)))/100
-# ARI_SARI_Rates_2010_2018_tidydata=ARI_SARI_Rates_2010_2018_tidydata %>% mutate(value=ifelse(value<0,0,value),
-#                                     CI_95_lower=ifelse(CI_95_lower<0,0,CI_95_lower),CI_95_upper=ifelse(CI_95_upper<0,0,CI_95_upper))
-# write_csv(ARI_SARI_Rates_2010_2018_tidydata,gsub(".csv","_ARI_adjusted.csv",kenya_data_file_path))
 # ratio of medically-attended uniform across age groups (65% for ARI, 24% SARI)
 hosp_rate_kenya=kenya_data %>% group_by(disease_type,age_inf) %>% 
   summarise(medic_attended=unique(value[medically_attended]/sum(value)),maxval=unique(max(value)/metric_per_popul),
@@ -62,6 +52,7 @@ p <- ggplot(kenya_data,aes(x=age_inf)) +
   scale_y_continuous(expand=expansion(0.01,0)) + ggtitle("Kenya ARI and SARI burden"); p
 # save
 ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_burden","_sep"[length(p$facet$params)>0],".png"),width=30,height=22,units="cm")
+### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ARI/SARI ratio per age group
 kenya_ari_sari_ratio = kenya_data %>% group_by(disease_type,age_inf) %>% summarise(value=sum(value)/unique(metric_per_popul)) %>% 
   group_by(age_inf) %>% summarise(value=value[disease_type=="ARI"]/value[disease_type=="SARI"])
@@ -72,8 +63,40 @@ ggplot(kenya_ari_sari_ratio,aes(y=value)) + geom_segment(aes(x=age_inf-0.45,xend
   theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5)) + xlab("age (months)") + ylab("ARI/SARI ratio")
 # SAVE
 ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_ratio.png"),width=30,height=18,units="cm")
+### ### ### ### ### ### ### ### ### ### ### ### ###
+# Kenya deaths
+deaths_kenya <- read_csv("../path_rsv_data/SARI_Rates_2010_2018_updated/deaths_kenya_tidy.csv") %>% 
+  filter(variable=="rate" & !age_in_months %in% c("<12","12-23","<24","24-59","<60")) %>% 
+  mutate(age_in_months=ifelse(age_in_months=="<1","0",age_in_months),freq=1) %>% 
+  mutate(freq=ifelse(grepl('-',age_in_months),
+                     as.numeric(sapply(age_in_months, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,freq)) %>% 
+  mutate(age_in_months=ifelse(grepl('-',age_in_months), sapply(strsplit(age_in_months,'-'),'[[',1),age_in_months)) %>%
+  uncount(weights=freq, .id="n",.remove=F) %>% mutate(age_inf=as.numeric(age_in_months)+(n-1)) %>% 
+  dplyr::select(!c(n,freq,age_in_months)) %>% relocate(age_inf,.before=value)
+# generate samples
+deaths_distrib_params = bind_rows(lapply(c("yes","no"), function(y_no) data.frame(age_inf=0:59, 
+    t(sapply(1:60, function(x) gamma.parms.from.quantiles(p=c(2.5,97.5)/100, 
+    q=as.numeric((deaths_kenya %>% mutate(CI_95_lower=ifelse(CI_95_lower==0,0.1,CI_95_lower)) %>%
+      filter(in_hospital==y_no) %>% dplyr::select(c(CI_95_lower,CI_95_upper)))[x,]))[c("shape","rate")])),in_hospital=y_no))) %>%
+      mutate(shape=unlist(shape),rate=unlist(rate))
+kenya_deaths_incid = lapply(c("yes","no"), function(y_no)
+  t(sapply(0:59, function(x) rgamma(5e3,shape=(deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
+      rate=(deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5); names(kenya_deaths_incid)=c("hosp","nonhosp")
 
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# plot CFR
+ggplot(deaths_kenya,aes(x=age_inf,y=value,color=in_hospital,fill=in_hospital)) + geom_point() +
+  geom_line() + geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper),alpha=0.2) + theme_bw() + standard_theme +
+  scale_x_continuous(expand=expansion(0.01,0),breaks=(0:30)*2) + scale_y_continuous(expand=expansion(0.01,0)) +
+  theme(axis.text.x=element_text(vjust=0.5)) + xlab("age in months") + ylab("RSV-associated deaths/100.000 population")
+# calculate in-hosp and out-hosp CFR 
+cfr_kenya=bind_rows(data.frame(age_inf=0:59,rate=deaths_kenya$value[deaths_kenya$in_hospital=="yes"]/(kenya_data %>% 
+        filter(medically_attended==TRUE & disease_type=="SARI"))$value,medically_attended=TRUE),
+      data.frame(age_inf=0:59,rate=deaths_kenya$value[deaths_kenya$in_hospital!="yes"]/(kenya_data %>% 
+        filter(medically_attended!=TRUE & disease_type=="SARI"))$value,medically_attended=FALSE))
+# plot
+ggplot(cfr_kenya,aes(x=age_inf,y=rate*100,color=medically_attended)) + geom_line() + geom_point() + theme_bw() + standard_theme +
+  ylab("% CFR") + scale_x_continuous(expand=expansion(0.01,0),breaks=(0:30)*2)
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### South Africa
 SA_SARI_data=fcn_load_s_afr(safr_data_path = "../path_rsv_data/s_afr_incidence_data_rate.csv") %>%
   mutate(disease_type_medic_status=paste(disease_type,ifelse(hospitalisation,"hospitalised","not hospitalised")) ) %>%
@@ -90,13 +113,8 @@ SA_ILI_data <- read_csv("../path_rsv_data/s_afr_ILI_incidence_rate.csv") %>%
     disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
       paste0("non medically attended ",disease_type))) %>% relocate(disease_type_medic_status,.before=Province)
 # concatenate
-if (!exists("SA_data")){
-  # subtract SARIs from ARIs (don't do this! - orig data mutually exclusive!!!)
-  #   SA_ILI_data[,c("rate","rate_CI_lower","rate_CI_upper")] = SA_ILI_data[,c("rate","rate_CI_lower","rate_CI_upper")] - 
-  #     SA_SARI_data[,c("rate","rate_CI_lower","rate_CI_upper")] %>% mutate(rate=ifelse(rate<0,0,rate),
-  #           rate_CI_lower=ifelse(rate_CI_lower<0,0,rate_CI_lower),rate_CI_upper=ifelse(rate_CI_upper<0,0,rate_CI_upper))
-   SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
-
+if (!exists("SA_data")){ SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
+# subtract SARIs from ARIs? don't do this - orig data mutually exclusive!!
 ##
 hosp_rate_sa = SA_data %>% group_by(disease_type,age_inf) %>% summarise(medic_attended=unique(rate[hospitalisation]/sum(rate,na.rm=T)),
   maxval=unique(max(rate)/popul_denom),status=unique(disease_type_medic_status)) %>% group_by(disease_type) %>% 
@@ -144,32 +162,6 @@ if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
 s_afr_inpatient_cost = cbind(s_afr_inpatient_cost, t(sapply(1:nrow(s_afr_inpatient_cost), function(x) 
  unlist(gamma.parms.from.quantiles(q=c(s_afr_inpatient_cost$LCI[x],s_afr_inpatient_cost$UCI[x]),p=c(2.5,97.5)/1e2)[c("shape","rate")]))))
 }
-### ### ### ###
-# compare to age-specific incidence curve generated by mcmarcel
-# sel_disease="SARI"
-# config=get_rsv_ce_config(subset(sim_config_matrix,country_iso %in% "KEN" & intervention=="maternal"))
-# ci95_mcmarcel=t(sapply(1:nrow(config$rsv_rate),function(x)
-#   quantile( (config$rsv_rate*ifelse(sel_disease=="SARI",config$hosp_prob,1-config$hosp_prob))[x,],probs = c(2.5,97.5)/100)))
-# mcmarcel_agedep_incid=data.frame(age=1:60,disease_type=sel_disease,
-#     value=rowMeans(config$rsv_rate*ifelse(sel_disease=="SARI",config$hosp_prob,1-config$hosp_prob) ),ci95_mcmarcel,
-#     source="mcmarcel",disease_type_medic_status="all") %>% mutate(`X2.5.`=as.numeric(X2.5.),`X97.5.`=as.numeric(X97.5.))
-# colnames(mcmarcel_agedep_incid) = c("age_inf","disease_type","value","CI_95_lower","CI_95_upper","source","disease_type_medic_status")
-# mcmarcel_kemri_compare=bind_rows(mcmarcel_agedep_incid,
-#   subset(kenya_data,disease_type==sel_disease) %>% group_by(age_inf) %>% summarise(age_inf=unique(age_inf),
-#   disease_type=unique(disease_type),value=sum(value/metric_per_popul),CI_95_lower=sum(CI_95_lower/metric_per_popul),
-#             CI_95_upper=sum(CI_95_upper/metric_per_popul)) %>% mutate(source="KEMRI",disease_type_medic_status="all"),
-#   subset(kenya_data,disease_type==sel_disease & medically_attended==TRUE) %>% mutate(value=value/metric_per_popul,
-#     CI_95_lower=CI_95_lower/metric_per_popul,CI_95_upper=CI_95_upper/metric_per_popul,source="KEMRI") %>%
-#     dplyr::select(age_inf,disease_type,value,CI_95_lower,CI_95_upper,source,disease_type_medic_status) )
-# # plot
-# ggplot(mcmarcel_kemri_compare,aes(x=age_inf,y=value))+geom_line(aes(group=disease_type_medic_status,color=disease_type_medic_status))+
-#   geom_point(aes(group=disease_type_medic_status,color=disease_type_medic_status)) +
-#   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper,group=disease_type_medic_status,fill=disease_type_medic_status),alpha=0.3) +
-#   facet_wrap(~source,nrow = 2) + theme_bw() + standard_theme + scale_x_continuous(breaks=0:60,expand=expansion(0.02,0)) +
-#   scale_y_continuous(breaks=(0:50)/100,expand=expansion(0.02,0)) + xlab("age (months)") + ylab("disease episodes/person-years") +
-#   labs(color="data source",fill="data source") + ggtitle(paste0("RSV-associated ",sel_disease," incidence"))
-# # save
-# ggsave(paste0("output/",sel_disease,"_incidence_comparison_KEN_faceted.png"),width=30,height=18,units="cm")
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 cntrs_cea=c("KEN","ZAF"); subfolder_name="new_price_efficacy/"
@@ -192,7 +184,7 @@ cost_cols <- all_cols[grepl("cost",all_cols)]
 pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
-read_calc_flag=c("calc","read")[2]
+read_calc_flag=c("calc","read")[2]; kenya_deaths_input=TRUE
 # loop through: cntrs * interventions * dose prices
 for (n_cntr_output in 1:length(cntrs_cea)){
   for (n_interv in 1:2){ # SELECT INTERVENTION: 1=MatVacc, 2=monocl Abs
@@ -210,10 +202,13 @@ sim_output=get_burden_flexible(sel_interv,NA,NA,doseprice)
 # SARI, ARI distinguished, hosp/nonhosp distinguished
 if (cntrs_cea[n_cntr_output]=="ZAF") {
   cost_input <- list("inpatient"=s_afr_inpatient_cost %>% filter(name %in% "total"),"outpatient"=s_afr_outpatient_cost)} else {
-    cost_input<-NA }
-sim_output_user_input_ari_sari=get_burden_flexible_ari_sari(sel_interv,
-  list(kenya_nonhosp_hosp_incid_ari_sari,sa_nonhosp_hosp_incid_ari_sari)[[n_cntr_output]],
-  efficacy_figures,doseprice,cost_data=cost_input)
+    cost_input<-NA}
+# input death data if available
+if (kenya_deaths_input) { print("using propr death data"); kenya_nonhosp_hosp_incid_ari_sari$deaths$non_hosp=kenya_deaths_incid$nonhosp
+  kenya_nonhosp_hosp_incid_ari_sari$deaths$hosp=kenya_deaths_incid$hosp }
+sim_output_user_input_ari_sari <- get_burden_flexible_ari_sari(sel_interv,
+    list(kenya_nonhosp_hosp_incid_ari_sari,sa_nonhosp_hosp_incid_ari_sari)[[n_cntr_output]],
+    efficacy_figures,effic_prob=TRUE,doseprice,cost_data=cost_input)
 ### Plot results -------------------------
 # are nonhosp SARIs accounted as SARIs? (or as nonhosp = mild cases)
 burden_mcmarcel_owndata=fcn_process_burden_output(user_output=sim_output_user_input_ari_sari,default_output=sim_output,
@@ -272,11 +267,11 @@ ggsave(cea_summ_plot_filename,width=36,height=18,units="cm")
   } # loop intervention type
 } # loop country
 write_csv(cea_summary_all,paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
-# filenames=list.files(paste0("output/cea_plots/",subfolder_name),pattern=".csv")
-# filenames=filenames[!filenames %in% "cea_summary_all.csv"]
-# for (k_filename in 1:4) {
-#   x=read_csv(paste0("output/cea_plots/",subfolder_name,filenames[k_filename]))
-#   if (k_filename==1){ cea_summary_all=x } else {cea_summary_all=bind_rows(cea_summary_all,x)} }
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###  
+filenames=list.files(paste0("output/cea_plots/",subfolder_name),pattern=".csv");filenames=filenames[!filenames %in% "cea_summary_all.csv"]
+for (k_filename in 1:4) {
+  x=read_csv(paste0("output/cea_plots/",subfolder_name,filenames[k_filename]))
+  if (k_filename==1){ cea_summary_all=x } else {cea_summary_all=bind_rows(cea_summary_all,x)} }
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
@@ -287,9 +282,10 @@ write_csv(cea_summary_all,paste0("output/cea_plots/",subfolder_name,"cea_summary
 # hosp_med_att_YLD <- hosp_SARI * config$severe_rsv_DALYloss + med_att_ARI*config$non_severe_rsv_DALYloss
 # hosp_YLD <- hosp_SARI* config$severe_rsv_DALYloss
 # non_hosp_YLD <- non_hosp_SARI*config$severe_rsv_DALYloss + non_med_att_ARI*config$non_severe_rsv_DALYloss
+for (k_plot in 1:3) {
 sel_vars <- list(c("total_YLD","total_YLL","hosp_YLD","hosp_med_att_YLD","non_hosp_YLD"), # ,"ARI_YLD","SARI_YLD"
             c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),
-            c("admin_cost","cost_rsv_hosp","hosp_cost","cost_rsv_outpatient","outpatient_cost","total_medical_cost"))[[2]]
+            c("admin_cost","cost_rsv_hosp","hosp_cost","cost_rsv_outpatient","outpatient_cost","total_medical_cost"))[[k_plot]]
 df_plot <- cea_summary_all %>% filter(variable %in% c(sel_vars,paste0(sel_vars,"_averted")) &
       ((price==3&intervention=="maternal")|(price==6&intervention=="mAb")) & grepl("new",source)) %>%
   mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
@@ -314,7 +310,7 @@ ggplot(df_plot %>% filter(grepl("averted",burden_interv)) ) +
   geom_hpline(aes(x=country_iso,y=norm_median*1e2,group=intervention,color=intervention), # ,linetype=source
               position=position_dodge(width=dodge_val),width=0.42,size=1) + # scale_linetype_manual(values=c("solid","longdash"))+
   geom_linerange(aes(x=country_iso,ymin=norm_CI50_low*1e2,ymax=norm_CI50_high*1e2,group=,color=intervention),
-                 alpha=0.5,position=position_dodge(width=dodge_val),size=30,show.legend=F) +
+                 alpha=0.35,position=position_dodge(width=dodge_val),size=30,show.legend=F) +
   facet_wrap(~vartype) + scale_y_continuous(breaks=(0:10)*10) + scale_color_manual(values=c("red","blue")) +
   geom_vline(xintercept=1.5,linetype="dashed",size=0.3) + theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
   geom_text(aes(x=country_iso,y=norm_CI50_high*1e2+2,group=intervention,label=ifelse(intervention!="MV",orig_burden_round,"")),
@@ -322,8 +318,46 @@ ggplot(df_plot %>% filter(grepl("averted",burden_interv)) ) +
   theme(axis.text.x=element_text(angle=0,vjust=1/2,size=12),legend.position="top",legend.text=element_text(size=14)) 
 # save
 ggsave(paste0("output/cea_plots/",subfolder_name,ifelse(any(grepl("YLL",sel_vars)),"DALY",
-    ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),width=36,height=18,units="cm")
+    ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),width=36,height=18,units="cm") }
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# plot of cost-effectiveness variables  # "total_medical_cost_averted"
+df_plot <- cea_summary_all %>% filter(variable %in% c("intervention_cost","incremental_cost", "incremental_cost/DALY_averted") &
+                    grepl("new",source)) %>% mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
+        vec=as.character(abs(round((10^floor(log10(abs(median))))*round(median/(10^floor(log10(abs(median)))),3)))),
+        price_interv=factor(paste0(price,"$ (",intervention,")"),levels=unique(paste0(df_plot$price,"$ (",df_plot$intervention,")"))),
+ variable=factor(variable,levels=c("intervention_cost","incremental_cost", "incremental_cost/DALY_averted")))
+df_plot$orig_burden_round=sapply(df_plot$vec, function(vec) paste0(substring(vec,first=c(1,seq(nchar(vec)-floor(nchar(vec)/3)*3,
+      nchar(vec)-1,by=3)+1),last=c(seq(nchar(vec)-floor(nchar(vec)/3)*3,nchar(vec)-1,by =3),nchar(vec))),collapse="."))
+df_plot <- df_plot %>% dplyr::select(!vec) %>% mutate(orig_burden_round=gsub("^\\.","",orig_burden_round)) %>% 
+  mutate(orig_burden_round=ifelse(median<0,paste0("-",orig_burden_round),orig_burden_round))
+# plot
+ylab_txt="cost in USD (mean, CI50)"
+ggplot(df_plot) + geom_hpline(aes(x=country_iso,y=median,group=intervention,color=price_interv), # 
+              position=position_dodge(width=dodge_val),width=0.43,size=1) + # scale_linetype_manual(values=c("solid","longdash"))+
+  geom_linerange(aes(x=country_iso,ymin=CI50_low,ymax=CI50_high,group=intervention,color=price_interv),
+                 alpha=0.35,position=position_dodge(width=dodge_val),size=28,show.legend=F) +
+  facet_wrap(~variable,scales = "free") + 
+  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(3),colorRampPalette(colors=c("blue","blueviolet"))(3))) +
+  geom_vline(xintercept=1.5,linetype="dashed",size=0.3) + theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
+  geom_text(aes(x=country_iso,y=ifelse(abs(CI50_high)>1e6,CI50_high+2e6,CI50_high+200),group=intervention,label=orig_burden_round),
+            position=position_dodge(width=dodge_val)) + labs(color="",linetype="",caption="Numbers show median values.") + 
+  scale_x_discrete(expand=expansion(0.02,0)) + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=12),
+      legend.position="top",legend.text=element_text(size=14)) + guides(color=guide_legend(ncol=2))
+# save
+ggsave(paste0("output/cea_plots/",subfolder_name,"incremental_costs_KEN_ZAF.png"),width=36,height=18,units="cm")
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# calculate with modified function: this function takes user inputs but assumes incidence matrix = all cases (ARI+SARI)
+# sim_output_user_input=get_burden_flexible(sel_interv,incid_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]][["incid"]],
+#                                           hosp_prob_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]][["hosp"]])
+# this function takes user inputs and takes the incidence matrix as SARIs only (hosp and nonhosp)
+# sim_output_user_input_nonhosp_sari=get_burden_flexible_nonhosp_sari(sel_interv,
+#                       incid_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]]$incid,
+#                       hosp_prob_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]]$hosp)
+# ARIs and SARIs separately accounted for, hosp/nonhosp distinguished
 
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # plot with intervntn type on x-axis
 # ggplot(df_plot %>% filter(grepl("averted",burden_interv)) ) +
 #   geom_hpline(aes(x=intervention,y=norm_median*1e2,group=country_iso,color=country_iso), # ,linetype=source
@@ -338,38 +372,70 @@ ggsave(paste0("output/cea_plots/",subfolder_name,ifelse(any(grepl("YLL",sel_vars
 # # save
 # ggsave(paste0("output/cea_plots/",subfolder_name,ifelse(any(grepl("YLL",sel_vars)),"DALY",
 #               ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),width=36,height=18,units="cm")
-
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-# plot of cost-effectiveness variables
-df_plot <- cea_summary_all %>% filter(variable %in% c("incremental_cost", "incremental_cost/DALY_averted", "intervention_cost") &
-                    grepl("new",source)) %>% mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
-        vec=as.character(abs(round((10^floor(log10(abs(median))))*round(median/(10^floor(log10(abs(median)))),3)))),
-        price_interv=factor(paste0(price,"$ (",intervention,")"),levels=unique(paste0(df_plot$price,"$ (",df_plot$intervention,")"))),
-        variable=factor(variable,levels=c("intervention_cost","incremental_cost", "incremental_cost/DALY_averted")))
-df_plot$orig_burden_round=sapply(df_plot$vec, function(vec) paste0(substring(vec,first=c(1,seq(nchar(vec)-floor(nchar(vec)/3)*3,
-      nchar(vec)-1,by=3)+1),last=c(seq(nchar(vec)-floor(nchar(vec)/3)*3,nchar(vec)-1,by =3),nchar(vec))),collapse="."))
-df_plot=df_plot %>% dplyr::select(!vec) %>% mutate(orig_burden_round=gsub("^\\.","",orig_burden_round)) %>% 
-  mutate(orig_burden_round=ifelse(median<0,paste0("-",orig_burden_round),orig_burden_round))
-# plot
-ggplot(df_plot ) + geom_hpline(aes(x=country_iso,y=median,group=intervention,color=price_interv), # 
-              position=position_dodge(width=dodge_val),width=0.43,size=1) + # scale_linetype_manual(values=c("solid","longdash"))+
-  geom_linerange(aes(x=country_iso,ymin=CI50_low,ymax=CI50_high,group=intervention,color=price_interv),
-                 alpha=0.5,position=position_dodge(width=dodge_val),size=28,show.legend=F) +
-  facet_wrap(~variable,scales = "free") + 
-  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(3),colorRampPalette(colors=c("blue","blueviolet"))(3))) +
-  geom_vline(xintercept=1.5,linetype="dashed",size=0.3) + theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
-  geom_text(aes(x=country_iso,y=ifelse(abs(CI50_high)>1e6,CI50_high+2e6,CI50_high+200),group=intervention,label=orig_burden_round),
-            position=position_dodge(width=dodge_val)) + labs(color="",linetype="",caption="Numbers show median values.") + 
-  scale_x_discrete(expand=expansion(0.02,0)) + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=12),
-      legend.position="top",legend.text=element_text(size=14)) + guides(color=guide_legend(ncol=2))
-# save
-ggsave(paste0("output/cea_plots/",subfolder_name,"incremental_costs_KEN_ZAF.png"),width=36,height=18,units="cm")
-# calculate with modified function: this function takes user inputs but assumes incidence matrix = all cases (ARI+SARI)
-# sim_output_user_input=get_burden_flexible(sel_interv,incid_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]][["incid"]],
-#                                           hosp_prob_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]][["hosp"]])
-# this function takes user inputs and takes the incidence matrix as SARIs only (hosp and nonhosp)
-# sim_output_user_input_nonhosp_sari=get_burden_flexible_nonhosp_sari(sel_interv,
-#                       incid_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]]$incid,
-#                       hosp_prob_matrix=burden_list_own_data[[cntrs_cea[n_cntr_output]]]$hosp)
-# ARIs and SARIs separately accounted for, hosp/nonhosp distinguished
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# subtract SARIs from ARIs (don't do this - they're already excluded)
+# ARI_SARI_Rates_2010_2018_tidydata = read_csv(kenya_data_file_path)
+# tr_vals=ARI_SARI_Rates_2010_2018_tidydata$disease_type == "ARI" & ARI_SARI_Rates_2010_2018_tidydata$RSV_assoc =="yes"  
+# ARI_SARI_Rates_2010_2018_tidydata[tr_vals,c("value","CI_95_lower","CI_95_upper")] = 
+# ARI_SARI_Rates_2010_2018_tidydata %>% filter(disease_type=="ARI" & RSV_assoc=="yes") %>% 
+#     dplyr::select(c(value,CI_95_lower,CI_95_upper)) -
+# (ARI_SARI_Rates_2010_2018_tidydata %>% filter(disease_type=="SARI" & RSV_assoc=="yes") %>% 
+#     dplyr::select(c(value,CI_95_lower,CI_95_upper)))/100
+# ARI_SARI_Rates_2010_2018_tidydata=ARI_SARI_Rates_2010_2018_tidydata %>% mutate(value=ifelse(value<0,0,value),
+#                                     CI_95_lower=ifelse(CI_95_lower<0,0,CI_95_lower),CI_95_upper=ifelse(CI_95_upper<0,0,CI_95_upper))
+# write_csv(ARI_SARI_Rates_2010_2018_tidydata,gsub(".csv","_ARI_adjusted.csv",kenya_data_file_path))
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# Compare to age-specific incidence curve generated by mcmarcel
+# sel_disease="SARI"
+# config=get_rsv_ce_config(subset(sim_config_matrix,country_iso %in% "KEN" & intervention=="maternal"))
+# ci95_mcmarcel=t(sapply(1:nrow(config$rsv_rate),function(x)
+#   quantile( (config$rsv_rate*ifelse(sel_disease=="SARI",config$hosp_prob,1-config$hosp_prob))[x,],probs = c(2.5,97.5)/100)))
+# mcmarcel_agedep_incid=data.frame(age=1:60,disease_type=sel_disease,
+#     value=rowMeans(config$rsv_rate*ifelse(sel_disease=="SARI",config$hosp_prob,1-config$hosp_prob) ),ci95_mcmarcel,
+#     source="mcmarcel",disease_type_medic_status="all") %>% mutate(`X2.5.`=as.numeric(X2.5.),`X97.5.`=as.numeric(X97.5.))
+# colnames(mcmarcel_agedep_incid) = c("age_inf","disease_type","value","CI_95_lower","CI_95_upper","source","disease_type_medic_status")
+# mcmarcel_kemri_compare=bind_rows(mcmarcel_agedep_incid,
+#   subset(kenya_data,disease_type==sel_disease) %>% group_by(age_inf) %>% summarise(age_inf=unique(age_inf),
+#   disease_type=unique(disease_type),value=sum(value/metric_per_popul),CI_95_lower=sum(CI_95_lower/metric_per_popul),
+#             CI_95_upper=sum(CI_95_upper/metric_per_popul)) %>% mutate(source="KEMRI",disease_type_medic_status="all"),
+#   subset(kenya_data,disease_type==sel_disease & medically_attended==TRUE) %>% mutate(value=value/metric_per_popul,
+#     CI_95_lower=CI_95_lower/metric_per_popul,CI_95_upper=CI_95_upper/metric_per_popul,source="KEMRI") %>%
+#     dplyr::select(age_inf,disease_type,value,CI_95_lower,CI_95_upper,source,disease_type_medic_status) )
+# # plot
+# ggplot(mcmarcel_kemri_compare,aes(x=age_inf,y=value))+geom_line(aes(group=disease_type_medic_status,color=disease_type_medic_status))+
+#   geom_point(aes(group=disease_type_medic_status,color=disease_type_medic_status)) +
+#   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper,group=disease_type_medic_status,fill=disease_type_medic_status),alpha=0.3) +
+#   facet_wrap(~source,nrow = 2) + theme_bw() + standard_theme + scale_x_continuous(breaks=0:60,expand=expansion(0.02,0)) +
+#   scale_y_continuous(breaks=(0:50)/100,expand=expansion(0.02,0)) + xlab("age (months)") + ylab("disease episodes/person-years") +
+#   labs(color="data source",fill="data source") + ggtitle(paste0("RSV-associated ",sel_disease," incidence"))
+# # save
+# ggsave(paste0("output/",sel_disease,"_incidence_comparison_KEN_faceted.png"),width=30,height=18,units="cm")
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+# Fitting efficacy figures with distributions
+# gamma_estims=gamma.parms.from.quantiles(c(efficacy_figures$mat_vacc$sympt_disease["CI95_low"],
+#                                           efficacy_figures$mat_vacc$sympt_disease["CI95_high"]))
+# severe_gamma_dist=rgamma(5e3,shape=gamma_estims$shape,rate=gamma_estims$rate)
+# 
+# norm_fits_mat_vacc=lapply(efficacy_figures$mat_vacc, function(x) get.norm.par(q=x[c("CI95_low","CI95_high")],p=c(2.5,97.5)/100))
+# norm_fits_mAb=lapply(efficacy_figures$monocl_ab, function(x) get.norm.par(q=x[c("CI95_low","CI95_high")],p=c(2.5,97.5)/100))
+# pred_effic_distr_mat_vacc=data.frame(t(data.frame(lapply(norm_fits_mat_vacc, function(x) c("mean"=mean(rnorm(1e4,mean=x["mean"],
+#   sd=x["sd"])),quantile(rnorm(1e4,mean=x["mean"],sd=x["sd"]),probs=c(2.5,97.5)/1e2)) )))) %>% mutate(type="pred")
+# data.frame(t(data.frame(efficacy_figures$mat_vacc)))
+# 
+# # quantile(rnorm(1e4,mean=fitnrm["mean"],sd=fitnrm["sd"]),probs=c(2.5,97.5)/1e2)
+# 
+# fit_gamma=get.gamma.par(q=efficacy_figures$mat_vacc$hospit[c("CI95_low","CI95_high")],p=c(2.5,97.5)/1e2)
+# # get.gamma.par(q=efficacy_figures$mat_vacc$severe[c("CI95_low","CI95_high")],p=c(2.5,97.5)/1e2) ---> INVALID (negative)
+# get.norm.par(q=efficacy_figures$mat_vacc$severe[c("CI95_low","CI95_high")],p=c(2.5,97.5)/1e2)
+# 
+# # try different distribs
+# fit.perc(p=c(0.025,0.975), q=efficacy_figures$mat_vacc$severe[c("CI95_low","CI95_high")] )
+# # cauchy or logistic could work
+# fit_norm=get.norm.par(q=efficacy_figures$mat_vacc$severe[c("CI95_low","CI95_high")],p=c(2.5,97.5)/1e2)
+# c(mean(rnorm(1e4,mean=fit_norm["mean"],sd=fit_norm["sd"])),
+#   quantile(rnorm(1e4,mean=fit_norm["mean"],sd=fit_norm["sd"]),probs=c(2.5,97.5)/1e2))
+# # cauchy worse then normal (too high mean)
+# # fit_cauch=get.cauchy.par(q=efficacy_figures$mat_vacc$severe[c("CI95_low","CI95_high")],p=c(2.5,97.5)/1e2)
+# # cauch_sampls=rcauchy(1e4,location=fit_cauch["location"],scale=fit_cauch["scale"])
+# # c(mean(cauch_sampls),quantile(cauch_sampls,probs=c(2.5,97.5)/1e2))
+#   efficacy_figures$mat_vacc$severe
