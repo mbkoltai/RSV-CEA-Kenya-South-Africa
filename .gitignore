@@ -21,7 +21,10 @@ output/*.png
 output/sub_sah_afr_proj/s_afr_age_distrib/
 output/sub_sah_afr_proj/kenya_age_distrib/
 output/*RSV_gavi*
+output/0ld/
+output/*/*.png
 *RData
 *Rhistory
 mcmarcel_splines/
 output/cea_plots/old/
+refresh_gitignore.sh
