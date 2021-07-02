@@ -21,10 +21,11 @@ output/*.png
 output/sub_sah_afr_proj/s_afr_age_distrib/
 output/sub_sah_afr_proj/kenya_age_distrib/
 output/*RSV_gavi*
-output/0ld/
 output/*/*.png
+output/ari_sari_burden/s_afr_ARI_using_kenya_ratio/
+output/ari_sari_burden/ARI_minus_SARI/
 *RData
 *Rhistory
 mcmarcel_splines/
-output/cea_plots/old/
+output/cea_plots/0ld/
 refresh_gitignore.sh
