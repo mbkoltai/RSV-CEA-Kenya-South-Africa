@@ -24,7 +24,8 @@ output/*RSV_gavi*
 # output/*/*.png
 output/ari_sari_burden/s_afr_ARI_using_kenya_ratio/
 output/ari_sari_burden/ARI_minus_SARI/
-output/ari_sari_burden/ARI_minus_SARI/sub_sah_afr_proj/
+output/sub_sah_afr_proj/
+output/sample_paths_test/
 *RData
 *Rhistory
 mcmarcel_splines/
