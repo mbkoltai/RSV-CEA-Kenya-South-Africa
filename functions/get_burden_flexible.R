@@ -1,5 +1,5 @@
 ###### get_burden_flexible ------------------------------------
-get_burden_flexible <- function(configList,incid_matrix,hosp_prob_matrix,dose_price) {
+get_burden_flexible <- function(configList,incid_matrix,hosp_prob_matrix,exp_wane,dose_price) {
   # set RNG seed
   set.seed(configList$rng_seed)
   ###############################
@@ -104,7 +104,14 @@ get_burden_flexible <- function(configList,incid_matrix,hosp_prob_matrix,dose_pr
     iAgeEffectiveProtection_hospital[1:dur_prot_infant,i_eff] <- config$efficacy_infant_hospital[i_eff]*config$coverage_infant
     iAgeEffectiveProtection_cfr[1:dur_prot_infant,i_eff]      <- config$efficacy_infant_cfr[i_eff]*config$coverage_infant
     }
-  
+  if (exp_wane) { if (dur_prot_infant>0) {print("using exp waning (mAb)")}
+    n_row<-nrow(iAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_infant-1))*log(2)*((1:n_row)-1) # print(exp_scaling)
+    iAgeEffectiveProtection_primary[1:n_row,]  <- config$efficacy_infant_primary*config$coverage_infant; 
+    iAgeEffectiveProtection_primary <- iAgeEffectiveProtection_primary*exp(exp_scaling); print(rowMeans(iAgeEffectiveProtection_primary))
+    iAgeEffectiveProtection_hospital[1:n_row,] <- config$efficacy_infant_hospital*config$coverage_infant
+    iAgeEffectiveProtection_hospital <- iAgeEffectiveProtection_hospital*exp(exp_scaling)
+    iAgeEffectiveProtection_cfr[1:n_row,] <- config$efficacy_infant_cfr*config$coverage_infant
+    iAgeEffectiveProtection_cfr <- iAgeEffectiveProtection_cfr*exp(exp_scaling)   }
 ###############################
 # Maternal protection         #
 ###############################
@@ -139,6 +146,16 @@ mAgeEffectiveProtection_cfr <- mAgeEffectiveProtection_primary # dummy
     mAgeEffectiveProtection_hospital[1:dur_prot_maternal,i_eff] <- config$efficacy_maternal_hospital[i_eff]*config$coverage_maternal
     mAgeEffectiveProtection_cfr[1:dur_prot_maternal,i_eff] <- config$efficacy_maternal_cfr[i_eff]*config$coverage_maternal }
   
+  #
+if (exp_wane) { if (dur_prot_maternal>0) {print("using exp waning (MatVacc)")}
+  n_row<-nrow(mAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_maternal-1))*log(2)*((1:n_row)-1)
+  mAgeEffectiveProtection_primary[1:n_row,]  <- config$efficacy_maternal_primary*config$coverage_maternal; 
+  mAgeEffectiveProtection_primary <- mAgeEffectiveProtection_primary*exp(exp_scaling); # print(exp(exp_scaling))
+  mAgeEffectiveProtection_hospital[1:n_row,] <- config$efficacy_maternal_hospital*config$coverage_maternal
+  mAgeEffectiveProtection_hospital <- mAgeEffectiveProtection_hospital*exp(exp_scaling) # print(rowMeans(mAgeEffectiveProtection_hospital))
+  mAgeEffectiveProtection_cfr[1:n_row,] <- config$efficacy_maternal_cfr*config$coverage_maternal
+  mAgeEffectiveProtection_cfr <- mAgeEffectiveProtection_cfr*exp(exp_scaling)   }
+
   # Decrease the efficacy factor for the pre-term infants
   mAgeEffectiveProtection_primary  <- mAgeEffectiveProtection_primary*(1-config$pre_term_rate)
   mAgeEffectiveProtection_hospital <- mAgeEffectiveProtection_hospital*(1-config$pre_term_rate)

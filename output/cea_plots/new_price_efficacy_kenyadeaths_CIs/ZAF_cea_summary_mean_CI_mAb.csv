@@ -93,7 +93,7 @@ source,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,price,source_n
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y,0,0,0,0,0,0,6,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y_disc,0,0,0,0,0,0,6,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_disc,2591856.1598,3001888,1641539,4002528.25,-2354486.95,5287884.599999996,6,0.2,ZAF,mAb
-"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,2868.9237952179533,1835.2157128622084,698.7095240689787,3827.4775267127598,-739.5666645688457,12599.915578193026,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,1332.981878452125,840.7740198763969,317.79147015873474,1754.5409201043192,-333.35791097099434,5886.5893566360555,6,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y_disc,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
@@ -330,7 +330,7 @@ new data (hospital-based + HUS),incremental_cost_0to1y_disc,-10865297.7298,-1080
 new data (hospital-based + HUS),incremental_cost_1to5y,0,0,0,0,0,0,6,2,ZAF,mAb
 new data (hospital-based + HUS),incremental_cost_1to5y_disc,0,0,0,0,0,0,6,2,ZAF,mAb
 new data (hospital-based + HUS),incremental_cost_disc,-10865297.7298,-10805879.5,-11766113.5,-9902812,-13691985.325,-8347585.45,6,2,ZAF,mAb
-new data (hospital-based + HUS),incremental_cost/DALY_averted,-519.4598210426723,-492.9522846184474,-615.1495611017277,-386.4863065092248,-940.981125005125,-249.40917678745586,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost/DALY_averted,-235.2510336316581,-223.1131945123332,-278.7122267154559,-174.5021515332039,-428.8647464040787,-112.35234735215764,6,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost_0to1y,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost_0to1y_disc,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
@@ -567,7 +567,7 @@ new data (hospital-based + HUS),total_YLL_disc_averted,22850.066,21610,17188,272
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y,0,0,0,0,0,0,20,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y_disc,0,0,0,0,0,0,20,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_disc,17635157.405,18045189.5,16684840.25,19045829.25,12688814.05,20331185.599999998,20,0.2,ZAF,mAb
-"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,16087.693143943534,11914.961959162312,6876.389400561919,20140.161450047723,2303.9641011101457,55281.7325104072,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,7458.085505746193,5433.811187324089,3120.122564585408,9298.68554174634,1037.3358213066588,26361.221185981616,20,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y_disc,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
@@ -804,7 +804,7 @@ new data (hospital-based + HUS),incremental_cost_0to1y_disc,4178003.5182,4237422
 new data (hospital-based + HUS),incremental_cost_1to5y,0,0,0,0,0,0,20,2,ZAF,mAb
 new data (hospital-based + HUS),incremental_cost_1to5y_disc,0,0,0,0,0,0,20,2,ZAF,mAb
 new data (hospital-based + HUS),incremental_cost_disc,4178003.5182,4237422,3277187.5,5140489,1351315.675,6695715.55,20,2,ZAF,mAb
-new data (hospital-based + HUS),incremental_cost/DALY_averted,202.55343063890214,188.64633583953213,131.88276873046414,257.81802051935756,50.174866942835855,440.81820247055657,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost/DALY_averted,91.73299714139962,85.30111558065488,59.558871053260184,116.60285023798993,22.72548056698222,200.36972152980564,20,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost_0to1y,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost_0to1y_disc,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
@@ -1041,7 +1041,7 @@ new data (hospital-based + HUS),total_YLL_disc_averted,22850.066,21610,17188,272
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y,0,0,0,0,0,0,60,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y_disc,0,0,0,0,0,0,60,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_disc,60616018.1094,61026050,59665701,62026690.25,55669675.050000004,63312046.599999994,60,0.2,ZAF,mAb
-"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,53855.60557393043,40763.18361670818,24276.387250523927,67315.57123295085,9274.613843491601,180963.18522265757,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,24958.381585746643,18618.408675933744,11009.881557989493,31036.094159113796,4175.815474320499,86824.13123665034,60,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
 "projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y_disc,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
@@ -1278,7 +1278,7 @@ new data (hospital-based + HUS),incremental_cost_0to1y_disc,47158864.2198,472182
 new data (hospital-based + HUS),incremental_cost_1to5y,0,0,0,0,0,0,60,2,ZAF,mAb
 new data (hospital-based + HUS),incremental_cost_1to5y_disc,0,0,0,0,0,0,60,2,ZAF,mAb
 new data (hospital-based + HUS),incremental_cost_disc,47158864.2198,47218282,46258048.5,48121350,44332176.675000004,49676576.550000004,60,2,ZAF,mAb
-new data (hospital-based + HUS),incremental_cost/DALY_averted,2265.448434882535,2144.511517754057,1710.1267118081573,2696.0529518544668,1120.8284508551221,3992.5003593446627,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost/DALY_averted,1025.9730848086144,969.7417541748848,772.3555387286531,1221.0861202151157,504.9385572320952,1816.2500779399925,60,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost_0to1y,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb
 new data (hospital-based + HUS),intervention_cost_0to1y_disc,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb

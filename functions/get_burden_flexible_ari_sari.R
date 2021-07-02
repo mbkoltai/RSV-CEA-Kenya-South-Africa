@@ -1,5 +1,5 @@
 ###### get_burden_flexible ------------------------------------
-get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_prob,dose_price,cost_data) {
+get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_prob,exp_wane,dose_price,cost_data) {
   # set RNG seed
   set.seed(configList$rng_seed)
   ###############################
@@ -109,30 +109,30 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
       print("using prob distribs for mAb")
       if (any(effic_fig$monocl_ab$sympt_disease<0)){
         # symptom disease
-        eff_sympt_disease_fit=get.norm.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
-                                           p=c(2.5,50,97.5)/100,show.output=F)[c("mean","sd")]
+        eff_sympt_disease_fit <- get.norm.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
+                                           p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
         effic_sympt_disease <- rnorm(num_sim,mean=eff_sympt_disease_fit["mean"],sd=eff_sympt_disease_fit["sd"])} else {
           eff_sympt_disease_fit=get.gamma.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
-                                              p=c(2.5,50,97.5)/100,show.output=F)[c("shape","rate")]
+                                              p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
           effic_sympt_disease <- rgamma(num_sim,shape=eff_sympt_disease_fit["shape"],rate=eff_sympt_disease_fit["rate"])  }
       # hospitalisation
       if (any(effic_fig$monocl_ab$hospit<0)){
         eff_hosp_disease_fit=get.norm.par(q=effic_fig$monocl_ab$hospit[c("CI95_low","mean","CI95_high")],
-                                          p=c(2.5,50,97.5)/100,show.output=F)[c("mean","sd")]
+                                          p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
         effic_hospit_disease <- rnorm(num_sim,mean=eff_hosp_disease_fit["mean"],sd=eff_hosp_disease_fit["sd"]) } else {
           eff_hosp_disease_fit <- get.gamma.par(q=effic_fig$monocl_ab$hospit[c("CI95_low","mean","CI95_high")],
-                                             p=c(2.5,50,97.5)/100,show.output=F)[c("shape","rate")]
+                                             p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
           effic_hospit_disease <- rgamma(num_sim,shape=eff_hosp_disease_fit["shape"],rate=eff_hosp_disease_fit["rate"]) }
       # severe disease
       if (!is.null(effic_fig$monocl_ab$severe)){
         # print("mAB severe disease efficacy")
         if (any(effic_fig$monocl_ab$severe<0)){
         eff_severe_disease_fit=get.norm.par(q=effic_fig$monocl_ab$severe[c("CI95_low","mean","CI95_high")],
-                                            p=c(2.5,50,97.5)/100,show.output=F)[c("mean","sd")]
+                                            p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
         effic_severe_disease <- rnorm(num_sim,mean=eff_severe_disease_fit["mean"],sd=eff_severe_disease_fit["sd"]) } else {
           # print(effic_fig$monocl_ab$severe[c("CI95_low","mean","CI95_high")])
           eff_severe_disease_fit=get.gamma.par(q=effic_fig$monocl_ab$severe[c("CI95_low","mean","CI95_high")],
-                                               p=c(2.5,50,97.5)/100,show.output=F)[c("shape","rate")]
+                                               p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
           effic_severe_disease <- rgamma(num_sim,shape=eff_severe_disease_fit["shape"],rate=eff_severe_disease_fit["rate"]) } } else {
             effic_severe_disease <- effic_hospit_disease }
           } # if there are CIs for efficacy
@@ -140,12 +140,22 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
       effic_sympt_disease <- rep(effic_fig$monocl_ab$sympt_disease["mean"],num_sim)# *config$coverage_infant
       effic_hospit_disease <- rep(effic_fig$monocl_ab$hospit["mean"],num_sim) # *config$coverage_infant
       if (is.null(effic_fig$monocl_ab$severe)) {effic_fig$monocl_ab$severe <- effic_fig$monocl_ab$hospit}
-      effic_severe_disease <- rep(effic_fig$monocl_ab$severe["mean"],num_sim) } # *config$coverage_infant 
+      effic_severe_disease <- rep(effic_fig$monocl_ab$severe["mean"],num_sim) }
+    # assign all values (user input)
     iAgeEffectiveProtection_primary[1:dur_prot_infant,] <- effic_sympt_disease*config$coverage_infant
     iAgeEffectiveProtection_hospital[1:dur_prot_infant,] <- effic_hospit_disease*config$coverage_infant
-    iAgeEffectiveProtection_cfr[1:dur_prot_infant,] <- effic_severe_disease*config$coverage_infant  }
-  else {
-    iAgeEffectiveProtection_primary[1:dur_prot_infant,] <- config$efficacy_infant_primary*config$coverage_infant
+    iAgeEffectiveProtection_cfr[1:dur_prot_infant,] <- effic_severe_disease*config$coverage_infant  
+    if (exp_wane) { if(dur_prot_infant>0) {print("using exponential waning for efficacy (mAb)")}
+      n_row <- nrow(iAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_infant-1))*log(2)*((1:n_row)-1)
+      iAgeEffectiveProtection_primary[1:n_row,] <- effic_sympt_disease*config$coverage_infant
+      iAgeEffectiveProtection_primary <- iAgeEffectiveProtection_primary*exp(exp_scaling)
+      iAgeEffectiveProtection_hospital[1:n_row,] <- effic_hospit_disease*config$coverage_infant
+      iAgeEffectiveProtection_hospital <- iAgeEffectiveProtection_hospital*exp(exp_scaling)
+      iAgeEffectiveProtection_cfr[1:n_row,] <- effic_severe_disease*config$coverage_infant
+      iAgeEffectiveProtection_cfr<-iAgeEffectiveProtection_cfr*exp(exp_scaling)     } # end of exp waning
+    } # end of user input for efficacy
+  # no user input for efficacy
+  else { iAgeEffectiveProtection_primary[1:dur_prot_infant,] <- config$efficacy_infant_primary*config$coverage_infant
     iAgeEffectiveProtection_hospital[1:dur_prot_infant,] <- config$efficacy_infant_hospital*config$coverage_infant
     iAgeEffectiveProtection_cfr[1:dur_prot_infant,] <- config$efficacy_infant_cfr*config$coverage_infant }
   
@@ -187,48 +197,53 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
     # print(effic_fig$mat_vacc$sympt_disease["mean"])
     if (effic_prob) {
       print("using prob distribs for vaccine efficacy")
-      if (any(effic_fig$mat_vacc$sympt_disease<0)){
+      if (any(effic_fig$mat_vacc$sympt_disease<0)){ # if there are negative values, use normal distribution
         # symptom disease
         eff_sympt_disease_fit=get.norm.par(q=effic_fig$mat_vacc$sympt_disease[c("CI95_low","mean","CI95_high")],
-                                         p=c(2.5,50,97.5)/100,show.output=F)[c("mean","sd")]
+                                         p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
       effic_sympt_disease <- rnorm(num_sim,mean=eff_sympt_disease_fit["mean"],sd=eff_sympt_disease_fit["sd"])} else {
-        eff_sympt_disease_fit=get.gamma.par(q=effic_fig$mat_vacc$sympt_disease[c("CI95_low","mean","CI95_high")],
-                                           p=c(2.5,50,97.5)/100,show.output=F)[c("shape","rate")]
+        # if only positive values, use gamma distribution
+        eff_sympt_disease_fit <- get.gamma.par(q=effic_fig$mat_vacc$sympt_disease[c("CI95_low","mean","CI95_high")],
+                                           p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
         effic_sympt_disease <- rgamma(num_sim,shape=eff_sympt_disease_fit["shape"],rate=eff_sympt_disease_fit["rate"])  }
       # hospitalisation
       if (any(effic_fig$mat_vacc$hospit<0)){
       eff_hosp_disease_fit=get.norm.par(q=effic_fig$mat_vacc$hospit[c("CI95_low","mean","CI95_high")],
-                                        p=c(2.5,50,97.5)/100,show.output=F)[c("mean","sd")]
+                                        p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
       effic_hospit_disease <- rnorm(num_sim,mean=eff_hosp_disease_fit["mean"],sd=eff_hosp_disease_fit["sd"]) } else {
         eff_hosp_disease_fit=get.gamma.par(q=effic_fig$mat_vacc$hospit[c("CI95_low","mean","CI95_high")],
-                                          p=c(2.5,50,97.5)/100,show.output=F)[c("shape","rate")]
+                                          p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
         effic_hospit_disease <- rgamma(num_sim,shape=eff_hosp_disease_fit["shape"],rate=eff_hosp_disease_fit["rate"]) }
       # severe disease
       if (any(effic_fig$mat_vacc$severe<0)){
       eff_severe_disease_fit=get.norm.par(q=effic_fig$mat_vacc$severe[c("CI95_low","mean","CI95_high")],
-                                          p=c(2.5,50,97.5)/100,show.output=F)[c("mean","sd")]
-      effic_severe_disease <- rnorm(num_sim,mean=eff_severe_disease_fit["mean"],sd=eff_severe_disease_fit["sd"])
-      # print("mat vacc severe dis effic"); print(c(effic_severe_disease[1:11]))
-       } else {
+                                          p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
+      effic_severe_disease <- rnorm(num_sim,mean=eff_severe_disease_fit["mean"],sd=eff_severe_disease_fit["sd"]) } else {
         eff_severe_disease_fit=get.gamma.par(q=effic_fig$mat_vacc$severe[c("CI95_low","mean","CI95_high")],
-                                           p=c(2.5,50,97.5)/100,show.output=F)[c("shape","rate")]
+                                           p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
         effic_severe_disease <- rgamma(num_sim,shape=eff_severe_disease_fit["shape"],rate=eff_severe_disease_fit["rate"]) }
-      
+      # fill in values from distributions
       effic_sympt_disease <- effic_sympt_disease*config$coverage_maternal
       effic_hospit_disease <- effic_hospit_disease*config$coverage_maternal
-      effic_severe_disease <- effic_severe_disease*config$coverage_maternal
-      
-    } else {
+      effic_severe_disease <- effic_severe_disease*config$coverage_maternal 
+      } else { # if efficacy figures are not used to generate distributions, only means
       effic_sympt_disease <- rep(effic_fig$mat_vacc$sympt_disease["mean"],num_sim)*config$coverage_maternal
       effic_hospit_disease <- rep(effic_fig$mat_vacc$hospit["mean"],num_sim)*config$coverage_maternal
-      effic_severe_disease <- rep(effic_fig$mat_vacc$severe["mean"],num_sim)*config$coverage_maternal
-    }
-    # print("matvacc efficacy"); print(c(mean(effic_sympt_disease),mean(effic_hospit_disease),mean(effic_severe_disease)))
-    # print(c(sd(effic_sympt_disease),sd(effic_hospit_disease),sd(effic_severe_disease)))  
-    mAgeEffectiveProtection_primary[1:dur_prot_maternal,] <- effic_sympt_disease
+      effic_severe_disease <- rep(effic_fig$mat_vacc$severe["mean"],num_sim)*config$coverage_maternal }  # close if gate of plugging in values
+    # substitute in values
+    mAgeEffectiveProtection_primary[1:dur_prot_maternal,] <- effic_sympt_disease # print(dim(mAgeEffectiveProtection_primary))
     mAgeEffectiveProtection_hospital[1:dur_prot_maternal,] <- effic_hospit_disease
-    mAgeEffectiveProtection_cfr[1:dur_prot_maternal,] <- effic_severe_disease
-    } else {
+    mAgeEffectiveProtection_cfr[1:dur_prot_maternal,] <- effic_severe_disease 
+    if (exp_wane) { if(dur_prot_maternal>0) {print("using exponential waning for efficacy (MV)")}
+      n_row<-nrow(mAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_maternal-1))*log(2)*((1:n_row)-1)
+      mAgeEffectiveProtection_primary[1:n_row,] <- effic_sympt_disease
+      mAgeEffectiveProtection_primary <- mAgeEffectiveProtection_primary*exp(exp_scaling)
+      mAgeEffectiveProtection_hospital[1:n_row,] <- effic_hospit_disease
+      mAgeEffectiveProtection_hospital <- mAgeEffectiveProtection_hospital*exp(exp_scaling); # print(rowMeans(mAgeEffectiveProtection_hospital))
+      mAgeEffectiveProtection_cfr[1:n_row,] <- effic_severe_disease
+      mAgeEffectiveProtection_cfr<-mAgeEffectiveProtection_cfr*exp(exp_scaling); # print(rowMeans(mAgeEffectiveProtection_cfr))
+    }
+      } else { # if no user input on efficacy
     mAgeEffectiveProtection_primary[1:dur_prot_maternal,] <- config$efficacy_maternal_primary*config$coverage_maternal
     mAgeEffectiveProtection_hospital[1:dur_prot_maternal,] <- config$efficacy_maternal_hospital*config$coverage_maternal
     mAgeEffectiveProtection_cfr[1:dur_prot_maternal,] <- config$efficacy_maternal_cfr*config$coverage_maternal }
@@ -239,7 +254,8 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   mAgeEffectiveProtection_cfr      <- mAgeEffectiveProtection_cfr*(1-config$pre_term_rate)
   
   # print("matVacc protection")
-  # print(c(mean(mAgeEffectiveProtection_cfr),mean(mAgeEffectiveProtection_hospital),mean(mAgeEffectiveProtection_cfr)))
+  # print("hosp"); print(rowMeans(mAgeEffectiveProtection_hospital))
+  # print("cfr"); print(rowMeans(mAgeEffectiveProtection_cfr))
   
   ###############################
   # Total protection         #
@@ -252,7 +268,9 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   totalAgeEffectiveProtection_primary  <-  mAgeEffectiveProtection_primary  + iAgeEffectiveProtection_primary 
   totalAgeEffectiveProtection_hospital <-  mAgeEffectiveProtection_hospital + iAgeEffectiveProtection_hospital
   totalAgeEffectiveProtection_cfr      <-  mAgeEffectiveProtection_cfr      + iAgeEffectiveProtection_cfr
-  # config$outpatient_cost
+  # print("totalAgeEffectiveProtection_hospital"); print(rowMeans(totalAgeEffectiveProtection_hospital))
+  # print("totalAgeEffectiveProtection_cfr"); print(rowMeans(totalAgeEffectiveProtection_cfr))
+  
   
   # Differential efficacy problem if number averted hospital cases > total number averted cases
   # Check if the non_hosp protection is negative ===>>> a negative number of averted cases ??!! ===>>> set NA
