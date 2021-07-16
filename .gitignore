@@ -31,3 +31,8 @@ output/sample_paths_test/
 mcmarcel_splines/
 output/cea_plots/0ld/
 refresh_gitignore.sh
+RSV_main.R
+RSV_main.pdf
+datasource_comparisons.R
+RSV_kenya_SA_calculation.R
+CEA_distrib_plots.R
