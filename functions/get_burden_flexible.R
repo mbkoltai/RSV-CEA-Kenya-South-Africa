@@ -107,7 +107,7 @@ get_burden_flexible <- function(configList,incid_matrix,hosp_prob_matrix,exp_wan
   if (exp_wane) { if (dur_prot_infant>0) {print("using exp waning (mAb)")}
     n_row<-nrow(iAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_infant-1))*log(2)*((1:n_row)-1) # print(exp_scaling)
     iAgeEffectiveProtection_primary[1:n_row,]  <- config$efficacy_infant_primary*config$coverage_infant; 
-    iAgeEffectiveProtection_primary <- iAgeEffectiveProtection_primary*exp(exp_scaling); print(rowMeans(iAgeEffectiveProtection_primary))
+    iAgeEffectiveProtection_primary <- iAgeEffectiveProtection_primary*exp(exp_scaling); # print(rowMeans(iAgeEffectiveProtection_primary))
     iAgeEffectiveProtection_hospital[1:n_row,] <- config$efficacy_infant_hospital*config$coverage_infant
     iAgeEffectiveProtection_hospital <- iAgeEffectiveProtection_hospital*exp(exp_scaling)
     iAgeEffectiveProtection_cfr[1:n_row,] <- config$efficacy_infant_cfr*config$coverage_infant

@@ -1,7 +1,6 @@
 # clean up workspace
 rm(list=ls())
-library(tidyverse); library(rstudioapi); library(fitdistrplus); library(matrixStats); library(ungeviz); library(stringi)
-library(rriskDistributions)
+lapply(c("tidyverse","rstudioapi","fitdistrplus","rstudioapi","matrixStats","ungeviz","stringi","rriskDistributions"),library,character.only=TRUE)
 # sessionInfo()
 # path
 currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
@@ -36,7 +35,7 @@ kenya_data=bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_dis
   mutate(disease_type_medic_status=paste(disease_type, ifelse(medically_attended,"medically attended","not attended")) ) %>%
   mutate(disease_type_medic_status=gsub("SARI medically attended","SARI hospitalised",disease_type_medic_status)) %>%
   mutate(disease_type_medic_status=gsub("SARI not attended","SARI non-hospitalised",disease_type_medic_status)) %>%
-  dplyr::select(!c(age_in_months,RSV_assoc,freq,n)) %>% relocate(age_inf,.before=variable) %>% relocate(metric_per_popul,.after=value)
+  dplyr::select(!c(RSV_assoc,freq,n)) %>% relocate(age_inf,.before=variable) %>% relocate(metric_per_popul,.after=value)
 # ratio of medically-attended uniform across age groups (65% for ARI, 24% SARI)
 hosp_rate_kenya=kenya_data %>% group_by(disease_type,age_inf) %>% 
   summarise(medic_attended=unique(value[medically_attended]/sum(value)),maxval=unique(max(value)/metric_per_popul),
@@ -53,28 +52,31 @@ p <- ggplot(kenya_data,aes(x=age_inf)) +
 # save
 ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_burden","_sep"[length(p$facet$params)>0],".png"),width=30,height=22,units="cm")
 # with error bars
-ggplot(kenya_data,aes(x=age_inf)) +
+df_plot <- kenya_data %>% group_by(age_in_months,disease_type_medic_status) %>% 
+  summarise(value=unique(value),CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),metric_per_popul=unique(metric_per_popul))
+ggplot(df_plot,aes(x=age_in_months)) +
   geom_bar(aes(y=value/metric_per_popul,fill=disease_type_medic_status),position="stack",stat="identity") +
   geom_errorbar(aes(ymin=CI_95_lower/metric_per_popul,ymax=CI_95_upper/metric_per_popul),size=0.4) +
-  facet_wrap(~disease_type_medic_status,nrow=2,scales="free") + 
-  theme_bw() + standard_theme + xlab("age (months)") + ylab("cases per person year") + theme(axis.text.x=element_text(vjust=0.5,size=11),
-    axis.text.y=element_text(size=12),legend.text=element_text(size=12),legend.background=element_rect(fill=NA),legend.position=c(0.85,0.925))+
+  facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
+  theme_bw() + standard_theme + xlab("age (months)") + ylab("cases per person year") + theme(axis.text.x=element_text(vjust=0.5,size=13),
+   axis.text.y=element_text(size=13),legend.text=element_text(size=13),legend.background=element_rect(fill=NA),legend.position=c(0.92,0.925),
+   axis.title.x=element_text(size=17),axis.title.y=element_text(size=17),strip.text=element_text(size=14)) + 
   # geom_text(data=hosp_rate_kenya,aes(x=45,y=c(0.17,0.2),label=paste0(status,"=",round(mean_medic_attended*1e2,1),"%")),size=6) +
-  scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) + labs(fill="") + scale_y_continuous(expand=expansion(0.01,0)) # + 
+  scale_y_continuous(expand=expansion(0.01,0)) + labs(fill="") # scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0))
   # ggtitle("Kenya ARI and SARI burden")
 # save
-ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_burden_errorbars.png"),width=35,height=22,units="cm")
+ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped.png"),width=35,height=22,units="cm")
 ### ### ### ### ### ### ### ### ### ### ### ### ###
-### ARI/SARI ratio per age group
-kenya_ari_sari_ratio = kenya_data %>% group_by(disease_type,age_inf) %>% summarise(value=sum(value)/unique(metric_per_popul)) %>% 
-  group_by(age_inf) %>% summarise(value=value[disease_type=="ARI"]/value[disease_type=="SARI"])
-# plot ARI/SARI RATIO
-ggplot(kenya_ari_sari_ratio,aes(y=value)) + geom_segment(aes(x=age_inf-0.45,xend=age_inf+0.45,yend=value),size=1.05) +
-  scale_x_continuous(breaks=0:60,expand=expansion(0.01,0)) + scale_y_log10(breaks=round(10^((-4:10)/4),2) ) +
-  geom_segment(aes(x=age_inf,xend=age_inf,y=0,yend=value),size=0.5,linetype="dashed",color="darkgrey") + 
-  theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5)) + xlab("age (months)") + ylab("ARI/SARI ratio")
-# SAVE
-ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_ratio.png"),width=30,height=18,units="cm")
+# ### ARI/SARI ratio per age group
+# kenya_ari_sari_ratio = kenya_data %>% group_by(disease_type,age_inf) %>% summarise(value=sum(value)/unique(metric_per_popul)) %>% 
+#   group_by(age_inf) %>% summarise(value=value[disease_type=="ARI"]/value[disease_type=="SARI"])
+# # plot ARI/SARI RATIO
+# ggplot(kenya_ari_sari_ratio,aes(y=value)) + geom_segment(aes(x=age_inf-0.45,xend=age_inf+0.45,yend=value),size=1.05) +
+#   scale_x_continuous(breaks=0:60,expand=expansion(0.01,0)) + scale_y_log10(breaks=round(10^((-4:10)/4),2) ) +
+#   geom_segment(aes(x=age_inf,xend=age_inf,y=0,yend=value),size=0.5,linetype="dashed",color="darkgrey") + 
+#   theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5)) + xlab("age (months)") + ylab("ARI/SARI ratio")
+# # SAVE
+# ggsave(paste0("output/ari_sari_burden/kenya_ari_sari_ratio.png"),width=30,height=18,units="cm")
 ### ### ### ### ### ### ### ### ### ### ### ### ###
 # Kenya deaths
 deaths_kenya <- read_csv("../path_rsv_data/SARI_Rates_2010_2018_updated/deaths_kenya_tidy.csv") %>% 
@@ -110,16 +112,17 @@ ggplot(cfr_kenya,aes(x=age_inf,y=rate*100,color=medically_attended)) + geom_line
   ylab("% CFR") + scale_x_continuous(expand=expansion(0.01,0),breaks=(0:30)*2)
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### South Africa
-SA_SARI_data=fcn_load_s_afr(safr_data_path = "../path_rsv_data/s_afr_incidence_data_rate.csv") %>%
-  mutate(disease_type_medic_status=paste(disease_type,ifelse(hospitalisation,"hospitalised","not hospitalised")) ) %>%
-  relocate(age_inf,.before=Province) %>% relocate(Province,.after=disease_type_medic_status) %>% relocate(year,.before=Province)
+SA_SARI_data <- fcn_load_s_afr(safr_data_path = "../path_rsv_data/s_afr_incidence_data_rate.csv") %>%
+  mutate(disease_type_medic_status=paste(disease_type,ifelse(hospitalisation,"hospitalised","not hospitalised")) ) %>% 
+  rename(agegroup_mts=age) %>% relocate(age_inf,.before=Province) %>% relocate(Province,.after=disease_type_medic_status) %>% 
+  relocate(year,.before=Province)
 # SA ILI data
 SA_ILI_data <- read_csv("../path_rsv_data/s_afr_ILI_incidence_rate.csv") %>% 
       filter(!(grepl("<",agegroup) | agegroup %in% c("0-5m","6-11m","12-23m","24-59m","<5y"))) %>%
-      mutate(agegroup=gsub("m","",agegroup), freq=1) %>% mutate(freq=ifelse(grepl('-',agegroup),
+      mutate(agegroup_mts=agegroup,agegroup=gsub("m","",agegroup), freq=1) %>% mutate(freq=ifelse(grepl('-',agegroup),
         as.numeric(sapply(agegroup, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,freq)) %>% 
   mutate(agegroup=ifelse(grepl('-',agegroup), sapply(strsplit(agegroup,'-'),'[[',1),agegroup)) %>%
-  uncount(weights=freq, .id="n",.remove=F) %>% mutate(age_inf=as.numeric(agegroup)+(n-1)) %>% dplyr::select(!c(n,freq,agegroup)) %>% 
+  uncount(weights=freq, .id="n",.remove=F) %>% mutate(age_inf=as.numeric(agegroup)+(n-1)) %>% dplyr::select(!c(n,freq,agegroup)) %>% # 
   relocate(age_inf,.before=rate) %>% relocate(disease_type,.before=hospitalisation) %>%
   mutate(disease_type=ifelse(disease_type=="ILI","ARI",""),
     disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
@@ -143,26 +146,38 @@ p <- ggplot(SA_data,aes(x=age_inf)) + # %>% mutate(disease_type=gsub("^ARI","ARI
   scale_y_continuous(expand=expansion(0.02,0)) + labs(fill=""); p
 # SAVE
 ggsave(paste0("output/ari_sari_burden/s_afr_ari_sari_burden","_sep"[length(p$facet$params)>0],"_ili.png"),width=30,height=22,units="cm")
-# with error bars
-ggplot(SA_data,aes(x=age_inf)) + # %>% mutate(disease_type=gsub("^ARI","ARI (ILI)",disease_type))
+# PLOT with error bars
+df_plot <- SA_data %>% mutate(agegroup_mts=factor(gsub("m","",agegroup_mts),levels=unique(gsub("m","",agegroup_mts)))) %>%
+  group_by(agegroup_mts,disease_type_medic_status) %>% 
+  summarise(rate=unique(rate),rate_CI_lower=unique(rate_CI_lower),rate_CI_upper=unique(rate_CI_upper),popul_denom=unique(popul_denom))
+ggplot(df_plot,aes(x=agegroup_mts)) + # %>% mutate(disease_type=gsub("^ARI","ARI (ILI)",disease_type))
   geom_bar(aes(y=rate/popul_denom,fill=disease_type_medic_status),position="stack",stat="identity") +
   geom_errorbar(aes(ymin=rate_CI_lower/popul_denom, ymax=rate_CI_upper/popul_denom),size=0.4) +
   facet_wrap(~disease_type_medic_status,scales="free") + # ,nrow=2
   theme_bw() + standard_theme + xlab("age (months)") + ylab("cases per person year") +
-  theme(axis.text.x=element_text(vjust=0.5,size=11),axis.text.y=element_text(size=12),legend.text=element_text(size=12),
-        legend.background=element_rect(fill=NA),legend.position=c(0.85,0.38)) + 
-  scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) + scale_y_continuous(expand=expansion(0.02,0)) + labs(fill="")
+  theme(axis.text.x=element_text(vjust=0.5,size=12),axis.text.y=element_text(size=13),legend.text=element_text(size=13),
+        legend.background=element_rect(fill=NA),legend.position=c(0.85,0.38),strip.text=element_text(size=15),
+        axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)) + 
+  scale_y_continuous(expand=expansion(0.02,0)) + labs(fill="") # scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) + 
 # save
-ggsave(paste0("output/ari_sari_burden/s_afr_ari_sari_burden_ili_errorbars.png"),width=35,height=22,units="cm")
+ggsave(paste0("output/ari_sari_burden/s_afr_ari_sari_burden_ili_errorbars_grouped.png"),width=35,height=22,units="cm")
+### adjustment: project ILIs to all cases (not just those with fever) by dividing rate by proportion of ARI cases with fever (in Kenya)
+# % of cases with fever: 2015: 33.3%; 2016 20.5%; 2017, 16%
+ILI_adjust_SA=TRUE
+if (ILI_adjust_SA & ifelse(!exists("divided_fever"),TRUE,!divided_fever)) { 
+  print("divide by fever proportion")  
+  SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]=
+    SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]/mean(c(33.3,20.5,16)/100); divided_fever=TRUE }
 # CI lower limit should not be 0! 
 SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
 ### generate 5e3 sample paths for CEA
 sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), function(x) fcn_gen_nonhosp_hosp_incid_samples_SA(SA_data,diseasetype=x,
     n_iter=5e3, age_maxval=60,CI_intervals=c(2.5,97.5)/1e2,randsampl_distrib_type="gamma"))
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
+# check plot
 # ggplot(data.frame(age=0:59,nonhosp=rowMeans(sa_nonhosp_hosp_incid_ari_sari$ARI$nonhosp_incid),
 #   hosp=rowMeans(sa_nonhosp_hosp_incid_ari_sari$ARI$hosp_incid) ) %>% mutate(age=factor(age)) %>% pivot_longer(!age)) + 
-#   geom_bar(aes(x=age,y=value,group=name,fill=name),position="stack",stat="identity") + theme_bw()
+#   facet_wrap(~name,nrow=2) + geom_bar(aes(x=age,y=value,group=name,fill=name),position="stack",stat="identity") + theme_bw()
 # SA costing data # for clinics the cost is always 25USD
 s_afr_inpatient_cost <- read_csv("../path_rsv_data/s_afr_PDE_calcs.csv") %>% mutate(freq=ifelse(grepl('-',age),
   as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>% 
@@ -183,8 +198,7 @@ ggsave(paste0("output/s_afr_costing.png"),width=30,height=18,units="cm")
 # generate distributions from mean and CIs
 if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
 s_afr_inpatient_cost = cbind(s_afr_inpatient_cost, t(sapply(1:nrow(s_afr_inpatient_cost), function(x) 
- unlist(gamma.parms.from.quantiles(q=c(s_afr_inpatient_cost$LCI[x],s_afr_inpatient_cost$UCI[x]),p=c(2.5,97.5)/1e2)[c("shape","rate")]))))
-}
+ unlist(gamma.parms.from.quantiles(q=c(s_afr_inpatient_cost$LCI[x],s_afr_inpatient_cost$UCI[x]),p=c(2.5,97.5)/1e2)[c("shape","rate")])))) }
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 cntrs_cea=c("KEN","ZAF"); subfolder_name="new_price_efficacy/"
@@ -201,14 +215,13 @@ all_cols=c("non_hosp_cases","hosp_cases","rsv_deaths","total_DALY_disc",
 selvars=c("total_medical_cost","total_DALY_disc", # "total_DALY_disc","intervention_cost"
           "total_DALY_averted","total_medical_cost_averted","incremental_cost","incremental_cost/DALY_averted",
           "hosp_cases_averted","SARI_averted")
-burden_cols <- all_cols[!grepl("cost|averted",all_cols)]
-cost_cols <- all_cols[grepl("cost",all_cols)]
+burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[grepl("cost",all_cols)]
 # prices for doses
 pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # CEA calculation for 2 cntrs and 2 interv types
-read_calc_flag=c("calc","read")[2]; kenya_deaths_input=TRUE
+read_calc_flag=c("calc","read")[1]; kenya_deaths_input=TRUE
 # loop through: cntrs * interventions * dose prices
 for (n_cntr_output in 1:length(cntrs_cea)){
   for (n_interv in 1:2){ # SELECT INTERVENTION: 1=MatVacc, 2=monocl Abs
