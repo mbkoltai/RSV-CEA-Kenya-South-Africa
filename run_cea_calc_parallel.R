@@ -10,15 +10,15 @@ lapply(c("functions/set_xlims_cea.R","functions/get_burden_flexible.R","function
 # hosp rate (p): p/(1-p) ~ norm
 # load functions
 # load & process Kenya SARI data, create 5e3 sample paths with CI95 corresponding to those in data
-kenya_data_file_path="../path_rsv_data/SARI_Rates_2010_2018_updated/ARI_SARI_Rates_2010_2018_tidydata.csv"
+kenya_data_file_path="custom_input/ARI_SARI_Rates_2010_2018_tidydata.csv"
 # LOAD data
 # Kenya
 kenya_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), function(x)
   fcn_gen_nonhosp_hosp_incid_samples_kenya(kenya_data_file_path,sel_disease=x,n_iter=5e3,age_maxval=60,
-                      CI_intervals=c(2.5,97.5)/1e2,randsampl_distrib_type="gamma")); names(kenya_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
+            CI_intervals=c(2.5,97.5)/1e2,randsampl_distrib_type="gamma")); names(kenya_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 ### deaths
 # Kenya deaths
-deaths_kenya <- read_csv("../path_rsv_data/SARI_Rates_2010_2018_updated/deaths_kenya_tidy.csv") %>% 
+deaths_kenya <- read_csv("custom_input/deaths_kenya_tidy.csv") %>% 
   filter(variable=="rate" & !age_in_months %in% c("<12","12-23","<24","24-59","<60")) %>% 
   mutate(age_in_months=ifelse(age_in_months=="<1","0",age_in_months),freq=1) %>% 
   mutate(freq=ifelse(grepl('-',age_in_months),
@@ -36,12 +36,12 @@ kenya_deaths_incid = lapply(c("yes","no"), function(y_no)
           rate=(deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5); names(kenya_deaths_incid)=c("hosp","nonhosp")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### SA
-SA_SARI_data <- fcn_load_s_afr(safr_data_path = "../path_rsv_data/s_afr_incidence_data_rate.csv") %>%
+SA_SARI_data <- fcn_load_s_afr(safr_data_path = "custom_input/s_afr_incidence_data_rate.csv") %>%
   mutate(disease_type_medic_status=paste(disease_type,ifelse(hospitalisation,"hospitalised","not hospitalised")) ) %>% 
   rename(agegroup_mts=age) %>% relocate(age_inf,.before=Province) %>% relocate(Province,.after=disease_type_medic_status) %>% 
   relocate(year,.before=Province)
 # SA ILI data
-SA_ILI_data <- read_csv("../path_rsv_data/s_afr_ILI_incidence_rate.csv") %>% 
+SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate.csv") %>% 
   filter(!(grepl("<",agegroup) | agegroup %in% c("0-5m","6-11m","12-23m","24-59m","<5y"))) %>%
   mutate(agegroup_mts=agegroup,agegroup=gsub("m","",agegroup), freq=1) %>% mutate(freq=ifelse(grepl('-',agegroup),
                         as.numeric(sapply(agegroup, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,freq)) %>% 
@@ -53,18 +53,18 @@ SA_ILI_data <- read_csv("../path_rsv_data/s_afr_ILI_incidence_rate.csv") %>%
                         paste0("non medically attended ",disease_type))) %>% relocate(disease_type_medic_status,.before=Province)
 # concatenate
 if (!exists("SA_data")){ SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
-##
+## estimate from Kenya on % of ARI cases with fever (=ILI) -> take this percentage to expand ILI to ARI
 ILI_adjust_SA=TRUE
 if (ILI_adjust_SA & ifelse(!exists("divided_fever"),TRUE,!divided_fever)) { 
   print("divide by fever proportion"); SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]=
     SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]/mean(c(33.3,20.5,16)/100); divided_fever=TRUE }
-# CI lower limit should not be 0! 
+# CI lower limit should not be 0 -> setting it to 1 (since average value of mean rate is > 1000, this does not change results more than 0.1%)
 SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
 ### generate 5e3 sample paths for CEA
 sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), function(x) fcn_gen_nonhosp_hosp_incid_samples_SA(SA_data,diseasetype=x,
       n_iter=5e3, age_maxval=60,CI_intervals=c(2.5,97.5)/1e2,randsampl_distrib_type="gamma"))
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
-s_afr_inpatient_cost <- read_csv("../path_rsv_data/s_afr_PDE_calcs.csv") %>% mutate(freq=ifelse(grepl('-',age),
+s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>% mutate(freq=ifelse(grepl('-',age),
   as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>% 
   mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% uncount(weights=freq, .id="n",.remove=F) %>%
   mutate(age=as.numeric(age)+(n-1)) %>% dplyr::select(!c(n,freq))
@@ -188,12 +188,13 @@ for (k_filename in 1:4) {
   x=read_csv(paste0("output/cea_plots/",subfolder_name,filenames[k_filename]))
   if (k_filename==1){ cea_summary_all=x } else {cea_summary_all=bind_rows(cea_summary_all,x)} }
 write_csv(cea_summary_all,paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
- 
-# cea_summary_all<-read_csv(paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
+
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-# Make summary plots (After running calcs in parallel by "run_cea_calc_parallel.R")
+### Make summary plots (after running calcs in parallel by "run_cea_calc_parallel.R")
+### read in results of simulations if already available 
+# cea_summary_all<-read_csv(paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
 # composition of total burden
 # total_DALY <- total_YLD + total_YLL
 # total_YLL <- rsv_deaths*config$hosp_CFR_DALYloss
