@@ -1,0 +1,1423 @@
+source,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,price,source_num,country_iso,intervention
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",admin_cost,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_YLD_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",comm_CFR_adj,2.09235462,2.0854999999999997,1.748,2.4444,1.4400000000000002,2.7742,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp,18563985.9952,13857167.5,7752189.25,23562423.5,2300782.7500000005,64306123.725,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y,6761183.457,4932374,2797679.25,8613450.25,843798.5,23096549.624999993,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_disc,6761183.457,4932374,2797679.25,8613450.25,843798.5,23096549.624999993,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_disc_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y,11802802.5288,8674414,4912706.5,15001256,1453591.3750000002,39951655.05,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_disc,11160754.7782,8201600,4645463.5,14205417.5,1372287.45,37679240.675,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_disc,17921938.2388,13368539,7467118.75,22751936.75,2224345.775,61950544.17499992,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_disc_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient,24550624.9616,22459238,15645051,31389463.75,6703617.824999999,54513712.94999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y,8946729.8484,8020817.5,5496318.5,11470212.25,2382172.875,20558203.424999986,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_disc,8946729.8484,8020817.5,5496318.5,11470212.25,2382172.875,20558203.424999986,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_disc_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y,15603895.1122,14184124,9842478,20085886.25,4146089.7,34555876.09999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_disc,14754774.1532,13428710,9321545.25,18982740,3934312.475,32645722.8,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_disc,23701504.015,21673251.5,15085155,30267159.75,6481068.575,52672782.57499998,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_disc_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",duration_illness,0.030686774902727237,0.030659474318619623,0.029673179576307968,0.031687767854148306,0.027834184615465468,0.033729822811940834,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_cfr,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_hospital,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_primary,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_total_num_na,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",FVP_mAb,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",FVP_maternal,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases,24267.6646,20209.5,12826.75,30709.25,5476.55,66893.89999999985,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y,8849.0634,7253.5,4586.25,11296.25,1902.9750000000001,25183.075,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y,15418.5972,12826,8136.5,19566.25,3411.275,43424.1,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_CFR,0.5861103786553064,0.5694483986277553,0.4694575789460479,0.6745543265723278,0.3398275413395686,0.9435623314148721,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_comm_CFR,1.2267310254692316,1.1616578061552787,0.9298927459617685,1.4623217064619662,0.6015383136444098,2.2086723414478135,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cost,767.5455413588874,701.6631817027585,489.31369543711753,979.037216521677,206.2151573671185,1697.7225989279602,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_prob,5.2726845749681255,4.3908588,2.7867144,6.672492,1.18997613,14.530932599999966,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD,156.8692,131,83,199,35,433.02499999999964,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y,57.2006,47,30,73,12,164.02499999999964,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_averted,14.1162,11,7,18,3,42,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_disc,57.2006,47,30,73,12,164.02499999999964,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_disc_averted,14.1162,11,7,18,3,42,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y,99.6664,83,52,127,22,280.02499999999964,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_disc,94.2484,78,50,120,21,264.02499999999964,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_averted,14.1162,11,7,18,3,42,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_disc,151.4456,126,81,192,34,418.02499999999964,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_disc_averted,14.1162,11,7,18,3,42,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost,2613760.9558,3012544.5,1707562.5,4021643.5,-2486571.9,5249058.824999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_0to1y,2613760.9558,3012544.5,1707562.5,4021643.5,-2486571.9,5249058.824999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_0to1y_disc,2613760.9558,3012544.5,1707562.5,4021643.5,-2486571.9,5249058.824999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y_disc,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_disc,2613760.9558,3012544.5,1707562.5,4021643.5,-2486571.9,5249058.824999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,1347.388333670624,867.4725542110136,332.5244959468979,1776.0889295192762,-353.2547245250624,5989.537557357411,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y_disc,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_1to5y,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_1to5y_disc,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_disc,6447129,6447129,6447129,6447129,6447129,6447129,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_0to1y_0to1y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_1to5y_1to5y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",moderate_LRTI_DALY,0.053142656636995446,0.05240756242126905,0.04566752457350165,0.060079028724914524,0.03388477931076198,0.07576625230483418,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases,251883.9578,255938.5,245452,263328.25,209303.625,270730.05,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y,91791.2814,91069.5,80907,102142.5,63328.85,123992.19999999998,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y,160092.683,160705,148738.25,172875.75,122741.775,192637.125,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD,410.4162,414,396,431,337.975,455,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y,149.158,148,130,167,100,206,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_averted,36.616,36,29,43,20,59,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_disc,149.158,148,130,167,100,206,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_disc_averted,36.616,36,29,43,20,59,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y,261.2646,262,241,282,198.975,319,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_disc,247.0626,248,228,267,188.97500000000002,301,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_averted,36.616,36,29,43,20,59,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_disc,396.2076,400,381,416,326,440,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_disc_averted,36.616,36,29,43,20,59,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_disc,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",outpatient_cost,97.42293896244242,89.0901961600335,62.63349611901385,124.72431020291626,26.58812093420302,212.76045822571086,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population,5242005,5242005,5242005,5242005,5242005,5242005,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population_lifebirth,1077215,1077215,1077215,1077215,1077215,1077215,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population_target,1096290,1096290,1096290,1096290,1096290,1096290,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",price_dose_mAb,6,6,6,6,6,6,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",price_dose_maternal,3,3,3,3,3,3,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases,276151.6288,276153,276127,276179,276071,276222,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y,100640.342,99966.5,89221,110908.75,71370.675,133330.275,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_averted,24570.7104,23896,20148,28400.75,14179.775,38021,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y,175511.2928,176189,165216.75,186960,142744.55000000002,204850.3,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_averted,24570.7104,23896,20148,28400.75,14179.775,38021,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths,532.3288,420,258,675,98,1621.0999999999985,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y,239.4156,186,114,304,42,738,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_averted,67.0314,51,30.75,85,11,214.0749999999989,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y,292.9054,229,138,372,52,915.0749999999989,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_averted,67.0314,51,30.75,85,11,214.0749999999989,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_incidence,52.680554,52.68,52.68,52.69,52.67,52.69,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_rate,3.1531224997098453,3.1533175495193935,3.1507046172644464,3.15588487837112,3.1449609913418772,3.1601185096769875,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_YLD_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_YLD_disc_averted,NA,NA,NA,NA,NA,NA,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",severe_LRTI_DALY,0.21074783981723075,0.2070793068742488,0.1827663133969385,0.23634415498848135,0.139947316894417,0.2967881138057082,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY,33845.8654,26800,16673.5,42791.5,6635.825,102063.59999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y,15270.2862,11922.5,7359.5,19354,2810.7250000000004,46730.2,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_averted,4256.292,3272,1955.75,5396,729.9250000000001,13543.574999999948,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_disc,6944.3226,5447,3397.75,8789.5,1338.9250000000002,21042.64999999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_disc_averted,1935.3078,1494.5,902.75,2449,349.97499999999997,6114.174999999983,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y,18575.5854,14612,8919,23481.75,3568.425,57465.399999999994,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_disc,8129.0632,6429.5,3989.75,10232,1674.9750000000001,24798.225,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_averted,4256.292,3272,1955.75,5396,729.9250000000001,13543.574999999948,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_disc,15073.3794,11986,7553.75,19020.5,3148,44785.77499999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_disc_averted,1935.3078,1494.5,902.75,2449,349.97499999999997,6114.174999999983,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost,43114610.9556,39514429.5,29346539.5,52881006.75,15818116.174999999,90343383.32499994,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y,15707913.3078,14249311.5,10423904,19331926.5,5246456.574999999,34100931.49999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_disc,15707913.3078,14249311.5,10423904,19331926.5,5246456.574999999,34100931.49999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_disc_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y,27406697.635,25291733,18410709.5,33663253.75,9923039.125,58195003.29999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_disc,25915528.9348,23915752,17412130.5,31865871.25,9367372.75,55002511.97499996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_disc,41623442.2438,38188019,28306355.75,51011585,15258533.25,87003986.27499992,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_disc_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD,567.2806,550,512,600,469.97499999999997,776,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y,206.3522,201,174,231,135,311,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_averted,50.7376,49,40,59,27,85,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_disc,206.3522,201,174,231,135,311,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_disc_averted,50.7376,49,40,59,27,85,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y,360.918,353,320,391,268,507,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_disc,341.3042,334,303,369,255,478,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_averted,50.7376,49,40,59,27,85,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_disc,547.6516,531,494,579,453,748.0249999999996,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_disc_averted,50.7376,49,40,59,27,85,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL,33278.5916,26242.5,16165,42168,6150.7,101182.7999999999,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y,15063.936600000001,11718,7171.25,19138.5,2665.9249999999997,46439.774999999994,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_averted,4205.557,3223.5,1913.75,5334,694,13461.049999999941,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_disc,6737.9766,5241,3208,8557.25,1191.9750000000001,20769.324999999993,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_disc_averted,1884.5792,1444.5,857.75,2390.25,311,6031.799999999974,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y,18214.6608,14266,8595.75,23109.5,3248.775,56975.175,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_disc,7787.7562,6098.5,3675.75,9872,1389.875,24289.774999999987,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_disc_averted,0,0,0,0,0,0,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_averted,4205.557,3223.5,1913.75,5334,694,13461.049999999941,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_disc,14525.736,11443,7059.75,18461,2682.9,44093.075,6,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_disc_averted,1884.5792,1444.5,857.75,2390.25,311,6031.799999999974,6,0.2,ZAF,mAb
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_YLD_averted,224.8614,218,193,247,153.97500000000002,344,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_YLD_disc_averted,224.8614,218,193,247,153.97500000000002,344,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_YLD_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_YLD_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_YLD_averted,224.8614,218,193,247,153.97500000000002,344,6,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_YLD_disc_averted,224.8614,218,193,247,153.97500000000002,344,6,2,ZAF,mAb
+new data (hospital-based + HUS),comm_CFR_adj,2.09235462,2.0854999999999997,1.748,2.4444,1.4400000000000002,2.7742,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp,32075047.2416,32067460,30804398,33263753,28625714.200000003,35779517.475,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y,26384558.4328,26340546,25137379.75,27564444.5,22971230.474999998,30045885.899999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_disc,26384558.4328,26340546,25137379.75,27564444.5,22971230.474999998,30045885.899999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_disc_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y,5690488.816,5676375.5,5451428.75,5909741.25,5066672.725,6403171.725,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_disc,5450496.879,5437633,5219266.5,5663061.75,4848528.875,6137087.5,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_disc,31835055.3124,31826951.5,30563114.75,33030336.5,28396553.674999997,35542518.699999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_disc_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient,5310364.8224,5271089.5,4736835.25,5820990.5,3879250.625,7020622.824999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y,1962263.9808,1916277.5,1702191.25,2176482.75,1347273.9500000002,2840731.3749999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_disc,1962263.9808,1916277.5,1702191.25,2176482.75,1347273.9500000002,2840731.3749999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_disc_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y,3348100.842,3325967.5,2984048.75,3672802.25,2449160.5,4399315.5,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_disc,3188820.3324,3168134.5,2841903.75,3498019.25,2333115.375,4190170.9499999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_disc,5151084.3138,5111754,4593099.25,5647731.25,3758005.5,6818587.5,6,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_disc_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),duration_illness,0.030686774902727237,0.030659474318619623,0.029673179576307968,0.031687767854148306,0.027834184615465468,0.033729822811940834,6,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_cfr,0.483,0.483,0.483,0.483,0.483,0.483,6,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_hospital,0.444,0.444,0.444,0.444,0.444,0.444,6,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_primary,0.394,0.394,0.394,0.394,0.394,0.394,6,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_total_num_na,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),FVP_mAb,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,6,2,ZAF,mAb
+new data (hospital-based + HUS),FVP_maternal,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases,41622.5486,41614,40641.75,42571,38857.9,44463.1,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y,34148.3014,34137.5,33200.75,35092,31473,36918.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_averted,19890.0486,19877,19148,20603.5,17795.925,22077,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_disc,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y,7474.2572,7468.5,7240,7692,6846.9749999999995,8165,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_disc,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_averted,19890.0486,19877,19148,20603.5,17795.925,22077,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_disc,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_CFR,0.5861103786553064,0.5694483986277553,0.4694575789460479,0.6745543265723278,0.3398275413395686,0.9435623314148721,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_comm_CFR,1.2267310254692316,1.1616578061552787,0.9298927459617685,1.4623217064619662,0.6015383136444098,2.2086723414478135,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cost,986.0215110008168,980.9492625110347,889.1248077347972,1077.2847252306221,731.2808973609795,1268.6501079271695,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD,605.208,604,585.75,623,554,668,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y,337.4362,335,319,352,293,396,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y_averted,180.5742,179,168,191,151,221,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y_disc,337.4362,335,319,352,293,396,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y,267.7636,267,258,277,240,298,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y_disc,255.1806,254,245,264,228.97500000000002,285,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,180.5742,179,168,191,151,221,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_disc,592.6258,591,573,610,541.975,655,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_prob,5.2726845749681255,4.3908588,2.7867144,6.672492,1.18997613,14.530932599999966,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI,41622.5486,41614,40641.75,42571,38857.9,44463.1,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_0to1y_0to1y_0to1y,34148.3014,34137.5,33200.75,35092,31473,36918.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_0to1y_0to1y_0to1y_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_1to5y_1to5y_1to5y,7474.2572,7468.5,7240,7692,6846.9749999999995,8165,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_1to5y_1to5y_1to5y_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD,270.1506,269,258,281,238,308,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y,221.8446,221,210,233,190,258,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_averted,129.65,129,121,138,107,157,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_disc,221.8446,221,210,233,190,258,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_disc_averted,129.65,129,121,138,107,157,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y,48.3034,48,46,50,43,55,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_disc,46.1622,46,44,48,41,52,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_averted,129.65,129,121,138,107,157,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_disc,267.9948,267,256,279,236,306,6,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_disc_averted,129.65,129,121,138,107,157,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost,-13442910.0584,-13367070.5,-14457584.75,-12304457.25,-16872948.275,-10452285.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_0to1y,-13442910.0584,-13367070.5,-14457584.75,-12304457.25,-16872948.275,-10452285.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_0to1y_disc,-13442910.0584,-13367070.5,-14457584.75,-12304457.25,-16872948.275,-10452285.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_1to5y,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_1to5y_disc,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_disc,-13442910.0584,-13367070.5,-14457584.75,-12304457.25,-16872948.275,-10452285.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost/DALY_averted,-289.50357646019194,-274.3617641416248,-343.88596187832707,-217.77059957338471,-528.631024242455,-138.16322639817486,6,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_0to1y,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_0to1y_disc,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_1to5y,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_1to5y_disc,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_disc,6447129,6447129,6447129,6447129,6447129,6447129,6,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI,205010.4232,203806,196571.5,211925,184486.625,233670.64999999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_0to1y_0to1y,70783.4978,69177.5,63805,75443.75,55181.95,98602.14999999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_0to1y_0to1y_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,6,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_1to5y_1to5y,134226.9236,134010.5,129467.5,138736.75,121662.475,147989.97499999998,6,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_1to5y_1to5y_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,6,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,6,2,ZAF,mAb
+new data (hospital-based + HUS),moderate_LRTI_DALY,0.053142656636995446,0.05240756242126905,0.04566752457350165,0.060079028724914524,0.03388477931076198,0.07576625230483418,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases,964865.1842,960541.5,933001.75,991564.75,884682.875,1073622.1499999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y,354305.1452,348587,328650,372944.75,293797.175,453157.2249999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_disc,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y,610560.039,610257,592549.75,627511,561578.8,664828.6749999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_disc,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_disc,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI,49493.9414,49465.5,47795.75,51182,44680.525,54499.299999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_0to1y_0to1y_0to1y,40561.2254,40529.5,38871.5,42230.5,35856.85,45515.125,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_0to1y_0to1y_0to1y_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_1to5y_1to5y_1to5y,8932.7046,8924,8610,9241,8041.9000000000005,9881,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_1to5y_1to5y_1to5y_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD,1482.0422,1474,1422,1534.25,1330,1679,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y,660.1422,651,611,696,544,833.0499999999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_averted,327.3648,321,295,350,253,447.02499999999964,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_disc,660.1422,651,611,696,544,833.0499999999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_disc_averted,327.3648,321,295,350,253,447.02499999999964,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y,821.9054,820,786,856,724,933.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_disc,782.9942,781,748,816,689,891,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_averted,327.3648,321,295,350,253,447.02499999999964,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_disc,1443.1288,1435,1384,1494.25,1293,1637,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_disc_averted,327.3648,321,295,350,253,447.02499999999964,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI,710360.8268,705374.5,680207.25,735218.75,635882.625,812652.7749999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_0to1y_0to1y_0to1y,242960.4146,237305.5,218536.25,260098.5,188365.1,338399.32499999955,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_0to1y_0to1y_0to1y_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_1to5y_1to5y_1to5y,467400.4146,466306,449765.75,483919.25,420354.5,520203.85,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_1to5y_1to5y_1to5y_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),outpatient_cost,24.579286036014565,24.469253719548085,22.088091530117833,26.778842252727227,18.427726332684994,31.973102965387497,6,2,ZAF,mAb
+new data (hospital-based + HUS),population,5242005,5242005,5242005,5242005,5242005,5242005,6,2,ZAF,mAb
+new data (hospital-based + HUS),population_lifebirth,1077215,1077215,1077215,1077215,1077215,1077215,6,2,ZAF,mAb
+new data (hospital-based + HUS),population_target,1096290,1096290,1096290,1096290,1096290,1096290,6,2,ZAF,mAb
+new data (hospital-based + HUS),price_dose_mAb,6,6,6,6,6,6,6,2,ZAF,mAb
+new data (hospital-based + HUS),price_dose_maternal,3,3,3,3,3,3,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases,1006487.7368,1002219.5,974749,1032914.5,926016.3,1115241.35,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y,388453.438,382606.5,362724,407233.75,328601.725,487503.8749999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y,618034.2994,617670.5,600102.5,635006.25,569070.4249999999,672272.2749999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths,1438.7826,1371,1135,1673.25,813,2442.0499999999993,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y,1284.0528,1218,992.75,1498,687,2260.124999999998,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_averted,815.138,767,618,962,417.975,1506.074999999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_disc_averted,815.138,767,618,962,417.975,1506.074999999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y,154.7206,150,122,180,85,257.02499999999964,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_disc_averted,815.138,767,618,962,417.975,1506.074999999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_averted,815.138,767,618,962,417.975,1506.074999999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_disc_averted,815.138,767,618,962,417.975,1506.074999999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_incidence,192.004374,191.19,185.95,197.05,176.6485,212.75074999999998,6,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_rate,3.1531224997098453,3.1533175495193935,3.1507046172644464,3.15588487837112,3.1449609913418772,3.1601185096769875,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_YLD_averted,283.079,281,264,301,233,341,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_YLD_disc_averted,283.079,281,264,301,233,341,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_YLD_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_YLD_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_YLD_averted,283.079,281,264,301,233,341,6,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_YLD_disc_averted,283.079,281,264,301,233,341,6,2,ZAF,mAb
+new data (hospital-based + HUS),severe_LRTI_DALY,0.21074783981723075,0.2070793068742488,0.1827663133969385,0.23634415498848135,0.139947316894417,0.2967881138057082,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY,92249.5338,87993,73210.5,106989.75,53057.700000000004,155076.77499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y,81491.5608,77335,63207.75,94921.5,44197.075000000004,142565.89999999982,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_averted,51503.5864,48512.5,39156,60688.25,26608.399999999998,94734.77499999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_disc,37088.5296,35226.5,28894.75,43132.75,20369.350000000002,64506.32499999994,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_disc_averted,23360.1032,22019,17813.5,27481.25,12153.35,42780.075,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y,10757.9732,10485.5,8704,12336.5,6378.875,17112.199999999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_disc,5199.0004,5084.5,4317,5875.25,3313.8,7937.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_averted,51503.5864,48512.5,39156,60688.25,26608.399999999998,94734.77499999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_disc,42287.5314,40358.5,33745.75,48888.75,24739.525,70509.74999999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_disc_averted,23360.1032,22019,17813.5,27481.25,12153.35,42780.075,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost,37385412.0792,37341553.5,35975857.75,38712474.5,33599529.5,41408635.325,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y,28346822.417,28311241.5,27055715.25,29554064.25,24823198.675,32048269.174999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_disc,28346822.417,28311241.5,27055715.25,29554064.25,24823198.675,32048269.174999997,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_disc_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y,9038589.6588,9013055.5,8611781.5,9440870.25,7933015.975000001,10284340.399999999,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_disc,8639317.2052,8613837,8229290,9022810,7578417.525,9837740.249999998,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_disc,36986139.622,36942640.5,35582002.75,38302859,33231223.625,41009603.7,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_disc_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD,2087.2498,2081,2019,2146.25,1908,2309.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y,997.5784,990,940,1043,856,1188.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_averted,457.0102,452,422,484,370,584,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_disc,997.5784,990,940,1043,856,1188.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_disc_averted,457.0102,452,422,484,370,584,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y,1089.6718,1088,1050,1129,978,1212,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_disc,1038.1696,1036,999,1076,931,1157.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_averted,457.0102,452,422,484,370,584,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_disc,2035.7452,2030,1968,2094,1858,2255.0249999999996,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_disc_averted,457.0102,452,422,484,370,584,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL,90162.2784,85906.5,71113,104876,50981.9,152971.82499999992,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y,80493.9842,76354.5,62252.25,93902.75,43106.85,141597.67499999987,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_averted,51046.582,48033,38700.25,60227.5,26161.65,94312.34999999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_disc,36090.944,34231.5,27909,42103.25,19322.949999999997,63516.52499999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_disc_averted,22903.099,21550,17361.75,27025.25,11734.875,42323.549999999974,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y,9668.3082,9392,7607.25,11238,5297.5999999999995,16073.025,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_disc,4160.8276,4043,3275,4836.25,2278.8500000000004,6910.1749999999975,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_disc_averted,0,0,0,0,0,0,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_averted,51046.582,48033,38700.25,60227.5,26161.65,94312.34999999995,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_disc,40251.773,38323,31734,46806.25,22697.524999999998,68509.4,6,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_disc_averted,22903.099,21550,17361.75,27025.25,11734.875,42323.549999999974,6,2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",admin_cost,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_YLD_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",comm_CFR_adj,2.09235462,2.0854999999999997,1.748,2.4444,1.4400000000000002,2.7742,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp,18563985.9952,13857167.5,7752189.25,23562423.5,2300782.7500000005,64306123.725,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y,6761183.457,4932374,2797679.25,8613450.25,843798.5,23096549.624999993,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_disc,6761183.457,4932374,2797679.25,8613450.25,843798.5,23096549.624999993,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_disc_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y,11802802.5288,8674414,4912706.5,15001256,1453591.3750000002,39951655.05,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_disc,11160754.7782,8201600,4645463.5,14205417.5,1372287.45,37679240.675,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_disc,17921938.2388,13368539,7467118.75,22751936.75,2224345.775,61950544.17499992,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_disc_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient,24550624.9616,22459238,15645051,31389463.75,6703617.824999999,54513712.94999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y,8946729.8484,8020817.5,5496318.5,11470212.25,2382172.875,20558203.424999986,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_disc,8946729.8484,8020817.5,5496318.5,11470212.25,2382172.875,20558203.424999986,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_disc_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y,15603895.1122,14184124,9842478,20085886.25,4146089.7,34555876.09999999,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_disc,14754774.1532,13428710,9321545.25,18982740,3934312.475,32645722.8,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_disc,23701504.015,21673251.5,15085155,30267159.75,6481068.575,52672782.57499998,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_disc_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",duration_illness,0.030686774902727237,0.030659474318619623,0.029673179576307968,0.031687767854148306,0.027834184615465468,0.033729822811940834,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_cfr,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_hospital,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_primary,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_total_num_na,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",FVP_mAb,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",FVP_maternal,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases,24267.6646,20209.5,12826.75,30709.25,5476.55,66893.89999999985,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y,8849.0634,7253.5,4586.25,11296.25,1902.9750000000001,25183.075,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y,15418.5972,12826,8136.5,19566.25,3411.275,43424.1,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_CFR,0.5861103786553064,0.5694483986277553,0.4694575789460479,0.6745543265723278,0.3398275413395686,0.9435623314148721,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_comm_CFR,1.2267310254692316,1.1616578061552787,0.9298927459617685,1.4623217064619662,0.6015383136444098,2.2086723414478135,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cost,767.5455413588874,701.6631817027585,489.31369543711753,979.037216521677,206.2151573671185,1697.7225989279602,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_prob,5.2726845749681255,4.3908588,2.7867144,6.672492,1.18997613,14.530932599999966,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD,156.8692,131,83,199,35,433.02499999999964,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y,57.2006,47,30,73,12,164.02499999999964,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_averted,14.1162,11,7,18,3,42,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_disc,57.2006,47,30,73,12,164.02499999999964,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_disc_averted,14.1162,11,7,18,3,42,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y,99.6664,83,52,127,22,280.02499999999964,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_disc,94.2484,78,50,120,21,264.02499999999964,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_averted,14.1162,11,7,18,3,42,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_disc,151.4456,126,81,192,34,418.02499999999964,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_disc_averted,14.1162,11,7,18,3,42,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost,17657062.1976,18055845.5,16750863.5,19064944.5,12556729.125,20292359.825,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_0to1y,17657062.1976,18055845.5,16750863.5,19064944.5,12556729.125,20292359.825,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_0to1y_disc,17657062.1976,18055845.5,16750863.5,19064944.5,12556729.125,20292359.825,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y_disc,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_disc,17657062.1976,18055845.5,16750863.5,19064944.5,12556729.125,20292359.825,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,7542.437524363852,5436.3391980083225,3145.669450666771,9367.907895021423,1047.397337273361,26259.335383131205,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y_disc,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_1to5y,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_1to5y_disc,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_disc,21490430,21490430,21490430,21490430,21490430,21490430,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_0to1y_0to1y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_1to5y_1to5y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",moderate_LRTI_DALY,0.053142656636995446,0.05240756242126905,0.04566752457350165,0.060079028724914524,0.03388477931076198,0.07576625230483418,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases,251883.9578,255938.5,245452,263328.25,209303.625,270730.05,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y,91791.2814,91069.5,80907,102142.5,63328.85,123992.19999999998,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y,160092.683,160705,148738.25,172875.75,122741.775,192637.125,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD,410.4162,414,396,431,337.975,455,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y,149.158,148,130,167,100,206,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_averted,36.616,36,29,43,20,59,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_disc,149.158,148,130,167,100,206,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_disc_averted,36.616,36,29,43,20,59,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y,261.2646,262,241,282,198.975,319,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_disc,247.0626,248,228,267,188.97500000000002,301,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_averted,36.616,36,29,43,20,59,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_disc,396.2076,400,381,416,326,440,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_disc_averted,36.616,36,29,43,20,59,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_disc,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",outpatient_cost,97.42293896244242,89.0901961600335,62.63349611901385,124.72431020291626,26.58812093420302,212.76045822571086,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population,5242005,5242005,5242005,5242005,5242005,5242005,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population_lifebirth,1077215,1077215,1077215,1077215,1077215,1077215,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population_target,1096290,1096290,1096290,1096290,1096290,1096290,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",price_dose_mAb,20,20,20,20,20,20,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",price_dose_maternal,3,3,3,3,3,3,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases,276151.6288,276153,276127,276179,276071,276222,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y,100640.342,99966.5,89221,110908.75,71370.675,133330.275,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_averted,24570.7104,23896,20148,28400.75,14179.775,38021,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y,175511.2928,176189,165216.75,186960,142744.55000000002,204850.3,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_averted,24570.7104,23896,20148,28400.75,14179.775,38021,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths,532.3288,420,258,675,98,1621.0999999999985,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y,239.4156,186,114,304,42,738,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_averted,67.0314,51,30.75,85,11,214.0749999999989,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y,292.9054,229,138,372,52,915.0749999999989,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_averted,67.0314,51,30.75,85,11,214.0749999999989,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_incidence,52.680554,52.68,52.68,52.69,52.67,52.69,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_rate,3.1531224997098453,3.1533175495193935,3.1507046172644464,3.15588487837112,3.1449609913418772,3.1601185096769875,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_YLD_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_YLD_disc_averted,NA,NA,NA,NA,NA,NA,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",severe_LRTI_DALY,0.21074783981723075,0.2070793068742488,0.1827663133969385,0.23634415498848135,0.139947316894417,0.2967881138057082,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY,33845.8654,26800,16673.5,42791.5,6635.825,102063.59999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y,15270.2862,11922.5,7359.5,19354,2810.7250000000004,46730.2,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_averted,4256.292,3272,1955.75,5396,729.9250000000001,13543.574999999948,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_disc,6944.3226,5447,3397.75,8789.5,1338.9250000000002,21042.64999999999,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_disc_averted,1935.3078,1494.5,902.75,2449,349.97499999999997,6114.174999999983,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y,18575.5854,14612,8919,23481.75,3568.425,57465.399999999994,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_disc,8129.0632,6429.5,3989.75,10232,1674.9750000000001,24798.225,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_averted,4256.292,3272,1955.75,5396,729.9250000000001,13543.574999999948,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_disc,15073.3794,11986,7553.75,19020.5,3148,44785.77499999999,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_disc_averted,1935.3078,1494.5,902.75,2449,349.97499999999997,6114.174999999983,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost,43114610.9556,39514429.5,29346539.5,52881006.75,15818116.174999999,90343383.32499994,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y,15707913.3078,14249311.5,10423904,19331926.5,5246456.574999999,34100931.49999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_disc,15707913.3078,14249311.5,10423904,19331926.5,5246456.574999999,34100931.49999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_disc_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y,27406697.635,25291733,18410709.5,33663253.75,9923039.125,58195003.29999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_disc,25915528.9348,23915752,17412130.5,31865871.25,9367372.75,55002511.97499996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_disc,41623442.2438,38188019,28306355.75,51011585,15258533.25,87003986.27499992,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_disc_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD,567.2806,550,512,600,469.97499999999997,776,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y,206.3522,201,174,231,135,311,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_averted,50.7376,49,40,59,27,85,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_disc,206.3522,201,174,231,135,311,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_disc_averted,50.7376,49,40,59,27,85,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y,360.918,353,320,391,268,507,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_disc,341.3042,334,303,369,255,478,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_averted,50.7376,49,40,59,27,85,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_disc,547.6516,531,494,579,453,748.0249999999996,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_disc_averted,50.7376,49,40,59,27,85,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL,33278.5916,26242.5,16165,42168,6150.7,101182.7999999999,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y,15063.936600000001,11718,7171.25,19138.5,2665.9249999999997,46439.774999999994,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_averted,4205.557,3223.5,1913.75,5334,694,13461.049999999941,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_disc,6737.9766,5241,3208,8557.25,1191.9750000000001,20769.324999999993,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_disc_averted,1884.5792,1444.5,857.75,2390.25,311,6031.799999999974,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y,18214.6608,14266,8595.75,23109.5,3248.775,56975.175,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_disc,7787.7562,6098.5,3675.75,9872,1389.875,24289.774999999987,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_disc_averted,0,0,0,0,0,0,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_averted,4205.557,3223.5,1913.75,5334,694,13461.049999999941,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_disc,14525.736,11443,7059.75,18461,2682.9,44093.075,20,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_disc_averted,1884.5792,1444.5,857.75,2390.25,311,6031.799999999974,20,0.2,ZAF,mAb
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_YLD_averted,224.8614,218,193,247,153.97500000000002,344,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_YLD_disc_averted,224.8614,218,193,247,153.97500000000002,344,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_YLD_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_YLD_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_YLD_averted,224.8614,218,193,247,153.97500000000002,344,20,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_YLD_disc_averted,224.8614,218,193,247,153.97500000000002,344,20,2,ZAF,mAb
+new data (hospital-based + HUS),comm_CFR_adj,2.09235462,2.0854999999999997,1.748,2.4444,1.4400000000000002,2.7742,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp,32075047.2416,32067460,30804398,33263753,28625714.200000003,35779517.475,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y,26384558.4328,26340546,25137379.75,27564444.5,22971230.474999998,30045885.899999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_disc,26384558.4328,26340546,25137379.75,27564444.5,22971230.474999998,30045885.899999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_disc_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y,5690488.816,5676375.5,5451428.75,5909741.25,5066672.725,6403171.725,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_disc,5450496.879,5437633,5219266.5,5663061.75,4848528.875,6137087.5,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_disc,31835055.3124,31826951.5,30563114.75,33030336.5,28396553.674999997,35542518.699999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_disc_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient,5310364.8224,5271089.5,4736835.25,5820990.5,3879250.625,7020622.824999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y,1962263.9808,1916277.5,1702191.25,2176482.75,1347273.9500000002,2840731.3749999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_disc,1962263.9808,1916277.5,1702191.25,2176482.75,1347273.9500000002,2840731.3749999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_disc_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y,3348100.842,3325967.5,2984048.75,3672802.25,2449160.5,4399315.5,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_disc,3188820.3324,3168134.5,2841903.75,3498019.25,2333115.375,4190170.9499999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_disc,5151084.3138,5111754,4593099.25,5647731.25,3758005.5,6818587.5,20,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_disc_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),duration_illness,0.030686774902727237,0.030659474318619623,0.029673179576307968,0.031687767854148306,0.027834184615465468,0.033729822811940834,20,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_cfr,0.483,0.483,0.483,0.483,0.483,0.483,20,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_hospital,0.444,0.444,0.444,0.444,0.444,0.444,20,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_primary,0.394,0.394,0.394,0.394,0.394,0.394,20,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_total_num_na,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),FVP_mAb,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,20,2,ZAF,mAb
+new data (hospital-based + HUS),FVP_maternal,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases,41622.5486,41614,40641.75,42571,38857.9,44463.1,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y,34148.3014,34137.5,33200.75,35092,31473,36918.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_averted,19890.0486,19877,19148,20603.5,17795.925,22077,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_disc,NA,NA,NA,NA,NA,NA,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y,7474.2572,7468.5,7240,7692,6846.9749999999995,8165,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_disc,NA,NA,NA,NA,NA,NA,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_averted,19890.0486,19877,19148,20603.5,17795.925,22077,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_disc,NA,NA,NA,NA,NA,NA,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_CFR,0.5861103786553064,0.5694483986277553,0.4694575789460479,0.6745543265723278,0.3398275413395686,0.9435623314148721,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_comm_CFR,1.2267310254692316,1.1616578061552787,0.9298927459617685,1.4623217064619662,0.6015383136444098,2.2086723414478135,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cost,986.0215110008168,980.9492625110347,889.1248077347972,1077.2847252306221,731.2808973609795,1268.6501079271695,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD,605.208,604,585.75,623,554,668,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y,337.4362,335,319,352,293,396,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y_averted,180.5742,179,168,191,151,221,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y_disc,337.4362,335,319,352,293,396,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y,267.7636,267,258,277,240,298,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y_disc,255.1806,254,245,264,228.97500000000002,285,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,180.5742,179,168,191,151,221,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_disc,592.6258,591,573,610,541.975,655,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_prob,5.2726845749681255,4.3908588,2.7867144,6.672492,1.18997613,14.530932599999966,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI,41622.5486,41614,40641.75,42571,38857.9,44463.1,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_0to1y_0to1y_0to1y,34148.3014,34137.5,33200.75,35092,31473,36918.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_0to1y_0to1y_0to1y_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_1to5y_1to5y_1to5y,7474.2572,7468.5,7240,7692,6846.9749999999995,8165,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_1to5y_1to5y_1to5y_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD,270.1506,269,258,281,238,308,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y,221.8446,221,210,233,190,258,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_averted,129.65,129,121,138,107,157,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_disc,221.8446,221,210,233,190,258,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_disc_averted,129.65,129,121,138,107,157,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y,48.3034,48,46,50,43,55,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_disc,46.1622,46,44,48,41,52,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_averted,129.65,129,121,138,107,157,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_disc,267.9948,267,256,279,236,306,20,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_disc_averted,129.65,129,121,138,107,157,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost,1600391.1922,1676230.5,585716.25,2738844.5,-1829647.275,4591016.975,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_0to1y,1600391.1922,1676230.5,585716.25,2738844.5,-1829647.275,4591016.975,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_0to1y_disc,1600391.1922,1676230.5,585716.25,2738844.5,-1829647.275,4591016.975,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_1to5y,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_1to5y_disc,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_disc,1600391.1922,1676230.5,585716.25,2738844.5,-1829647.275,4591016.975,20,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost/DALY_averted,35.22483366763301,32.92818799723052,11.29496810227152,57.133070938623476,-39.53456292827016,121.53263769422715,20,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_0to1y,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_0to1y_disc,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_1to5y,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_1to5y_disc,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_disc,21490430,21490430,21490430,21490430,21490430,21490430,20,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI,205010.4232,203806,196571.5,211925,184486.625,233670.64999999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_0to1y_0to1y,70783.4978,69177.5,63805,75443.75,55181.95,98602.14999999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_0to1y_0to1y_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,20,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_1to5y_1to5y,134226.9236,134010.5,129467.5,138736.75,121662.475,147989.97499999998,20,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_1to5y_1to5y_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,20,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,20,2,ZAF,mAb
+new data (hospital-based + HUS),moderate_LRTI_DALY,0.053142656636995446,0.05240756242126905,0.04566752457350165,0.060079028724914524,0.03388477931076198,0.07576625230483418,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases,964865.1842,960541.5,933001.75,991564.75,884682.875,1073622.1499999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y,354305.1452,348587,328650,372944.75,293797.175,453157.2249999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_disc,NA,NA,NA,NA,NA,NA,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y,610560.039,610257,592549.75,627511,561578.8,664828.6749999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_disc,NA,NA,NA,NA,NA,NA,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_disc,NA,NA,NA,NA,NA,NA,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI,49493.9414,49465.5,47795.75,51182,44680.525,54499.299999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_0to1y_0to1y_0to1y,40561.2254,40529.5,38871.5,42230.5,35856.85,45515.125,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_0to1y_0to1y_0to1y_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_1to5y_1to5y_1to5y,8932.7046,8924,8610,9241,8041.9000000000005,9881,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_1to5y_1to5y_1to5y_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD,1482.0422,1474,1422,1534.25,1330,1679,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y,660.1422,651,611,696,544,833.0499999999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_averted,327.3648,321,295,350,253,447.02499999999964,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_disc,660.1422,651,611,696,544,833.0499999999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_disc_averted,327.3648,321,295,350,253,447.02499999999964,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y,821.9054,820,786,856,724,933.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_disc,782.9942,781,748,816,689,891,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_averted,327.3648,321,295,350,253,447.02499999999964,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_disc,1443.1288,1435,1384,1494.25,1293,1637,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_disc_averted,327.3648,321,295,350,253,447.02499999999964,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI,710360.8268,705374.5,680207.25,735218.75,635882.625,812652.7749999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_0to1y_0to1y_0to1y,242960.4146,237305.5,218536.25,260098.5,188365.1,338399.32499999955,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_0to1y_0to1y_0to1y_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_1to5y_1to5y_1to5y,467400.4146,466306,449765.75,483919.25,420354.5,520203.85,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_1to5y_1to5y_1to5y_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),outpatient_cost,24.579286036014565,24.469253719548085,22.088091530117833,26.778842252727227,18.427726332684994,31.973102965387497,20,2,ZAF,mAb
+new data (hospital-based + HUS),population,5242005,5242005,5242005,5242005,5242005,5242005,20,2,ZAF,mAb
+new data (hospital-based + HUS),population_lifebirth,1077215,1077215,1077215,1077215,1077215,1077215,20,2,ZAF,mAb
+new data (hospital-based + HUS),population_target,1096290,1096290,1096290,1096290,1096290,1096290,20,2,ZAF,mAb
+new data (hospital-based + HUS),price_dose_mAb,20,20,20,20,20,20,20,2,ZAF,mAb
+new data (hospital-based + HUS),price_dose_maternal,3,3,3,3,3,3,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases,1006487.7368,1002219.5,974749,1032914.5,926016.3,1115241.35,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y,388453.438,382606.5,362724,407233.75,328601.725,487503.8749999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y,618034.2994,617670.5,600102.5,635006.25,569070.4249999999,672272.2749999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths,1438.7826,1371,1135,1673.25,813,2442.0499999999993,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y,1284.0528,1218,992.75,1498,687,2260.124999999998,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_averted,815.138,767,618,962,417.975,1506.074999999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_disc_averted,815.138,767,618,962,417.975,1506.074999999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y,154.7206,150,122,180,85,257.02499999999964,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_disc_averted,815.138,767,618,962,417.975,1506.074999999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_averted,815.138,767,618,962,417.975,1506.074999999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_disc_averted,815.138,767,618,962,417.975,1506.074999999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_incidence,192.004374,191.19,185.95,197.05,176.6485,212.75074999999998,20,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_rate,3.1531224997098453,3.1533175495193935,3.1507046172644464,3.15588487837112,3.1449609913418772,3.1601185096769875,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_YLD_averted,283.079,281,264,301,233,341,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_YLD_disc_averted,283.079,281,264,301,233,341,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_YLD_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_YLD_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_YLD_averted,283.079,281,264,301,233,341,20,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_YLD_disc_averted,283.079,281,264,301,233,341,20,2,ZAF,mAb
+new data (hospital-based + HUS),severe_LRTI_DALY,0.21074783981723075,0.2070793068742488,0.1827663133969385,0.23634415498848135,0.139947316894417,0.2967881138057082,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY,92249.5338,87993,73210.5,106989.75,53057.700000000004,155076.77499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y,81491.5608,77335,63207.75,94921.5,44197.075000000004,142565.89999999982,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_averted,51503.5864,48512.5,39156,60688.25,26608.399999999998,94734.77499999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_disc,37088.5296,35226.5,28894.75,43132.75,20369.350000000002,64506.32499999994,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_disc_averted,23360.1032,22019,17813.5,27481.25,12153.35,42780.075,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y,10757.9732,10485.5,8704,12336.5,6378.875,17112.199999999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_disc,5199.0004,5084.5,4317,5875.25,3313.8,7937.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_averted,51503.5864,48512.5,39156,60688.25,26608.399999999998,94734.77499999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_disc,42287.5314,40358.5,33745.75,48888.75,24739.525,70509.74999999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_disc_averted,23360.1032,22019,17813.5,27481.25,12153.35,42780.075,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost,37385412.0792,37341553.5,35975857.75,38712474.5,33599529.5,41408635.325,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y,28346822.417,28311241.5,27055715.25,29554064.25,24823198.675,32048269.174999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_disc,28346822.417,28311241.5,27055715.25,29554064.25,24823198.675,32048269.174999997,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_disc_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y,9038589.6588,9013055.5,8611781.5,9440870.25,7933015.975000001,10284340.399999999,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_disc,8639317.2052,8613837,8229290,9022810,7578417.525,9837740.249999998,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_disc,36986139.622,36942640.5,35582002.75,38302859,33231223.625,41009603.7,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_disc_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD,2087.2498,2081,2019,2146.25,1908,2309.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y,997.5784,990,940,1043,856,1188.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_averted,457.0102,452,422,484,370,584,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_disc,997.5784,990,940,1043,856,1188.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_disc_averted,457.0102,452,422,484,370,584,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y,1089.6718,1088,1050,1129,978,1212,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_disc,1038.1696,1036,999,1076,931,1157.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_averted,457.0102,452,422,484,370,584,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_disc,2035.7452,2030,1968,2094,1858,2255.0249999999996,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_disc_averted,457.0102,452,422,484,370,584,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL,90162.2784,85906.5,71113,104876,50981.9,152971.82499999992,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y,80493.9842,76354.5,62252.25,93902.75,43106.85,141597.67499999987,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_averted,51046.582,48033,38700.25,60227.5,26161.65,94312.34999999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_disc,36090.944,34231.5,27909,42103.25,19322.949999999997,63516.52499999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_disc_averted,22903.099,21550,17361.75,27025.25,11734.875,42323.549999999974,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y,9668.3082,9392,7607.25,11238,5297.5999999999995,16073.025,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_disc,4160.8276,4043,3275,4836.25,2278.8500000000004,6910.1749999999975,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_disc_averted,0,0,0,0,0,0,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_averted,51046.582,48033,38700.25,60227.5,26161.65,94312.34999999995,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_disc,40251.773,38323,31734,46806.25,22697.524999999998,68509.4,20,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_disc_averted,22903.099,21550,17361.75,27025.25,11734.875,42323.549999999974,20,2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",admin_cost,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_0to1y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_1to5y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",ARI_YLD_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",comm_CFR_adj,2.09235462,2.0854999999999997,1.748,2.4444,1.4400000000000002,2.7742,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp,18563985.9952,13857167.5,7752189.25,23562423.5,2300782.7500000005,64306123.725,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y,6761183.457,4932374,2797679.25,8613450.25,843798.5,23096549.624999993,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_disc,6761183.457,4932374,2797679.25,8613450.25,843798.5,23096549.624999993,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_0to1y_disc_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y,11802802.5288,8674414,4912706.5,15001256,1453591.3750000002,39951655.05,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_disc,11160754.7782,8201600,4645463.5,14205417.5,1372287.45,37679240.675,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_disc,17921938.2388,13368539,7467118.75,22751936.75,2224345.775,61950544.17499992,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_hosp_disc_averted,1649104.7808,1184572,656360,2112617,192728.47499999998,5888781.5749999955,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient,24550624.9616,22459238,15645051,31389463.75,6703617.824999999,54513712.94999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y,8946729.8484,8020817.5,5496318.5,11470212.25,2382172.875,20558203.424999986,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_disc,8946729.8484,8020817.5,5496318.5,11470212.25,2382172.875,20558203.424999986,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_0to1y_disc_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y,15603895.1122,14184124,9842478,20085886.25,4146089.7,34555876.09999999,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_disc,14754774.1532,13428710,9321545.25,18982740,3934312.475,32645722.8,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_disc,23701504.015,21673251.5,15085155,30267159.75,6481068.575,52672782.57499998,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",cost_rsv_outpatient_disc_averted,2184263.38,1918277.5,1285359,2796769.25,538468.7999999999,5315080.749999995,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",duration_illness,0.030686774902727237,0.030659474318619623,0.029673179576307968,0.031687767854148306,0.027834184615465468,0.033729822811940834,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_cfr,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_hospital,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_maternal_primary,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",efficacy_total_num_na,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",FVP_mAb,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",FVP_maternal,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases,24267.6646,20209.5,12826.75,30709.25,5476.55,66893.89999999985,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y,8849.0634,7253.5,4586.25,11296.25,1902.9750000000001,25183.075,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_0to1y_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y,15418.5972,12826,8136.5,19566.25,3411.275,43424.1,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_1to5y_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_disc,23428.9572,19520,12378,29636,5247.725,64655.599999999744,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cases_disc_averted,2160.101,1726.5,1074,2785.5,426.90000000000003,6337.274999999981,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_CFR,0.5861103786553064,0.5694483986277553,0.4694575789460479,0.6745543265723278,0.3398275413395686,0.9435623314148721,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_comm_CFR,1.2267310254692316,1.1616578061552787,0.9298927459617685,1.4623217064619662,0.6015383136444098,2.2086723414478135,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_cost,767.5455413588874,701.6631817027585,489.31369543711753,979.037216521677,206.2151573671185,1697.7225989279602,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_0to1y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_1to5y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_med_att_YLD_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_prob,5.2726845749681255,4.3908588,2.7867144,6.672492,1.18997613,14.530932599999966,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_SARI_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD,156.8692,131,83,199,35,433.02499999999964,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y,57.2006,47,30,73,12,164.02499999999964,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_averted,14.1162,11,7,18,3,42,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_disc,57.2006,47,30,73,12,164.02499999999964,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_0to1y_disc_averted,14.1162,11,7,18,3,42,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y,99.6664,83,52,127,22,280.02499999999964,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_disc,94.2484,78,50,120,21,264.02499999999964,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_averted,14.1162,11,7,18,3,42,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_disc,151.4456,126,81,192,34,418.02499999999964,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",hosp_YLD_disc_averted,14.1162,11,7,18,3,42,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost,60637922.9016,61036706.5,59731724.5,62045805.5,55537590.1,63273219.85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_0to1y,60637922.9016,61036706.5,59731724.5,62045805.5,55537590.1,63273219.85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_0to1y_disc,60637922.9016,61036706.5,59731724.5,62045805.5,55537590.1,63273219.85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_1to5y_disc,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost_disc,60637922.9016,61036706.5,59731724.5,62045805.5,55537590.1,63273219.85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",incremental_cost/DALY_averted,25242.578063705663,18582.36188315604,11100.5193460241,31171.84382994089,4225.953274131605,85355.97860979926,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_0to1y_disc,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_1to5y,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_1to5y_disc,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",intervention_cost_disc,64471291,64471291,64471291,64471291,64471291,64471291,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_0to1y_0to1y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_1to5y_1to5y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",med_att_ARI_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",moderate_LRTI_DALY,0.053142656636995446,0.05240756242126905,0.04566752457350165,0.060079028724914524,0.03388477931076198,0.07576625230483418,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases,251883.9578,255938.5,245452,263328.25,209303.625,270730.05,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y,91791.2814,91069.5,80907,102142.5,63328.85,123992.19999999998,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_0to1y_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y,160092.683,160705,148738.25,172875.75,122741.775,192637.125,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_1to5y_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_disc,243171.0152,246978.5,236889.75,254121.5,201008.125,261454.425,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_cases_disc_averted,22410.613,21892,18207.5,25972.25,12760.575,35274.049999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_SARI_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD,410.4162,414,396,431,337.975,455,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y,149.158,148,130,167,100,206,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_averted,36.616,36,29,43,20,59,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_disc,149.158,148,130,167,100,206,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_0to1y_disc_averted,36.616,36,29,43,20,59,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y,261.2646,262,241,282,198.975,319,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_disc,247.0626,248,228,267,188.97500000000002,301,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_averted,36.616,36,29,43,20,59,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_disc,396.2076,400,381,416,326,440,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_hosp_YLD_disc_averted,36.616,36,29,43,20,59,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_0to1y_0to1y_0to1y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_0to1y_0to1y_0to1y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_1to5y_1to5y_1to5y,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_1to5y_1to5y_1to5y_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",non_med_att_ARI_disc,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",outpatient_cost,97.42293896244242,89.0901961600335,62.63349611901385,124.72431020291626,26.58812093420302,212.76045822571086,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population,5242005,5242005,5242005,5242005,5242005,5242005,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population_lifebirth,1077215,1077215,1077215,1077215,1077215,1077215,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",population_target,1096290,1096290,1096290,1096290,1096290,1096290,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",price_dose_mAb,60,60,60,60,60,60,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",price_dose_maternal,3,3,3,3,3,3,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases,276151.6288,276153,276127,276179,276071,276222,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y,100640.342,99966.5,89221,110908.75,71370.675,133330.275,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_averted,24570.7104,23896,20148,28400.75,14179.775,38021,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_0to1y_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y,175511.2928,176189,165216.75,186960,142744.55000000002,204850.3,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_1to5y_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_averted,24570.7104,23896,20148,28400.75,14179.775,38021,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_disc,266599.9804,266621.5,265736.5,267424.75,264118.625,268980.02499999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_cases_disc_averted,24570.7104,23896,20148,28400.75,14179.775,38021,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths,532.3288,420,258,675,98,1621.0999999999985,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y,239.4156,186,114,304,42,738,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_averted,67.0314,51,30.75,85,11,214.0749999999989,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_0to1y_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y,292.9054,229,138,372,52,915.0749999999989,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_1to5y_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_averted,67.0314,51,30.75,85,11,214.0749999999989,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_disc,517.2432,407.5,251,657,95.97500000000001,1569.0499999999993,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_deaths_disc_averted,67.0314,51,30.75,85,11,214.0749999999989,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_incidence,52.680554,52.68,52.68,52.69,52.67,52.69,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",rsv_rate,3.1531224997098453,3.1533175495193935,3.1507046172644464,3.15588487837112,3.1449609913418772,3.1601185096769875,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_0to1y_0to1y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_1to5y_1to5y_YLD_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_YLD_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",SARI_YLD_disc_averted,NA,NA,NA,NA,NA,NA,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",severe_LRTI_DALY,0.21074783981723075,0.2070793068742488,0.1827663133969385,0.23634415498848135,0.139947316894417,0.2967881138057082,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY,33845.8654,26800,16673.5,42791.5,6635.825,102063.59999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y,15270.2862,11922.5,7359.5,19354,2810.7250000000004,46730.2,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_averted,4256.292,3272,1955.75,5396,729.9250000000001,13543.574999999948,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_disc,6944.3226,5447,3397.75,8789.5,1338.9250000000002,21042.64999999999,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_0to1y_disc_averted,1935.3078,1494.5,902.75,2449,349.97499999999997,6114.174999999983,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y,18575.5854,14612,8919,23481.75,3568.425,57465.399999999994,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_disc,8129.0632,6429.5,3989.75,10232,1674.9750000000001,24798.225,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_averted,4256.292,3272,1955.75,5396,729.9250000000001,13543.574999999948,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_disc,15073.3794,11986,7553.75,19020.5,3148,44785.77499999999,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_DALY_disc_averted,1935.3078,1494.5,902.75,2449,349.97499999999997,6114.174999999983,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost,43114610.9556,39514429.5,29346539.5,52881006.75,15818116.174999999,90343383.32499994,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y,15707913.3078,14249311.5,10423904,19331926.5,5246456.574999999,34100931.49999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_disc,15707913.3078,14249311.5,10423904,19331926.5,5246456.574999999,34100931.49999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_0to1y_disc_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y,27406697.635,25291733,18410709.5,33663253.75,9923039.125,58195003.29999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_disc,25915528.9348,23915752,17412130.5,31865871.25,9367372.75,55002511.97499996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_disc,41623442.2438,38188019,28306355.75,51011585,15258533.25,87003986.27499992,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_medical_cost_disc_averted,3833368.1552,3434584.5,2425485.5,4739566.5,1198071.15,8933700.899999997,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD,567.2806,550,512,600,469.97499999999997,776,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y,206.3522,201,174,231,135,311,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_averted,50.7376,49,40,59,27,85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_disc,206.3522,201,174,231,135,311,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_0to1y_disc_averted,50.7376,49,40,59,27,85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y,360.918,353,320,391,268,507,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_disc,341.3042,334,303,369,255,478,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_averted,50.7376,49,40,59,27,85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_disc,547.6516,531,494,579,453,748.0249999999996,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLD_disc_averted,50.7376,49,40,59,27,85,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL,33278.5916,26242.5,16165,42168,6150.7,101182.7999999999,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y,15063.936600000001,11718,7171.25,19138.5,2665.9249999999997,46439.774999999994,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_averted,4205.557,3223.5,1913.75,5334,694,13461.049999999941,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_disc,6737.9766,5241,3208,8557.25,1191.9750000000001,20769.324999999993,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_0to1y_disc_averted,1884.5792,1444.5,857.75,2390.25,311,6031.799999999974,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y,18214.6608,14266,8595.75,23109.5,3248.775,56975.175,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_disc,7787.7562,6098.5,3675.75,9872,1389.875,24289.774999999987,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_1to5y_disc_averted,0,0,0,0,0,0,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_averted,4205.557,3223.5,1913.75,5334,694,13461.049999999941,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_disc,14525.736,11443,7059.75,18461,2682.9,44093.075,60,0.2,ZAF,mAb
+"projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",total_YLL_disc_averted,1884.5792,1444.5,857.75,2390.25,311,6031.799999999974,60,0.2,ZAF,mAb
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_YLD_averted,224.8614,218,193,247,153.97500000000002,344,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_0to1y_YLD_disc_averted,224.8614,218,193,247,153.97500000000002,344,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_YLD_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_1to5y_YLD_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_disc_averted,136983.1668,132629.5,119975.5,148421.75,99586.75,204325.77499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_YLD_averted,224.8614,218,193,247,153.97500000000002,344,60,2,ZAF,mAb
+new data (hospital-based + HUS),ARI_YLD_disc_averted,224.8614,218,193,247,153.97500000000002,344,60,2,ZAF,mAb
+new data (hospital-based + HUS),comm_CFR_adj,2.09235462,2.0854999999999997,1.748,2.4444,1.4400000000000002,2.7742,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp,32075047.2416,32067460,30804398,33263753,28625714.200000003,35779517.475,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y,26384558.4328,26340546,25137379.75,27564444.5,22971230.474999998,30045885.899999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_disc,26384558.4328,26340546,25137379.75,27564444.5,22971230.474999998,30045885.899999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_0to1y_disc_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y,5690488.816,5676375.5,5451428.75,5909741.25,5066672.725,6403171.725,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_disc,5450496.879,5437633,5219266.5,5663061.75,4848528.875,6137087.5,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_disc,31835055.3124,31826951.5,30563114.75,33030336.5,28396553.674999997,35542518.699999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_hosp_disc_averted,16038916.8372,15985469,15076770.25,16912542.5,13455410,18891065.424999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient,5310364.8224,5271089.5,4736835.25,5820990.5,3879250.625,7020622.824999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y,1962263.9808,1916277.5,1702191.25,2176482.75,1347273.9500000002,2840731.3749999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_disc,1962263.9808,1916277.5,1702191.25,2176482.75,1347273.9500000002,2840731.3749999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_0to1y_disc_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y,3348100.842,3325967.5,2984048.75,3672802.25,2449160.5,4399315.5,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_disc,3188820.3324,3168134.5,2841903.75,3498019.25,2333115.375,4190170.9499999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_disc,5151084.3138,5111754,4593099.25,5647731.25,3758005.5,6818587.5,60,2,ZAF,mAb
+new data (hospital-based + HUS),cost_rsv_outpatient_disc_averted,3851122.326,3731565.5,3268204,4308755.25,2552560.1999999997,5827026.474999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),duration_illness,0.030686774902727237,0.030659474318619623,0.029673179576307968,0.031687767854148306,0.027834184615465468,0.033729822811940834,60,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_cfr,0.483,0.483,0.483,0.483,0.483,0.483,60,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_hospital,0.444,0.444,0.444,0.444,0.444,0.444,60,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_maternal_primary,0.394,0.394,0.394,0.394,0.394,0.394,60,2,ZAF,mAb
+new data (hospital-based + HUS),efficacy_total_num_na,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),FVP_mAb,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,1023353.8263,60,2,ZAF,mAb
+new data (hospital-based + HUS),FVP_maternal,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases,41622.5486,41614,40641.75,42571,38857.9,44463.1,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y,34148.3014,34137.5,33200.75,35092,31473,36918.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_averted,19890.0486,19877,19148,20603.5,17795.925,22077,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_disc,NA,NA,NA,NA,NA,NA,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_0to1y_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y,7474.2572,7468.5,7240,7692,6846.9749999999995,8165,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_disc,NA,NA,NA,NA,NA,NA,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_1to5y_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_averted,19890.0486,19877,19148,20603.5,17795.925,22077,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_disc,NA,NA,NA,NA,NA,NA,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cases_disc_averted,19890.0486,19877,19148,20603.5,17795.925,22077,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_CFR,0.5861103786553064,0.5694483986277553,0.4694575789460479,0.6745543265723278,0.3398275413395686,0.9435623314148721,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_comm_CFR,1.2267310254692316,1.1616578061552787,0.9298927459617685,1.4623217064619662,0.6015383136444098,2.2086723414478135,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_cost,986.0215110008168,980.9492625110347,889.1248077347972,1077.2847252306221,731.2808973609795,1268.6501079271695,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD,605.208,604,585.75,623,554,668,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y,337.4362,335,319,352,293,396,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y_averted,180.5742,179,168,191,151,221,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_0to1y_disc,337.4362,335,319,352,293,396,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y,267.7636,267,258,277,240,298,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_1to5y_disc,255.1806,254,245,264,228.97500000000002,285,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,180.5742,179,168,191,151,221,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_med_att_YLD_disc,592.6258,591,573,610,541.975,655,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_prob,5.2726845749681255,4.3908588,2.7867144,6.672492,1.18997613,14.530932599999966,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI,41622.5486,41614,40641.75,42571,38857.9,44463.1,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_0to1y_0to1y_0to1y,34148.3014,34137.5,33200.75,35092,31473,36918.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_0to1y_0to1y_0to1y_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_1to5y_1to5y_1to5y,7474.2572,7468.5,7240,7692,6846.9749999999995,8165,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_1to5y_1to5y_1to5y_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_SARI_disc,41290.114,41281,40310.75,42238,38533.95,44131.075,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD,270.1506,269,258,281,238,308,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y,221.8446,221,210,233,190,258,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_averted,129.65,129,121,138,107,157,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_disc,221.8446,221,210,233,190,258,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_0to1y_disc_averted,129.65,129,121,138,107,157,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y,48.3034,48,46,50,43,55,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_disc,46.1622,46,44,48,41,52,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_averted,129.65,129,121,138,107,157,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_disc,267.9948,267,256,279,236,306,60,2,ZAF,mAb
+new data (hospital-based + HUS),hosp_YLD_disc_averted,129.65,129,121,138,107,157,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost,44581251.8928,44657091.5,43566577.25,45719704.75,41151213.725,47571876.975,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_0to1y,44581251.8928,44657091.5,43566577.25,45719704.75,41151213.725,47571876.975,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_0to1y_disc,44581251.8928,44657091.5,43566577.25,45719704.75,41151213.725,47571876.975,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_1to5y,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_1to5y_disc,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost_disc,44581251.8928,44657091.5,43566577.25,45719704.75,41151213.725,47571876.975,60,2,ZAF,mAb
+new data (hospital-based + HUS),incremental_cost/DALY_averted,963.0202908103081,918.8805527984116,732.0627105321144,1144.54286557492,464.6089598520175,1704.4737543949188,60,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_0to1y,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_0to1y_disc,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_1to5y,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_1to5y_disc,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),intervention_cost_disc,64471291,64471291,64471291,64471291,64471291,64471291,60,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI,205010.4232,203806,196571.5,211925,184486.625,233670.64999999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_0to1y_0to1y,70783.4978,69177.5,63805,75443.75,55181.95,98602.14999999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_0to1y_0to1y_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,60,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_1to5y_1to5y,134226.9236,134010.5,129467.5,138736.75,121662.475,147989.97499999998,60,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_1to5y_1to5y_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,60,2,ZAF,mAb
+new data (hospital-based + HUS),med_att_ARI_disc,198619.2138,197348,190226.75,205429.5,178281.225,226936.525,60,2,ZAF,mAb
+new data (hospital-based + HUS),moderate_LRTI_DALY,0.053142656636995446,0.05240756242126905,0.04566752457350165,0.060079028724914524,0.03388477931076198,0.07576625230483418,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases,964865.1842,960541.5,933001.75,991564.75,884682.875,1073622.1499999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y,354305.1452,348587,328650,372944.75,293797.175,453157.2249999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_disc,NA,NA,NA,NA,NA,NA,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_0to1y_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y,610560.039,610257,592549.75,627511,561578.8,664828.6749999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_disc,NA,NA,NA,NA,NA,NA,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_1to5y_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_disc,NA,NA,NA,NA,NA,NA,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_cases_disc_averted,156619.9936,152416,139468,168477,118638.25000000001,224395.625,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI,49493.9414,49465.5,47795.75,51182,44680.525,54499.299999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_0to1y_0to1y_0to1y,40561.2254,40529.5,38871.5,42230.5,35856.85,45515.125,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_0to1y_0to1y_0to1y_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_1to5y_1to5y_1to5y,8932.7046,8924,8610,9241,8041.9000000000005,9881,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_1to5y_1to5y_1to5y_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_SARI_disc,49095.5142,49066.5,47395.5,50775.25,44280.825,54085.149999999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD,1482.0422,1474,1422,1534.25,1330,1679,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y,660.1422,651,611,696,544,833.0499999999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_averted,327.3648,321,295,350,253,447.02499999999964,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_disc,660.1422,651,611,696,544,833.0499999999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_0to1y_disc_averted,327.3648,321,295,350,253,447.02499999999964,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y,821.9054,820,786,856,724,933.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_disc,782.9942,781,748,816,689,891,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_averted,327.3648,321,295,350,253,447.02499999999964,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_disc,1443.1288,1435,1384,1494.25,1293,1637,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_hosp_YLD_disc_averted,327.3648,321,295,350,253,447.02499999999964,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI,710360.8268,705374.5,680207.25,735218.75,635882.625,812652.7749999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_0to1y_0to1y_0to1y,242960.4146,237305.5,218536.25,260098.5,188365.1,338399.32499999955,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_0to1y_0to1y_0to1y_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_1to5y_1to5y_1to5y,467400.4146,466306,449765.75,483919.25,420354.5,520203.85,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_1to5y_1to5y_1to5y_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),non_med_att_ARI_disc,688102.3786,683132.5,658228.5,712494.25,614967.2,789025.9249999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),outpatient_cost,24.579286036014565,24.469253719548085,22.088091530117833,26.778842252727227,18.427726332684994,31.973102965387497,60,2,ZAF,mAb
+new data (hospital-based + HUS),population,5242005,5242005,5242005,5242005,5242005,5242005,60,2,ZAF,mAb
+new data (hospital-based + HUS),population_lifebirth,1077215,1077215,1077215,1077215,1077215,1077215,60,2,ZAF,mAb
+new data (hospital-based + HUS),population_target,1096290,1096290,1096290,1096290,1096290,1096290,60,2,ZAF,mAb
+new data (hospital-based + HUS),price_dose_mAb,60,60,60,60,60,60,60,2,ZAF,mAb
+new data (hospital-based + HUS),price_dose_maternal,3,3,3,3,3,3,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases,1006487.7368,1002219.5,974749,1032914.5,926016.3,1115241.35,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y,388453.438,382606.5,362724,407233.75,328601.725,487503.8749999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_0to1y_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y,618034.2994,617670.5,600102.5,635006.25,569070.4249999999,672272.2749999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_1to5y_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_disc,977107.2342,972781.5,945744.5,1003094.25,897943.55,1084683.125,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_cases_disc_averted,176510.04,172335.5,159544.75,188201.5,138250.09999999998,244041.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths,1438.7826,1371,1135,1673.25,813,2442.0499999999993,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y,1284.0528,1218,992.75,1498,687,2260.124999999998,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_averted,815.138,767,618,962,417.975,1506.074999999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_0to1y_disc_averted,815.138,767,618,962,417.975,1506.074999999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y,154.7206,150,122,180,85,257.02499999999964,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_1to5y_disc_averted,815.138,767,618,962,417.975,1506.074999999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_averted,815.138,767,618,962,417.975,1506.074999999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_disc,1432.2456,1363.5,1129,1665.25,807.975,2438.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_deaths_disc_averted,815.138,767,618,962,417.975,1506.074999999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_incidence,192.004374,191.19,185.95,197.05,176.6485,212.75074999999998,60,2,ZAF,mAb
+new data (hospital-based + HUS),rsv_rate,3.1531224997098453,3.1533175495193935,3.1507046172644464,3.15588487837112,3.1449609913418772,3.1601185096769875,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_YLD_averted,283.079,281,264,301,233,341,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_0to1y_0to1y_YLD_disc_averted,283.079,281,264,301,233,341,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_YLD_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_1to5y_1to5y_YLD_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_disc_averted,43428.6254,43392,41826.75,44945.25,39241.7,47956.25,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_YLD_averted,283.079,281,264,301,233,341,60,2,ZAF,mAb
+new data (hospital-based + HUS),SARI_YLD_disc_averted,283.079,281,264,301,233,341,60,2,ZAF,mAb
+new data (hospital-based + HUS),severe_LRTI_DALY,0.21074783981723075,0.2070793068742488,0.1827663133969385,0.23634415498848135,0.139947316894417,0.2967881138057082,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY,92249.5338,87993,73210.5,106989.75,53057.700000000004,155076.77499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y,81491.5608,77335,63207.75,94921.5,44197.075000000004,142565.89999999982,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_averted,51503.5864,48512.5,39156,60688.25,26608.399999999998,94734.77499999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_disc,37088.5296,35226.5,28894.75,43132.75,20369.350000000002,64506.32499999994,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_0to1y_disc_averted,23360.1032,22019,17813.5,27481.25,12153.35,42780.075,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y,10757.9732,10485.5,8704,12336.5,6378.875,17112.199999999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_disc,5199.0004,5084.5,4317,5875.25,3313.8,7937.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_averted,51503.5864,48512.5,39156,60688.25,26608.399999999998,94734.77499999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_disc,42287.5314,40358.5,33745.75,48888.75,24739.525,70509.74999999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_DALY_disc_averted,23360.1032,22019,17813.5,27481.25,12153.35,42780.075,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost,37385412.0792,37341553.5,35975857.75,38712474.5,33599529.5,41408635.325,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y,28346822.417,28311241.5,27055715.25,29554064.25,24823198.675,32048269.174999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_disc,28346822.417,28311241.5,27055715.25,29554064.25,24823198.675,32048269.174999997,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_0to1y_disc_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y,9038589.6588,9013055.5,8611781.5,9440870.25,7933015.975000001,10284340.399999999,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_disc,8639317.2052,8613837,8229290,9022810,7578417.525,9837740.249999998,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_disc,36986139.622,36942640.5,35582002.75,38302859,33231223.625,41009603.7,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_medical_cost_disc_averted,19890039.159,19814199.5,18751586.25,20904713.75,16899414.025,23320077.275,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD,2087.2498,2081,2019,2146.25,1908,2309.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y,997.5784,990,940,1043,856,1188.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_averted,457.0102,452,422,484,370,584,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_disc,997.5784,990,940,1043,856,1188.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_0to1y_disc_averted,457.0102,452,422,484,370,584,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y,1089.6718,1088,1050,1129,978,1212,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_disc,1038.1696,1036,999,1076,931,1157.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_averted,457.0102,452,422,484,370,584,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_disc,2035.7452,2030,1968,2094,1858,2255.0249999999996,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLD_disc_averted,457.0102,452,422,484,370,584,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL,90162.2784,85906.5,71113,104876,50981.9,152971.82499999992,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y,80493.9842,76354.5,62252.25,93902.75,43106.85,141597.67499999987,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_averted,51046.582,48033,38700.25,60227.5,26161.65,94312.34999999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_disc,36090.944,34231.5,27909,42103.25,19322.949999999997,63516.52499999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_0to1y_disc_averted,22903.099,21550,17361.75,27025.25,11734.875,42323.549999999974,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y,9668.3082,9392,7607.25,11238,5297.5999999999995,16073.025,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_disc,4160.8276,4043,3275,4836.25,2278.8500000000004,6910.1749999999975,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_1to5y_disc_averted,0,0,0,0,0,0,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_averted,51046.582,48033,38700.25,60227.5,26161.65,94312.34999999995,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_disc,40251.773,38323,31734,46806.25,22697.524999999998,68509.4,60,2,ZAF,mAb
+new data (hospital-based + HUS),total_YLL_disc_averted,22903.099,21550,17361.75,27025.25,11734.875,42323.549999999974,60,2,ZAF,mAb

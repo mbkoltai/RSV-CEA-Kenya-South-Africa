@@ -77,7 +77,7 @@ list(incid=kemri_incid_rate_matrix,hosp=kemri_hosp_rate_matrix)
 # generate sample paths for nonhosp and hosp incidence
 fcn_gen_nonhosp_hosp_incid_samples_kenya <- function(kenya_data_path,sel_disease,n_iter,age_maxval,CI_intervals,randsampl_distrib_type){
   # load data
-  hosp_incid_data=subset(fcn_load_kenya(kenya_data_path,sel_disease)$rsv_incidence_ageinf %>% 
+  hosp_incid_data <- subset(fcn_load_kenya(kenya_data_path,sel_disease)$rsv_incidence_ageinf %>% 
    dplyr::select(age_inf,value,CI_95_lower,CI_95_upper,medically_attended,metric_per_popul,medically_attended),medically_attended==TRUE)
   nonhosp_incid_data=subset(fcn_load_kenya(kenya_data_path,sel_disease)$rsv_incidence_ageinf %>% 
    dplyr::select(age_inf,value,CI_95_lower,CI_95_upper,medically_attended,metric_per_popul,medically_attended),medically_attended==FALSE)
@@ -263,3 +263,45 @@ standard_theme=theme(# panel.grid=element_line(linetype="dashed",colour="black",
                      plot.title=element_text(hjust=0.5,size=16),
                      axis.text.x=element_text(size=9,angle=90),axis.text.y=element_text(size=9),
                      axis.title=element_text(size=14), text=element_text(family="Calibri"))
+
+# data.frame(t(data.frame(efficacy_figures$mat_vacc) )) %>% mutate(name="mat_vacc")
+
+### calc rates of exp decay
+fcn_exp_waning_rate <- function(effic_list,n_row){
+  exp_waning_param<-data.frame()
+  for (k_interv in 1:length(effic_list)) {
+  alpha_par<-log(2)/effic_list[[k_interv]]$half_life; n_dur=effic_list[[k_interv]]$duration
+  for (k_dis in 1:3){
+    if (names(effic_list[[k_interv]])[k_dis] %in% c("sympt_disease","hospit","severe")){
+      mean_VE_trial<-as.numeric(effic_list[[k_interv]][[k_dis]]["mean"])
+      c_const<-mean_VE_trial*alpha_par*n_dur/(1-exp(-n_dur*alpha_par))
+      mean_VE_calc<-mean(c_const*exp(-alpha_par*((1:n_row)-1))[1:n_dur])
+  if (c_const>1) {
+  mean_VE_calc <- mean(c_const*exp(-alpha_par*((1:n_row)-1))[1:n_dur])
+  while (abs(mean_VE_calc-mean_VE_trial)>0.001) {
+    c_const<-1 # alpha_par*5/(1-exp(-5*alpha_par)) # # exp_scaling = -(1/(dur_prot_infant-1))*log(2)*((1:n_row)-1)
+    exp_decay<-c_const*exp(-alpha_par*((1:n_row)-1)); mean_VE_calc <- mean(exp_decay[1:n_dur])
+    alpha_par<-alpha_par*as.numeric(ifelse(mean_VE_trial>mean_VE_calc,0.99,1.01)) } # while
+        }  else {# if c_const>1
+          if (abs(mean_VE_calc-mean_VE_trial)>0.1/100) {c_const=c_const*(mean_VE_trial/mean_VE_calc);
+          mean_VE_calc<-mean(c_const*exp(-alpha_par*((1:n_row)-1))[1:n_dur])} }
+      # print(c(names(effic_list)[k_interv],names(effic_list[[k_interv]])[k_dis]))
+      exp_w_output<-data.frame(interv=names(effic_list)[k_interv],dis_type=names(effic_list[[k_interv]])[k_dis],
+                    "c_const"=c_const,"exp_decay_rate"=alpha_par,"half_life_month"=log(2)/alpha_par,"mean_VE_calcul"=mean_VE_calc)
+      if (k_interv==1&k_dis==1) {exp_waning_param<-exp_w_output} else { exp_waning_param <- rbind(exp_waning_param,exp_w_output)  }
+      } # only for disease types
+    } # k_dis
+  }
+  # list_exp_decay
+  list_exp_decay <- list(mat_vacc=list(sympt_disease=exp_waning_param %>% filter(interv=="mat_vacc"&dis_type=="sympt_disease") %>% 
+                       dplyr::select(c_const,exp_decay_rate),
+                     hospit=exp_waning_param %>% filter(interv=="mat_vacc" & dis_type=="hospit") %>% 
+                       dplyr::select(c_const,exp_decay_rate),
+                     severe=exp_waning_param %>% filter(interv=="mat_vacc" & dis_type=="severe") %>% 
+                       dplyr::select(c_const,exp_decay_rate)),
+       monocl_ab=list(sympt_disease=exp_waning_param %>% filter(interv=="monocl_ab" & dis_type=="sympt_disease") %>% 
+                        dplyr::select(c_const,exp_decay_rate),
+                      hospit=exp_waning_param %>% filter(interv=="monocl_ab" & dis_type=="hospit") %>% 
+                        dplyr::select(c_const,exp_decay_rate)))
+  list_exp_decay
+}

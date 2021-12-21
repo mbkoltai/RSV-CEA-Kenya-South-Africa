@@ -1,5 +1,6 @@
 ###### get_burden_flexible ------------------------------------
-get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_prob,exp_wane,dose_price,cost_data) {
+get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_prob,exp_wane,
+                                         list_expwaning_param,dose_price,cost_data) {
   # set RNG seed
   set.seed(configList$rng_seed)
   ###############################
@@ -15,10 +16,12 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   # load own data if it was supplied to the functions
   # flag_own_data=""
   # if (!is.null(dim(incid_matrix)) & !is.null(dim(hosp_prob_matrix))){
-  #   print('check if first matrix is RSV disease episode/person year, second is rate of hospitalisation/person year!')
+  #   print('check if first matrix is RSV disease episode/person year, 
+  #       second is rate of hospitalisation/person year!')
   #   config$rsv_rate=data.frame(incid_matrix); config$hosp_prob=data.frame(hosp_prob_matrix)
   #   flag_own_data="yes"}
-  print(paste0("input list contains:",paste(names(list_incid),", containing matrices:",names(list_incid[[names(list_incid)[1]]]),
+  print(paste0("input list contains:",paste(names(list_incid),", containing matrices:",
+              names(list_incid[[names(list_incid)[1]]]),
               names(list_incid[[names(list_incid)[2]]]),sep = " ")) )
   if (!all(is.na(cost_data)) ){
   message(paste0("User supplied ", paste0(names(cost_data),collapse=","), " costing data.")) }
@@ -46,6 +49,8 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   life_table$pop <- life_table$lx_rate * config$target_population_lifebirth / config$monthsInYear #fix 2018-01-11
   config$hosp_CFR_DALYloss      <- life_table$life_expectancy
   config$hosp_CFR_DALYloss_disc <- life_table$life_expectancy_disc
+  
+  write_csv(life_table,paste0("output/life_table",configList$country_iso,".csv"))
   
   ##################################
   # Parameter uncertainty: BURDEN  #
@@ -84,12 +89,18 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   }
   
   # duration illness, LRTI DALY sampled from a gamma distribution
-  config$duration_illness <- sample_rgamma(config$duration_illness_mean,config$duration_illness_stdev,config$num_sim)
-  config$severe_LRTI_DALY <- sample_rgamma(config$severe_LRTI_DALY_mean,config$severe_LRTI_DALY_stdev,config$num_sim)
-  config$moderate_LRTI_DALY <- sample_rgamma(config$moderate_LRTI_DALY_mean,config$moderate_LRTI_DALY_stdev,config$num_sim)
+  config$duration_illness <- sample_rgamma(config$duration_illness_mean,
+                                           config$duration_illness_stdev,config$num_sim)
+  config$severe_LRTI_DALY <- sample_rgamma(config$severe_LRTI_DALY_mean,
+                                           config$severe_LRTI_DALY_stdev,config$num_sim)
+  config$moderate_LRTI_DALY <- sample_rgamma(config$moderate_LRTI_DALY_mean,
+                                             config$moderate_LRTI_DALY_stdev,config$num_sim)
   # DALY loss
   config$severe_rsv_DALYloss      <- config$severe_LRTI_DALY*config$duration_illness
   config$non_severe_rsv_DALYloss  <- config$moderate_LRTI_DALY*config$duration_illness
+  
+  # save config to check
+  saveRDS(config,paste0("output/config",configList$country_iso,".RDS"))
   
   ###############################
   # mAB
@@ -101,7 +112,8 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   # Calculate the effective protection
   # init matrices
   iAgeEffectiveProtection_primary=matrix(0,ncol=config$num_sim,nrow=config$nMonthsOfAges)
-  iAgeEffectiveProtection_hospital=iAgeEffectiveProtection_primary; iAgeEffectiveProtection_cfr=iAgeEffectiveProtection_primary
+  iAgeEffectiveProtection_hospital=iAgeEffectiveProtection_primary; 
+  iAgeEffectiveProtection_cfr=iAgeEffectiveProtection_primary
   
   # Fill matrices # i_eff <- 1
   if (!all(is.na(effic_fig$monocl_ab)) & length(effic_fig$monocl_ab)>1) {
@@ -109,31 +121,37 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
       print("using prob distribs for mAb")
       if (any(effic_fig$monocl_ab$sympt_disease<0)){
         # symptom disease
-        eff_sympt_disease_fit <- get.norm.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
+    eff_sympt_disease_fit <- get.norm.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
                                            p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
-        effic_sympt_disease <- rnorm(num_sim,mean=eff_sympt_disease_fit["mean"],sd=eff_sympt_disease_fit["sd"])} else {
-          eff_sympt_disease_fit=get.gamma.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
+        effic_sympt_disease <- rnorm(num_sim,mean=eff_sympt_disease_fit["mean"],sd=eff_sympt_disease_fit["sd"])
+        } else {
+    eff_sympt_disease_fit=get.gamma.par(q=effic_fig$monocl_ab$sympt_disease[c("CI95_low","mean","CI95_high")],
                                               p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
-          effic_sympt_disease <- rgamma(num_sim,shape=eff_sympt_disease_fit["shape"],rate=eff_sympt_disease_fit["rate"])  }
+          effic_sympt_disease <- rgamma(num_sim,shape=eff_sympt_disease_fit["shape"],
+                                        rate=eff_sympt_disease_fit["rate"])  }
       # hospitalisation
       if (any(effic_fig$monocl_ab$hospit<0)){
         eff_hosp_disease_fit=get.norm.par(q=effic_fig$monocl_ab$hospit[c("CI95_low","mean","CI95_high")],
-                                          p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
-        effic_hospit_disease <- rnorm(num_sim,mean=eff_hosp_disease_fit["mean"],sd=eff_hosp_disease_fit["sd"]) } else {
+                               p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
+    effic_hospit_disease <- rnorm(num_sim,mean=eff_hosp_disease_fit["mean"],sd=eff_hosp_disease_fit["sd"]) 
+    } else {
           eff_hosp_disease_fit <- get.gamma.par(q=effic_fig$monocl_ab$hospit[c("CI95_low","mean","CI95_high")],
-                                             p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
-          effic_hospit_disease <- rgamma(num_sim,shape=eff_hosp_disease_fit["shape"],rate=eff_hosp_disease_fit["rate"]) }
+                         p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
+    effic_hospit_disease <- rgamma(num_sim,shape=eff_hosp_disease_fit["shape"],rate=eff_hosp_disease_fit["rate"]) 
+    }
       # severe disease
       if (!is.null(effic_fig$monocl_ab$severe)){
         # print("mAB severe disease efficacy")
         if (any(effic_fig$monocl_ab$severe<0)){
         eff_severe_disease_fit=get.norm.par(q=effic_fig$monocl_ab$severe[c("CI95_low","mean","CI95_high")],
                                             p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("mean","sd")]
-        effic_severe_disease <- rnorm(num_sim,mean=eff_severe_disease_fit["mean"],sd=eff_severe_disease_fit["sd"]) } else {
+        effic_severe_disease <- rnorm(num_sim,mean=eff_severe_disease_fit["mean"],
+                                      sd=eff_severe_disease_fit["sd"]) } else {
           # print(effic_fig$monocl_ab$severe[c("CI95_low","mean","CI95_high")])
           eff_severe_disease_fit=get.gamma.par(q=effic_fig$monocl_ab$severe[c("CI95_low","mean","CI95_high")],
                                                p=c(2.5,50,97.5)/100,show.output=F,plot=F)[c("shape","rate")]
-          effic_severe_disease <- rgamma(num_sim,shape=eff_severe_disease_fit["shape"],rate=eff_severe_disease_fit["rate"]) } } else {
+          effic_severe_disease <- rgamma(num_sim,shape=eff_severe_disease_fit["shape"],
+                                         rate=eff_severe_disease_fit["rate"]) } } else {
             effic_severe_disease <- effic_hospit_disease }
           } # if there are CIs for efficacy
     else { # if using mean only
@@ -145,14 +163,29 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
     iAgeEffectiveProtection_primary[1:dur_prot_infant,] <- effic_sympt_disease*config$coverage_infant
     iAgeEffectiveProtection_hospital[1:dur_prot_infant,] <- effic_hospit_disease*config$coverage_infant
     iAgeEffectiveProtection_cfr[1:dur_prot_infant,] <- effic_severe_disease*config$coverage_infant  
+    # EXP WANING
     if (exp_wane) { if(dur_prot_infant>0) {print("using exponential waning for efficacy (mAb)")}
-      n_row <- nrow(iAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_infant-1))*log(2)*((1:n_row)-1)
-      iAgeEffectiveProtection_primary[1:n_row,] <- effic_sympt_disease*config$coverage_infant
-      iAgeEffectiveProtection_primary <- iAgeEffectiveProtection_primary*exp(exp_scaling)
-      iAgeEffectiveProtection_hospital[1:n_row,] <- effic_hospit_disease*config$coverage_infant
-      iAgeEffectiveProtection_hospital <- iAgeEffectiveProtection_hospital*exp(exp_scaling)
-      iAgeEffectiveProtection_cfr[1:n_row,] <- effic_severe_disease*config$coverage_infant
-      iAgeEffectiveProtection_cfr<-iAgeEffectiveProtection_cfr*exp(exp_scaling)     } # end of exp waning
+      n_row <- nrow(iAgeEffectiveProtection_primary)
+      # normalise by mean efficacy because the exp waning parameters are for scaling a value of 1
+      iAgeEffectiveProtection_primary[1:n_row,] <- 
+        effic_sympt_disease*config$coverage_infant/effic_fig$monocl_ab$sympt_disease["mean"]
+      iAgeEffectiveProtection_primary <- 
+        iAgeEffectiveProtection_primary*list_expwaning_param$monocl_ab$sympt_disease$c_const*
+        exp(-list_expwaning_param$monocl_ab$sympt_disease$exp_decay_rate*((1:n_row)-1))
+      # iAgeEffectiveProtection_primary*exp_decay #
+      # hospit
+      iAgeEffectiveProtection_hospital[1:n_row,] <- effic_hospit_disease*config$coverage_infant/effic_fig$monocl_ab$hospit["mean"]
+      iAgeEffectiveProtection_hospital <-iAgeEffectiveProtection_hospital*
+        list_expwaning_param$monocl_ab$hospit$c_const*
+              exp(-list_expwaning_param$monocl_ab$hospit$exp_decay_rate*((1:n_row)-1))
+      # iAgeEffectiveProtection_hospital*exp_decay # exp(exp_scaling)
+      # severe
+      # we normalise it to the mean, because the exponential waning is calibrated to 1
+      iAgeEffectiveProtection_cfr[1:n_row,] <- effic_severe_disease*config$coverage_infant/effic_fig$monocl_ab$hospit["mean"]
+      iAgeEffectiveProtection_cfr <- iAgeEffectiveProtection_cfr*list_expwaning_param$monocl_ab$hospit$c_const*exp(-list_expwaning_param$monocl_ab$hospit$exp_decay_rate*((1:n_row)-1))
+      # iAgeEffectiveProtection_cfr*exp_decay     
+      print(rowMeans(iAgeEffectiveProtection_cfr))
+      } # end of exp waning
     } # end of user input for efficacy
   # no user input for efficacy
   else { iAgeEffectiveProtection_primary[1:dur_prot_infant,] <- config$efficacy_infant_primary*config$coverage_infant
@@ -234,15 +267,24 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
     mAgeEffectiveProtection_primary[1:dur_prot_maternal,] <- effic_sympt_disease # print(dim(mAgeEffectiveProtection_primary))
     mAgeEffectiveProtection_hospital[1:dur_prot_maternal,] <- effic_hospit_disease
     mAgeEffectiveProtection_cfr[1:dur_prot_maternal,] <- effic_severe_disease 
+    # EXPONENTIAL WANING
     if (exp_wane) { if(dur_prot_maternal>0) {print("using exponential waning for efficacy (MV)")}
-      n_row<-nrow(mAgeEffectiveProtection_primary); exp_scaling = -(1/(dur_prot_maternal-1))*log(2)*((1:n_row)-1)
-      mAgeEffectiveProtection_primary[1:n_row,] <- effic_sympt_disease
-      mAgeEffectiveProtection_primary <- mAgeEffectiveProtection_primary*exp(exp_scaling)
-      mAgeEffectiveProtection_hospital[1:n_row,] <- effic_hospit_disease
-      mAgeEffectiveProtection_hospital <- mAgeEffectiveProtection_hospital*exp(exp_scaling); # print(rowMeans(mAgeEffectiveProtection_hospital))
-      mAgeEffectiveProtection_cfr[1:n_row,] <- effic_severe_disease
-      mAgeEffectiveProtection_cfr<-mAgeEffectiveProtection_cfr*exp(exp_scaling); # print(rowMeans(mAgeEffectiveProtection_cfr))
-    }
+      n_row<-nrow(mAgeEffectiveProtection_primary) # ; exp_scaling = -(1/(dur_prot_maternal-1))*log(2)*((1:n_row)-1)
+      mAgeEffectiveProtection_primary[1:n_row,] <- effic_sympt_disease/effic_fig$mat_vacc$sympt_disease["mean"]
+      # print("before exp waning"); print(rowMeans(mAgeEffectiveProtection_primary))
+      mAgeEffectiveProtection_primary <- mAgeEffectiveProtection_primary*list_expwaning_param$mat_vacc$sympt_disease$c_const*exp(-list_expwaning_param$mat_vacc$sympt_disease$exp_decay_rate*((1:n_row)-1))
+      # print("after exp waning"); print(rowMeans(mAgeEffectiveProtection_primary))
+      # mAgeEffectiveProtection_primary*exp(exp_scaling)
+      # hosp
+      mAgeEffectiveProtection_hospital[1:n_row,] <- effic_hospit_disease/effic_fig$mat_vacc$hospit["mean"]
+      mAgeEffectiveProtection_hospital <- mAgeEffectiveProtection_hospital*list_expwaning_param$mat_vacc$hospit$c_const*exp(-list_expwaning_param$mat_vacc$hospit$exp_decay_rate*((1:n_row)-1))
+      # mAgeEffectiveProtection_hospital*exp(exp_scaling); 
+      # print((mAgeEffectiveProtection_hospital))
+      mAgeEffectiveProtection_cfr[1:n_row,] <- effic_severe_disease/effic_fig$mat_vacc$severe["mean"]
+      mAgeEffectiveProtection_cfr <- mAgeEffectiveProtection_cfr*list_expwaning_param$mat_vacc$severe$c_const*exp(-list_expwaning_param$mat_vacc$severe$exp_decay_rate*((1:n_row)-1))
+      # mAgeEffectiveProtection_cfr*exp(exp_scaling); # print(rowMeans(mAgeEffectiveProtection_cfr))
+      print(dim(mAgeEffectiveProtection_cfr))
+        }
       } else { # if no user input on efficacy
     mAgeEffectiveProtection_primary[1:dur_prot_maternal,] <- config$efficacy_maternal_primary*config$coverage_maternal
     mAgeEffectiveProtection_hospital[1:dur_prot_maternal,] <- config$efficacy_maternal_hospital*config$coverage_maternal
@@ -282,8 +324,8 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
     totalAgeEffectiveProtection_hospital[,flag_sim]  <- NA
     totalAgeEffectiveProtection_cfr[,flag_sim]       <- NA
     warning_message <- paste0(c("SCENARIO '", config$scenario,"' ENCOUNTERS A DIFFERENTIAL EFFICACY ISSUE:",
-                                "\n=================>> averted hospital cases > total averted cases",
-                                "\n=================>> disabled", sum(flag_sim), "simulations [",round(sum(flag_sim)/length(flag_sim)*100),"%]"))
+                      "\n=================>> averted hospital cases > total averted cases",
+                      "\n=================>> disabled", sum(flag_sim), "simulations [",round(sum(flag_sim)/length(flag_sim)*100),"%]"))
     # print warning
     cli_print(warning_message,WARNING=T,FORCED =T)
     # store in 'config'
@@ -327,6 +369,10 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   years_after_vaccin     <- rep(0:(config$nYearsOfAges-1),each=config$monthsInYear)
   disc_time_effect       <- 1/((1+config$disc_rate_effect)^years_after_vaccin)
   disc_time_cost         <- 1/((1+config$disc_rate_cost)^years_after_vaccin)
+  # write_csv(as.data.frame(config),"output/config.csv")
+  print("years_after_vaccin:"); print(round(years_after_vaccin,4))
+  print("disc_time_effect:"); print(round(disc_time_effect,4))
+  print("disc_time_cost:"); print(round(disc_time_cost,4))
   ###############################
   # Burden of Disease           #
   ###############################	
@@ -385,6 +431,7 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   ARI_averted <- (non_med_att_ARI + med_att_ARI)*totalAgeEffectiveProtection_primary
   rsv_deaths_averted           <- rsv_deaths  * totalAgeEffectiveProtection_cfr
   non_hosp_cases_averted       <- rsv_cases_averted - hosp_cases_averted
+  non_hosp_cases_outpatient_averted <- med_att_ARI*totalAgeEffectiveProtection_primary
   # Averted DALY loss => YLD averted
   # YLD = years lived with disability
   # severe DALYs for nonhosp cases as well!
@@ -452,7 +499,7 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   # total medical cost
   total_medical_cost <- cost_rsv_outpatient + cost_rsv_hosp
   # medical costs: averted
-  cost_rsv_outpatient_averted <- non_hosp_cases_averted * config$outpatient_cost 
+  cost_rsv_outpatient_averted <- non_hosp_cases_outpatient_averted * config$outpatient_cost 
   cost_rsv_hosp_averted       <- hosp_cases_averted     * config$hosp_cost   
   total_medical_cost_averted  <- cost_rsv_outpatient_averted + cost_rsv_hosp_averted
   # program costs maternal vaccination => target pop = live babies + stillbirths
@@ -473,7 +520,8 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   cost_maternal_disc               <- cost_maternal                * disc_time_cost
   cost_mAb_disc                    <- cost_mAb                     * disc_time_cost
   total_medical_cost_disc          <- (total_medical_cost  * disc_time_cost)
-  intervention_cost_disc           <- (intervention_cost   * disc_time_cost) # this should be the same as the undiscounted value, because the intervention is given at the beginning
+  # this should be the same as the undiscounted value, because the intervention is given at the beginning
+  intervention_cost_disc           <- (intervention_cost   * disc_time_cost) 
   incremental_cost_disc            <- (incremental_cost    * disc_time_cost)
   #################################
   ## OUTPUT                      ##
