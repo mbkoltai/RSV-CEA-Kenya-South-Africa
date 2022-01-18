@@ -34,17 +34,22 @@ fcn_set_xlims<-function(sel_cntr,burden_mcmarcel_owndata_comp,quantls_min_max,xm
 }
 
 ### process burden calc output
-fcn_process_burden_output <- function(user_output,default_output,sel_cntr,cols_burden_sel,plot_labels,icercolname,icercols){
+fcn_process_burden_output <- function(user_output,default_output,sel_cntr,cols_burden_sel,
+                                      plot_labels,icercolname,icercols){
   default_output[,icercolname]=default_output[,icercols[1]]/default_output[,icercols[2]]
   user_output[,icercolname]=user_output[,icercols[1]]/user_output[,icercols[2]]
   # histograms: mcmarcel vs kemri
   if (nchar(cols_burden_sel)==0 | is.na(cols_burden_sel)) {
-    cols_burden_sel_default=colnames(default_output)[sapply(1:ncol(default_output), function(x) {class(default_output[,x])})=="numeric"]
-    cols_burden_sel_user=colnames(user_output)[sapply(1:ncol(user_output), function(x) {class(user_output[,x])})=="numeric"]
-    print(cols_burden_sel_default)}
+    cols_burden_sel_default=colnames(default_output)[sapply(1:ncol(default_output), 
+                                  function(x) {class(default_output[,x])})=="numeric"]
+    cols_burden_sel_user=colnames(user_output)[sapply(1:ncol(user_output), 
+                                  function(x) {class(user_output[,x])})=="numeric"]
+    } # print(cols_burden_sel_default)
   burden_mcmarcel_owndata_comp=bind_rows(
-    cbind(default_output[,cols_burden_sel_default],data.frame(source=plot_labels["mcmarcel"],iter=1:nrow(default_output))),
-    cbind(user_output[,cols_burden_sel_user],data.frame(source=plot_labels["own"],iter=1:nrow(user_output) ) ) ) %>%
+    cbind(default_output[,cols_burden_sel_default],data.frame(source=plot_labels["mcmarcel"],
+                                                              iter=1:nrow(default_output))),
+    cbind(user_output[,cols_burden_sel_user],
+          data.frame(source=plot_labels["own"],iter=1:nrow(user_output) ) ) ) %>%
     pivot_longer(cols=!c(iter,source),names_to="variable")
   burden_mcmarcel_owndata_comp
 }
