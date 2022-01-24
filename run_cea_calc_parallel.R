@@ -195,17 +195,42 @@ sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"),
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # South Africa cost estimates
+# inpatient
 s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>% mutate(freq=ifelse(grepl('-',age),
   as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>% 
   mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% 
   uncount(weights=freq, .id="n",.remove=F) %>%
-  mutate(age=as.numeric(age)+(n-1)) %>% dplyr::select(!c(n,freq))
+  mutate(age=as.numeric(age)+(n-1)) %>% dplyr::select(!c(n,freq)) %>% rename(mean=`Mean cost per illness episode (USD)`)
+  
+# outpatient
 s_afr_outpatient_cost <- cbind(data.frame(age="all",mean=25,LCI=18.3,UCI=31.8),
         data.frame(t(unlist(gamma.parms.from.quantiles(q=c(18.3,31.8),p=c(2.5,97.5)/100)[c("shape","rate")]))) )
 if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
- s_afr_inpatient_cost = cbind(s_afr_inpatient_cost, t(sapply(1:nrow(s_afr_inpatient_cost), function(x) 
+ s_afr_inpatient_cost=cbind(s_afr_inpatient_cost, t(sapply(1:nrow(s_afr_inpatient_cost), function(x) 
   unlist(gamma.parms.from.quantiles(q=c(s_afr_inpatient_cost$LCI[x],s_afr_inpatient_cost$UCI[x]),
-                                    p=ci95_range)[c("shape","rate")])))) }
+                                    p=ci95_range)[c("shape","rate")]))) ) }
+list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpatient_cost)
+### ### ### ### ### ### ### ### ### ### ### ### ###
+# KENYA costs
+kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
+# using inpatient/outpatient ratio in South Africa
+SA_total_av_cost<-median(s_afr_inpatient_cost$mean[s_afr_inpatient_cost$name %in% "total"])+s_afr_outpatient_cost$mean
+SA_inpatient_cost_share <- (SA_total_av_cost-s_afr_outpatient_cost$mean)/SA_total_av_cost; rm(SA_total_av_cost)
+# assemble list
+inpat_rows <- kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable))
+list_KEN_costs <- list(inpatient_household=bind_cols(
+  kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable)), 
+  t(sapply(1:nrow(inpat_rows), function(x)
+  unlist(get.gamma.par(q=c(inpat_rows$ci95_low[x],inpat_rows$median[x],inpat_rows$ci95_up[x])/100,
+                                    p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
+  inpatient_healthcare_system=c(mean=SA_inpatient_cost_share*(kenya_costs %>% 
+          filter(grepl("Siaya",site) & grepl("LRTI",variable)))$mean),
+  outpatient_healthcare_system=c(mean=(1-SA_inpatient_cost_share)*(kenya_costs %>% 
+          filter(grepl("Siaya",site) & grepl("LRTI",variable)))$mean))
+# gamma can fit median and CIs well, but not so much the mean
+# get.gamma.par(q=c(inpat_rows$ci95_low[1],inpat_rows$median[1],inpat_rows$ci95_up[1])/100,
+#              p=c(2.5,50,97.5)/100,plot=F)
+
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 cntrs_cea=c("KEN","ZAF")
@@ -215,7 +240,7 @@ flag_publ_effic <- FALSE
 if (flag_publ_effic){
 efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053,CI95_high=0.612),
                             hospit=c(mean=0.444,CI95_low=0.196,CI95_high=0.615),
-                            severe=c(mean=0.483,CI95_low=0,CI95_high=0.753), # c(mean=0.483,-8.2/100,0.753)
+                            severe=c(mean=0.483,CI95_low=-8.2/100,CI95_high=0.753), # c(mean=0.483,-8.2/100,0.753)
                             half_life=36.5/30,duration=3),
                       monocl_ab=list(sympt_disease=c(mean=0.701,CI95_low=0.523,CI95_high=0.812),
                                      hospit=c(mean=0.784,CI95_low=0.519,CI95_high=0.903),
@@ -223,20 +248,22 @@ efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053
   # new data (from conference)
 efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.847,CI95_low=0.216,CI95_high=0.976),
                               hospit=c(mean=0.847,CI95_low=0.216,CI95_high=0.976), # no sep data
-                              severe=c(mean=0.915,CI95_low=0,CI95_high=0.998), # m=91.5%,ci95=-5.6,99.8%
+                              severe=c(mean=0.915,CI95_low=-5.6/100,CI95_high=0.998),
                               half_life=36.5/30,duration=3),
                          monocl_ab=list(sympt_disease=c(mean=0.745,CI95_low=0.496,CI95_high=0.871),
-                                   hospit=c(mean=0.621,CI95_low=0,CI95_high=0.868), # m=62.1%,ci95=-8.6,86.8%
-                                         half_life=59.3/30,duration=5))
+                              hospit=c(mean=0.621,CI95_low=-8.6/100,CI95_high=0.868),
+                                       half_life=59.3/30,duration=5)) 
 }
+
+# fitting efficacy figures with a beta distribution
+source("functions/fit_efficacy.R")
+g(list_effic_betafit,allfits) %=% fcn_betafit_efficacy(effic_figs=efficacy_figures,
+                                   scan_range_resol_nsample=c(min=-2,max=2,by=1/100,n_sample=2e4),
+                                   optim_range_res=c(min=-1,max=2,by=0.04),optim_initguess=c(-0.05,1))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # parameters for exponential waning model
-list_exp_waning_param <- fcn_exp_waning_rate(efficacy_figures,n_row=60)
-df_exp_waning_param <- data.frame(t(data.frame(list_exp_waning_param))) %>% rownames_to_column %>% 
-  separate(rowname,c("interv","dis_type","param"),"\\.")
-colnames(df_exp_waning_param)[ncol(df_exp_waning_param)]="value"
-df_exp_waning_param <- df_exp_waning_param %>% pivot_wider(names_from = param)
+g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 
 # prices for doses
 pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
@@ -246,7 +273,7 @@ par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_c
 kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 exp_wane_val=FALSE; effic_dist_fit <- "beta"
 # lower_cov=FALSE; lower_cov_val=0.7; 
-subfolder_name<-paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdeaths",""),
+subfolder_name <- paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdeaths",""),
                        ifelse(SA_deaths_input,"_SAdeaths",""),
         "_CIs_SA_ILI_",ifelse(ILI_adjust_SA,"broader","narrow"),ifelse(exp_wane_val,"_expwaning",""),
         ifelse(lower_cov,paste0("_coverage",lower_cov_val),""),
@@ -289,12 +316,12 @@ for (k_par in 1:nrow(par_table)) {
     if (cntrs_cea[n_cntr_output]=="ZAF"){
       sel_interv$country_iso=cntrs_cea[n_cntr_output]}
     # modify duration
-    if (n_interv==1) { sel_interv$dur_protection_maternal=3/12 } else {
-      sel_interv$dur_protection_infant<-5/12}
+    if (n_interv==1) { sel_interv$dur_protection_maternal=3/12 
+    } else { sel_interv$dur_protection_infant<-5/12 }
     # half-life
-    half_life<-ifelse(n_interv==1,36.5,59.3)
+    half_life <- ifelse(n_interv==1,36.5,59.3)
     # lower coverage
-    if (lower_cov) {if (n_interv==1) {sel_interv$coverage_maternal=lower_cov_val} else {
+    if (lower_cov) {if (n_interv==1) { sel_interv$coverage_maternal <- lower_cov_val } else {
       sel_interv$coverage_infant=lower_cov_val} }
     ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
     # calculate
@@ -307,8 +334,8 @@ for (k_par in 1:nrow(par_table)) {
         sim_output=get_burden_flexible(sel_interv,NA,NA,exp_wane=exp_wane_val,doseprice)
         # SARI, ARI distinguished, hosp/nonhosp distinguished
         if (cntrs_cea[n_cntr_output]=="ZAF") {
-          cost_input <- list("inpatient"=s_afr_inpatient_cost %>% filter(name %in% "total"),
-                             "outpatient"=s_afr_outpatient_cost) } else {
+          cost_input <- list("inpatient"=list_SA_costs$inpatient %>% filter(name %in% "total"),
+                             "outpatient"=list_SA_costs$outpatient) } else {
             cost_input<-NA }
         # input death data if available
       if (kenya_deaths_input) { print("using propr death data for Kenya")
@@ -319,10 +346,11 @@ for (k_par in 1:nrow(par_table)) {
           sa_nonhosp_hosp_incid_ari_sari$deaths$hosp=SA_deaths_incid$hosp
           sa_nonhosp_hosp_incid_ari_sari$deaths$non_hosp=SA_deaths_incid$nonhosp } else {
             sa_nonhosp_hosp_incid_ari_sari$deaths=NULL}
-    sim_output_user_input_ari_sari <- get_burden_flexible_ari_sari(sel_interv,
+    # RUN CALCULATIONS
+        sim_output_user_input_ari_sari <- get_burden_flexible_ari_sari(sel_interv,
           list(kenya_nonhosp_hosp_incid_ari_sari,sa_nonhosp_hosp_incid_ari_sari)[[n_cntr_output]],
-          efficacy_figures,effic_prob=T,effic_distr=effic_dist_fit,exp_wane=exp_wane_val,list_exp_waning_param,
-          doseprice,cost_data=cost_input)
+          efficacy_figures,effic_prob=T,effic_distr=effic_dist_fit,list_effic_fit=list_effic_betafit,
+          exp_wane=exp_wane_val,list_exp_waning_param,dose_price=doseprice,cost_data=cost_input)
   ### processing samples -> mean, median, CIs
   # ICER with discounted DALYs
     with_discounted_DALYs <- fcn_process_burden_output(
@@ -404,7 +432,7 @@ old_new_names <- list(
   "old"=list(c("total_YLD","total_YLL","hosp_YLD","hosp_med_att_YLD","non_hosp_YLD","total_DALY"),
             c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),  # ,"ARI_YLD","SARI_YLD"
             c("admin_cost","cost_rsv_hosp","cost_rsv_outpatient","total_medical_cost")),
-   "new"=list(c("total YLD","total YLL","YLD hospitalised cases","YLD medically attended cases",
+  "new"=list(c("total YLD","total YLL","YLD hospitalised cases","YLD medically attended cases",
                 "YLD non-hospitalised cases","total DALY"),
               c("deaths","hospitalised SARI","non-hospitalised SARI","hospitalised cases","non-hospitalised cases"),
               c("admin. costs","hospitalisation costs","outpatient costs","total medical cost")))
@@ -569,7 +597,7 @@ ggsave(paste0("output/cea_plots/",subfolder_name,"interv_incremcosts_icer",
 for (k_plot in 1:3) {
   sel_vars <- list(c("total_YLD","total_YLL","hosp_YLD","non_hosp_YLD","total_DALY"),
                    c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),
-                   c("admin_cost","cost_rsv_hosp","hosp_cost","cost_rsv_outpatient",
+                   c("admin_cost","cost_rsv_hosp","cost_rsv_outpatient", # ,"hosp_cost"
                       "outpatient_cost","total_medical_cost"))[[k_plot]]
   df_plot <- cea_summary_all %>% 
     filter(variable %in% c(sel_vars,paste0(sel_vars,"_averted")) &

@@ -1,4 +1,4 @@
-fcn_calc_quantls_minmax=function(burden_mcmarcel_owndata_comp,quantl_vals){
+fcn_calc_quantls_minmax <- function(burden_mcmarcel_owndata_comp,quantl_vals){
   quantls_min_max=burden_mcmarcel_owndata_comp %>% group_by(variable,source) %>% 
     summarise(value=quantile(value,quantl_vals),q=quantl_vals) %>% group_by(variable,q) %>% 
     summarise(min_q=min(value),max_q=max(value)) %>% group_by(variable) %>% summarise(min_q=min(min_q),max_q=max(max_q))
