@@ -460,10 +460,16 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
     } else {
    message("User supplied outpatient costing data.")
       # print(cost_data$outpatient)
-      if (grepl())
-       config$outpatient_cost <- matrix(rep(rgamma(config$num_sim,shape=cost_data$outpatient$shape,
+      if (config$country_iso %in% "ZAF"){
+      print(paste0("South Africa outpatient cost: ",cost_data$outpatient$mean,"USD"))
+         config$outpatient_cost <- matrix(rep(rgamma(n=config$num_sim,shape=cost_data$outpatient$shape,
                                           rate=cost_data$outpatient$rate),
-                                          each=config$nMonthsOfAges),ncol=config$num_sim)  
+                                          each=config$nMonthsOfAges),ncol=config$num_sim) }  else {
+    print(paste0("Kenya outpatient cost: ",round(cost_data$outpatient_cost["mean"],2),
+                 " USD (only mean value provided)"))
+            config$outpatient_cost <- matrix(cost_data$outpatient_cost,
+                                             nrow=config$nMonthsOfAges,ncol=config$num_sim)
+    }
   }
   # ggplot(data.frame(value=config$sample_outpatient_cost)) + geom_density(aes(x=value)) + theme_bw() + 
   # xlab("outpatient cost")
@@ -473,9 +479,20 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
       # message("default cost"); print(mean(config$hosp_cost))
       } else { 
         message("User supplied inpatient costing data.")
-        config$hosp_cost <- t(sapply(1:nrow(cost_data$inpatient), 
+        if (config$country_iso %in% "ZAF"){
+        print("South Africa inpatient cost (specific to age bands)")
+          config$hosp_cost <- t(sapply(1:nrow(cost_data$inpatient), 
                     function(x) rgamma(config$num_sim,shape=cost_data$inpatient$shape[x],
-                                       rate=cost_data$inpatient$rate[x]) )) 
+                                       rate=cost_data$inpatient$rate[x]))) } else {
+          print("Kenya inpatient cost (households + healthcare system)")
+          config$hosp_cost <- matrix(rep(rgamma(n=config$num_sim,shape=cost_data$inpatient_household$shape,
+                                  rate=cost_data$inpatient_household$rate)*cost_data$inpatient_household$scaling,
+                                         each=config$nMonthsOfAges),ncol=config$num_sim) + 
+            matrix(cost_data$inpatient_healthcare_system["mean"],nrow=config$nMonthsOfAges,ncol=config$num_sim)
+          # t(sapply(1:nrow(cost_data$inpatient),
+          #           function(x) rgamma(config$num_sim,shape=cost_data$inpatient$shape[x],
+          #           rate=cost_data$inpatient$rate[x])))
+                                       }
         }
   config$admin_cost_maternal <- matrix(0,nrow=config$nMonthsOfAges,ncol=config$num_sim)
   # input price data

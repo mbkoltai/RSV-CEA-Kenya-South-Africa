@@ -1,0 +1,49 @@
+source,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,price,source_num,country_iso,intervention,country_plot,vec,price_interv,orig_burden_round
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,3156.6,2332.1,1374.1,3935.9,480.9,10585.7,6,0.2,KEN,mAb,Kenya,2332,6$ (mAb),2.3
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,7111.5,5329.5,3160.9,8942,1109.7,23486.4,6,0.2,KEN,mAb,Kenya,5329,6$ (mAb),5.3
+new data (hospital-based + HUS),incremental cost/DALY averted,-162.7,269.2,206.6,388.1,142.5,1334.6,6,2,KEN,mAb,Kenya,269,6$ (mAb),0.3
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,905.5,616.2,473.1,886.1,327.7,2984.3,6,2,KEN,mAb,Kenya,616,6$ (mAb),0.6
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,11158.6,8322.6,4992.9,13864.1,1916.2,37047.9,20,0.2,KEN,mAb,Kenya,8323,20$ (mAb),8.3
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,25143.3,19005.1,11472.3,31382.3,4429.5,81664.7,20,0.2,KEN,mAb,Kenya,19010,20$ (mAb),19
+new data (hospital-based + HUS),incremental cost/DALY averted,-429.1,1030.6,815.7,1439.3,593.5,4584,20,2,KEN,mAb,Kenya,1031,20$ (mAb),1
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,3328.6,2356.2,1870.6,3281.1,1364.2,10375.7,20,2,KEN,mAb,Kenya,2356,20$ (mAb),2.4
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,34021.5,25394.7,15264.8,42155.3,5953,113487.8,60,0.2,KEN,mAb,Kenya,25390,60$ (mAb),25.4
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,76663,58052.2,35082.4,95488.5,13775.3,248946.4,60,0.2,KEN,mAb,Kenya,58050,60$ (mAb),58.1
+new data (hospital-based + HUS),incremental cost/DALY averted,-1190.3,3207.1,2555.5,4440.6,1882.5,13851.1,60,2,KEN,mAb,Kenya,3207,60$ (mAb),3.2
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,10252,7337.2,5855,10136.3,4324.5,31544,60,2,KEN,mAb,Kenya,7337,60$ (mAb),7.3
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,5975,4185.7,2390.9,7480.9,792.9,21299,3,0.2,KEN,MV,Kenya,4186,3$ (MV),4.2
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,13489.5,9565.8,5489.9,16969,1831.1,47393.2,3,0.2,KEN,MV,Kenya,9566,3$ (MV),9.6
+new data (hospital-based + HUS),incremental cost/DALY averted,88.1,80.6,71,94.9,57.6,163.6,3,2,KEN,MV,Kenya,81,3$ (MV),0.1
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,201.4,185.5,163.4,218.1,132.4,373,3,2,KEN,MV,Kenya,186,3$ (MV),0.2
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,20479.5,14352.8,8360.2,25475.6,2868.4,71672.4,10,0.2,KEN,MV,Kenya,14350,10$ (MV),14.4
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,46238.7,32795.3,19208.9,57819.1,6627.7,159329.5,10,0.2,KEN,MV,Kenya,32800,10$ (MV),32.8
+new data (hospital-based + HUS),incremental cost/DALY averted,416.3,379.1,344,437.8,291.8,759.3,10,2,KEN,MV,Kenya,379,10$ (MV),0.4
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,951.5,871.8,791.9,1006.3,672.9,1731.1,10,2,KEN,MV,Kenya,872,10$ (MV),0.9
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,61920.9,43509.5,25439,77122,8778.3,216187.1,30,0.2,KEN,MV,Kenya,43510,30$ (MV),43.5
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,139807.7,99483.1,58416,175463.9,20282.3,478721.7,30,0.2,KEN,MV,Kenya,99480,30$ (MV),99.5
+new data (hospital-based + HUS),incremental cost/DALY averted,1354.1,1233.2,1118.1,1422.7,951.6,2471.2,30,2,KEN,MV,Kenya,1233,30$ (MV),1.2
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,3094.7,2836.8,2574.4,3271.4,2193.4,5650.1,30,2,KEN,MV,Kenya,2837,30$ (MV),2.8
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,2473.2,1731.8,861.7,3156.6,43.5,9620.1,6,0.2,ZAF,mAb,South Africa,1732,6$ (mAb),1.7
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,5336.9,3792.1,1899.2,6858.7,96.4,20367.5,6,0.2,ZAF,mAb,South Africa,3792,6$ (mAb),3.8
+new data (hospital-based + HUS),incremental cost/DALY averted,-184.7,-314.9,-434.4,-132.4,-599.4,1083.1,6,2,ZAF,mAb,South Africa,-315,6$ (mAb),-0.3
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,-424.1,-678.4,-940.6,-283.2,-1300.3,2225.6,6,2,ZAF,mAb,South Africa,-678,6$ (mAb),-0.7
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,11146.8,8196.3,4826.8,13875.1,1697,38268.7,20,0.2,ZAF,mAb,South Africa,8196,20$ (mAb),8.2
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,24077.1,17934.9,10639.3,30209.8,3762.5,80537.3,20,0.2,ZAF,mAb,South Africa,17930,20$ (mAb),17.9
+new data (hospital-based + HUS),incremental cost/DALY averted,1405.7,911,579.8,1529.6,230.1,5898.7,20,2,ZAF,mAb,South Africa,911,20$ (mAb),0.9
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,2924.6,1963.4,1254.4,3285.4,499.8,12122.1,20,2,ZAF,mAb,South Africa,1963,20$ (mAb),2
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,35928.3,26669.9,16077.9,44585.1,6102.2,121094.7,60,0.2,ZAF,mAb,South Africa,26670,60$ (mAb),26.7
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,77620.5,58376.4,35545.6,96871.2,13518.9,254000.3,60,0.2,ZAF,mAb,South Africa,58380,60$ (mAb),58.4
+new data (hospital-based + HUS),incremental cost/DALY averted,5949.6,4445.5,3455.4,6337.4,2418.9,19675,60,2,ZAF,mAb,South Africa,4445,60$ (mAb),4.4
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,12492.2,9578.9,7490.6,13594,5251,40132,60,2,ZAF,mAb,South Africa,9579,60$ (mAb),9.6
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,5604.3,3808.9,2038.8,7026.2,493.1,21241.3,3,0.2,ZAF,MV,South Africa,3809,3$ (MV),3.8
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,12132.7,8353.9,4486.4,15322.9,1092.2,45698.2,3,0.2,ZAF,MV,South Africa,8354,3$ (MV),8.4
+new data (hospital-based + HUS),incremental cost/DALY averted,-617.6,-630.1,-757.4,-516.9,-1259.4,-282,3,2,ZAF,MV,South Africa,-630,3$ (MV),-0.6
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,-1457.7,-1369.8,-1643.9,-1126.2,-2695.9,-617.6,3,2,ZAF,MV,South Africa,-1370,3$ (MV),-1.4
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,21245.4,14860.2,8475.5,26573.9,2769,75466.2,10,0.2,ZAF,MV,South Africa,14860,10$ (MV),14.9
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,46009.1,32633,18713.8,58037.1,6146,162606.5,10,0.2,ZAF,MV,South Africa,32630,10$ (MV),32.6
+new data (hospital-based + HUS),incremental cost/DALY averted,-99.9,-116.4,-216.2,-14.5,-453,238,10,2,ZAF,MV,South Africa,-116,10$ (MV),-0.1
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,-249.5,-252.5,-469.1,-31.9,-978.5,515.8,10,2,ZAF,MV,South Africa,-252,10$ (MV),-0.3
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,65934.3,46232,26888.6,82287.1,9130.9,230225.9,30,0.2,ZAF,MV,South Africa,46230,30$ (MV),46.2
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,142798.8,101526,59252,179172.3,20203.3,495258.6,30,0.2,ZAF,MV,South Africa,101500,30$ (MV),101.5
+new data (hospital-based + HUS),incremental cost/DALY averted,1379.3,1332.2,1200.5,1552.7,997.1,2584.1,30,2,ZAF,MV,South Africa,1332,30$ (MV),1.3
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,3202.7,2903.4,2612.4,3384.2,2171.4,5533.9,30,2,ZAF,MV,South Africa,2903,30$ (MV),2.9

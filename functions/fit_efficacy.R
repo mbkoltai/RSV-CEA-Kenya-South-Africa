@@ -46,7 +46,7 @@ g = function(...) {
 
 solve_beta_distrib_pars <- function(x,p){
   vacc_eff_mean <- p["mean"]; CI95_down <- p["CI95_low"]; CI95_up <- p["CI95_high"]
-  alphaval<-x[1]; shift_val<-x[2]; scale_val<-x[3]; betaval <- alphaval*(1-vacc_eff_mean)/vacc_eff_mean # x[4]
+  alphaval<-x[1]; shift_val<-x[2]; scale_val<-x[3]; betaval <- alphaval*(1-vacc_eff_mean)/vacc_eff_mean
   y_data <- c(vacc_eff_mean,CI95_down,CI95_up)
   beta_fit <- rbeta(n=1e4,shape1=alphaval,shape2=betaval)*scale_val + shift_val
   y_sol <- as.numeric(abs(c(mean(beta_fit)-vacc_eff_mean,
@@ -69,17 +69,25 @@ fcn_betafit_efficacy <- function(effic_figs,scan_range_resol_nsample,optim_range
       if (input_var["CI95_low"]<0) {
         param_estims <- lapply(10^seq(optim_range_res[1],optim_range_res[2],by=optim_range_res[3]), 
                                function(x) optim(par=c(x,optim_initguess[1],optim_initguess[2]),
-                                    fn=solve_beta_distrib_pars,p=c(effic_figs$mat_vacc$severe,err_type=1))$par)
+                                    fn=solve_beta_distrib_pars, p=c(input_var,err_type=1) )$par)
+        # means_fit <- lapply(param_estims, rbeta(n=1e4,shape1=x[[1]],shape2=))
+        # print(param_estims)
+        # vacc_eff_mean <- p["mean"]; CI95_down <- p["CI95_low"]; CI95_up <- p["CI95_high"]; p["err_type"]
+        # alphaval<-x[1]; shift_val<-x[2]; scale_val<-x[3]; betaval <- alphaval*(1-vacc_eff_mean)/vacc_eff_mean
   # compare to data
-    beta_scan_fits <- bind_rows(lapply(lapply(param_estims, 
-        function(x) rbeta(n=1e5,shape1=x[1],shape2=x[1]*(1-input_var["mean"])/input_var["mean"])*x[3]+x[2]), 
-        function(x) c(mean=mean(x), CI95_low=quantile(x,probs=2.5/100),CI95_high=quantile(x,probs=97.5/100)))) %>%
+    fitted_distribs <- lapply(param_estims, 
+          function(x) rbeta(n=1e5,shape1=x[1],shape2=x[1]*(1-input_var["mean"])/input_var["mean"] )*x[3]+x[2])
+        beta_scan_fits <- bind_rows(lapply(fitted_distribs,
+        function(x) c(mean=mean(x), CI95_low=quantile(x,probs=2.5/100), CI95_high=quantile(x,probs=97.5/100)))) %>%
           rename(CI95_low=`CI95_low.2.5%`,CI95_high=`CI95_high.97.5%`) %>%
-          mutate(alphaval=sapply(param_estims,`[[`,1),betaval=alphaval*(1-mean)/mean,
+          mutate(alphaval=sapply(param_estims,`[[`,1),betaval=alphaval*(1-input_var["mean"])/input_var["mean"],
              MSE=(mean-input_var["mean"])^2+(CI95_low-input_var["CI95_low"])^2+(CI95_high-input_var["CI95_high"])^2,
              MAE=(abs(mean-input_var["mean"])+abs(CI95_low-input_var["CI95_low"])+
                         abs(CI95_high-input_var["CI95_high"]))/3,interv=interv_type,disease=k_dis,
                  shift_fit=sapply(param_estims,`[[`,2),scale_fit=sapply(param_estims,`[[`,3),)
+    # message("alphaval"); print(beta_scan_fits$alphaval)
+    # message("betaval"); print(beta_scan_fits$betaval)
+    # message("mean"); print(beta_scan_fits$mean)
         # best fit
         best_fit_beta <- beta_scan_fits %>% filter(mean>0 & CI95_high<1) %>% filter(MAE==min(MAE)) %>%
           mutate(data_mean=input_var["mean"],data_CI95_low=input_var["CI95_low"],
