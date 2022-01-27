@@ -461,29 +461,51 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
    message("User supplied outpatient costing data.")
       # print(cost_data$outpatient)
       if (config$country_iso %in% "ZAF"){
-      print(paste0("South Africa outpatient cost: ",cost_data$outpatient$mean,"USD"))
-         config$outpatient_cost <- matrix(rep(rgamma(n=config$num_sim,shape=cost_data$outpatient$shape,
-                                          rate=cost_data$outpatient$rate),
-                                          each=config$nMonthsOfAges),ncol=config$num_sim) }  else {
+        mean_outp_cost <- round(as.numeric(cost_data$outpatient %>% group_by(age) %>% summarise(sum_mean=sum(mean)) %>% 
+          summarise(mean(sum_mean))),1)
+      print(paste0("South Africa outpatient cost: ",mean_outp_cost,"USD"))
+        # 3 types of inpatient cost: 
+        # 1) healthcare system 2) for caregivers: out-of-pocket 3) for caregivers: indirect
+        cost_data_outpatient_healthcare <- cost_data$outpatient %>% filter(cost_type %in% "healthcare")
+        cost_data_outpatient_outofpocket <- cost_data$outpatient %>% filter(name %in% "out-of-pocket")
+        cost_data_outpatient_indirect <- cost_data$outpatient %>% filter(name %in% "indirect cost")
+        config$outpatient_cost <- t(sapply(1:nrow(cost_data_outpatient_healthcare), 
+                  function(x) rgamma(config$num_sim,shape=cost_data_outpatient_healthcare$shape[x],
+                      rate=cost_data_outpatient_healthcare$rate[x])*cost_data_outpatient_healthcare$scaling[x])) + 
+          t(sapply(1:nrow(cost_data_outpatient_outofpocket), 
+                   function(x) rgamma(config$num_sim,shape=cost_data_outpatient_outofpocket$shape[x],
+                      rate=cost_data_outpatient_outofpocket$rate[x])*cost_data_outpatient_outofpocket$scaling[x])) +
+          t(sapply(1:nrow(cost_data_outpatient_outofpocket), 
+                   function(x) rgamma(config$num_sim,shape=cost_data_outpatient_indirect$shape[x],
+                          rate=cost_data_outpatient_indirect$rate[x])*cost_data_outpatient_indirect$scaling[x]))
+         }  else {
     print(paste0("Kenya outpatient cost: ",round(cost_data$outpatient_cost["mean"],2),
                  " USD (only mean value provided)"))
             config$outpatient_cost <- matrix(cost_data$outpatient_cost,
                                              nrow=config$nMonthsOfAges,ncol=config$num_sim)
     }
   }
-  # ggplot(data.frame(value=config$sample_outpatient_cost)) + geom_density(aes(x=value)) + theme_bw() + 
-  # xlab("outpatient cost")
-  # ggplot(data.frame(value=config$hosp_cost[1,])) + geom_density(aes(x=value)) + theme_bw()+xlab("inpatient cost")
-  if (all(is.na(cost_data))){
+
+    if (all(is.na(cost_data))){
       config$hosp_cost <- matrix(rep(config$sample_inpatient_cost,each=config$nMonthsOfAges),ncol=config$num_sim) 
       # message("default cost"); print(mean(config$hosp_cost))
       } else { 
         message("User supplied inpatient costing data.")
         if (config$country_iso %in% "ZAF"){
         print("South Africa inpatient cost (specific to age bands)")
-          config$hosp_cost <- t(sapply(1:nrow(cost_data$inpatient), 
-                    function(x) rgamma(config$num_sim,shape=cost_data$inpatient$shape[x],
-                                       rate=cost_data$inpatient$rate[x]))) } else {
+          cost_data_inpatient_healthcare <- cost_data$inpatient %>% filter(cost_type %in% "healthcare")
+          cost_data_inpatient_outofpocket <- cost_data$inpatient %>% filter(name %in% "out-of-pocket")
+          cost_data_inpatient_indirect <- cost_data$inpatient %>% filter(name %in% "indirect cost")
+          config$hosp_cost <- t(sapply(1:nrow(cost_data_inpatient_healthcare), 
+                    function(x) rgamma(config$num_sim,shape=cost_data_inpatient_healthcare$shape[x],
+                            rate=cost_data_inpatient_healthcare$rate[x])*cost_data_inpatient_healthcare$scaling[x])) + 
+            t(sapply(1:nrow(cost_data_inpatient_outofpocket), 
+                     function(x) rgamma(config$num_sim,shape=cost_data_inpatient_outofpocket$shape[x],
+                        rate=cost_data_inpatient_outofpocket$rate[x])*cost_data_inpatient_outofpocket$scaling[x])) +
+            t(sapply(1:nrow(cost_data_inpatient_outofpocket), 
+                     function(x) rgamma(config$num_sim,shape=cost_data_inpatient_indirect$shape[x],
+                            rate=cost_data_inpatient_indirect$rate[x])*cost_data_inpatient_indirect$scaling[x]))
+          } else {
           print("Kenya inpatient cost (households + healthcare system)")
           config$hosp_cost <- matrix(rep(rgamma(n=config$num_sim,shape=cost_data$inpatient_household$shape,
                                   rate=cost_data$inpatient_household$rate)*cost_data$inpatient_household$scaling,

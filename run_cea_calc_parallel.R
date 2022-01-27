@@ -195,27 +195,104 @@ sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"),
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # South Africa cost estimates
-# inpatient
-s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>% mutate(freq=ifelse(grepl('-',age),
-  as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>% 
-  mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% 
-  uncount(weights=freq, .id="n",.remove=F) %>%
-  mutate(age=as.numeric(age)+(n-1)) %>% dplyr::select(!c(n,freq)) %>% rename(mean=`Mean cost per illness episode (USD)`)
-  
+
+# inflation
+inflation_data <- (read_csv("custom_input/inflation_data.csv") %>% filter(grepl("South Africa",`Country Name`)))
+inflation_rate <- 1+as.numeric(inflation_data[,(ncol(inflation_data)-5):ncol(inflation_data)])/100
+# ratio of exchange rates 2014 vs 2021
+exch_rate_adj <- 11.2/14.77
+# adjustment of 2014 prices
+hist_adj <- prod(inflation_rate)*exch_rate_adj
 # outpatient
-s_afr_outpatient_cost <- cbind(data.frame(age="all",mean=25,LCI=18.3,UCI=31.8),
-        data.frame(t(unlist(gamma.parms.from.quantiles(q=c(18.3,31.8),p=c(2.5,97.5)/100)[c("shape","rate")]))) )
+s_afr_outpatient_cost <- bind_rows(data.frame(age="0-59",mean=25,LCI=18.3,UCI=31.8,
+                                          cost_type="healthcare",disease="outpatient",name="total"),
+      read_csv("custom_input/s_afr_PDE_calcs.csv") %>% filter(grepl("outpatient",disease)) %>%  
+  rename(mean=`Mean cost per illness episode (USD)`)) %>% 
+  # adjustment for inflation and exch rate change
+  mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj)
+# fitting with gamma distribution
+if (!any(grepl("shape",colnames(s_afr_outpatient_cost)))) {
+  # colbind to original dataframe
+for (k_row in 1:nrow(s_afr_outpatient_cost)) {
+  gamma_fit <- c(get.gamma.par(p=ci95_range,q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row]),
+                             show.output=F,plot=F),scaling=1)
+  if (any(is.na(gamma_fit))) { gamma_fit <- c(get.gamma.par(p=ci95_range,
+                      q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row])/100,
+                                                show.output=F,plot=F),scaling=100) }
+  sim_gamma <- rgamma(n=1e4,shape=gamma_fit["shape"],rate=gamma_fit["rate"])*gamma_fit["scaling"]
+  gamma_fit <- c(gamma_fit,sim_mean=mean(sim_gamma),
+                     sim_ci95_low=as.numeric(quantile(sim_gamma,probs=ci95_range[1])),
+                     sim_ci95_up=as.numeric(quantile(sim_gamma,probs=ci95_range[2])))
+  if (k_row==1) { SA_outpatient_fit_pars <- gamma_fit } else {
+    SA_outpatient_fit_pars <- bind_rows(SA_outpatient_fit_pars,gamma_fit)} 
+}
+# bind together
+  s_afr_outpatient_cost <- bind_cols(s_afr_outpatient_cost,SA_outpatient_fit_pars) %>% 
+  mutate(freq=ifelse(grepl('-',age),
+                     as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>%
+  mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>%
+  uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
+  mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) 
+}
+# types: s_afr_outpatient_cost %>% select(c(name,cost_type,disease)) %>% distinct()
+# ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) + 
+#   theme_bw()+ scale_x_log10() + scale_y_log10()
+
+# fit inpatient costs by gamma distributions
+# inpatient
+s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>% 
+  filter(!name %in% "PDE" & grepl("inpatient",disease)) %>% rename(mean=`Mean cost per illness episode (USD)`) %>%
+  mutate(freq=ifelse(grepl('-',age),
+                     as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>% 
+  mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% 
+  uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
+  mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) %>%
+# adjustment for inflation and exch rate change
+ mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj)
+###
 if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
- s_afr_inpatient_cost=cbind(s_afr_inpatient_cost, t(sapply(1:nrow(s_afr_inpatient_cost), function(x) 
-  unlist(gamma.parms.from.quantiles(q=c(s_afr_inpatient_cost$LCI[x],s_afr_inpatient_cost$UCI[x]),
-                                    p=ci95_range)[c("shape","rate")]))) ) }
+  sa_costs_unique <- s_afr_inpatient_cost %>% select(c(name,mean,LCI,UCI,cost_type,disease)) %>% distinct()
+  for (k_row in 1:nrow(sa_costs_unique)) {
+    g_fit_data <- c(ifelse(sa_costs_unique$LCI[k_row]==0,0.01,sa_costs_unique$LCI[k_row]),
+                    sa_costs_unique$UCI[k_row])
+    fit_gamma <- c(get.gamma.par(q=g_fit_data,p=ci95_range,show.output=F,plot=F)[c("shape","rate")],scaling=1)
+    if (any(is.na(fit_gamma))) {
+      fit_gamma <- c(get.gamma.par(q=g_fit_data/100,p=ci95_range,show.output=F,plot=F)[c("shape","rate")],scaling=100)
+      }
+    sim_gam<-rgamma(n=1e4,rate=fit_gamma["rate"],shape=fit_gamma["shape"])*fit_gamma["scaling"]
+    gamma_out<-c(n=k_row,fit_gamma,sim_mean=mean(sim_gam),
+                 sim_ci95_low=as.numeric(quantile(sim_gam,probs=ci95_range[1])),
+                 sim_ci95_up=as.numeric(quantile(sim_gam,probs=ci95_range[2])))
+    if (k_row==1) { gamma_fits <- gamma_out  } else { gamma_fits <- bind_rows(gamma_fits,gamma_out)}
+  }
+  s_afr_inpatient_cost <- left_join(s_afr_inpatient_cost,
+            left_join(sa_costs_unique %>% mutate(n=row_number()),gamma_fits,by="n") %>% select(!n),
+            by=c("name","mean","LCI","UCI","cost_type","disease"))
+}
+
 list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpatient_cost)
+# cost data types:
+# list_SA_costs$inpatient %>% select(c(name,disease,cost_type)) %>% distinct()
+# list_SA_costs$outpatient %>% select(c(name,disease,cost_type)) %>% distinct()
+
+# check fit
+# ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_line(aes(y=sim_mean),color="red") + 
+#   geom_point(aes(y=mean),shape=21) + geom_point(aes(y=sim_mean),shape=21,color="red") + 
+#   geom_ribbon(aes(ymin=LCI,ymax=UCI),alpha=0.2) + 
+#   geom_ribbon(aes(ymin=sim_ci95_low,ymax=sim_ci95_up),fill="red",alpha=0.2) + 
+#   facet_grid(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme
 ### ### ### ### ### ### ### ### ### ### ### ### ###
 # KENYA costs
 kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
 # using inpatient/outpatient ratio in South Africa
-SA_total_av_cost<-median(s_afr_inpatient_cost$mean[s_afr_inpatient_cost$name %in% "total"])+s_afr_outpatient_cost$mean
-SA_inpatient_cost_share <- (SA_total_av_cost-s_afr_outpatient_cost$mean)/SA_total_av_cost; rm(SA_total_av_cost)
+SA_in_outpatient_cost_ratio <- median(s_afr_inpatient_cost$mean[s_afr_inpatient_cost$name %in% "total"])/
+  s_afr_outpatient_cost$mean
+# we assume that inpatient/outpatient cost ratio is the same as in SA, and total cost
+# (# inpatients)*outpatient_cost*SA_in_outpatient_ratio + (# outpatients)*outpatient_cost = total cost
+# outpatient_cost = (total cost)/[(# inpatients)*SA_in_outpatient_ratio + (# outpatients)]
+KEN_outpatient_cost <- kenya_costs$mean[kenya_costs$variable %in% "Total healthcare cost"]/
+  (kenya_costs$mean[grepl("Total number of inpatients",kenya_costs$variable)]*SA_in_outpatient_cost_ratio + 
+     kenya_costs$mean[grepl("Total number of outpatients",kenya_costs$variable)])
 # assemble list
 inpat_rows <- kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable))
 list_KEN_costs <- list(inpatient_household=bind_cols(
@@ -223,13 +300,14 @@ list_KEN_costs <- list(inpatient_household=bind_cols(
   t(sapply(1:nrow(inpat_rows), function(x)
   unlist(get.gamma.par(q=c(inpat_rows$ci95_low[x],inpat_rows$median[x],inpat_rows$ci95_up[x])/100,
                                     p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
-  inpatient_healthcare_system=c(mean=SA_inpatient_cost_share*(kenya_costs %>% 
-          filter(grepl("Siaya",site) & grepl("LRTI",variable)))$mean),
-  outpatient_cost=c(mean=(1-SA_inpatient_cost_share)*(kenya_costs %>% 
-          filter(grepl("Siaya",site) & grepl("LRTI",variable)))$mean))
+  inpatient_healthcare_system=KEN_outpatient_cost*SA_in_outpatient_cost_ratio,outpatient_cost=KEN_outpatient_cost)
 # gamma can fit median and CIs well, but not so much the mean
-# get.gamma.par(q=c(inpat_rows$ci95_low[1],inpat_rows$median[1],inpat_rows$ci95_up[1])/100,
-#              p=c(2.5,50,97.5)/100,plot=F)
+# gamma_pars_cost <- get.gamma.par(q=c(inpat_rows$ci95_low,inpat_rows$median,inpat_rows$ci95_up)/100,
+#                                p=c(2.5,50,97.5)/100,plot=F)
+# gamma_costs_sim <- rgamma(n=1e4,shape=gamma_pars_cost["shape"],rate=gamma_pars_cost["rate"])*100
+# cbind(source=c("fit","data"),
+#   bind_rows(c(mean=mean(gamma_costs_sim),ci95_low=as.numeric(quantile(gamma_costs_sim,probs=c(2.5)/100)),
+#     ci95_up=as.numeric(quantile(gamma_costs_sim,probs=c(97.5)/100))),inpat_rows[,c("mean","ci95_low","ci95_up")]))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
@@ -237,7 +315,7 @@ cntrs_cea=c("KEN","ZAF")
 # efficacy figures for vaccine for RESVAX (Novavax trial)
 # for mAb from NIRSEVIMAB (from https://www.nejm.org/doi/full/10.1056/nejmoa1913556)
 # if this flag is set to TRUE, then using published efficacy data. if FALSE --> interim results
-flag_publ_effic <- T
+flag_publ_effic <- TRUE
 if (flag_publ_effic){
 efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053,CI95_high=0.612),
                             hospit=c(mean=0.444,CI95_low=0.196,CI95_high=0.615),
@@ -274,7 +352,7 @@ pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
 kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 # exponential waning model used for efficacy
-exp_wane_val=TRUE
+exp_wane_val=FALSE
 # distribution used to fit efficacy figures
 effic_dist_fit <- "beta"
 # lower_cov=FALSE; lower_cov_val=0.7; 
@@ -286,7 +364,7 @@ subfolder_name <- paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdea
         ifelse(flag_publ_effic,"","_interim"),"/") 
 # ifelse(min(unlist(efficacy_figures))<=0,"_nonposit_effic","")
 ### before starting loop need to create temp folder
-source("init_cea_calc_parallel.R")
+# source("init_cea_calc_parallel.R")
 ###
 # outputs to display
 all_cols=c("non_hosp_cases","hosp_cases",
@@ -338,10 +416,7 @@ for (k_par in 1:nrow(par_table)) {
         # calculation with data from mcmarcel (community-based)
         sim_output=get_burden_flexible(sel_interv,NA,NA,exp_wane=exp_wane_val,doseprice)
         # SARI, ARI distinguished, hosp/nonhosp distinguished
-        if (cntrs_cea[n_cntr_output]=="ZAF") {
-          cost_input <- list("inpatient"=list_SA_costs$inpatient %>% filter(name %in% "total"),
-                             "outpatient"=list_SA_costs$outpatient) } else {
-            cost_input<-list_KEN_costs }
+        if (cntrs_cea[n_cntr_output]=="ZAF") { cost_input <- list_SA_costs } else { cost_input<-list_KEN_costs }
         # input death data if available
       if (kenya_deaths_input) { print("using propr death data for Kenya")
         kenya_nonhosp_hosp_incid_ari_sari$deaths$hosp=kenya_deaths_incid$hosp
@@ -532,11 +607,10 @@ for (k_plot in 1:3) {
     plot_list[[k_plot]]
   ggsave(paste0("output/cea_plots/",subfolder_name,ifelse(any(grepl("YLL",sel_vars)),"DALY",
        ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),
-       width=36,height=18,units="cm")} 
+       width=36,height=18,units="cm") } 
 } ##### end of loop
 # combine figures
-plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],nrow=3,rel_heights=c(1.5,1,1.1),
-          labels="auto",label_size=19)
+plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],nrow=3,rel_heights=c(1.5,1,1.1),labels="auto",label_size=19)
 ggsave(paste0("output/cea_plots/",subfolder_name,"combined_fig3_4_5.png"),width=35,height=40,units="cm")
 # save table
 write_csv(df_combined_fig3_4_5,paste0("output/cea_plots/",subfolder_name,"combined_fig3_4_5.csv"))
