@@ -1,0 +1,97 @@
+source,variable,price,source_num,country_iso,intervention,country_plot,vec,price_interv,orig_burden_round,money_unit,mean,median,CI50_low,CI50_high,CI95_low,CI95_high
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),6,0.2,KEN,mAb,Kenya,7227000,6$ (mAb),7.2m,million USD,7.096,7.227,6.891,7.456,5.722,7.695
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),6,0.2,KEN,mAb,Kenya,3069,6$ (mAb),3.1k,USD,4.01,3.069,1.851,5.078,0.688,13.015
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),6,0.2,KEN,mAb,Kenya,1342,6$ (mAb),1.3k,USD,1.748,1.342,0.817,2.214,0.314,5.632
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),6,0.2,KEN,mAb,Kenya,638100,6$ (mAb),0.6m,million USD,0.769,0.638,0.409,0.974,0.171,2.144
+new data (hospital-based + HUS),incremental cost (million US$),6,2,KEN,mAb,Kenya,5000000,6$ (mAb),5m,million USD,5.019,5,4.393,5.588,3.459,6.747
+new data (hospital-based + HUS),total DALY averted (thousand US$),6,2,KEN,mAb,Kenya,23760,6$ (mAb),23.8k,USD,23.714,23.76,17.303,30.394,4.813,41.544
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),6,2,KEN,mAb,Kenya,10390,6$ (mAb),10.4k,USD,10.371,10.394,7.593,13.28,2.176,18.092
+new data (hospital-based + HUS),total medical cost averted (million US$),6,2,KEN,mAb,Kenya,2865000,6$ (mAb),2.9m,million USD,2.846,2.865,2.277,3.472,1.119,4.406
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),20,0.2,KEN,mAb,Kenya,25580000,20$ (mAb),25.6m,million USD,25.448,25.579,25.243,25.809,24.074,26.047
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),20,0.2,KEN,mAb,Kenya,3069,20$ (mAb),3.1k,USD,4.01,3.069,1.851,5.078,0.688,13.015
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),20,0.2,KEN,mAb,Kenya,1342,20$ (mAb),1.3k,USD,1.748,1.342,0.817,2.214,0.314,5.632
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),20,0.2,KEN,mAb,Kenya,638100,20$ (mAb),0.6m,million USD,0.769,0.638,0.409,0.974,0.171,2.144
+new data (hospital-based + HUS),incremental cost (million US$),20,2,KEN,mAb,Kenya,23350000,20$ (mAb),23.4m,million USD,23.372,23.352,22.745,23.94,21.811,25.099
+new data (hospital-based + HUS),total DALY averted (thousand US$),20,2,KEN,mAb,Kenya,23760,20$ (mAb),23.8k,USD,23.714,23.76,17.303,30.394,4.813,41.544
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),20,2,KEN,mAb,Kenya,10390,20$ (mAb),10.4k,USD,10.371,10.394,7.593,13.28,2.176,18.092
+new data (hospital-based + HUS),total medical cost averted (million US$),20,2,KEN,mAb,Kenya,2865000,20$ (mAb),2.9m,million USD,2.846,2.865,2.277,3.472,1.119,4.406
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),60,0.2,KEN,mAb,Kenya,78010000,60$ (mAb),78m,million USD,77.883,78.014,77.678,78.243,76.509,78.482
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),60,0.2,KEN,mAb,Kenya,3069,60$ (mAb),3.1k,USD,4.01,3.069,1.851,5.078,0.688,13.015
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),60,0.2,KEN,mAb,Kenya,1342,60$ (mAb),1.3k,USD,1.748,1.342,0.817,2.214,0.314,5.632
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),60,0.2,KEN,mAb,Kenya,638100,60$ (mAb),0.6m,million USD,0.769,0.638,0.409,0.974,0.171,2.144
+new data (hospital-based + HUS),incremental cost (million US$),60,2,KEN,mAb,Kenya,75790000,60$ (mAb),75.8m,million USD,75.806,75.787,75.18,76.375,74.246,77.534
+new data (hospital-based + HUS),total DALY averted (thousand US$),60,2,KEN,mAb,Kenya,23760,60$ (mAb),23.8k,USD,23.714,23.76,17.303,30.394,4.813,41.544
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),60,2,KEN,mAb,Kenya,10390,60$ (mAb),10.4k,USD,10.371,10.394,7.593,13.28,2.176,18.092
+new data (hospital-based + HUS),total medical cost averted (million US$),60,2,KEN,mAb,Kenya,2865000,60$ (mAb),2.9m,million USD,2.846,2.865,2.277,3.472,1.119,4.406
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),3,0.2,KEN,MV,Kenya,3858000,3$ (MV),3.9m,million USD,3.815,3.858,3.761,3.921,3.384,3.982
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),3,0.2,KEN,MV,Kenya,920,3$ (MV),0.9k,USD,1.259,0.92,0.519,1.574,0.186,4.538
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),3,0.2,KEN,MV,Kenya,402,3$ (MV),0.4k,USD,0.548,0.402,0.228,0.684,0.084,1.964
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),3,0.2,KEN,MV,Kenya,165400,3$ (MV),0.2m,million USD,0.208,0.165,0.102,0.262,0.041,0.639
+new data (hospital-based + HUS),incremental cost (million US$),3,2,KEN,MV,Kenya,1036000,3$ (MV),1m,million USD,1.108,1.036,0.78,1.374,0.399,2.166
+new data (hospital-based + HUS),total DALY averted (thousand US$),3,2,KEN,MV,Kenya,31290,3$ (MV),31.3k,USD,30.348,31.291,27.256,34.483,15.812,40.449
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),3,2,KEN,MV,Kenya,13600,3$ (MV),13.6k,USD,13.197,13.604,11.868,14.975,6.941,17.544
+new data (hospital-based + HUS),total medical cost averted (million US$),3,2,KEN,MV,Kenya,2987000,3$ (MV),3m,million USD,2.915,2.987,2.649,3.243,1.857,3.624
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),10,0.2,KEN,MV,Kenya,13250000,10$ (MV),13.2m,million USD,13.202,13.245,13.148,13.309,12.771,13.369
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),10,0.2,KEN,MV,Kenya,920,10$ (MV),0.9k,USD,1.259,0.92,0.519,1.574,0.186,4.538
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),10,0.2,KEN,MV,Kenya,402,10$ (MV),0.4k,USD,0.548,0.402,0.228,0.684,0.084,1.964
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),10,0.2,KEN,MV,Kenya,165400,10$ (MV),0.2m,million USD,0.208,0.165,0.102,0.262,0.041,0.639
+new data (hospital-based + HUS),incremental cost (million US$),10,2,KEN,MV,Kenya,10420000,10$ (MV),10.4m,million USD,10.496,10.423,10.167,10.762,9.786,11.553
+new data (hospital-based + HUS),total DALY averted (thousand US$),10,2,KEN,MV,Kenya,31290,10$ (MV),31.3k,USD,30.348,31.291,27.256,34.483,15.812,40.449
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),10,2,KEN,MV,Kenya,13600,10$ (MV),13.6k,USD,13.197,13.604,11.868,14.975,6.941,17.544
+new data (hospital-based + HUS),total medical cost averted (million US$),10,2,KEN,MV,Kenya,2987000,10$ (MV),3m,million USD,2.915,2.987,2.649,3.243,1.857,3.624
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),30,0.2,KEN,MV,Kenya,40070000,30$ (MV),40.1m,million USD,40.023,40.066,39.969,40.129,39.592,40.19
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),30,0.2,KEN,MV,Kenya,920,30$ (MV),0.9k,USD,1.259,0.92,0.519,1.574,0.186,4.538
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),30,0.2,KEN,MV,Kenya,402,30$ (MV),0.4k,USD,0.548,0.402,0.228,0.684,0.084,1.964
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),30,0.2,KEN,MV,Kenya,165400,30$ (MV),0.2m,million USD,0.208,0.165,0.102,0.262,0.041,0.639
+new data (hospital-based + HUS),incremental cost (million US$),30,2,KEN,MV,Kenya,37240000,30$ (MV),37.2m,million USD,37.317,37.244,36.988,37.583,36.607,38.374
+new data (hospital-based + HUS),total DALY averted (thousand US$),30,2,KEN,MV,Kenya,31290,30$ (MV),31.3k,USD,30.348,31.291,27.256,34.483,15.812,40.449
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),30,2,KEN,MV,Kenya,13600,30$ (MV),13.6k,USD,13.197,13.604,11.868,14.975,6.941,17.544
+new data (hospital-based + HUS),total medical cost averted (million US$),30,2,KEN,MV,Kenya,2987000,30$ (MV),3m,million USD,2.915,2.987,2.649,3.243,1.857,3.624
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),6,0.2,ZAF,mAb,South Africa,4096000,6$ (mAb),4.1m,million USD,3.813,4.096,3.189,4.791,0.371,5.657
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),6,0.2,ZAF,mAb,South Africa,2320,6$ (mAb),2.3k,USD,3.03,2.32,1.399,3.837,0.521,9.835
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),6,0.2,ZAF,mAb,South Africa,1059,6$ (mAb),1.1k,USD,1.378,1.059,0.644,1.746,0.248,4.441
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),6,0.2,ZAF,mAb,South Africa,2352000,6$ (mAb),2.4m,million USD,2.634,2.352,1.656,3.258,0.79,6.076
+new data (hospital-based + HUS),incremental cost (million US$),6,2,ZAF,mAb,South Africa,-4929000,6$ (mAb),-4.9m,million USD,-4.886,-4.929,-7.866,-1.966,-12.691,3.609
+new data (hospital-based + HUS),total DALY averted (thousand US$),6,2,ZAF,mAb,South Africa,12060,6$ (mAb),12.1k,USD,11.947,12.056,9,15.119,2.926,20.206
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),6,2,ZAF,mAb,South Africa,5581,6$ (mAb),5.6k,USD,5.537,5.581,4.192,6.981,1.405,9.302
+new data (hospital-based + HUS),total medical cost averted (million US$),6,2,ZAF,mAb,South Africa,11380000,6$ (mAb),11.4m,million USD,11.333,11.376,8.413,14.313,2.839,19.138
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),20,0.2,ZAF,mAb,South Africa,19140000,20$ (mAb),19.1m,million USD,18.857,19.139,18.233,19.834,15.414,20.701
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),20,0.2,ZAF,mAb,South Africa,2320,20$ (mAb),2.3k,USD,3.03,2.32,1.399,3.837,0.521,9.835
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),20,0.2,ZAF,mAb,South Africa,1059,20$ (mAb),1.1k,USD,1.378,1.059,0.644,1.746,0.248,4.441
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),20,0.2,ZAF,mAb,South Africa,2352000,20$ (mAb),2.4m,million USD,2.634,2.352,1.656,3.258,0.79,6.076
+new data (hospital-based + HUS),incremental cost (million US$),20,2,ZAF,mAb,South Africa,10110000,20$ (mAb),10.1m,million USD,10.157,10.114,7.178,13.078,2.352,18.652
+new data (hospital-based + HUS),total DALY averted (thousand US$),20,2,ZAF,mAb,South Africa,12060,20$ (mAb),12.1k,USD,11.947,12.056,9,15.119,2.926,20.206
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),20,2,ZAF,mAb,South Africa,5581,20$ (mAb),5.6k,USD,5.537,5.581,4.192,6.981,1.405,9.302
+new data (hospital-based + HUS),total medical cost averted (million US$),20,2,ZAF,mAb,South Africa,11380000,20$ (mAb),11.4m,million USD,11.333,11.376,8.413,14.313,2.839,19.138
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),60,0.2,ZAF,mAb,South Africa,62120000,60$ (mAb),62.1m,million USD,61.838,62.12,61.214,62.815,58.395,63.682
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),60,0.2,ZAF,mAb,South Africa,2320,60$ (mAb),2.3k,USD,3.03,2.32,1.399,3.837,0.521,9.835
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),60,0.2,ZAF,mAb,South Africa,1059,60$ (mAb),1.1k,USD,1.378,1.059,0.644,1.746,0.248,4.441
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),60,0.2,ZAF,mAb,South Africa,2352000,60$ (mAb),2.4m,million USD,2.634,2.352,1.656,3.258,0.79,6.076
+new data (hospital-based + HUS),incremental cost (million US$),60,2,ZAF,mAb,South Africa,53090000,60$ (mAb),53.1m,million USD,53.138,53.095,50.159,56.059,45.333,61.633
+new data (hospital-based + HUS),total DALY averted (thousand US$),60,2,ZAF,mAb,South Africa,12060,60$ (mAb),12.1k,USD,11.947,12.056,9,15.119,2.926,20.206
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),60,2,ZAF,mAb,South Africa,5581,60$ (mAb),5.6k,USD,5.537,5.581,4.192,6.981,1.405,9.302
+new data (hospital-based + HUS),total medical cost averted (million US$),60,2,ZAF,mAb,South Africa,11380000,60$ (mAb),11.4m,million USD,11.333,11.376,8.413,14.313,2.839,19.138
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),3,0.2,ZAF,MV,South Africa,2677000,3$ (MV),2.7m,million USD,2.569,2.677,2.386,2.876,1.448,3.098
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),3,0.2,ZAF,MV,South Africa,696,3$ (MV),0.7k,USD,0.951,0.696,0.392,1.189,0.14,3.43
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),3,0.2,ZAF,MV,South Africa,317,3$ (MV),0.3k,USD,0.432,0.317,0.18,0.539,0.066,1.548
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),3,0.2,ZAF,MV,South Africa,603900,3$ (MV),0.6m,million USD,0.712,0.604,0.405,0.895,0.183,1.833
+new data (hospital-based + HUS),incremental cost (million US$),3,2,ZAF,MV,South Africa,-10650000,3$ (MV),-10.7m,million USD,-10.46,-10.651,-12.15,-8.957,-14.78,-5.222
+new data (hospital-based + HUS),total DALY averted (thousand US$),3,2,ZAF,MV,South Africa,15370,3$ (MV),15.4k,USD,14.593,15.373,13.905,16.287,8.476,17.815
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),3,2,ZAF,MV,South Africa,7062,3$ (MV),7.1k,USD,6.713,7.062,6.379,7.468,3.97,8.167
+new data (hospital-based + HUS),total medical cost averted (million US$),3,2,ZAF,MV,South Africa,13930000,3$ (MV),13.9m,million USD,13.741,13.931,12.238,15.431,8.503,18.061
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),10,0.2,ZAF,MV,South Africa,10330000,10$ (MV),10.3m,million USD,10.224,10.332,10.041,10.53,9.102,10.752
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),10,0.2,ZAF,MV,South Africa,696,10$ (MV),0.7k,USD,0.951,0.696,0.392,1.189,0.14,3.43
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),10,0.2,ZAF,MV,South Africa,317,10$ (MV),0.3k,USD,0.432,0.317,0.18,0.539,0.066,1.548
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),10,0.2,ZAF,MV,South Africa,603900,10$ (MV),0.6m,million USD,0.712,0.604,0.405,0.895,0.183,1.833
+new data (hospital-based + HUS),incremental cost (million US$),10,2,ZAF,MV,South Africa,-2996000,10$ (MV),-3m,million USD,-2.805,-2.996,-4.495,-1.302,-7.125,2.432
+new data (hospital-based + HUS),total DALY averted (thousand US$),10,2,ZAF,MV,South Africa,15370,10$ (MV),15.4k,USD,14.593,15.373,13.905,16.287,8.476,17.815
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),10,2,ZAF,MV,South Africa,7062,10$ (MV),7.1k,USD,6.713,7.062,6.379,7.468,3.97,8.167
+new data (hospital-based + HUS),total medical cost averted (million US$),10,2,ZAF,MV,South Africa,13930000,10$ (MV),13.9m,million USD,13.741,13.931,12.238,15.431,8.503,18.061
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost (million US$),30,0.2,ZAF,MV,South Africa,32200000,30$ (MV),32.2m,million USD,32.095,32.203,31.912,32.401,30.973,32.623
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY averted (thousand US$),30,0.2,ZAF,MV,South Africa,696,30$ (MV),0.7k,USD,0.951,0.696,0.392,1.189,0.14,3.43
+projection ([Li 2020] from [Shi 2017] meta-analysis),total DALY disc averted (thousand US$),30,0.2,ZAF,MV,South Africa,317,30$ (MV),0.3k,USD,0.432,0.317,0.18,0.539,0.066,1.548
+projection ([Li 2020] from [Shi 2017] meta-analysis),total medical cost averted (million US$),30,0.2,ZAF,MV,South Africa,603900,30$ (MV),0.6m,million USD,0.712,0.604,0.405,0.895,0.183,1.833
+new data (hospital-based + HUS),incremental cost (million US$),30,2,ZAF,MV,South Africa,18880000,30$ (MV),18.9m,million USD,19.066,18.875,17.376,20.569,14.746,24.303
+new data (hospital-based + HUS),total DALY averted (thousand US$),30,2,ZAF,MV,South Africa,15370,30$ (MV),15.4k,USD,14.593,15.373,13.905,16.287,8.476,17.815
+new data (hospital-based + HUS),total DALY disc averted (thousand US$),30,2,ZAF,MV,South Africa,7062,30$ (MV),7.1k,USD,6.713,7.062,6.379,7.468,3.97,8.167
+new data (hospital-based + HUS),total medical cost averted (million US$),30,2,ZAF,MV,South Africa,13930000,30$ (MV),13.9m,million USD,13.741,13.931,12.238,15.431,8.503,18.061

@@ -12,10 +12,11 @@ get_cost_data <- function(f_country_iso,f_num_sim,filename_costs) { # load
   if (sum(rownames(read.table(filename_costs,sep=','))==f_country_iso)>0){
     df_cost <- read.table(filename_costs,sep=',')} else {
       cost_data_name=gsub('.csv','',gsub('./input/','',filename_costs))
-      print(paste0(cost_data_name,' for ',f_country_iso,' not in Li2020, predicted value ~ gdp/capit'))
+      # print(paste0(cost_data_name,' for ',f_country_iso,' not in Li2020, predicted value ~ gdp/capit'))
       df_cost <- read.table(gsub('.csv','_expanded.csv',filename_costs),sep=',')
       meanval=round(mean(as.numeric(df_cost[rownames(df_cost)==f_country_iso,])))
-      print(paste0('predicted ',cost_data_name,' is ',meanval,'USD for ',f_country_iso))   }
+      # print(paste0('predicted ',cost_data_name,' is ',meanval,'USD for ',f_country_iso))   
+      }
   # select country
   df_cost <- df_cost[rownames(df_cost)==f_country_iso,]
   # select random samples

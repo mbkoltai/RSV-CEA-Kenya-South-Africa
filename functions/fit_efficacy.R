@@ -163,8 +163,8 @@ fcn_exp_waning_rate <- function(effic_list,n_row){
         hospit=exp_waning_param %>% filter(interv=="monocl_ab" & dis_type=="hospit") %>% 
                                           dplyr::select(c_const,exp_decay_rate)))
   
-  df_exp_waning_param <- data.frame(t(data.frame(list_exp_waning_param))) %>% rownames_to_column %>% 
-    separate(rowname,c("interv","dis_type","param"),"\\.")
+  df_exp_waning_param <- data.frame(t(data.frame(list_exp_decay))) %>% rownames_to_column %>% 
+    separate(rowname,c("interv","dis_type","param"),"\\.") %>% mutate(across(where(is.numeric),round,4))
   colnames(df_exp_waning_param)[ncol(df_exp_waning_param)]="value"
   df_exp_waning_param <- df_exp_waning_param %>% pivot_wider(names_from=param)
   list(list_exp_decay,df_exp_waning_param)

@@ -510,7 +510,7 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
           config$hosp_cost <- matrix(rep(rgamma(n=config$num_sim,shape=cost_data$inpatient_household$shape,
                                   rate=cost_data$inpatient_household$rate)*cost_data$inpatient_household$scaling,
                                          each=config$nMonthsOfAges),ncol=config$num_sim) + 
-            matrix(cost_data$inpatient_healthcare_system["mean"],nrow=config$nMonthsOfAges,ncol=config$num_sim)
+            matrix(cost_data$inpatient_healthcare_system,nrow=config$nMonthsOfAges,ncol=config$num_sim)
           # t(sapply(1:nrow(cost_data$inpatient),
           #           function(x) rgamma(config$num_sim,shape=cost_data$inpatient$shape[x],
           #           rate=cost_data$inpatient$rate[x])))

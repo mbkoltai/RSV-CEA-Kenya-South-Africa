@@ -51,8 +51,8 @@ ggplot(aes(x=age_in_months)) +
 # SAVE
 # ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_jul2021.png",
 #   width=35,height=22,units="cm")
-ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_2021_08.png",
-       width=42,height=22,units="cm")
+# ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_2021_08.png",
+#        width=42,height=22,units="cm")
 
 # LOAD data, fit (gamma) distrib to CI95 values, generate matrix with 5e3 columns, age groups from 0 to 59mts
 # Kenya
@@ -126,7 +126,7 @@ p <- ggplot(deaths_data,aes(x=age_in_months_orig)) +
     legend.text=element_text(size=13),legend.background=element_rect(fill=NA),strip.text=element_text(size=14),
     legend.position=c(0.88,0.925),axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)); p
 # save
-ggsave("output/cea_plots/ALL_deaths_data_dodged_2rows.png",width=32,height=18,units="cm") #  # _yfixed
+# ggsave("output/cea_plots/ALL_deaths_data_dodged_2rows.png",width=32,height=18,units="cm") #  # _yfixed
 # fit distributions to CI95
 SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), 
         function(y_no) data.frame(age_inf=0:(nrow(deaths_SA)/2-1), 
@@ -284,38 +284,41 @@ list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpat
 ### ### ### ### ### ### ### ### ### ### ### ### ###
 # KENYA costs
 kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
-# using inpatient/outpatient ratio in South Africa
-SA_in_outpatient_cost_ratio <- median(s_afr_inpatient_cost$mean[s_afr_inpatient_cost$name %in% "total"])/
-  s_afr_outpatient_cost$mean
+# using inpatient/outpatient ratio in South Africa OR study from Malawi
+in_outpatient_cost_ratio <- 45.37/9.26
+  # median(s_afr_inpatient_cost$mean[s_afr_inpatient_cost$name %in% "total"])/
+  #   median(s_afr_outpatient_cost$mean[s_afr_outpatient_cost$cost_type %in% "healthcare"])
 # we assume that inpatient/outpatient cost ratio is the same as in SA, and total cost
 # (# inpatients)*outpatient_cost*SA_in_outpatient_ratio + (# outpatients)*outpatient_cost = total cost
 # outpatient_cost = (total cost)/[(# inpatients)*SA_in_outpatient_ratio + (# outpatients)]
 KEN_outpatient_cost <- kenya_costs$mean[kenya_costs$variable %in% "Total healthcare cost"]/
-  (kenya_costs$mean[grepl("Total number of inpatients",kenya_costs$variable)]*SA_in_outpatient_cost_ratio + 
+  (kenya_costs$mean[grepl("Total number of inpatients",kenya_costs$variable)]*in_outpatient_cost_ratio + 
      kenya_costs$mean[grepl("Total number of outpatients",kenya_costs$variable)])
 # assemble list
-inpat_rows <- kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable))
+ken_inpatient_rows <- kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable))
 list_KEN_costs <- list(inpatient_household=bind_cols(
   kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable)), 
-  t(sapply(1:nrow(inpat_rows), function(x)
-  unlist(get.gamma.par(q=c(inpat_rows$ci95_low[x],inpat_rows$median[x],inpat_rows$ci95_up[x])/100,
-                                    p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
-  inpatient_healthcare_system=KEN_outpatient_cost*SA_in_outpatient_cost_ratio,outpatient_cost=KEN_outpatient_cost)
+  t(sapply(1:nrow(ken_inpatient_rows), function(x)
+  unlist(get.gamma.par(q=c(ken_inpatient_rows$ci95_low[x],ken_inpatient_rows$median[x],
+                  ken_inpatient_rows$ci95_up[x])/100,p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
+  inpatient_healthcare_system=KEN_outpatient_cost*in_outpatient_cost_ratio,outpatient_cost=KEN_outpatient_cost)
 # gamma can fit median and CIs well, but not so much the mean
-# gamma_pars_cost <- get.gamma.par(q=c(inpat_rows$ci95_low,inpat_rows$median,inpat_rows$ci95_up)/100,
-#                                p=c(2.5,50,97.5)/100,plot=F)
+# gamma_pars_cost <- get.gamma.par(q=c(ken_inpatient_rows$ci95_low,ken_inpatient_rows$median,
+#   ken_inpatient_rows$ci95_up)/100,p=c(2.5,50,97.5)/100,plot=F)
 # gamma_costs_sim <- rgamma(n=1e4,shape=gamma_pars_cost["shape"],rate=gamma_pars_cost["rate"])*100
 # cbind(source=c("fit","data"),
 #   bind_rows(c(mean=mean(gamma_costs_sim),ci95_low=as.numeric(quantile(gamma_costs_sim,probs=c(2.5)/100)),
-#     ci95_up=as.numeric(quantile(gamma_costs_sim,probs=c(97.5)/100))),inpat_rows[,c("mean","ci95_low","ci95_up")]))
+#   ci95_up=as.numeric(quantile(gamma_costs_sim,probs=c(97.5)/100))),
+#   ken_inpatient_rows[,c("mean","ci95_low","ci95_up")]))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 cntrs_cea=c("KEN","ZAF")
 # efficacy figures for vaccine for RESVAX (Novavax trial)
 # for mAb from NIRSEVIMAB (from https://www.nejm.org/doi/full/10.1056/nejmoa1913556)
+#
 # if this flag is set to TRUE, then using published efficacy data. if FALSE --> interim results
-flag_publ_effic <- TRUE
+flag_publ_effic <- FALSE
 if (flag_publ_effic){
 efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053,CI95_high=0.612),
                             hospit=c(mean=0.444,CI95_low=0.196,CI95_high=0.615),
@@ -329,9 +332,12 @@ efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.847,CI95_low=0.216
                               hospit=c(mean=0.847,CI95_low=0.216,CI95_high=0.976), # no sep data
                               severe=c(mean=0.915,CI95_low=-5.6/100,CI95_high=0.998),
                               half_life=36.5/30,duration=3),
-                         monocl_ab=list(sympt_disease=c(mean=0.745,CI95_low=0.496,CI95_high=0.871),
-                              hospit=c(mean=0.621,CI95_low=-8.6/100,CI95_high=0.868),
-                                       half_life=59.3/30,duration=5)) 
+                         monocl_ab=list(sympt_disease=c(mean=0.701,CI95_low=0.523,CI95_high=0.812),
+                                        hospit=c(mean=0.784,CI95_low=0.519,CI95_high=0.903),
+                                        half_life=59.3/30,duration=5)) 
+# list(sympt_disease=c(mean=0.745,CI95_low=0.496,CI95_high=0.871),
+# hospit=c(mean=0.621,CI95_low=-8.6/100,CI95_high=0.868),
+# half_life=59.3/30,duration=5)
 }
 
 # fitting efficacy figures with a beta distribution
@@ -340,10 +346,23 @@ g(list_effic_betafit,allfits) %=% fcn_betafit_efficacy(effic_figs=efficacy_figur
                                    scan_range_resol_nsample=c(min=-2,max=2,by=1/100,n_sample=2e4),
                                    optim_range_res=c(min=-1,max=2,by=0.04),optim_initguess=c(-0.05,1))
 # fit as: beta_fit <- rbeta(n=1e4,shape1=alphaval,shape2=betaval)*scale_val + shift_val
-
+#
+# if this is set to true, then the fit is shifted to be more aligned with the mean efficacy rather than
+# the CI interval (beta distribution often cannot do both)
+flag_adjust_to_mean <- FALSE
+if (flag_adjust_to_mean){
+mv_severe_err <- c(t(allfits %>% filter(interv=="mat_vacc" & disease=="severe") %>% 
+                       select(c(data_mean,data_CI95_low,data_CI95_high)))) -
+  c(t(allfits %>% filter(interv=="mat_vacc"&disease=="severe") %>% select(c(mean,CI95_low,CI95_high))))
+# adjust
+list_effic_betafit$mat_vacc$severe["shift_fit"] <- list_effic_betafit$mat_vacc$severe["shift_fit"] + mv_severe_err[1]
+# try how mean changed
+sim_beta <- (rbeta(n=1e4,shape1=list_effic_betafit$mat_vacc$severe["shape1"],
+              shape2=list_effic_betafit$mat_vacc$severe["shape2"])*list_effic_betafit$mat_vacc$severe["scale_fit"])+
+  list_effic_betafit$mat_vacc$severe["shift_fit"]
+c(mean(sim_beta),quantile(sim_beta,probs = ci95_range))
+}
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-# parameters for exponential waning model
-g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 
 # prices for doses
 pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
@@ -352,14 +371,17 @@ pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
 kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 # exponential waning model used for efficacy
-exp_wane_val=FALSE
+exp_wane_val<-FALSE
+# parameters for exponential waning model
+g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 # distribution used to fit efficacy figures
-effic_dist_fit <- "beta"
-# lower_cov=FALSE; lower_cov_val=0.7; 
+effic_dist_fit <- "beta" # 
+lower_cov=FALSE # ; lower_cov_val=0.7
 subfolder_name <- paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdeaths",""),
                        ifelse(SA_deaths_input,"_SAdeaths",""),
         "_CIs_SA_ILI_",ifelse(ILI_adjust_SA,"broader","narrow"),ifelse(exp_wane_val,"_expwaning",""),
-        ifelse(lower_cov,paste0("_coverage",lower_cov_val),""),
+        # ifelse(FALSE,paste0("_coverage",lower_cov_val),""),
+        ifelse(flag_adjust_to_mean,"_adj_mv_sev_eff_mean",""),
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
         ifelse(flag_publ_effic,"","_interim"),"/") 
 # ifelse(min(unlist(efficacy_figures))<=0,"_nonposit_effic","")
@@ -438,7 +460,8 @@ for (k_par in 1:nrow(par_table)) {
     sel_cntr=sel_interv$country_iso,cols_burden_sel="",
     plot_labels=c(mcmarcel="projection ([Li 2020] from [Shi 2017] meta-analysis, community-based)",
                   own="new data (hospital-based + HUS)"),
-    icercolname="incremental_cost/DALY_averted",icercols=c("incremental_cost","total_DALY_disc_averted")) %>%
+    icercolname="incremental_cost/DALY_averted",
+    icercols=c("incremental_cost","total_DALY_disc_averted")) %>%
     filter(variable %in% "incremental_cost/DALY_averted") %>% 
       mutate(variable="incremental_cost/DALY_disc_averted")
   # every other outcome (appending `with_discounted_DALYs` to it)
@@ -491,6 +514,9 @@ for (k_filename in 1:length(filenames)) {
   x=read_csv(paste0("output/cea_plots/",subfolder_name,filenames[k_filename]))
   if (k_filename==1){ cea_summary_all=x } else {cea_summary_all=bind_rows(cea_summary_all,x)} 
 }
+# add column of country
+cea_summary_all <- cea_summary_all %>% 
+                  mutate(plot_variable=NA,country_plot=ifelse(country_iso=="KEN","Kenya","South Africa"))
 # save
 write_csv(cea_summary_all,paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
 
@@ -517,292 +543,42 @@ old_new_names <- list(
                 "YLD non-hospitalised cases","total DALY"),
               c("deaths","hospitalised SARI","non-hospitalised SARI","hospitalised cases","non-hospitalised cases"),
               c("admin. costs","hospitalisation costs","outpatient costs","total medical cost")))
-# add column of country
-cea_summary_all <- cea_summary_all %>% mutate(plot_variable=NA,
-                                              country_plot=ifelse(country_iso=="KEN","Kenya","South Africa"))
 
-#######################
-plot_list<-list()
-for (k_name_categ in 1:length(old_new_names$old)){
-  for (k_name in 1:length(old_new_names$old[[k_name_categ]])){
-  cea_summary_all <- cea_summary_all %>% 
-    mutate(plot_variable=ifelse(variable %in% old_new_names$old[[k_name_categ]][k_name],
-                              old_new_names$new[[k_name_categ]][k_name],plot_variable)) } }
-
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+# Figure combining burden and costs and their relative reduction
 save_flag=FALSE # TRUE
-for (k_plot in 1:3) {
-  sel_vars <- old_new_names$old[[k_plot]]
-  df_plot <- cea_summary_all %>% 
-    filter(variable %in% c(sel_vars,paste0(sel_vars,"_averted")) & # intervention=="mAb" & 
-              ((price==3&intervention=="maternal")|(price==6&intervention=="mAb")) & grepl("new",source)) %>%
-    mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
-           burden_interv=ifelse(grepl("averted",variable),"averted burden","burden"), 
-           source=ifelse(grepl("projection",as.character(source)),
-                         "projection (from [Shi 2017])",as.character(source)),
-           vartype=gsub("_averted","",variable)) %>% group_by(vartype) %>% 
-    mutate(plot_variable=unique(plot_variable[!grepl("averted",variable)])) %>% ungroup() %>% 
-    mutate(vec=as.character( round((10^floor(log10(median/norm_median)))*round(
-      median/norm_median/(10^floor(log10(median/norm_median))),3)) ) )
-  if (any(grepl("e\\+",df_plot$vec))){
-  df_plot$vec <- gsub("e\\+07",paste0(rep("0",7),collapse=""),df_plot$vec)
-    df_plot$vec <- gsub("e\\+06",paste0(rep("0",6),collapse=""),df_plot$vec) }
-  if (any(grepl("\\.",df_plot$vec)) ){ 
-    subs_vec<-df_plot$vec[grepl("\\.",df_plot$vec)]
-    df_plot$vec[grepl("\\.",df_plot$vec)] <- substr(gsub("\\.","",subs_vec),1,nchar(gsub("\\.","",subs_vec))-1) }
-  # rounded values
-  df_plot$orig_burden_round=NA; df_plot$orig_burden_round[!is.na(df_plot$vec)]=gsub("^\\.","",
-              sapply(df_plot$vec[!is.na(df_plot$vec)], 
-        function(x) paste0(substring(x,first=c(1,seq(nchar(x)-floor(nchar(x)/3)*3,
-        nchar(x)-1,by=3)+1),last=c(seq(nchar(x)-floor(nchar(x)/3)*3,nchar(x)-1,by=3),nchar(x))),collapse=",")))
-  df_plot <- df_plot %>% mutate(orig_burden_round=ifelse(as.numeric(vec)<1e4,
-                gsub("\\,","",orig_burden_round),orig_burden_round),
-                plot_variable=ifelse(grepl("cost",plot_variable),
-                                     paste0(plot_variable," (US$)"),plot_variable))
-  # for burden plot, order factors
-  if (any(df_plot$vartype %in% "total_DALY")) {
-    df_plot$vartype=factor(df_plot$vartype,
-                           levels=unique(df_plot$vartype)[c(which(!grepl("total_DALY",unique(df_plot$vartype))),
-                                  which(grepl("total_DALY",unique(df_plot$vartype))))])
-    df_plot$plot_variable=factor(df_plot$plot_variable,
-                                 levels=c("YLD non-hospitalised cases","YLD medically attended cases",
-                                          "YLD hospitalised cases","total YLD","total YLL","total DALY")) 
-    }
-  # plot for 2 cntrs, 2 intervents
-  dodge_val=1; round_val=2; caption_txt=paste0("Numbers above medians are pre-intervention",
-                                               ifelse(any(grepl("YLL",sel_vars))," DALYs",
-        ifelse(any(grepl("death",sel_vars))," case/death numbers"," costs (USD)") ),
-        ifelse(any(grepl("YLL",sel_vars)),". YLD=years lived with disability. YLL=years of life lost",""))
-  # labels for y-axis
-  ylab_txt=paste0("% reduction in ",ifelse(any(grepl("YLL",sel_vars)),"DALYs",
-                                    ifelse(any(grepl("death",sel_vars)),"cases/deaths","cost")))
-  ### ### ### ### ### ### ### ### ### ### ### ###
-  if (k_plot==1) {df_combined_fig3_4_5 <- df_plot} else {
-  df_combined_fig3_4_5 <- bind_rows(df_combined_fig3_4_5,df_plot %>% mutate(across(where(is.numeric),round,3))) }
-  ### ### ### ### ### ### ### ### ### ### ### ### 
-  # PLOT with cntr on x-axis, MV/mAb as colors
-  plot_list[[k_plot]] <- ggplot(df_plot %>% filter(grepl("averted",burden_interv)) %>% 
-                            mutate(cnt_int=paste0(country_iso,"\n(",intervention,")")) ) +
-    geom_boxplot(aes(x=cnt_int,color=intervention,middle=norm_median*1e2,
-           ymin=norm_CI95_low*1e2,ymax=norm_CI95_high*1e2,lower=norm_CI50_low*1e2,upper=norm_CI50_high*1e2),
-           position=position_dodge(width=dodge_val),stat="identity") +
-    scale_color_manual(values=c("red","blue")) +
-    facet_wrap(~plot_variable) + geom_vline(xintercept=2.5,linetype="dashed",size=0.3) + # vartype
-    theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
-    geom_text(aes(x=as.numeric(interaction(intervention,country_iso))+1/2,
-                  y=max(norm_CI95_high*1e2)*1.05,group=intervention,
-                  label=ifelse(intervention!="MV",gsub("^,","",paste0(orig_burden_round,
-                                    ifelse(grepl("YLD non",plot_variable),"*",""))),"")),
-                  position=position_dodge(width=dodge_val),size=5.5) + 
-    labs(color="",linetype="",
-         caption=ifelse(any(grepl("costs",df_plot$plot_variable)),"*pre-intervention median value","")) + 
-    scale_y_continuous(breaks=(0:15)*10) + # scale_x_discrete(expand=expansion(0.1,0)) + 
-    theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),axis.text.y=element_text(size=17),
-          strip.text=element_text(size=18),legend.position=ifelse(save_flag,"top",
-                      ifelse(k_plot<3,"none","bottom")),legend.text=element_text(size=18),
-          axis.title.y=element_text(size=16.5,margin=margin(t=0,r=12,b=0,l=0)),
-          legend.spacing.x=unit(0.7,'cm'),legend.key.size=unit(3,"line"),plot.caption=element_text(size=14))
-  if (k_plot<3) { plot_list[[k_plot]] <- plot_list[[k_plot]] + theme(axis.text.x=element_blank()) }
-  # save
-  if (save_flag) {
-    plot_list[[k_plot]]
-  ggsave(paste0("output/cea_plots/",subfolder_name,ifelse(any(grepl("YLL",sel_vars)),"DALY",
-       ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),
-       width=36,height=18,units="cm") } 
-} ##### end of loop
+source("functions/fig_3_4_5.R")
 # combine figures
-plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],nrow=3,rel_heights=c(1.5,1,1.1),labels="auto",label_size=19)
+plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],
+          nrow=3,rel_heights=c(1.5,1,1.1),labels="auto",label_size=19)
+# SAVE
 ggsave(paste0("output/cea_plots/",subfolder_name,"combined_fig3_4_5.png"),width=35,height=40,units="cm")
 # save table
-write_csv(df_combined_fig3_4_5,paste0("output/cea_plots/",subfolder_name,"combined_fig3_4_5.csv"))
+df_combined_fig3_4_5[,c("mean","median","CI50_low","CI50_high","CI95_low","CI95_high")] <- 
+  round(df_combined_fig3_4_5 %>% select(c(mean,median,CI50_low,CI50_high,CI95_low,CI95_high)))
+write_csv(df_combined_fig3_4_5 %>% mutate(across(where(is.numeric),round,3)),
+          paste0("output/cea_plots/",subfolder_name,"combined_fig3_4_5.csv"))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # plot of cost-effectiveness variables (discounted DALYs or not)
 
-for (k_daly in c("incremental_cost/DALY_averted","incremental_cost/DALY_disc_averted")) {
-  df_plot <- cea_summary_all %>% 
-    filter(variable %in% c("intervention_cost","incremental_cost",k_daly) & grepl("new",source)) %>%
-        mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
-        vec=as.character(abs(round((10^floor(log10(abs(median))))*
-                                     round(median/(10^floor(log10(abs(median)))),3)))),
-    price_interv=factor(paste0(price,"$ (",intervention,")"),
-                            levels=unique(paste0(df_plot$price,"$ (",df_plot$intervention,")"))),
-    variable=factor(gsub("disc","(disc)",gsub("_"," ",variable)),levels=c("intervention cost","incremental cost",
-                                 gsub("disc","(disc)",gsub("_"," ",k_daly))))) %>%
-  select(!(contains("norm")|plot_variable)) %>%
-  mutate(cnt_int=paste0(country_iso,"\n$",price,"\n",intervention), 
-         mean=round(ifelse(!grepl("DALY",variable),mean/1e6,mean),2),
-         median=round(ifelse(!grepl("DALY",variable),median/1e6,median),2),
-         CI50_low=round(ifelse(!grepl("DALY",variable),CI50_low/1e6,CI50_low),2),
-         CI50_high=round(ifelse(!grepl("DALY",variable),CI50_high/1e6,CI50_high),2),
-         CI95_low=round(ifelse(!grepl("DALY",variable),CI95_low/1e6,CI95_low),2),
-         CI95_high=round(ifelse(!grepl("DALY",variable),CI95_high/1e6,CI95_high),2),
-         variable=ifelse(!grepl("DALY",variable),
-                         paste0(variable," (million US$)"),paste0(variable, " (US$)"))) %>%
-  mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int[order(country_iso,intervention,price)]),ordered=T),
-         variable=factor(variable,levels=c("intervention cost (million US$)",
-                      "incremental cost (million US$)",
-                      ifelse(grepl("disc",k_daly),"incremental cost/DALY (disc) averted (US$)",
-                             "incremental cost/DALY averted (US$)"))),
-        CI95_low=ifelse(grepl("incremental cost/DALY",variable) & (CI95_high>5e3|abs(CI95_low)>2e3),NA,CI95_low),
-        CI95_high=ifelse(grepl("incremental cost/DALY",variable) & (CI95_high>5e3|abs(CI95_low)>2e3),NA,CI95_high))
-
-# save table
-if (k_daly %in% "incremental_cost/DALY_averted"){ df_interv_incremcosts_icer <- df_plot } else {
-df_interv_incremcosts_icer <- bind_rows(df_plot,df_interv_incremcosts_icer) %>% 
-  mutate(across(where(is.numeric),round,3)) }
-# plot
-ylab_txt<-"cost in USD (median, CI95)"
-ggplot(df_plot) + geom_boxplot(aes(x=cnt_int,middle=median, color=price_interv,
-                      lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
-                      position=position_dodge(width=dodge_val),stat="identity",width=0.85,size=1.1) +
-  facet_wrap(~variable,scales="free_y",nrow=3) +
-  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(3),
-                              colorRampPalette(colors=c("blue","blueviolet"))(3))) +
-  geom_vline(xintercept=c(3.5,6.5,9.5),linetype="dashed",size=0.3) + 
-  geom_vline(xintercept=c(6.5),size=1/2) + geom_hline(yintercept=0,linetype="dashed",size=1/2) +
-  xlab("") + ylab(ylab_txt) + labs(color="",linetype="") +
-  scale_x_discrete(expand=expansion(0.05,0)) + guides(color=guide_legend(ncol=2)) + 
-  theme_bw() + standard_theme + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=18),
-                                      axis.text.y=element_text(size=19),strip.text=element_text(size=14),
-                                      legend.text=element_text(size=20),legend.position="top",
-                                      axis.title.y=element_text(size=20),strip.text.x=element_text(size=18)) 
-# save
-ggsave(paste0("output/cea_plots/",subfolder_name,"interv_incremcosts_icer",ifelse(grepl("disc",k_daly),"_disc",""),
-       "_KEN_ZAF_3rows",ifelse(any(is.na(df_plot$CI95_high)),"_ci95_removed",""),".png"),
-       width=25,height=40,units="cm")
-}
-
-write_csv(df_interv_incremcosts_icer,paste0("output/cea_plots/",subfolder_name,"df_interv_incremcosts_icer.csv"))
+source("functions/icer_plots.R")
+write_csv(df_interv_incremcosts_icer %>% mutate(across(where(is.numeric),round,1)),paste0("output/cea_plots/",
+                                            subfolder_name,"df_interv_incremcosts_icer.csv"))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # plots COMPARING CEA results with projected data vs new data
 # subfolder_name<-"new_price_efficacy_kenyadeaths_CIs/"
 
-for (k_plot in 1:3) {
-  sel_vars <- list(c("total_YLD","total_YLL","hosp_YLD","non_hosp_YLD","total_DALY"),
-                   c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),
-                   c("admin_cost","cost_rsv_hosp","cost_rsv_outpatient", # ,"hosp_cost"
-                      "outpatient_cost","total_medical_cost"))[[k_plot]]
-  df_plot <- cea_summary_all %>% 
-    filter(variable %in% c(sel_vars,paste0(sel_vars,"_averted")) &
-            ((price==3&intervention=="maternal")|(price==6&intervention=="mAb"))) %>%
-    mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
-       burden_interv=ifelse(grepl("averted",variable),"averted burden","burden"), 
-       source=ifelse(grepl("projection",as.character(source)),
-                     "projection (from [Shi 2017])",as.character(source)),
-       vartype=gsub("hosp","hospitalised",
-                    gsub("rsv","RSV",gsub("_"," ",gsub("_averted","",variable)))) ) %>% 
-    mutate(vec=(10^floor(log10(median/norm_median)))*round(
-      median/norm_median/(10^floor(log10(median/norm_median))),3)) %>%
-    mutate(orig_burden_round=ifelse(vec>1e6,paste0(round(vec/1e6,1),"e6"),
-                                    ifelse(vec>1e3,paste0(round(vec/1e3,1),"e3"),vec))) %>% 
-    filter(grepl("averted",burden_interv))
-    if (any(grepl("cost",sel_vars))) {
-      df_plot <- df_plot %>% mutate(vartype=gsub("outpatient","outpatient care",gsub("cost RSV","cost of RSV",
-                                                 gsub("hospitalised","hospitalisation",vartype))))
-    }
-  # labels
-  if (any(df_plot$vartype %in% "total_DALY")) {
-    df_plot$vartype=factor(df_plot$vartype,levels=
-        unique(df_plot$vartype)[c(which(!grepl("total_DALY",unique(df_plot$vartype))),
-                                  which(grepl("total_DALY",unique(df_plot$vartype))))])}
-  #
-  dodge_val=1; round_val=2; 
-  caption_txt=paste0("Numbers above bars are pre-intervention values",
-                                               ifelse(any(grepl("YLL",sel_vars))," DALYs",
-        ifelse(any(grepl("death",sel_vars))," case/death numbers"," costs (USD)") ),
-        ifelse(any(grepl("YLL",sel_vars)),". YLD=years lived with disability. YLL=years of life lost",""))
-  ylab_txt=paste0("% reduction in ",ifelse(any(grepl("YLL",sel_vars)),"DALYs",
-        ifelse(any(grepl("death",sel_vars)),"cases/deaths","cost"))," (mean, CI95)")
-  ### ### ### ### ###
-  if (k_plot==1) { df_comparison_reductions_KEN_ZAF <- df_plot } else {
-    df_comparison_reductions_KEN_ZAF <- bind_rows(df_plot,df_comparison_reductions_KEN_ZAF) }
-  ### ### ### ### ###
-  # plot with cntr on x-axis, MV/mAb as colors
-  ggplot(df_plot) + geom_hpline(aes(x=country_iso,y=norm_median*1e2,group=interaction(source,intervention),
-                    color=intervention,linetype=source),position=position_dodge(width=dodge_val),
-                width=0.22,size=1.2) + 
-    geom_linerange(aes(x=country_iso,ymin=norm_CI95_low*1e2,ymax=norm_CI95_high*1e2,
-                       group=interaction(source,intervention),color=intervention),
-                   alpha=0.35,position=position_dodge(width=dodge_val),size=17,show.legend=F) +
-    facet_wrap(~vartype) + scale_y_continuous(breaks=(0:10)*10) + scale_color_manual(values=c("red","blue")) +
-    geom_vline(xintercept=1.5,size=0.3) + geom_vline(xintercept=c(1,2),linetype="dashed",size=0.3) +
-    geom_text(aes(x=country_iso,y=norm_CI95_high*1e2+2,group=interaction(source,intervention),
-                label=orig_burden_round ), # ifelse(intervention!="MV",orig_burden_round,"")
-                position=position_dodge(width=dodge_val)) +
-    labs(color="",linetype="",caption=caption_txt) + scale_x_discrete(expand=expansion(0.02,0)) +
-    xlab("") + ylab(ylab_txt) + 
-    theme_bw() + standard_theme + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=14),
-          axis.text.y=element_text(size=15),strip.text=element_text(size=14),legend.position="top",
-          legend.text=element_text(size=14),axis.title.y=element_text(size=18)) + 
-    guides(linetype=guide_legend(nrow=2),color=guide_legend(nrow=2))
-  # save
-  compar_dirname<-paste0("output/cea_plots/",subfolder_name,"comparisons/")
-  if (!dir.exists(compar_dirname)) {dir.create(compar_dirname)}
-  ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/",ifelse(any(grepl("YLL",sel_vars)),"DALY",
-              ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),
-        width=36,height=18,units="cm")
-} # end of for-loop for diff vars
+source("functions/compar_plots_loop.R")
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # plot of cost-effectiveness variables
-price_interv_vals <- gsub("maternal","MV",unique(paste0(unique(cea_summary_all$price),
-                        "$ (",unique(cea_summary_all$intervention),")")))
-# process dataframe for plotting
-df_total_DALY_medcost_averted_KEN_ZAF <- cea_summary_all %>% select(!(contains("norm")|plot_variable)) %>%
-  filter(variable %in% c("total_DALY_averted","total_DALY_disc_averted",
-                         "total_medical_cost_averted","incremental_cost")) %>% #
-  mutate(intervention=ifelse(intervention=="maternal","MV",intervention), # grepl("new",source)
-         vec=sign(median)*abs(round((10^floor(log10(abs(median))))*round(
-           median/(10^floor(log10(abs(median)))),3))),
-         price_interv=paste0(price,"$ (",intervention,")"), # factor(,levels=price_interv_vals), 
-         variable=factor(gsub("_"," ",variable),
-                         levels=gsub("_"," ",c("total_DALY_averted","total_DALY_disc_averted",
-                                  "total_medical_cost_averted","incremental_cost")) )) %>%
-  mutate(orig_burden_round=ifelse(abs(vec)>1e6,paste0(round(vec/1e6,1),"e6"),
-                                  ifelse(abs(vec)>1e3,paste0(round(vec/1e3,1),"e3"),vec)),
-         price_interv=factor(price_interv,levels=unique(price_interv))) %>%
-  filter(!((grepl("total_medical",variable)|grepl("total_DALY",variable)) & price>6)) %>%
-  pivot_longer(!c(price,source_num,country_iso,intervention,source,variable,
-                  country_plot,vec,price_interv,orig_burden_round)) %>%
-  group_by(variable) %>% mutate(money_unit=ifelse(max(value)>1e6,"million USD","USD")) %>% ungroup() %>%
-  mutate(value=ifelse(grepl("mill",money_unit),value/1e6,value/1e3),
-    variable=ifelse(grepl("mill",money_unit),paste0(as.character(variable)," (million US$)"),
-        paste0(as.character(variable)," (thousand US$)"))) %>% 
-  mutate(variable=factor(variable,levels=unique(variable)[c(2,3,4,1)])) %>%
-  pivot_wider(names_from=name,values_from=value) %>%
-  mutate(orig_burden_round=ifelse(grepl("mill",money_unit),paste0(round(median,1),"m"),paste0(round(median,1),"k")),
-         source=gsub(", community-based","",source)) %>%
-  mutate(across(where(is.numeric),round,3))
-ylab_txt="cost in USD (median, CI50, CI95)"
-# plot total DALY AVERTED, total medical cost averted
-ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(!grepl("incremental",variable))) + 
-  geom_hpline(aes(x=country_iso,y=median,group=interaction(source,intervention),
-            linetype=source),position=position_dodge(width=dodge_val),width=0.23,size=2) + # color=price_interv,
-  geom_linerange(aes(x=country_iso,ymin=CI95_low,ymax=CI95_high,group=interaction(source,intervention),
-           color=intervention),alpha=0.25,position=position_dodge(width=dodge_val),size=42) +
-  # geom_linerange(aes(x=country_iso,ymin=CI50_low,ymax=CI50_high,group=interaction(source,intervention),
-  #          color=intervention),alpha=0.25,position=position_dodge(width=dodge_val),size=34,show.legend=F) +
-  facet_wrap(~variable,scales="free_y",ncol=1) + # ,nrow=2
-  scale_color_manual(values=c("red","blue")) +
-  geom_vline(xintercept=1.5,size=0.5) + geom_vline(xintercept=c(1,2),linetype="dashed",size=0.75) +
-  geom_vline(xintercept=c(0.75,1.25,1.75,2.25),linetype="dashed",size=0.25) + 
-  theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
-  geom_text(aes(x=country_iso,y=CI95_high+2,
-                group=interaction(source,intervention),label=orig_burden_round),
-             position=position_dodge(width=dodge_val),size=8) +
-  scale_x_discrete(expand=expansion(0.02,0)) + labs(color="",linetype="") +#,caption="Numbers show median values."
-  guides(color=guide_legend(ncol=2,override.aes=list(size=5)),
-         linetype=guide_legend(nrow=2,override.aes=list(size=1.25))) +
-  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=18),axis.text.y=element_text(size=18),
-        strip.text=element_text(size=22),legend.position="top",legend.text=element_text(size=21),
-        plot.caption=element_text(10),axis.title.x=element_text(size=24),axis.title.y=element_text(size=24))
-# save
-ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/total_DALY_medcost_averted_KEN_ZAF.png"),
-       width=30,height=30,units="cm")
+
+source("functions/compar_plots_cost_red.R")
 write_csv(df_total_DALY_medcost_averted_KEN_ZAF,
           paste0("output/cea_plots/",subfolder_name,"comparisons/total_DALY_medcost_averted_KEN_ZAF.csv"))
 
@@ -810,73 +586,13 @@ write_csv(df_total_DALY_medcost_averted_KEN_ZAF,
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # plot incremental costs
 
-ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(grepl("incremental",variable))) + 
-  geom_hpline(aes(x=country_iso,y=median,group=interaction(source,intervention),
-                  linetype=source),position=position_dodge(width=dodge_val),width=0.23,size=2) + 
-  geom_linerange(aes(x=country_iso,ymin=CI95_low,ymax=CI95_high,group=interaction(source,intervention),
-              color=price_interv),alpha=0.4,position=position_dodge(width=dodge_val),size=44) +
-  facet_wrap(~variable,scales="free_y",ncol=1) + # ,nrow=2
-  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(3),
-                              colorRampPalette(colors=c("blue","blueviolet"))(3))) +
-  geom_vline(xintercept=1.5,size=0.5) + geom_vline(xintercept=c(1,2),linetype="dashed",size=1) +
-  geom_vline(xintercept=c(0.75,1.25,1.75,2.25),linetype="dashed",size=0.25) + 
-  geom_hline(yintercept=0,linetype="dashed",size=0.5) +
-  theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
-  geom_text(aes(x=country_iso,y=ifelse(median>=0,CI95_high+2,CI95_low-2),
-                group=interaction(source,intervention),label=orig_burden_round),
-            position=position_dodge(width=dodge_val),size=7) +
-  scale_x_discrete(expand=expansion(0.02,0)) + labs(color="",linetype="") +#,caption="Numbers show median values."
-  guides(color=guide_legend(ncol=2,override.aes=list(size=4)),
-         linetype=guide_legend(nrow=2,override.aes=list(size=1.4))) + #
-  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=20),axis.text.y=element_text(size=20),
-        strip.text=element_text(size=22),legend.position="top",legend.text=element_text(size=17),
-        axis.title.x=element_text(21),axis.title.y=element_text(size=18),
-        plot.caption=element_text(size=10))
-# save
-ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/incremental cost_KEN_ZAF.png"),
-       width=35,height=25,units="cm")
+source("functions/compar_plots_increm_cost.R")
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # ICER plot
 
-ylab_txt<-"cost in USD (mean, CI95)"
-price_interv_vals <- gsub("maternal","MV",
-                        unique(paste0(cea_summary_all$price,"$ (",cea_summary_all$intervention,")")))
-df_plot_icer_comp <- cea_summary_all %>% select(!(contains("norm")|plot_variable)) %>% 
-  filter(grepl("incremental_cost/DALY",variable)) %>%
-  mutate(intervention=ifelse(intervention=="maternal","MV",intervention),
-         vec=sign(median)*abs(round((10^floor(log10(abs(median))))*
-                                      round(median/(10^floor(log10(abs(median)))),3))),
-         price_interv=factor(paste0(price,"$ (",intervention,")"),levels=price_interv_vals),
-         variable=gsub("disc","(discounted)",gsub("_"," ",variable)) ) %>%
-  mutate(orig_burden_round=paste0(round(median/1e3,1)),source=gsub(", community-based","",source)) %>%
-  mutate(across(where(is.numeric),round,1))
-# PLOT
-ggplot(df_plot_icer_comp) + 
-  geom_hpline(aes(x=country_iso,y=median/1e3,group=interaction(price,source),linetype=source),
-                position=position_dodge(width=dodge_val),width=0.14,size=1.2) +
-  geom_linerange(aes(x=country_iso,ymin=CI50_low/1e3,ymax=CI50_high/1e3,
-                     group=interaction(price,source),color=price_interv),
-                 alpha=0.35,position=position_dodge(width=dodge_val),size=13) +
-  facet_grid(intervention~variable,scales="free") + 
-  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(3),
-                              colorRampPalette(colors=c("blue","blueviolet"))(3))) +
-  geom_vline(xintercept=c(1.5),size=0.5) + geom_vline(xintercept=c(1,2),size=0.75,linetype="dashed") +
-  geom_vline(xintercept=setdiff(seq(2/3,4,by=1/6),c(1,1.5,2)),linetype="dashed",size=0.2) +
-  geom_hline(yintercept=0,size=0.25) +
-  xlab("") + ylab("incremental cost (thousand US$) per DALY averted") + 
-  labs(color="",linetype="",caption="*cost-saving") + # 
-  geom_text(aes(x=country_iso,y=(CI50_high+6e3)/1e3,group=interaction(price,source),
-                  label=ifelse(median>=0,orig_burden_round,"*")),
-                  size=6,position=position_dodge(width=dodge_val)) + 
-  scale_x_discrete(expand=expansion(0.2,0)) + theme_bw() + standard_theme + 
-  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=20),
-      axis.text.y=element_text(size=18),axis.title.y=element_text(size=19),
-      strip.text=element_text(size=21),plot.caption=element_text(size=15),
-      legend.position="top",legend.text=element_text(size=16)) + 
-  guides(color=guide_legend(ncol=2),linetype=guide_legend(nrow=2))
-# save
+source("functions/icer_comp_plot.R"); p
 ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.png"),width=38,height=32,units="cm")
 #
 write_csv(df_plot_icer_comp,paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.csv"))
