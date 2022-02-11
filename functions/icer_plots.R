@@ -48,7 +48,7 @@ for (k_daly in c("incremental_cost/DALY_averted","incremental_cost/DALY_disc_ave
                                           axis.text.y=element_text(size=17),strip.text=element_text(size=14),
                                           legend.text=element_text(size=20),legend.position="top",
                                           axis.title.y=element_text(size=20),strip.text.x=element_text(size=18)) 
-    if (k_plot==2) { p <- p + scale_y_continuous(breaks=(-2:12)*1e3) } # 2.5e3
+    if (k_plot==2) { p <- p + scale_y_continuous(breaks=(-3:20)*2*1e3) } # 2.5e3
     # save
     full_filename <- paste0("output/cea_plots/",subfolder_name,ifelse(k_plot==2,"icer","interv_incremcosts_icer"),
                             ifelse(grepl("disc",k_daly),"_disc",""),"_KEN_ZAF_3rows",

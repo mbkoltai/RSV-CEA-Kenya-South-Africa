@@ -1,0 +1,109 @@
+source,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,norm_mean,norm_median,norm_CI50_low,norm_CI50_high,norm_CI95_low,norm_CI95_high,price,source_num,country_iso,intervention,plot_variable,country_plot,burden_interv,vartype,vec,orig_burden_round
+new data (hospital-based + HUS),hosp_med_att_YLD,1960,1960,1919,2002,1834,2085,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,YLD medically attended cases,Kenya,burden,hosp_med_att_YLD,NA,NA
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,182,181,169,194,148,219,0.093,0.093,0.087,0.099,0.076,0.11,6,2,KEN,mAb,YLD medically attended cases,Kenya,averted burden,hosp_med_att_YLD,1949,1949
+new data (hospital-based + HUS),hosp_YLD,176,175,169,183,158,196,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,YLD hospitalised cases,Kenya,burden,hosp_YLD,NA,NA
+new data (hospital-based + HUS),hosp_YLD_averted,58,58,53,63,46,74,0.331,0.331,0.311,0.35,0.274,0.391,6,2,KEN,mAb,YLD hospitalised cases,Kenya,averted burden,hosp_YLD,175,175
+new data (hospital-based + HUS),non_hosp_YLD,2502,2501,2449,2550,2353,2656,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,YLD non-hospitalised cases,Kenya,burden,non_hosp_YLD,NA,NA
+new data (hospital-based + HUS),non_hosp_YLD_averted,315,314,295,334,262,373,0.126,0.126,0.119,0.133,0.106,0.147,6,2,KEN,mAb,YLD non-hospitalised cases,Kenya,averted burden,non_hosp_YLD,2493,2493
+new data (hospital-based + HUS),total_DALY,142659,142473,137765,147536,128989,157185,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,total DALY,Kenya,burden,total_DALY,NA,NA
+new data (hospital-based + HUS),total_DALY_averted,36291,36077,33481,38966,28452,44815,0.254,0.254,0.238,0.271,0.207,0.302,6,2,KEN,mAb,total DALY,Kenya,averted burden,total_DALY,142100,",142,100"
+new data (hospital-based + HUS),total_YLD,4462,4462,4376,4548,4201,4725,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,total YLD,Kenya,burden,total_YLD,NA,NA
+new data (hospital-based + HUS),total_YLD_averted,374,372,350,396,310,443,0.084,0.084,0.079,0.089,0.07,0.098,6,2,KEN,mAb,total YLD,Kenya,averted burden,total_YLD,4452,4452
+new data (hospital-based + HUS),total_YLL,138197,137994,133316,143113,124598,152726,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,total YLL,Kenya,burden,total_YLL,NA,NA
+new data (hospital-based + HUS),total_YLL_averted,35917,35710,33121,38590,28122,44438,0.26,0.259,0.243,0.276,0.211,0.309,6,2,KEN,mAb,total YLL,Kenya,averted burden,total_YLL,137700,",137,700"
+new data (hospital-based + HUS),hosp_med_att_YLD,1960,1960,1919,2002,1834,2085,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,YLD medically attended cases,Kenya,burden,hosp_med_att_YLD,NA,NA
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,89,89,79,98,61,115,0.045,0.045,0.041,0.05,0.031,0.059,3,2,KEN,MV,YLD medically attended cases,Kenya,averted burden,hosp_med_att_YLD,1965,1965
+new data (hospital-based + HUS),hosp_YLD,176,175,169,183,158,196,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,YLD hospitalised cases,Kenya,burden,hosp_YLD,NA,NA
+new data (hospital-based + HUS),hosp_YLD_averted,47,47,41,53,27,65,0.267,0.273,0.238,0.301,0.161,0.347,3,2,KEN,MV,YLD hospitalised cases,Kenya,averted burden,hosp_YLD,172,172
+new data (hospital-based + HUS),non_hosp_YLD,2502,2501,2449,2550,2353,2656,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,YLD non-hospitalised cases,Kenya,burden,non_hosp_YLD,NA,NA
+new data (hospital-based + HUS),non_hosp_YLD_averted,191,191,171,212,126,251,0.076,0.077,0.068,0.085,0.051,0.099,3,2,KEN,MV,YLD non-hospitalised cases,Kenya,averted burden,non_hosp_YLD,2495,2495
+new data (hospital-based + HUS),total_DALY,142659,142473,137765,147536,128989,157185,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,total DALY,Kenya,burden,total_DALY,NA,NA
+new data (hospital-based + HUS),total_DALY_averted,30210,31357,26796,34570,15550,40381,0.212,0.222,0.192,0.241,0.11,0.271,3,2,KEN,MV,total DALY,Kenya,averted burden,total_DALY,141300,",141,300"
+new data (hospital-based + HUS),total_YLD,4462,4462,4376,4548,4201,4725,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,total YLD,Kenya,burden,total_YLD,NA,NA
+new data (hospital-based + HUS),total_YLD_averted,238,239,213,265,155,313,0.053,0.054,0.048,0.059,0.035,0.07,3,2,KEN,MV,total YLD,Kenya,averted burden,total_YLD,4459,4459
+new data (hospital-based + HUS),total_YLL,138197,137994,133316,143113,124598,152726,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,total YLL,Kenya,burden,total_YLL,NA,NA
+new data (hospital-based + HUS),total_YLL_averted,29973,31122,26552,34327,15320,40128,0.217,0.227,0.196,0.247,0.112,0.278,3,2,KEN,MV,total YLL,Kenya,averted burden,total_YLL,136800,",136,800"
+new data (hospital-based + HUS),hosp_med_att_YLD,601,599,580,618,548,666,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,YLD medically attended cases,South Africa,burden,hosp_med_att_YLD,NA,NA
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,158,156,145,168,125,197,0.262,0.261,0.246,0.277,0.219,0.308,6,2,ZAF,mAb,YLD medically attended cases,South Africa,averted burden,hosp_med_att_YLD,597,597
+new data (hospital-based + HUS),hosp_YLD,267,266,255,279,235,305,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,YLD hospitalised cases,South Africa,burden,hosp_YLD,NA,NA
+new data (hospital-based + HUS),hosp_YLD_averted,114,113,104,122,89,143,0.424,0.425,0.402,0.448,0.354,0.494,6,2,ZAF,mAb,YLD hospitalised cases,South Africa,averted burden,hosp_YLD,266,266
+new data (hospital-based + HUS),non_hosp_YLD,1473,1466,1415,1524,1319,1667,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,YLD non-hospitalised cases,South Africa,burden,non_hosp_YLD,NA,NA
+new data (hospital-based + HUS),non_hosp_YLD_averted,284,278,253,307,214,391,0.192,0.19,0.176,0.206,0.151,0.245,6,2,ZAF,mAb,YLD non-hospitalised cases,South Africa,averted burden,non_hosp_YLD,1461,1461
+new data (hospital-based + HUS),total_DALY,39038,39015,38107,39956,36348,41836,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,total DALY,South Africa,burden,total_DALY,NA,NA
+new data (hospital-based + HUS),total_DALY_averted,18219,18234,17244,19235,15277,21069,0.467,0.468,0.446,0.49,0.398,0.525,6,2,ZAF,mAb,total DALY,South Africa,averted burden,total_DALY,38950,"38,950"
+new data (hospital-based + HUS),total_YLD,2074,2067,2007,2133,1895,2295,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,total YLD,South Africa,burden,total_YLD,NA,NA
+new data (hospital-based + HUS),total_YLD_averted,397,392,362,426,313,511,0.191,0.19,0.178,0.203,0.157,0.232,6,2,ZAF,mAb,total YLD,South Africa,averted burden,total_YLD,2061,2061
+new data (hospital-based + HUS),total_YLL,36964,36937,36033,37880,34270,39773,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,total YLL,South Africa,burden,total_YLL,NA,NA
+new data (hospital-based + HUS),total_YLL_averted,17821,17838,16858,18843,14918,20666,0.482,0.483,0.46,0.506,0.412,0.543,6,2,ZAF,mAb,total YLL,South Africa,averted burden,total_YLL,36900,"36,900"
+new data (hospital-based + HUS),hosp_med_att_YLD,601,599,580,618,548,666,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,YLD medically attended cases,South Africa,burden,hosp_med_att_YLD,NA,NA
+new data (hospital-based + HUS),hosp_med_att_YLD_averted,118,117,103,132,76,167,0.196,0.197,0.175,0.218,0.129,0.261,3,2,ZAF,MV,YLD medically attended cases,South Africa,averted burden,hosp_med_att_YLD,595,595
+new data (hospital-based + HUS),hosp_YLD,267,266,255,279,235,305,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,YLD hospitalised cases,South Africa,burden,hosp_YLD,NA,NA
+new data (hospital-based + HUS),hosp_YLD_averted,85,85,74,96,49,117,0.317,0.323,0.282,0.358,0.19,0.412,3,2,ZAF,MV,YLD hospitalised cases,South Africa,averted burden,hosp_YLD,263,263
+new data (hospital-based + HUS),non_hosp_YLD,1473,1466,1415,1524,1319,1667,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,YLD non-hospitalised cases,South Africa,burden,non_hosp_YLD,NA,NA
+new data (hospital-based + HUS),non_hosp_YLD_averted,212,204,177,238,129,347,0.143,0.14,0.122,0.161,0.09,0.216,3,2,ZAF,MV,YLD non-hospitalised cases,South Africa,averted burden,non_hosp_YLD,1456,1456
+new data (hospital-based + HUS),total_DALY,39038,39015,38107,39956,36348,41836,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,total DALY,South Africa,burden,total_DALY,NA,NA
+new data (hospital-based + HUS),total_DALY_averted,14550,15440,13723,16309,8593,17787,0.373,0.399,0.359,0.415,0.223,0.439,3,2,ZAF,MV,total DALY,South Africa,averted burden,total_DALY,38680,"38,680"
+new data (hospital-based + HUS),total_YLD,2074,2067,2007,2133,1895,2295,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,total YLD,South Africa,burden,total_YLD,NA,NA
+new data (hospital-based + HUS),total_YLD_averted,297,291,256,331,190,442,0.143,0.141,0.126,0.159,0.094,0.199,3,2,ZAF,MV,total YLD,South Africa,averted burden,total_YLD,2064,2064
+new data (hospital-based + HUS),total_YLL,36964,36937,36033,37880,34270,39773,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,total YLL,South Africa,burden,total_YLL,NA,NA
+new data (hospital-based + HUS),total_YLL_averted,14252,15144,13423,16013,8251,17487,0.385,0.413,0.371,0.43,0.226,0.456,3,2,ZAF,MV,total YLL,South Africa,averted burden,total_YLL,36630,"36,630"
+new data (hospital-based + HUS),hosp_cases,27396,27398,27004,27779,26296,28557,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,hospitalised cases,Kenya,burden,hosp_cases,NA,NA
+new data (hospital-based + HUS),hosp_cases_averted,9106,9132,8635,9592,7648,10421,0.332,0.334,0.317,0.349,0.283,0.375,6,2,KEN,mAb,hospitalised cases,Kenya,averted burden,hosp_cases,27380,"27,380"
+new data (hospital-based + HUS),hosp_SARI,27396,27398,27004,27779,26296,28557,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,hospitalised SARI,Kenya,burden,hosp_SARI,NA,NA
+new data (hospital-based + HUS),non_hosp_cases,2382171,2382806,2363222,2400752,2327430,2435366,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,non-hospitalised cases,Kenya,burden,non_hosp_cases,NA,NA
+new data (hospital-based + HUS),non_hosp_cases_averted,184469,184786,175800,193047,159002,208742,0.077,0.078,0.074,0.081,0.067,0.087,6,2,KEN,mAb,non-hospitalised cases,Kenya,averted burden,non_hosp_cases,2381000,"2,381,000"
+new data (hospital-based + HUS),non_hosp_SARI,84551,84532,83330,85782,80938,88192,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,non-hospitalised SARI,Kenya,burden,non_hosp_SARI,NA,NA
+new data (hospital-based + HUS),rsv_deaths,2064,2061,1991,2138,1861,2281,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,deaths,Kenya,burden,rsv_deaths,NA,NA
+new data (hospital-based + HUS),rsv_deaths_averted,538,535,497,579,422,666,0.261,0.26,0.244,0.277,0.212,0.309,6,2,KEN,mAb,deaths,Kenya,averted burden,rsv_deaths,2055,2055
+new data (hospital-based + HUS),hosp_cases,27396,27398,27004,27779,26296,28557,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,hospitalised cases,Kenya,burden,hosp_cases,NA,NA
+new data (hospital-based + HUS),hosp_cases_averted,7351,7593,6638,8263,4553,9020,0.268,0.278,0.243,0.301,0.168,0.323,3,2,KEN,MV,hospitalised cases,Kenya,averted burden,hosp_cases,27290,"27,290"
+new data (hospital-based + HUS),hosp_SARI,27396,27398,27004,27779,26296,28557,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,hospitalised SARI,Kenya,burden,hosp_SARI,NA,NA
+new data (hospital-based + HUS),non_hosp_cases,2382171,2382806,2363222,2400752,2327430,2435366,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,non-hospitalised cases,Kenya,burden,non_hosp_cases,NA,NA
+new data (hospital-based + HUS),non_hosp_cases_averted,75832,78954,67626,86317,43969,94652,0.032,0.033,0.028,0.036,0.018,0.04,3,2,KEN,MV,non-hospitalised cases,Kenya,averted burden,non_hosp_cases,2383000,"2,383,000"
+new data (hospital-based + HUS),non_hosp_SARI,84551,84532,83330,85782,80938,88192,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,non-hospitalised SARI,Kenya,burden,non_hosp_SARI,NA,NA
+new data (hospital-based + HUS),rsv_deaths,2064,2061,1991,2138,1861,2281,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,deaths,Kenya,burden,rsv_deaths,NA,NA
+new data (hospital-based + HUS),rsv_deaths_averted,450,467,398,515,230,602,0.218,0.228,0.197,0.248,0.112,0.279,3,2,KEN,MV,deaths,Kenya,averted burden,rsv_deaths,2044,2044
+new data (hospital-based + HUS),hosp_cases,41662,41635,40701,42578,38995,44597,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,hospitalised cases,South Africa,burden,hosp_cases,NA,NA
+new data (hospital-based + HUS),hosp_cases_averted,17751,17782,16827,18727,14872,20575,0.426,0.428,0.407,0.447,0.363,0.481,6,2,ZAF,mAb,hospitalised cases,South Africa,averted burden,hosp_cases,41590,"41,590"
+new data (hospital-based + HUS),hosp_SARI,41662,41635,40701,42578,38995,44597,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,hospitalised SARI,South Africa,burden,hosp_SARI,NA,NA
+new data (hospital-based + HUS),non_hosp_cases,963907,959423,932342,990377,885045,1069604,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,non-hospitalised cases,South Africa,burden,non_hosp_cases,NA,NA
+new data (hospital-based + HUS),non_hosp_cases_averted,136680,133022,119870,148312,99046,200668,0.141,0.139,0.127,0.152,0.107,0.191,6,2,ZAF,mAb,non-hospitalised cases,South Africa,averted burden,non_hosp_cases,958000,",958,000"
+new data (hospital-based + HUS),non_hosp_SARI,49441,49398,47686,51128,44545,54689,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,non-hospitalised SARI,South Africa,burden,non_hosp_SARI,NA,NA
+new data (hospital-based + HUS),rsv_deaths,590,589,575,604,547,634,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,deaths,South Africa,burden,rsv_deaths,NA,NA
+new data (hospital-based + HUS),rsv_deaths_averted,285,285,269,301,238,330,0.483,0.484,0.46,0.507,0.412,0.543,6,2,ZAF,mAb,deaths,South Africa,averted burden,rsv_deaths,589,589
+new data (hospital-based + HUS),hosp_cases,41662,41635,40701,42578,38995,44597,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,hospitalised cases,South Africa,burden,hosp_cases,NA,NA
+new data (hospital-based + HUS),hosp_cases_averted,13289,13677,11966,14888,8238,16661,0.319,0.33,0.287,0.357,0.201,0.391,3,2,ZAF,MV,hospitalised cases,South Africa,averted burden,hosp_cases,41480,"41,480"
+new data (hospital-based + HUS),hosp_SARI,41662,41635,40701,42578,38995,44597,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,hospitalised SARI,South Africa,burden,hosp_SARI,NA,NA
+new data (hospital-based + HUS),non_hosp_cases,963907,959423,932342,990377,885045,1069604,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,non-hospitalised cases,South Africa,burden,non_hosp_cases,NA,NA
+new data (hospital-based + HUS),non_hosp_cases_averted,105001,101387,83652,121128,49748,185505,0.108,0.106,0.088,0.125,0.053,0.179,3,2,ZAF,MV,non-hospitalised cases,South Africa,averted burden,non_hosp_cases,953700,",953,700"
+new data (hospital-based + HUS),non_hosp_SARI,49441,49398,47686,51128,44545,54689,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,non-hospitalised SARI,South Africa,burden,non_hosp_SARI,NA,NA
+new data (hospital-based + HUS),rsv_deaths,590,589,575,604,547,634,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,deaths,South Africa,burden,rsv_deaths,NA,NA
+new data (hospital-based + HUS),rsv_deaths_averted,228,242,214,256,132,279,0.386,0.414,0.372,0.43,0.227,0.456,3,2,ZAF,MV,deaths,South Africa,averted burden,rsv_deaths,584,584
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,admin. costs (US$),Kenya,burden,admin_cost,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp,7143812,7118319,6845481,7428302,6348225,8045358,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,hospitalisation costs (US$),Kenya,burden,cost_rsv_hosp,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp_averted,2374592,2367180,2220126,2532344,1932901,2824435,0.332,0.334,0.317,0.349,0.283,0.375,6,2,KEN,mAb,hospitalisation costs (US$),Kenya,averted burden,cost_rsv_hosp,7097000,"7,097,000"
+new data (hospital-based + HUS),cost_rsv_outpatient,23749210,23741160,23502743,23994595,23018440,24516342,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,outpatient costs (US$),Kenya,burden,cost_rsv_outpatient,NA,NA
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,1597232,1597022,1508273,1685575,1342113,1855903,0.067,0.067,0.064,0.071,0.057,0.078,6,2,KEN,mAb,outpatient costs (US$),Kenya,averted burden,cost_rsv_outpatient,23730000,"23,730,000"
+new data (hospital-based + HUS),total_medical_cost,30893022,30877018,30508358,31270840,29808926,32047003,NA,NA,NA,NA,NA,NA,6,2,KEN,mAb,total medical cost (US$),Kenya,burden,total_medical_cost,NA,NA
+new data (hospital-based + HUS),total_medical_cost_averted,3971824,3969764,3793382,4148862,3467820,4493427,0.129,0.129,0.124,0.134,0.114,0.143,6,2,KEN,mAb,total medical cost (US$),Kenya,averted burden,total_medical_cost,30880000,"30,880,000"
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,admin. costs (US$),Kenya,burden,admin_cost,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp,7143812,7118319,6845481,7428302,6348225,8045358,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,hospitalisation costs (US$),Kenya,burden,cost_rsv_hosp,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp_averted,1917197,1962967,1719769,2150804,1166719,2442332,0.268,0.278,0.243,0.301,0.168,0.323,3,2,KEN,MV,hospitalisation costs (US$),Kenya,averted burden,cost_rsv_hosp,7055000,"7,055,000"
+new data (hospital-based + HUS),cost_rsv_outpatient,23749210,23741160,23502743,23994595,23018440,24516342,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,outpatient costs (US$),Kenya,burden,cost_rsv_outpatient,NA,NA
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,533547,550162,477144,604090,302366,693007,0.022,0.023,0.02,0.025,0.013,0.029,3,2,KEN,MV,outpatient costs (US$),Kenya,averted burden,cost_rsv_outpatient,23730000,"23,730,000"
+new data (hospital-based + HUS),total_medical_cost,30893022,30877018,30508358,31270840,29808926,32047003,NA,NA,NA,NA,NA,NA,3,2,KEN,MV,total medical cost (US$),Kenya,burden,total_medical_cost,NA,NA
+new data (hospital-based + HUS),total_medical_cost_averted,2450744,2492784,2234238,2696562,1677817,3019329,0.079,0.081,0.073,0.087,0.055,0.096,3,2,KEN,MV,total medical cost (US$),Kenya,averted burden,total_medical_cost,30790000,"30,790,000"
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,admin. costs (US$),South Africa,burden,admin_cost,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp,34745039,34691004,33450023,35947194,31365524,38669232,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,hospitalisation costs (US$),South Africa,burden,cost_rsv_hosp,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp_averted,15828904,15795862,14678437,16939760,12595340,19303065,0.455,0.457,0.431,0.48,0.382,0.522,6,2,ZAF,mAb,hospitalisation costs (US$),South Africa,averted burden,cost_rsv_hosp,34600000,"34,600,000"
+new data (hospital-based + HUS),cost_rsv_outpatient,7873828,7823755,7542392,8134396,7083063,8994272,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,outpatient costs (US$),South Africa,burden,cost_rsv_outpatient,NA,NA
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,963029,918138,802138,1065176,624170,1596459,0.121,0.118,0.105,0.133,0.083,0.182,6,2,ZAF,mAb,outpatient costs (US$),South Africa,averted burden,cost_rsv_outpatient,7777000,"7,777,000"
+new data (hospital-based + HUS),total_medical_cost,42618867,42573354,41274537,43848658,39041636,46684626,NA,NA,NA,NA,NA,NA,6,2,ZAF,mAb,total medical cost (US$),South Africa,burden,total_medical_cost,NA,NA
+new data (hospital-based + HUS),total_medical_cost_averted,16791933,16761220,15618872,17919472,13474313,20262214,0.394,0.394,0.374,0.414,0.332,0.45,6,2,ZAF,mAb,total medical cost (US$),South Africa,averted burden,total_medical_cost,42500000,"42,500,000"
+new data (hospital-based + HUS),admin_cost,0,0,0,0,0,0,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,admin. costs (US$),South Africa,burden,admin_cost,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp,34745039,34691004,33450023,35947194,31365524,38669232,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,hospitalisation costs (US$),South Africa,burden,cost_rsv_hosp,NA,NA
+new data (hospital-based + HUS),cost_rsv_hosp_averted,13093947,13322112,11590999,14788596,7774087,17331612,0.376,0.387,0.339,0.423,0.23,0.47,3,2,ZAF,MV,hospitalisation costs (US$),South Africa,averted burden,cost_rsv_hosp,34400000,"34,400,000"
+new data (hospital-based + HUS),cost_rsv_outpatient,7873828,7823755,7542392,8134396,7083063,8994272,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,outpatient costs (US$),South Africa,burden,cost_rsv_outpatient,NA,NA
+new data (hospital-based + HUS),cost_rsv_outpatient_averted,728239,671676,533486,845653,305012,1522164,0.091,0.087,0.069,0.107,0.04,0.175,3,2,ZAF,MV,outpatient costs (US$),South Africa,averted burden,cost_rsv_outpatient,7753000,"7,753,000"
+new data (hospital-based + HUS),total_medical_cost,42618867,42573354,41274537,43848658,39041636,46684626,NA,NA,NA,NA,NA,NA,3,2,ZAF,MV,total medical cost (US$),South Africa,burden,total_medical_cost,NA,NA
+new data (hospital-based + HUS),total_medical_cost_averted,13822186,14036836,12291242,15556642,8423233,18176832,0.324,0.332,0.292,0.362,0.201,0.405,3,2,ZAF,MV,total medical cost (US$),South Africa,averted burden,total_medical_cost,42240000,"42,240,000"

@@ -20,7 +20,7 @@ lapply(here::here(c("functions/set_xlims_cea.R","functions/get_burden_flexible.R
 kenya_data_file_path<-"custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_updated_2021_08.csv"
 # "custom_input/ARI_SARI_Rates_2010_2018_tidydata.csv"
 ### PLOT Kenya incidence data with error bars
-bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
+kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
           fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="SARI")$rsv_incidence_ageinf) %>% 
   mutate(disease_type_medic_status=paste(disease_type, 
                                          ifelse(medically_attended,"medically attended","not attended")) ) %>%
@@ -32,9 +32,11 @@ bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="ARI")
   relocate(metric_per_popul,.after=value) %>% 
   group_by(age_in_months,disease_type_medic_status) %>% summarise(value=unique(value),
     CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),
-    metric_per_popul=unique(metric_per_popul)) %>%
+    metric_per_popul=unique(metric_per_popul))
 # PLOT
-ggplot(aes(x=age_in_months)) + 
+plot_flag=F
+if (plot_flag){
+ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) + 
   geom_bar(aes(y=value/metric_per_popul,fill=disease_type_medic_status),position="stack",stat="identity") +
   geom_errorbar(aes(ymin=CI_95_lower/metric_per_popul,ymax=CI_95_upper/metric_per_popul),size=0.4) +
   facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
@@ -51,9 +53,9 @@ ggplot(aes(x=age_in_months)) +
 # SAVE
 # ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_jul2021.png",
 #   width=35,height=22,units="cm")
-# ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_2021_08.png",
-#        width=42,height=22,units="cm")
-
+ggsave("output/cea_plots/kenya_ari_sari_burden_errorbars_grouped_updated_2021_08.png",
+        width=42,height=22,units="cm")
+}
 # LOAD data, fit (gamma) distrib to CI95 values, generate matrix with 5e3 columns, age groups from 0 to 59mts
 # Kenya
 ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
@@ -63,7 +65,7 @@ kenya_nonhosp_hosp_incid_ari_sari <- lapply(c("ARI","SARI"), function(x)
 names(kenya_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 ### deaths
 # Kenya deaths
-deaths_kenya <- read_csv("custom_input/deaths_kenya_tidy.csv") %>% 
+deaths_kenya <- read_csv("custom_input/deaths_kenya_tidy_adjusted_02_2022.csv") %>% 
   filter(variable=="rate" & !age_in_months %in% c("<12","12-23","<24","24-59","<60")) %>% 
   mutate(age_in_months=ifelse(age_in_months=="<1","0",age_in_months),freq=1) %>% 
   mutate(freq=ifelse(grepl('-',age_in_months),as.numeric(sapply(age_in_months, 
@@ -101,25 +103,27 @@ deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TID
   uncount(weights=freq, .id="n",.remove=F) %>% mutate(age_inf=as.numeric(age_in_months)+(n-1)) %>% 
   dplyr::select(!c(n,freq,age_in_months)) %>% relocate(age_inf,.before=value)
 # plot
-# ggplot(deaths_SA,aes(x=age_inf,y=value,color=in_hospital)) + geom_line() + geom_point() +
-#   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper,fill=in_hospital),alpha=0.2) + theme_bw() +
-#   scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) + scale_y_log10(breaks=2^(-3:7))
+ # ggplot(deaths_SA,aes(x=age_inf,y=value,color=in_hospital)) + geom_line() + geom_point() +
+ #   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper,fill=in_hospital),alpha=0.2) + theme_bw() +
+ #   scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) + scale_y_log10(breaks=2^(-3:7))
+# PLOT DEATHS
 deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% group_by(age_in_months_orig,in_hospital) %>%
             summarise(value=unique(value),CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),
             country="South Africa") %>% ungroup() %>% 
             mutate(age_in_months_orig=as.character(age_in_months_orig)),
-        deaths_kenya %>% group_by(age_in_months_orig,in_hospital) %>%
-            summarise(value=unique(value),CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),
-            country="Kenya")) %>%
+        deaths_kenya %>% group_by(age_in_months_orig,in_hospital) %>% summarise(value=unique(value),
+            CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),country="Kenya")) %>%
         mutate(age_in_months_orig=factor(age_in_months_orig,levels=unique(age_in_months_orig))) %>% 
         group_by(country,age_in_months_orig) %>% 
         mutate(CI_95_lower_sum=sum(CI_95_lower),CI_95_upper_sum=sum(CI_95_upper)) %>% 
   mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
 # 
+plot_flag=F
+if (plot_flag){
 p <- ggplot(deaths_data,aes(x=age_in_months_orig)) + 
-  geom_bar(aes(y=value,fill=in_hospital),stat="identity",position="dodge") +
-  geom_errorbar(aes(ymin=CI_95_lower,ymax=CI_95_upper,group=in_hospital),size=0.2,position="dodge") +
-  facet_wrap(~country,scales="free_y",nrow=2) + # 
+  geom_bar(aes(y=value,fill=in_hospital),stat="identity") + # ,position="dodge"
+  geom_errorbar(aes(ymin=CI_95_lower_sum,ymax=CI_95_upper_sum,group=in_hospital),size=0.2) + # ,position="dodge"
+  facet_wrap(~country,scales="free_y") + # ,nrow=2
   xlab("age (months)") + ylab("deaths per 100,000 person year") + labs(fill="") +
   scale_y_continuous(expand=expansion(0.01,0),breaks=(0:12)*25) + theme_bw() + standard_theme + 
   theme(axis.text.x=element_text(vjust=0.5,size=13),axis.text.y=element_text(size=13),
@@ -127,6 +131,9 @@ p <- ggplot(deaths_data,aes(x=age_in_months_orig)) +
     legend.position=c(0.88,0.925),axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)); p
 # save
 # ggsave("output/cea_plots/ALL_deaths_data_dodged_2rows.png",width=32,height=18,units="cm") #  # _yfixed
+# ggsave("output/cea_plots/ALL_deaths_data_stacked_2rows.png",width=32,height=18,units="cm") #  # _yfixed
+# ggsave("output/cea_plots/ALL_deaths_data_stacked.png",width=32,height=18,units="cm") #  # _yfixed
+}
 # fit distributions to CI95
 SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), 
         function(y_no) data.frame(age_inf=0:(nrow(deaths_SA)/2-1), 
@@ -163,7 +170,7 @@ SA_SARI_data <- fcn_load_s_afr(safr_data_path = "custom_input/s_afr_incidence_da
   relocate(age_inf,.before=Province) %>% relocate(Province,.after=disease_type_medic_status) %>% 
   relocate(year,.before=Province)
 # SA ILI data
-SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate.csv") %>% 
+SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>% 
   filter(!(grepl("<",agegroup) | agegroup %in% c("0-5m","6-11m","12-23m","24-59m","<5y"))) %>%
   mutate(agegroup_mts=agegroup,agegroup=gsub("m","",agegroup), freq=1) %>% 
   mutate(freq=ifelse(grepl('-',agegroup),as.numeric(sapply(agegroup,
@@ -178,6 +185,33 @@ SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate.csv") %>%
   relocate(disease_type_medic_status,.before=Province)
 # concatenate
 if (!exists("SA_data")){ SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+# PLOT South Africa incidence
+SA_ILI_SARI_rawdata <- bind_rows( 
+  distinct(fcn_load_s_afr(safr_data_path="custom_input/s_afr_incidence_data_rate.csv") %>%
+  mutate(disease_type_medic_status=paste(disease_type,
+                     ifelse(hospitalisation,"hospitalised","not hospitalised"))) %>% select(!age_inf)),
+read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>% 
+  filter(!(grepl("<",agegroup) | agegroup %in% c("0-5m","6-11m","12-23m","24-59m","<5y"))) %>%
+  rename(age=agegroup) %>% mutate(disease_type=ifelse(disease_type=="ILI","ARI",""),
+         disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
+                                          paste0("non medically attended ",disease_type))) ) %>%
+  mutate(age=gsub("m","",age),age=factor(age,levels=unique(age)))
+if (plot_flag){
+ggplot(SA_ILI_SARI_rawdata,aes(x=age)) + 
+  geom_bar(aes(y=rate/popul_denom,fill=disease_type_medic_status),position="stack",stat="identity") +
+  geom_errorbar(aes(ymin=rate_CI_lower/popul_denom,ymax=rate_CI_upper/popul_denom),size=0.4) +
+  facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
+  xlab("age (months)") + ylab("cases per person year") + labs(fill="")+
+  scale_y_continuous(expand=expansion(0.01,0)) +
+  theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5,size=13),
+                                      axis.text.y=element_text(size=13),legend.text=element_text(size=13),
+                                      legend.background=element_rect(fill=NA),legend.position=c(0.9,0.925),
+                                      axis.title.x=element_text(size=17),axis.title.y=element_text(size=17),
+                                      strip.text=element_text(size=14))
+ggsave("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921.png",
+       width=42,height=22,units="cm")
+}
 ## estimate from Kenya on % of ARI cases with fever (=ILI) -> take this percentage to expand ILI to ARI
 ILI_adjust_SA=TRUE
 if (ILI_adjust_SA) { # 
@@ -193,6 +227,7 @@ sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"),
       function(x) fcn_gen_nonhosp_hosp_incid_samples_SA(SA_data,diseasetype=x,
       n_iter=5e3, age_maxval=60,CI_intervals=ci95_range,randsampl_distrib_type="gamma"))
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
+
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # South Africa cost estimates
 
@@ -235,7 +270,7 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) 
 }
 # types: s_afr_outpatient_cost %>% select(c(name,cost_type,disease)) %>% distinct()
-# ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) + 
+# ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) +
 #   theme_bw()+ scale_x_log10() + scale_y_log10()
 
 # fit inpatient costs by gamma distributions
@@ -247,8 +282,7 @@ s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>%
   mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% 
   uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) %>%
-# adjustment for inflation and exch rate change
- mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj)
+ mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj) # adjustment for inflation and exch rate change
 ###
 if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
   sa_costs_unique <- s_afr_inpatient_cost %>% select(c(name,mean,LCI,UCI,cost_type,disease)) %>% distinct()
@@ -300,7 +334,7 @@ list_KEN_costs <- list(inpatient_household=bind_cols(
   kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable)), 
   t(sapply(1:nrow(ken_inpatient_rows), function(x)
   unlist(get.gamma.par(q=c(ken_inpatient_rows$ci95_low[x],ken_inpatient_rows$median[x],
-                  ken_inpatient_rows$ci95_up[x])/100,p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
+            ken_inpatient_rows$ci95_up[x])/100,p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
   inpatient_healthcare_system=KEN_outpatient_cost*in_outpatient_cost_ratio,outpatient_cost=KEN_outpatient_cost)
 # gamma can fit median and CIs well, but not so much the mean
 # gamma_pars_cost <- get.gamma.par(q=c(ken_inpatient_rows$ci95_low,ken_inpatient_rows$median,
@@ -371,7 +405,7 @@ pricelist=list("mat_vacc"=c(3,10,30),"mAb"=c(6,20,60))
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
 kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 # exponential waning model used for efficacy
-exp_wane_val<-FALSE
+exp_wane_val <- FALSE
 # parameters for exponential waning model
 g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 # distribution used to fit efficacy figures

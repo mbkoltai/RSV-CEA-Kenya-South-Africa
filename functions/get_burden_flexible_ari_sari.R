@@ -225,7 +225,8 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
     
     # EXP WANING
     if (exp_wane) {
-      if (dur_prot_infant>0) { print("using exponential waning for efficacy (mAb)") }
+      if (dur_prot_infant>0) { 
+        print("using exponential waning for efficacy (mAb)") }
         n_row <- nrow(iAgeEffectiveProtection_primary)
         # the exponential is fit so that the average *over time* corresponds to the mean estimate, 
         # so we multiply a matrix of 1s with the exponential curve
