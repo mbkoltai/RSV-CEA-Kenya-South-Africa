@@ -20,4 +20,4 @@ Incidence rates, efficacy estimates and some of the costs are generated from pro
 3) [exponential waning model](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_expwaning_effic_betafit): instead of an on-off model of protection, the efficacy wanes exponentially with a time-average equal to the reported mean efficacy over the period of protection
 
 
-Contact: lshmk17 at lshtm.ac.uk
+For questions or problems please contact [Mihaly Koltai](lshmk17 at lshtm.ac.uk)
