@@ -2,7 +2,9 @@
 # Script to reproduce analysis and figures in the article at [..TBC..]
 rm(list=ls())
 package_names <- c("tidyverse","rstudioapi","fitdistrplus","rstudioapi","matrixStats","ungeviz",
-  "stringi","rriskDistributions","cowplot","here","conflicted")
+  "stringi","cowplot","here","conflicted","rriskDistributions")
+# if rriskDistributions does not install, try installing the following libraries from the command line:
+# sudo apt install tk-dev ; sudo apt install tk-table
 lapply(package_names, function(x) if (!any(row.names(installed.packages()) %in% x)) {install.packages(x)})
 lapply(package_names,library,character.only=TRUE)
 currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
@@ -318,11 +320,10 @@ list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpat
 ### ### ### ### ### ### ### ### ### ### ### ### ###
 # KENYA costs
 kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
-# using inpatient/outpatient ratio in South Africa OR study from Malawi
+# using inpatient/outpatient ratio in South Africa OR study from Malawi, taken from:
+# https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7864144/
 in_outpatient_cost_ratio <- 45.37/9.26
-  # median(s_afr_inpatient_cost$mean[s_afr_inpatient_cost$name %in% "total"])/
-  #   median(s_afr_outpatient_cost$mean[s_afr_outpatient_cost$cost_type %in% "healthcare"])
-# we assume that inpatient/outpatient cost ratio is the same as in SA, and total cost
+# we assume that inpatient/outpatient cost ratio is s in Malawi, and total cost
 # (# inpatients)*outpatient_cost*SA_in_outpatient_ratio + (# outpatients)*outpatient_cost = total cost
 # outpatient_cost = (total cost)/[(# inpatients)*SA_in_outpatient_ratio + (# outpatients)]
 KEN_outpatient_cost <- kenya_costs$mean[kenya_costs$variable %in% "Total healthcare cost"]/
@@ -352,7 +353,7 @@ cntrs_cea=c("KEN","ZAF")
 # for mAb from NIRSEVIMAB (from https://www.nejm.org/doi/full/10.1056/nejmoa1913556)
 #
 # if this flag is set to TRUE, then using published efficacy data. if FALSE --> interim results
-flag_publ_effic <- FALSE
+flag_publ_effic <- TRUE
 if (flag_publ_effic){
 efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053,CI95_high=0.612),
                             hospit=c(mean=0.444,CI95_low=0.196,CI95_high=0.615),
@@ -419,8 +420,8 @@ subfolder_name <- paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdea
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
         ifelse(flag_publ_effic,"","_interim"),"/") 
 # ifelse(min(unlist(efficacy_figures))<=0,"_nonposit_effic","")
-### before starting loop need to create temp folder
-# source("init_cea_calc_parallel.R")
+### before starting loop for the FIRST TIME need to create temp folder (afterwards can comment out this line)
+source("init_cea_calc_parallel.R")
 ###
 # outputs to display
 all_cols=c("non_hosp_cases","hosp_cases",
