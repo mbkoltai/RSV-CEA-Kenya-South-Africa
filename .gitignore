@@ -11,7 +11,7 @@ RSV_main_PATH.R
 # other inputs not needed for final analysis
 # input/hosp_prob_ts_n5000.csv
 # input/hosp_prob_ts_n5000_pooled.csv
-input/incidence_lmic_ts_n5000.csv
+# input/incidence_lmic_ts_n5000.csv
 input/incidence_nokes2008.csv
 input/incidence_nokes2009.csv
 input/nokes2008_table.png
