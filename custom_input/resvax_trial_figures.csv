@@ -1,0 +1,61 @@
+period,RSV_LRTI_categ,vacc_status,n_cases,n_participants,rate,geogr
+0-30,medically-significant,vacc,20,2765,0.007233273056058,all
+30-60,medically-significant,vacc,19,2765,0.006871609403255,all
+60-90,medically-significant,vacc,32,2765,0.011573236889693,all
+0-90,medically-significant,vacc,41,2765,0.014828209764919,all
+90-120,medically-significant,vacc,11,2765,0.003978300180832,all
+120-150,medically-significant,vacc,5,2765,0.001808318264014,all
+150-180,medically-significant,vacc,4,2765,0.001446654611212,all
+90-180,medically-significant,vacc,20,2765,0.007233273056058,all
+0-30,medically-significant,unvacc,18,1430,0.012587412587413,all
+30-60,medically-significant,unvacc,13,1430,0.009090909090909,all
+60-90,medically-significant,unvacc,22,1430,0.015384615384615,all
+0-90,medically-significant,unvacc,35,1430,0.024475524475525,all
+90-120,medically-significant,unvacc,6,1430,0.004195804195804,all
+120-150,medically-significant,unvacc,2,1430,0.001398601398601,all
+150-180,medically-significant,unvacc,0,1430,0,all
+90-180,medically-significant,unvacc,8,1430,0.005594405594406,all
+0-90,hospitalisation,vacc,57,2765,0.020614828209765,all
+90-120,hospitalisation,vacc,7,2765,0.00253164556962,all
+120-150,hospitalisation,vacc,3,2765,0.001084990958409,all
+150-180,hospitalisation,vacc,1,2765,0.000361663652803,all
+90-180,hospitalisation,vacc,11,2765,0.003978300180832,all
+0-30,hospitalisation,vacc,20,2765,0.007233273056058,all
+30-60,hospitalisation,vacc,36,2765,0.013019891500904,all
+60-90,hospitalisation,vacc,31,2765,0.01121157323689,all
+0-90,hospitalisation,unvacc,53,1430,0.037062937062937,all
+90-120,hospitalisation,unvacc,3,1430,0.002097902097902,all
+120-150,hospitalisation,unvacc,1,1430,0.000699300699301,all
+150-180,hospitalisation,unvacc,2,1430,0.001398601398601,all
+90-180,hospitalisation,unvacc,6,1430,0.004195804195804,all
+0-30,hospitalisation,unvacc,25,1430,0.017482517482518,all
+30-60,hospitalisation,unvacc,24,1430,0.016783216783217,all
+60-90,hospitalisation,unvacc,23,1430,0.016083916083916,all
+0-90,severe hypoxemia,vacc,14,2765,0.005063291139241,all
+90-120,severe hypoxemia,vacc,2,2765,0.000723327305606,all
+120-150,severe hypoxemia,vacc,1,2765,0.000361663652803,all
+150-180,severe hypoxemia,vacc,2,2765,0.000723327305606,all
+90-180,severe hypoxemia,vacc,5,2765,0.001808318264014,all
+0-30,severe hypoxemia,vacc,15,2765,0.005424954792043,all
+30-60,severe hypoxemia,vacc,13,2765,0.004701627486438,all
+60-90,severe hypoxemia,vacc,16,2765,0.005786618444846,all
+0-90,severe hypoxemia,unvacc,14,1430,0.00979020979021,all
+90-120,severe hypoxemia,unvacc,2,1430,0.001398601398601,all
+120-150,severe hypoxemia,unvacc,1,1430,0.000699300699301,all
+150-180,severe hypoxemia,unvacc,0,1430,0,all
+90-180,severe hypoxemia,unvacc,3,1430,0.002097902097902,all
+0-30,severe hypoxemia,unvacc,12,1430,0.008391608391608,all
+30-60,severe hypoxemia,unvacc,9,1430,0.006293706293706,all
+60-90,severe hypoxemia,unvacc,12,1430,0.008391608391608,all
+0-90,medically-significant,vacc,27,1686,0.016014234875445,LMIC
+90-180,medically-significant,vacc,10,1686,0.005931198102017,LMIC
+0-90,medically-significant,unvacc,23,854,0.026932084309134,LMIC
+90-180,medically-significant,unvacc,5,854,0.005854800936768,LMIC
+0-90,hospitalisation,vacc,38,1686,0.022538552787663,LMIC
+90-180,hospitalisation,vacc,8,1686,0.004744958481613,LMIC
+0-90,hospitalisation,unvacc,42,854,0.049180327868853,LMIC
+90-180,hospitalisation,unvacc,5,854,0.005854800936768,LMIC
+0-90,severe hypoxemia,vacc,9,1686,0.005338078291815,LMIC
+90-180,severe hypoxemia,vacc,3,1686,0.001779359430605,LMIC
+0-90,severe hypoxemia,unvacc,9,854,0.010538641686183,LMIC
+90-180,severe hypoxemia,unvacc,2,854,0.002341920374707,LMIC

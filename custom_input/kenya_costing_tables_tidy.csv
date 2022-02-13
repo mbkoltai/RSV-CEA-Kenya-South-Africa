@@ -1,0 +1,35 @@
+variable,Age in months,site,mean,median,ci95_low,ci95_up,currency
+Costs incurred prior to hospitalization,NA,Kilifi,17.83,6.7,8.8,26.86,USD
+Costs incurred during hospitalization,NA,Kilifi,46.88,37.05,37.69,56.07,USD
+Costs incurred after hospitalization,NA,Kilifi,17.91,16.74,4.42,31.4,USD
+Total patient cost,NA,Kilifi,66.52,49.74,53.5,79.55,USD
+Unit cost/LRTI episode,NA,Kilifi,7.44,NA,NA,NA,USD
+Costs incurred prior to hospitalization,NA,Siaya,34.675,14.23,12.86,56.49,USD
+Costs incurred during hospitalization,NA,Siaya,138.51,122.7,106.54,170.48,USD
+Costs incurred after hospitalization,NA,Siaya,15.35,4.61,0,34.46,USD
+Total patient cost,NA,Siaya,172.43,157.79,130.46,214.39,USD
+Unit cost/LRTI episode,NA,Siaya,44.13,NA,NA,NA,USD
+Costs incurred prior to hospitalization,0-2,Kilifi,10.21,NA,6.56,13.86,USD
+Costs incurred prior to hospitalization,3-5,Kilifi,23.52,NA,0.81,46.22,USD
+Costs incurred prior to hospitalization,6-11,Kilifi,26.52,NA,13.73,39.31,USD
+Costs incurred prior to hospitalization,12-23,Kilifi,15.52,NA,7.07,23.98,USD
+Costs incurred prior to hospitalization,24-59,Kilifi,15.02,NA,5.55,24.48,USD
+Costs incurred during hospitalization,0-2,Kilifi,40.69,NA,34.79,46.58,USD
+Costs incurred during hospitalization,3-5,Kilifi,36.54,NA,30.83,42.25,USD
+Costs incurred during hospitalization,6-11,Kilifi,42.48,NA,29.77,55.2,USD
+Costs incurred during hospitalization,12-23,Kilifi,31.2,NA,24.22,38.18,USD
+Costs incurred during hospitalization,24-59,Kilifi,0,NA,NA,NA,USD
+Costs incurred after hospitalization,0-2,Kilifi,2.74,NA,0,14.33,USD
+Costs incurred after hospitalization,3-5,Kilifi,6.84,NA,NA,NA,USD
+Costs incurred after hospitalization,6-11,Kilifi,20.59,NA,0,47.11,USD
+Costs incurred after hospitalization,12-23,Kilifi,5.47,NA,NA,NA,USD
+Costs incurred after hospitalization,24-59,Kilifi,0,NA,NA,NA,USD
+Total number of inpatients in last 12 months (any illness),NA,Siaya,7330,NA,NA,NA,NA
+Total number of outpatients in last 12 months (any illness),NA,Siaya,62604,NA,NA,NA,NA
+Number of LRTI inpatients at the facility (<5yo) in the last 12 months,NA,Siaya,103,NA,NA,NA,NA
+Number of LRTI bed days at the facility (<5yo) in the last 12 months,NA,Siaya,530,NA,NA,NA,NA
+Number of LRTI outpatients at the facility (<5yo) in the last 12 months,NA,Siaya,74,NA,NA,NA,NA
+Total healthcare cost,NA,Siaya,2060208,NA,NA,NA,USD
+Laboratory/clinical procedures and supplies,NA,Siaya,156048,NA,NA,NA,USD
+Administrative costs,NA,Siaya,485599,NA,NA,NA,USD
+Staff,NA,Siaya,1418562,NA,NA,NA,USD

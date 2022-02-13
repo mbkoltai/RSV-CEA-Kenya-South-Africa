@@ -1,0 +1,121 @@
+age group in months,Number,lci,UCI,in_hospital,variable,metric_per_popul
+<1,81,56,108,in hospital deaths,number,NA
+2,79,63,99,in hospital deaths,number,NA
+3,56,43,72,in hospital deaths,number,NA
+4,50,37,65,in hospital deaths,number,NA
+5,47,34,63,in hospital deaths,number,NA
+6,30,21,42,in hospital deaths,number,NA
+7,29,21,40,in hospital deaths,number,NA
+8,20,13,29,in hospital deaths,number,NA
+9,13,8,19,in hospital deaths,number,NA
+10,11,6,18,in hospital deaths,number,NA
+11,11,6,17,in hospital deaths,number,NA
+12-14,10,6,16,in hospital deaths,number,NA
+15-17,10,7,14,in hospital deaths,number,NA
+18-20,7,5,10,in hospital deaths,number,NA
+21-23,5,3,8,in hospital deaths,number,NA
+24-35,7,3,12,in hospital deaths,number,NA
+36-47,7,5,10,in hospital deaths,number,NA
+48-59,3,2,6,in hospital deaths,number,NA
+<1 year,428,308,572,in hospital deaths,number,NA
+<5 years,477,337,648,in hospital deaths,number,NA
+<1,82.0,56.9,109.8,in hospital deaths,rate ,100000
+2,82.4,65.3,103.2,in hospital deaths,rate ,100000
+3,58.6,45.2,75.0,in hospital deaths,rate ,100000
+4,51.9,39.0,67.6,in hospital deaths,rate ,100000
+5,49.3,35.6,66.1,in hospital deaths,rate ,100000
+6,31.3,21.9,43.8,in hospital deaths,rate ,100000
+7,30.8,21.7,41.9,in hospital deaths,rate ,100000
+8,20.8,13.3,30.3,in hospital deaths,rate ,100000
+9,14.0,8.6,20.4,in hospital deaths,rate ,100000
+10,11.8,6.5,18.9,in hospital deaths,rate ,100000
+11,11.6,6.6,17.9,in hospital deaths,rate ,100000
+12-14,10.8,6.0,17.2,in hospital deaths,rate ,100000
+15-17,3.6,2.5,5.1,in hospital deaths,rate ,100000
+18-20,2.5,1.6,3.6,in hospital deaths,rate ,100000
+21-23,1.8,1.0,2.8,in hospital deaths,rate ,100000
+24-35,2.5,1.1,4.2,in hospital deaths,rate ,100000
+36-47,0.6,0.4,0.9,in hospital deaths,rate ,100000
+48-59,0.3,0.1,0.5,in hospital deaths,rate ,100000
+<1 year,38.1,29.5,57.0,in hospital deaths,rate ,100000
+<5 years,8.6,6.5,12.9,in hospital deaths,rate ,100000
+<1,28,18,34,out of hospital deaths,number,NA
+2,28,20,31,out of hospital deaths,number,NA
+3,20,14,23,out of hospital deaths,number,NA
+4,17,12,20,out of hospital deaths,number,NA
+5,17,11,20,out of hospital deaths,number,NA
+6,11,7,13,out of hospital deaths,number,NA
+7,10,7,13,out of hospital deaths,number,NA
+8,7,4,9,out of hospital deaths,number,NA
+9,5,3,6,out of hospital deaths,number,NA
+10,4,2,6,out of hospital deaths,number,NA
+11,4,2,5,out of hospital deaths,number,NA
+12-14,4,2,5,out of hospital deaths,number,NA
+15-17,4,2,5,out of hospital deaths,number,NA
+18-20,2,1,3,out of hospital deaths,number,NA
+21-23,2,1,2,out of hospital deaths,number,NA
+24-35,2,1,4,out of hospital deaths,number,NA
+36-47,2,1,3,out of hospital deaths,number,NA
+48-59,1,0,2,out of hospital deaths,number,NA
+<1 year,150,97,181,out of hospital deaths,number,NA
+<5 years,168,107,205,out of hospital deaths,number,NA
+<1,28.8,18.0,34.7,out of hospital deaths,rate ,100000
+2,28.9,20.6,32.6,out of hospital deaths,rate ,100000
+3,20.6,14.3,23.7,out of hospital deaths,rate ,100000
+4,18.2,12.3,21.4,out of hospital deaths,rate ,100000
+5,17.3,11.2,20.9,out of hospital deaths,rate ,100000
+6,11.0,6.9,13.8,out of hospital deaths,rate ,100000
+7,10.8,6.9,13.2,out of hospital deaths,rate ,100000
+8,7.3,4.2,9.6,out of hospital deaths,rate ,100000
+9,4.9,2.7,6.4,out of hospital deaths,rate ,100000
+10,4.2,2.1,6.0,out of hospital deaths,rate ,100000
+11,4.1,2.1,5.7,out of hospital deaths,rate ,100000
+12-14,3.8,1.9,5.4,out of hospital deaths,rate ,100000
+15-17,1.3,0.8,1.6,out of hospital deaths,rate ,100000
+18-20,0.9,0.5,1.1,out of hospital deaths,rate ,100000
+21-23,0.6,0.3,0.9,out of hospital deaths,rate ,100000
+24-35,0.9,0.4,1.3,out of hospital deaths,rate ,100000
+36-47,0.2,0.1,0.3,out of hospital deaths,rate ,100000
+48-59,0.1,0.0,0.2,out of hospital deaths,rate ,100000
+<1 year,13.4,9.3,18.0,out of hospital deaths,rate ,100000
+<5 years,3.0,2.1,4.1,out of hospital deaths,rate ,100000
+<1,28.8,18.0,34.7,total,number,NA
+2,28.9,20.6,32.6,total,number,NA
+3,20.6,14.3,23.7,total,number,NA
+4,18.2,12.3,21.4,total,number,NA
+5,17.3,11.2,20.9,total,number,NA
+6,11.0,6.9,13.8,total,number,NA
+7,10.8,6.9,13.2,total,number,NA
+8,7.3,4.2,9.6,total,number,NA
+9,4.9,2.7,6.4,total,number,NA
+10,4.2,2.1,6.0,total,number,NA
+11,4.1,2.1,5.7,total,number,NA
+12-14,3.8,1.9,5.4,total,number,NA
+15-17,1.3,0.8,1.6,total,number,NA
+18-20,0.9,0.5,1.1,total,number,NA
+21-23,0.6,0.3,0.9,total,number,NA
+24-35,0.9,0.4,1.3,total,number,NA
+36-47,0.2,0.1,0.3,total,number,NA
+48-59,0.1,0.0,0.2,total,number,NA
+<1 year,13.4,9.3,18.0,total,number,NA
+<5 years,3.0,2.1,4.1,total,number,NA
+<1,110.8,74.8,144.5,total,rate ,100000
+2,111.3,86.0,135.8,total,rate ,100000
+3,79.1,59.5,98.7,total,rate ,100000
+4,70.2,51.3,89.0,total,rate ,100000
+5,66.6,46.8,86.9,total,rate ,100000
+6,42.4,28.8,57.6,total,rate ,100000
+7,41.6,28.6,55.2,total,rate ,100000
+8,28.1,17.6,39.9,total,rate ,100000
+9,18.9,11.3,26.8,total,rate ,100000
+10,16.0,8.6,24.8,total,rate ,100000
+11,15.7,8.6,23.6,total,rate ,100000
+12-14,14.6,7.9,22.7,total,rate ,100000
+15-17,4.8,3.2,6.7,total,rate ,100000
+18-20,3.4,2.1,4.8,total,rate ,100000
+21-23,2.5,1.3,3.7,total,rate ,100000
+24-35,3.4,1.5,5.5,total,rate ,100000
+36-47,0.8,0.5,1.2,total,rate ,100000
+48-59,0.4,0.2,0.7,total,rate ,100000
+<1 year,51.5,38.9,75.0,total,rate ,100000
+<5 years,11.6,8.6,16.9,total,rate ,100000

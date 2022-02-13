@@ -1,0 +1,54 @@
+age,name,Mean cost per illness episode (USD),LCI,UCI,cost_type,disease
+0,PDE,133.9,97.8,170.1,healthcare,inpatient
+1,PDE,152.6,111.4,193.8,healthcare,inpatient
+2,PDE,161.1,117.6,204.6,healthcare,inpatient
+3,PDE,143.6,104.8,182.3,healthcare,inpatient
+4,PDE,132.3,96.6,168,healthcare,inpatient
+5,PDE,128.1,93.5,162.7,healthcare,inpatient
+6,PDE,127.4,93,161.8,healthcare,inpatient
+7,PDE,133.3,97.3,169.3,healthcare,inpatient
+8,PDE,150.4,109.8,191.1,healthcare,inpatient
+9,PDE,134.9,98.4,171.3,healthcare,inpatient
+10,PDE,127.6,93.2,162.1,healthcare,inpatient
+11,PDE,129.6,94.6,164.6,healthcare,inpatient
+12-14,PDE,177,129.2,224.8,healthcare,inpatient
+15-17,PDE,130.1,95,165.2,healthcare,inpatient
+18-20,PDE,161.5,117.9,205.1,healthcare,inpatient
+21-23,PDE,184.4,134.6,234.1,healthcare,inpatient
+24-35,PDE,130.2,95,165.4,healthcare,inpatient
+36-47,PDE,181.7,132.6,230.7,healthcare,inpatient
+48-59,PDE,129.8,94.7,164.8,healthcare,inpatient
+0,total,1004.5,733.3,1275.7,healthcare,inpatient
+1,total,932.3,680.6,1184.1,healthcare,inpatient
+2,total,821.8,599.9,1043.7,healthcare,inpatient
+3,total,654.6,477.9,831.3,healthcare,inpatient
+4,total,617.8,451,784.5,healthcare,inpatient
+5,total,640.4,467.5,813.3,healthcare,inpatient
+6,total,675.2,492.9,857.5,healthcare,inpatient
+7,total,573.3,418.5,728.1,healthcare,inpatient
+8,total,677,494.2,859.8,healthcare,inpatient
+9,total,876.5,639.9,1113.2,healthcare,inpatient
+10,total,650.8,475.1,826.5,healthcare,inpatient
+11,total,674,492,855.9,healthcare,inpatient
+12-14,total,867.5,633.2,1101.7,healthcare,inpatient
+15-17,total,559.3,408.3,710.3,healthcare,inpatient
+18-20,total,839.9,613.2,1066.7,healthcare,inpatient
+21-23,total,1032.5,753.7,1311.2,healthcare,inpatient
+24-35,total,677,494.2,859.8,healthcare,inpatient
+36-47,total,635.8,464.2,807.5,healthcare,inpatient
+48-59,total,661.9,483.2,840.7,healthcare,inpatient
+0-2,out-of-pocket,10.66,1.81,19.48,caregiver,inpatient
+3-5,out-of-pocket,11.49,3.41,19.57,caregiver,inpatient
+6-8,out-of-pocket,4.42,0.31,8.53,caregiver,inpatient
+9-11,out-of-pocket,11.73,1.07,22.39,caregiver,inpatient
+12-59,out-of-pocket,22.5,4.47,45.97,caregiver,inpatient
+0-2,indirect cost,66.89,46.82,86.96,caregiver,inpatient
+3-5,indirect cost,50.72,35.5,65.94,caregiver,inpatient
+6-8,indirect cost,46.85,32.8,60.91,caregiver,inpatient
+9-11,indirect cost,60.46,42.32,78.6,caregiver,inpatient
+12-59,indirect cost,44.27,30.99,57.55,caregiver,inpatient
+0-5,out-of-pocket,0.57,0,2.16,caregiver,outpatient
+6-8,out-of-pocket,1.28,0,3.63,caregiver,outpatient
+9-11,out-of-pocket,0.71,0,9.79,caregiver,outpatient
+12-59,out-of-pocket,0.86,0.31,5.1,caregiver,outpatient
+0-59,indirect cost,10.71,7.5,13.92,caregiver,outpatient
