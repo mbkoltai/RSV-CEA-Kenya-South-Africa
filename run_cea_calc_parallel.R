@@ -17,7 +17,7 @@ lapply(here::here(c("functions/set_xlims_cea.R","functions/get_burden_flexible.R
 # load data
 ### Kenya incidence data -------------------------
 # hosp rate (p): p/(1-p) ~ norm
-kenya_data_file_path<-"custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_updated_2021_08.csv"
+kenya_data_file_path <- "custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_updated_2021_08.csv"
 # "custom_input/ARI_SARI_Rates_2010_2018_tidydata.csv"
 ### PLOT Kenya incidence data with error bars
 kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
