@@ -2,8 +2,7 @@
 
 These are files to perform cost-effectiveness analysis of public health interventions against RSV disease in Kenya and South Africa, using data provided by partners in these two countries. The intervention is either based on maternal vaccination (MV) or on monoclonal antibodies (mAB).
 
-Data files are in the folder *custom_input*.  
-**The file to run the analysis and reproduce the results and figures in the manuscript is [run_cea_calc_parallel.R](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/blob/master/run_cea_calc_parallel.R).**
+**The file to run the analysis and reproduce the results and figures in the manuscript is [run_cea_calc_parallel.R](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/blob/master/run_cea_calc_parallel.R).** Data files are in the folder *custom_input*.
 
 The code is based on the [previously developed R package McMarcel](https://zenodo.org/record/3663447), but it was modified to include:
 1) user-provided incidence data
