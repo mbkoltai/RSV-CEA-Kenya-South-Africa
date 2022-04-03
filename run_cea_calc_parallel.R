@@ -2,14 +2,15 @@
 # Script to reproduce analysis and figures in the article at [..TBC..]
 rm(list=ls())
 package_names <- c("tidyverse","rstudioapi","fitdistrplus","rstudioapi","matrixStats","ungeviz",
-  "stringi","cowplot","here","conflicted","rriskDistributions")
+  "stringi","cowplot","here","conflicted","rriskDistributions","rgdal")
 # if rriskDistributions does not install, try installing the following libraries from the command line:
-# sudo apt install tk-dev ; sudo apt install tk-table
+# sudo apt install tk-dev tk-table
 lapply(package_names, function(x) if (!any(row.names(installed.packages()) %in% x)) {install.packages(x)})
-lapply(package_names,library,character.only=TRUE)
-currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
+lapply(package_names[!package_names %in% "here"],library,character.only=TRUE)
+currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path); library(here)
 conflict_prefer("select", "dplyr"); conflict_prefer("filter", "dplyr")
 num_sim <- 5000; source(here::here('functions/RSV_load_all.R'))
+# if rgdal doesn't load/install, try: sudo apt install libgdal-dev
 # LOAD FUNCTIONs required for analysis 
 source(here::here('functions/load_config_pars.R'))
 lapply(here::here(c("functions/set_xlims_cea.R","functions/get_burden_flexible.R",
@@ -38,12 +39,18 @@ kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_
 # PLOT
 plot_flag=F
 if (plot_flag){
+popul_denom <- 1e5 # per person or per 100K?
+# helper df to have axis limits fixed per row
+df2 <- data.frame(disease_type_medic_status=unique(kenya_ari_sari_incidence$disease_type_medic_status),age_in_months=1,
+                  value=c(rep(0.55,2),rep(0.125,2))*popul_denom)
+
 ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) + 
-  geom_bar(aes(y=value/metric_per_popul,fill=disease_type_medic_status),position="stack",stat="identity") +
-  geom_errorbar(aes(ymin=CI_95_lower/metric_per_popul,ymax=CI_95_upper/metric_per_popul),size=0.4) +
-  facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
-  xlab("age (months)") + ylab("cases per person year") + labs(fill="")+
-  scale_y_continuous(expand=expansion(0.01,0)) +
+  geom_bar(aes(y=popul_denom*value/metric_per_popul,fill=disease_type_medic_status),position="stack",stat="identity") +
+  geom_errorbar(aes(ymin=popul_denom*CI_95_lower/metric_per_popul,ymax=popul_denom*CI_95_upper/metric_per_popul),size=0.4) +
+  geom_point(data=df2,aes(x=age_in_months,y=value),color="white") +
+  facet_wrap(~disease_type_medic_status,nrow=2,scales="free") + # 
+  xlab("age (months)") + ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""), "person year",ifelse(popul_denom>1,"s",""))) +
+  labs(fill="")+ scale_y_continuous(expand=expansion(0.01,0)) +
   theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5,size=13),
                                       axis.text.y=element_text(size=13),legend.text=element_text(size=13),
                                       legend.background=element_rect(fill=NA),legend.position=c(0.92,0.925),
@@ -55,7 +62,7 @@ ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) +
 # SAVE
 # ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_jul2021.png",
 #   width=35,height=22,units="cm")
-ggsave("output/cea_plots/kenya_ari_sari_burden_errorbars_grouped_updated_2021_08.png",
+ggsave(paste0("output/cea_plots/kenya_ari_sari_burden_errorbars_grouped_",ifelse(popul_denom>1,"per100k",""),".png"),
         width=42,height=22,units="cm")
 }
 # LOAD data, fit (gamma) distrib to CI95 values, generate matrix with 5e3 columns, age groups from 0 to 59mts
@@ -125,7 +132,7 @@ if (plot_flag){
 p <- ggplot(deaths_data,aes(x=age_in_months_orig)) + 
   geom_bar(aes(y=value,fill=in_hospital),stat="identity") + # ,position="dodge"
   geom_errorbar(aes(ymin=CI_95_lower_sum,ymax=CI_95_upper_sum,group=in_hospital),size=0.2) + # ,position="dodge"
-  facet_wrap(~country,scales="free_y") + # ,nrow=2
+  facet_wrap(~country) + # ,nrow=2 # ,scales="free_y"
   xlab("age (months)") + ylab("deaths per 100,000 person year") + labs(fill="") +
   scale_y_continuous(expand=expansion(0.01,0),breaks=(0:12)*25) + theme_bw() + standard_theme + 
   theme(axis.text.x=element_text(vjust=0.5,size=13),axis.text.y=element_text(size=13),
@@ -135,7 +142,14 @@ p <- ggplot(deaths_data,aes(x=age_in_months_orig)) +
 # ggsave("output/cea_plots/ALL_deaths_data_dodged_2rows.png",width=32,height=18,units="cm") #  # _yfixed
 # ggsave("output/cea_plots/ALL_deaths_data_stacked_2rows.png",width=32,height=18,units="cm") #  # _yfixed
 # ggsave("output/cea_plots/ALL_deaths_data_stacked.png",width=32,height=18,units="cm") #  # _yfixed
+# ggsave("output/cea_plots/ALL_deaths_data_stacked_yfixed.png",width=32,height=18,units="cm") #  # 
 }
+
+# concentration of deaths in first X months (this is a bit crude bc assuming age group size = duration)
+# deaths_data %>% mutate(before_5_mts=as.numeric(age_in_months_orig)<=5,
+#                        size_agegr=ifelse(as.numeric(age_in_months_orig)<=12,1,ifelse(as.numeric(age_in_months_orig)<=16,2,12))) %>%
+#   group_by(country,before_5_mts) %>%  summarise(value=sum(value*size_agegr))
+
 # fit distributions to CI95
 SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), 
         function(y_no) data.frame(age_inf=0:(nrow(deaths_SA)/2-1), 
@@ -200,18 +214,28 @@ read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>%
                                           paste0("non medically attended ",disease_type))) ) %>%
   mutate(age=gsub("m","",age),age=factor(age,levels=unique(age)))
 if (plot_flag){
+  
+  plot_popul_denom <- 1e5 # per person or per 100K?
+  # helper df to have axis limits fixed per row
+  df2 <- data.frame(disease_type_medic_status=unique(SA_ILI_SARI_rawdata$disease_type_medic_status),age=1/2,
+                    rate=c(rep(0.09,2),rep(0.32,2))*plot_popul_denom)
+# create plot
 ggplot(SA_ILI_SARI_rawdata,aes(x=age)) + 
-  geom_bar(aes(y=rate/popul_denom,fill=disease_type_medic_status),position="stack",stat="identity") +
-  geom_errorbar(aes(ymin=rate_CI_lower/popul_denom,ymax=rate_CI_upper/popul_denom),size=0.4) +
+  geom_bar(aes(y=plot_popul_denom*rate/popul_denom,fill=disease_type_medic_status),position="stack",stat="identity") +
+  geom_errorbar(aes(ymin=plot_popul_denom*rate_CI_lower/popul_denom,ymax=plot_popul_denom*rate_CI_upper/popul_denom),size=0.4) +
+  geom_point(data=df2,aes(x=age,y=rate),color="white") +
   facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
-  xlab("age (months)") + ylab("cases per person year") + labs(fill="")+
-  scale_y_continuous(expand=expansion(0.01,0)) +
+  xlab("age (months)") + ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""), "person year",ifelse(popul_denom>1,"s",""))) +
+  labs(fill="") + scale_y_continuous(expand=expansion(0.01,0)) +
   theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5,size=13),
                                       axis.text.y=element_text(size=13),legend.text=element_text(size=13),
                                       legend.background=element_rect(fill=NA),legend.position=c(0.9,0.925),
                                       axis.title.x=element_text(size=17),axis.title.y=element_text(size=17),
                                       strip.text=element_text(size=14))
-ggsave("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921.png",
+# SAVE
+# paste0("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921",ifelse(popul_denom>1,"per100k",""),".png")
+# "output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921.png"
+ggsave(paste0("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921",ifelse(popul_denom>1,"per100k",""),".png"),
        width=42,height=22,units="cm")
 }
 ## estimate from Kenya on % of ARI cases with fever (=ILI) -> take this percentage to expand ILI to ARI
@@ -251,11 +275,14 @@ s_afr_outpatient_cost <- bind_rows(data.frame(age="0-59",mean=25,LCI=18.3,UCI=31
 if (!any(grepl("shape",colnames(s_afr_outpatient_cost)))) {
   # colbind to original dataframe
 for (k_row in 1:nrow(s_afr_outpatient_cost)) {
-  gamma_fit <- c(get.gamma.par(p=ci95_range,q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row]),
+    gamma_fit <- c(get.gamma.par(p=ci95_range,q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row]),
                              show.output=F,plot=F),scaling=1)
-  if (any(is.na(gamma_fit))) { gamma_fit <- c(get.gamma.par(p=ci95_range,
+  # if fitting fails, this can be overcome by dividin the costs by 100 and then scaling the fit 100x afterwards
+  if (any(is.na(gamma_fit))) { 
+    gamma_fit <- c(get.gamma.par(p=ci95_range,
                       q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row])/100,
-                                                show.output=F,plot=F),scaling=100) }
+                                                show.output=F,plot=F),scaling=100) 
+    }
   sim_gamma <- rgamma(n=1e4,shape=gamma_fit["shape"],rate=gamma_fit["rate"])*gamma_fit["scaling"]
   gamma_fit <- c(gamma_fit,sim_mean=mean(sim_gamma),
                      sim_ci95_low=as.numeric(quantile(sim_gamma,probs=ci95_range[1])),
@@ -278,7 +305,8 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
 # fit inpatient costs by gamma distributions
 # inpatient
 s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>% 
-  filter(!name %in% "PDE" & grepl("inpatient",disease)) %>% rename(mean=`Mean cost per illness episode (USD)`) %>%
+  filter(!name %in% "PDE" & grepl("inpatient",disease)) %>% 
+  rename(mean=`Mean cost per illness episode (USD)`) %>%
   mutate(freq=ifelse(grepl('-',age),
                      as.numeric(sapply(age, function(x) diff(as.numeric(unlist(strsplit(x,"-"))))))+1,1)) %>% 
   mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% 
@@ -323,7 +351,7 @@ kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
 # using inpatient/outpatient ratio in South Africa OR study from Malawi, taken from:
 # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7864144/
 in_outpatient_cost_ratio <- 45.37/9.26
-# we assume that inpatient/outpatient cost ratio is s in Malawi, and total cost
+# we assume that inpatient/outpatient cost ratio is same as in Malawi, and total cost
 # (# inpatients)*outpatient_cost*SA_in_outpatient_ratio + (# outpatients)*outpatient_cost = total cost
 # outpatient_cost = (total cost)/[(# inpatients)*SA_in_outpatient_ratio + (# outpatients)]
 KEN_outpatient_cost <- kenya_costs$mean[kenya_costs$variable %in% "Total healthcare cost"]/
@@ -395,7 +423,7 @@ list_effic_betafit$mat_vacc$severe["shift_fit"] <- list_effic_betafit$mat_vacc$s
 sim_beta <- (rbeta(n=1e4,shape1=list_effic_betafit$mat_vacc$severe["shape1"],
               shape2=list_effic_betafit$mat_vacc$severe["shape2"])*list_effic_betafit$mat_vacc$severe["scale_fit"])+
   list_effic_betafit$mat_vacc$severe["shift_fit"]
-c(mean(sim_beta),quantile(sim_beta,probs = ci95_range))
+c(mean(sim_beta),quantile(sim_beta,probs=ci95_range))
 }
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 

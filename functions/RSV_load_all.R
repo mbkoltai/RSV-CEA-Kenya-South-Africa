@@ -39,8 +39,7 @@ source('functions/MISC_parallel_admin.R')
 # ADDITIONAL:
 # doParallel    to run foreach loops in parallel
 
-all_packages <- c('wpp2017','countrycode','scales','mgcv','rgdal',
-                  'ggplot2','dplyr')
+all_packages <- c('wpp2017','countrycode','scales','mgcv','rgdal','ggplot2','dplyr')
 
 # load the doParallel package seperatly so we can use 'all_packages' in a parallel foreach
 all_packages_with_parallel <- c(all_packages,'doParallel')
