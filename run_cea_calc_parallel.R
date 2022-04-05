@@ -213,8 +213,9 @@ read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>%
          disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
                                           paste0("non medically attended ",disease_type))) ) %>%
   mutate(age=gsub("m","",age),age=factor(age,levels=unique(age)))
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+# PLOT
 if (plot_flag){
-  
   plot_popul_denom <- 1e5 # per person or per 100K?
   # helper df to have axis limits fixed per row
   df2 <- data.frame(disease_type_medic_status=unique(SA_ILI_SARI_rawdata$disease_type_medic_status),age=1/2,
@@ -238,13 +239,15 @@ ggplot(SA_ILI_SARI_rawdata,aes(x=age)) +
 ggsave(paste0("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921",ifelse(popul_denom>1,"per100k",""),".png"),
        width=42,height=22,units="cm")
 }
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ## estimate from Kenya on % of ARI cases with fever (=ILI) -> take this percentage to expand ILI to ARI
 ILI_adjust_SA=TRUE
 if (ILI_adjust_SA) { # 
   print("divide by fever proportion")
   SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]=
   SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]/mean(c(0.333,0.205,0.16))
-  divided_fever=TRUE }
+  divided_fever=TRUE 
+  }
 # CI lower limit should not be 0 -> setting it to 1 
 # (since average value of mean rate is > 1000, this does not change results more than 0.1%)
 SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
@@ -312,7 +315,7 @@ s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>%
   mutate(age=ifelse(grepl('-',age), sapply(strsplit(age,'-'),'[[',1),age)) %>% 
   uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) %>%
- mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj) # adjustment for inflation and exch rate change
+  mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj) # adjustment for inflation and exch rate change
 ###
 if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
   sa_costs_unique <- s_afr_inpatient_cost %>% select(c(name,mean,LCI,UCI,cost_type,disease)) %>% distinct()
