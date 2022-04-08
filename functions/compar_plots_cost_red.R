@@ -28,7 +28,7 @@ df_total_DALY_medcost_averted_KEN_ZAF <- cea_summary_all %>% select(!(contains("
   mutate(across(where(is.numeric),round,3))
 ylab_txt="cost in USD (median, CI50, CI95)"
 # plot total DALY AVERTED, total medical cost averted
-ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(!grepl("incremental",variable))) + 
+p_compar_plot_cost_red <- ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(!grepl("incremental",variable))) + 
   geom_hpline(aes(x=country_iso,y=median,group=interaction(source,intervention),
                   linetype=source),position=position_dodge(width=dodge_val),width=0.23,size=2) + # color=price_interv,
   geom_linerange(aes(x=country_iso,ymin=CI95_low,ymax=CI95_high,group=interaction(source,intervention),
@@ -47,5 +47,7 @@ ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(!grepl("incremental",var
         strip.text=element_text(size=22),legend.position="top",legend.text=element_text(size=21),
         plot.caption=element_text(10),axis.title.x=element_text(size=24),axis.title.y=element_text(size=24))
 # save
+if (SAVE_FLAG) {
 ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/total_DALY_medcost_averted_KEN_ZAF.png"),
        width=30,height=30,units="cm")
+  }

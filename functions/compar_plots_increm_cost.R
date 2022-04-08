@@ -1,4 +1,4 @@
-ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(grepl("incremental",variable))) + 
+p_increm_cost_compar <- ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(grepl("incremental",variable))) + 
   geom_hpline(aes(x=country_iso,y=median,group=interaction(source,intervention),
                   linetype=source),position=position_dodge(width=dodge_val),width=0.23,size=2) + 
   geom_linerange(aes(x=country_iso,ymin=CI95_low,ymax=CI95_high,group=interaction(source,intervention),
@@ -21,5 +21,6 @@ ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(grepl("incremental",vari
         axis.title.x=element_text(21),axis.title.y=element_text(size=18),
         plot.caption=element_text(size=10))
 # save
+if (SAVE_FLAG)  {
 ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/incremental cost_KEN_ZAF.png"),
-       width=35,height=25,units="cm")
+       width=35,height=25,units="cm")}

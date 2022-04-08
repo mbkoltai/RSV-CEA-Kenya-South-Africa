@@ -564,14 +564,17 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
   # DALY
   # YLD = years lived with disability
   # nonhosp cases as severe as HOSP!
+  # non-hospit. SARIs and non-medically attended ARIs
   non_hosp_YLD         <- non_hosp_SARI*config$severe_rsv_DALYloss + non_med_att_ARI*config$non_severe_rsv_DALYloss
+  # hospitalised SARIs
   hosp_YLD             <- hosp_SARI*config$severe_rsv_DALYloss
+  # these are hospitalised SARIs and medically attended ARIs
   hosp_med_att_YLD <- hosp_SARI*config$severe_rsv_DALYloss + med_att_ARI*config$non_severe_rsv_DALYloss
   # disc
   non_hosp_YLD_disc    <- non_hosp_YLD * disc_time_effect
   hosp_YLD_disc        <- hosp_YLD * disc_time_effect
   hosp_med_att_YLD_disc <- hosp_med_att_YLD*disc_time_effect
-  # totals
+  # totals = (hosp-SARIs + non-hosp SARIs) + (medically attended ARIs + non-medically attended ARIs)
   total_YLD            <- hosp_med_att_YLD + non_hosp_YLD
   total_YLD_disc       <- (non_hosp_YLD_disc + hosp_med_att_YLD_disc)
   
