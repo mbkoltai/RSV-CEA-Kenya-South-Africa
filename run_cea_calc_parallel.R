@@ -662,9 +662,9 @@ p_increm_cost_compar
 # ICER plot
 CI95_FLAG=T
 source("functions/icer_comp_plot.R"); p_icer_comp
-# SAVE
+# SAVE plot
 ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.png"),width=38,height=32,units="cm")
-#
+# SAVE table of ICER comparisons
 write_csv(df_plot_icer_comp,paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.csv"))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###

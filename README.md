@@ -3,7 +3,7 @@
 These are files to perform cost-effectiveness analysis of public health interventions against RSV disease in Kenya and South Africa for children under the age of 5 years, using data provided by partners in these two countries. 
 The modelled intervention is either based on maternal vaccination (MV) or on monoclonal antibodies (mAB).
 The underlying model is a static cohort model which does not take into account indirect effects (herd immunity) of immunisation.
-We also did not consider indirect effects of immunisation against RSV on other respiratory diseases, which recent evidence (suggests might be significant)[https://www.nejm.org/doi/full/10.1056/NEJMoa2110275].
+We also did not consider indirect effects of immunisation against RSV on other respiratory diseases, which recent evidence [suggests might be significant](https://www.nejm.org/doi/full/10.1056/NEJMoa2110275).
 Therefore our estimates of the reduction of disease burden can be considered conservative
 
 **The file to run the analysis and reproduce the results and figures in the manuscript is [run_cea_calc_parallel.R](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/blob/master/run_cea_calc_parallel.R)**. Data files are in the folder *custom_input*.
