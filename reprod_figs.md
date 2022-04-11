@@ -900,7 +900,7 @@ old_new_names <- list(
 ``` r
 save_flag=FALSE # TRUE
 source("functions/fig_combined_burden_cost_reduct.R")
-geom_text_font_size=4.5
+geom_text_font_size=4
 
 for (k_plot in 1:length(plot_list)) {
   plot_list[[k_plot]] <- plot_list[[k_plot]] + 
@@ -917,7 +917,7 @@ for (k_plot in 1:length(plot_list)) {
 plot_list[[1]]
 ```
 
-<img src="reprod_figs_files/figure-gfm/unnamed-chunk-37-1.png" height="100%" />
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-37-1.png" width="100%" height="100%" />
 
 ### Relative reduction in deaths/hospitalisations
 
@@ -926,7 +926,7 @@ plot_list[[1]]
 plot_list[[2]]
 ```
 
-![](reprod_figs_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-38-1.png" width="100%" height="100%" />
 
 ### Relative reduction in treatment costs
 
@@ -935,7 +935,7 @@ plot_list[[2]]
 plot_list[[3]]
 ```
 
-![](reprod_figs_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-39-1.png" width="100%" height="100%" />
 
 ### Plots on ICERs
 

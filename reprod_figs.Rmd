@@ -692,14 +692,14 @@ for (k_plot in 1:length(plot_list)) {
 ```
 
 ### Relative reduction in DALYs
-```{r,out.height='100%'}
+```{r,out.height='100%',out.width='100%'}
 # Disease burden
 plot_list[[1]]
 
 ```
 
 ### Relative reduction in deaths/hospitalisations
-```{r}
+```{r,out.height='100%',out.width='100%'}
 # deaths/ 
 plot_list[[2]]
 
@@ -707,7 +707,7 @@ plot_list[[2]]
 
 ### Relative reduction in treatment costs
 
-```{r}
+```{r,out.height='100%',out.width='100%'}
 # deaths/ 
 plot_list[[3]]
 
