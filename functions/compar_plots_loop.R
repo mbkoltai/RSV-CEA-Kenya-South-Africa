@@ -16,7 +16,7 @@ for (k_plot in 1:3) {
     mutate(vec=(10^floor(log10(median/norm_median)))*round(
       median/norm_median/(10^floor(log10(median/norm_median))),3)) %>%
     mutate(orig_burden_round=ifelse(vec>1e6,paste0(round(vec/1e6,1),"e6"),
-                                    ifelse(vec>1e3,paste0(round(vec/1e3,1),"e3"),vec))) %>% 
+                                    ifelse(vec>1e3,paste0(round(vec/1e3,1),"K"),vec))) %>% 
     filter(grepl("averted",burden_interv))
   if (any(grepl("cost",sel_vars))) {
     df_plot <- df_plot %>% mutate(vartype=gsub("outpatient","outpatient care",gsub("cost RSV","cost of RSV",
@@ -36,21 +36,23 @@ for (k_plot in 1:3) {
   ylab_txt=paste0("% reduction in ",ifelse(any(grepl("YLL",sel_vars)),"DALYs",
                                            ifelse(any(grepl("death",sel_vars)),"cases/deaths","cost"))," (mean, CI95)")
   ### ### ### ### ###
+  
   if (k_plot==1) { df_comparison_reductions_KEN_ZAF <- df_plot } else {
     df_comparison_reductions_KEN_ZAF <- bind_rows(df_plot,df_comparison_reductions_KEN_ZAF) }
   ### ### ### ### ###
   # plot with cntr on x-axis, MV/mAb as colors
   list_compar_plots[[k_plot]] <- ggplot(df_plot) + 
     geom_hpline(aes(x=country_iso,y=norm_median*1e2,group=interaction(source,intervention),
-                      color=intervention,linetype=source),position=position_dodge(width=dodge_val),width=0.22,size=1.2) + 
+                color=intervention,linetype=source),position=position_dodge(width=dodge_val),
+                width=ifelse(exists("width_val"),width_val,0.22),size=1.2) + 
     geom_linerange(aes(x=country_iso,ymin=norm_CI95_low*1e2,ymax=norm_CI95_high*1e2,
-                       group=interaction(source,intervention),color=intervention),
-                   alpha=0.35,position=position_dodge(width=dodge_val),size=17,show.legend=F) +
+                group=interaction(source,intervention),color=intervention),
+      alpha=0.35,position=position_dodge(width=dodge_val),size=ifelse(exists("linerange_val"),linerange_val,17),show.legend=F) +
     facet_wrap(~vartype) + scale_y_continuous(breaks=(0:10)*10) + scale_color_manual(values=c("red","blue")) +
     geom_vline(xintercept=1.5,size=0.3) + geom_vline(xintercept=c(1,2),linetype="dashed",size=0.3) +
     geom_text(aes(x=country_iso,y=norm_CI95_high*1e2+2,group=interaction(source,intervention),
                   label=orig_burden_round ), # ifelse(intervention!="MV",orig_burden_round,"")
-              position=position_dodge(width=dodge_val)) +
+              position=position_dodge(width=dodge_val),size=ifelse(exists("geom_text_font_size"),geom_text_font_size,4)) +
     labs(color="",linetype="",caption=caption_txt) + scale_x_discrete(expand=expansion(0.02,0)) +
     xlab("") + ylab(ylab_txt) + theme_bw() + standard_theme + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=14),
                                         axis.text.y=element_text(size=15),strip.text=element_text(size=14),legend.position="top",

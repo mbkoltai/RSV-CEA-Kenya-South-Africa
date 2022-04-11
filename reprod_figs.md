@@ -1,10 +1,10 @@
 Cost-effectiveness analysis of public health interventions against RSV
-in Kenya and South Africa
+in children under 5 years in Kenya and South Africa
 ================
 
 ### Loading required libraries
 
-We need to load libraries required for the analysis.
+Load libraries required for the analysis.
 
 ``` r
 # html_document
@@ -74,7 +74,7 @@ ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) +
                                       strip.text=element_text(size=11))
 ```
 
-<img src="reprod_figs_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-4-1.png" width="80%" />
 
 ``` r
 save_flag=FALSE
@@ -193,7 +193,7 @@ ggplot(deaths_data,aes(x=age_in_months_orig)) +
     legend.position=c(0.88,0.925),axis.title.x=element_text(size=13),axis.title.y=element_text(size=13))
 ```
 
-<img src="reprod_figs_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-9-1.png" width="80%" />
 
 ``` r
 # SAVE
@@ -252,7 +252,7 @@ ggplot(bind_rows(data.frame(age_inf=0:59,value=rowMeans(SA_deaths_incid$hosp),
   theme_bw() + standard_theme
 ```
 
-<img src="reprod_figs_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-11-1.png" width="80%" />
 
 ### Load South African incidence data of RSV disease (ARI/SARI)
 
@@ -366,7 +366,7 @@ ggplot(SA_ILI_SARI_rawdata,aes(x=age)) +
                                       strip.text=element_text(size=11))
 ```
 
-<img src="reprod_figs_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-15-1.png" width="80%" />
 
 ``` r
 # SAVE
@@ -555,101 +555,28 @@ if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
 ```
 
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-    ## The fitting procedure 'L-BFGS-B' was successful!
-    ## The fitting procedure 'L-BFGS-B' was successful!
-    ## The fitting procedure 'L-BFGS-B' was successful!
-    ## The fitting procedure 'L-BFGS-B' was successful!
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
-
     ## [1] "first fit unsuccesful, re-fit with rescaling"
-
-    ## The fitting procedure 'L-BFGS-B' was successful!
 
 ``` r
 list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpatient_cost)
@@ -662,12 +589,17 @@ list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpat
 #### Check if (South Afr) inpatient cost fits are good
 
 ``` r
-ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_point(aes(y=mean),shape=21) +    geom_line(aes(y=sim_mean),color="red") + geom_point(aes(y=sim_mean),shape=21,color="red") +
+ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_point(aes(y=mean),shape=21) +
+  geom_line(aes(y=sim_mean),color="red") + geom_point(aes(y=sim_mean),shape=21,color="red") +
   geom_ribbon(aes(ymin=LCI,ymax=UCI),alpha=0.2) + geom_ribbon(aes(ymin=sim_ci95_low,ymax=sim_ci95_up),fill="red",alpha=0.2) +
-  facet_wrap(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme + ggtitle("black: data, red = fitted values")
+  facet_wrap(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme +
+  theme(axis.text.x=element_text(vjust=0.5,size=8),axis.text.y=element_text(size=8),
+               legend.text=element_text(size=7),legend.background=element_rect(fill=NA),legend.position="bottom", # c(0.92,0.925)
+                                      axis.title.x=element_text(size=10),axis.title.y=element_text(size=10),
+                                      strip.text=element_text(size=11)) + ggtitle("black: data, red = fitted values")
 ```
 
-<img src="reprod_figs_files/figure-gfm/unnamed-chunk-23-1.png" width="100%" />
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-23-1.png" width="80%" />
 ## KENYA cost estimates
 
 ### Load Kenya cost data
@@ -816,7 +748,7 @@ c(mean(sim_beta),quantile(sim_beta,probs=ci95_range))
 ### Dose prices
 
 ``` r
-pricelist=list("mat_vacc"=c(3),"mAb"=c(6))
+pricelist=list("mat_vacc"=2.5,"mAb"=5)
 # loop thru: cntrs * interventions
 cntrs_cea=c("KEN","ZAF")
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
@@ -876,4 +808,331 @@ all_cols=c("non_hosp_cases","hosp_cases",
            "hosp_SARI","non_hosp_SARI","ARI_averted") 
 ####
 burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[grepl("cost",all_cols)]
+```
+
+## RUN cost effectiveness calculations
+
+``` r
+ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
+# do we also want to calculate with projections from [Li 2020]
+CALC_PROJECTION=TRUE
+# run calculations (approx 3 mins if CALC_PROJECTION=FALSE, 6 mins if TRUE)
+source("functions/cea_loop_cntr_interv.R")
+```
+
+### SAVE outputs of CEA
+
+``` r
+filenames <- list.files(paste0("output/cea_plots/",subfolder_name),pattern=".csv")[
+  !(list.files(paste0("output/cea_plots/",subfolder_name),pattern=".csv") %in% "cea_summary_all.csv")]
+filenames <- filenames[grepl("_cea_summary_mean_",filenames)]
+for (k_filename in 1:length(filenames)) {
+  x=read_csv(paste0("output/cea_plots/",subfolder_name,filenames[k_filename]))
+  if (k_filename==1){ cea_summary_all=x } else { cea_summary_all=bind_rows(cea_summary_all,x) }
+}
+```
+
+    ## Rows: 474 Columns: 18
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr  (4): source, variable, country_iso, intervention
+    ## dbl (13): mean, median, CI50_low, CI50_high, CI95_low, CI95_high, norm_mean,...
+    ## lgl  (1): source_num
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ## Rows: 474 Columns: 18
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr  (4): source, variable, country_iso, intervention
+    ## dbl (13): mean, median, CI50_low, CI50_high, CI95_low, CI95_high, norm_mean,...
+    ## lgl  (1): source_num
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ## Rows: 476 Columns: 18
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr  (4): source, variable, country_iso, intervention
+    ## dbl (13): mean, median, CI50_low, CI50_high, CI95_low, CI95_high, norm_mean,...
+    ## lgl  (1): source_num
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ## Rows: 476 Columns: 18
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr  (4): source, variable, country_iso, intervention
+    ## dbl (13): mean, median, CI50_low, CI50_high, CI95_low, CI95_high, norm_mean,...
+    ## lgl  (1): source_num
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
+# add column of country
+cea_summary_all <- cea_summary_all %>% 
+                  mutate(plot_variable=NA,country_plot=ifelse(country_iso=="KEN","Kenya","South Africa"))
+# save
+write_csv(cea_summary_all,paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
+```
+
+## Make summary plots of CEA
+
+#### Settings for plots (variable names)
+
+``` r
+### READ IN results of simulations if already available 
+# cea_summary_all <- read_csv(paste0("output/cea_plots/",subfolder_name,"cea_summary_all.csv"))
+# replace names
+old_new_names <- list(
+  "old"=list(c("total_YLD","total_YLL","hosp_YLD","hosp_med_att_YLD","non_hosp_YLD","total_DALY"),
+            c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),  # ,"ARI_YLD","SARI_YLD"
+            c("admin_cost","cost_rsv_hosp","cost_rsv_outpatient","total_medical_cost")),
+  "new"=list(c("total YLD","total YLL","YLD hospitalised cases","YLD medically attended cases",
+                "YLD non-hospitalised cases","total DALY"),
+              c("deaths","hospitalised SARI","non-hospitalised SARI","hospitalised cases","non-hospitalised cases"),
+              c("admin. costs","hospitalisation costs","outpatient costs","total medical cost")))
+```
+
+### Figures on relative reduction of disease burden
+
+``` r
+save_flag=FALSE # TRUE
+source("functions/fig_combined_burden_cost_reduct.R")
+geom_text_font_size=4.5
+
+for (k_plot in 1:length(plot_list)) {
+  plot_list[[k_plot]] <- plot_list[[k_plot]] + 
+    theme(axis.text.x=element_text(vjust=0.5,size=9),axis.text.y=element_text(size=8.5),plot.caption=element_text(size=9),
+          legend.text=element_text(size=9),legend.background=element_rect(fill=NA),legend.position="bottom", # c(0.92,0.925)
+          axis.title.x=element_text(size=10),axis.title.y=element_text(size=10),strip.text=element_text(size=9))
+}
+```
+
+### Relative reduction in DALYs
+
+``` r
+# Disease burden
+plot_list[[1]]
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-37-1.png" height="100%" />
+
+### Relative reduction in deaths/hospitalisations
+
+``` r
+# deaths/ 
+plot_list[[2]]
+```
+
+![](reprod_figs_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
+
+### Relative reduction in treatment costs
+
+``` r
+# deaths/ 
+plot_list[[3]]
+```
+
+![](reprod_figs_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
+
+### Plots on ICERs
+
+#### Run calculations of ICERs at different dose price levels
+
+``` r
+price_scaling_vect <- 1:20 
+# calculates ICERs for different price levels (dataframe for default price: df_interv_incremcosts_icer)
+source("functions/icer_plots.R")
+
+# create dataframe with all prices
+ICER_sensit_price <- bind_rows(list_scaled) %>%
+  mutate(CI50_wrong=CI50_low>CI50_high,CI95_wrong=CI95_low>CI95_high,CI50_low_store=CI50_low,CI95_low_store=CI95_low) %>% # 
+  mutate(CI50_low=ifelse(CI50_wrong,CI50_high,CI50_low),CI95_low=ifelse(CI50_wrong,CI95_high,CI95_low),
+         CI50_high=ifelse(CI95_wrong,CI50_low_store,CI50_high),CI95_high=ifelse(CI95_wrong,CI95_low_store,CI95_high)) %>%
+  select(!c(CI50_wrong,CI95_wrong,CI50_low_store,CI95_low_store)) %>% mutate(across(where(is.numeric),round,1))
+```
+
+#### Plot ICERs across price range
+
+Darker shading = CI50, lighter = CI95
+
+``` r
+price_limit_MV=30; SAVE_FLAG=F
+source("functions/icer_range_plots.R")
+```
+
+    ## `summarise()` has grouped output by 'intervention'. You can override using the
+    ## `.groups` argument.
+    ## `summarise()` has grouped output by 'intervention'. You can override using the
+    ## `.groups` argument.
+    ## `summarise()` has grouped output by 'intervention'. You can override using the
+    ## `.groups` argument.
+    ## `summarise()` has grouped output by 'intervention'. You can override using the
+    ## `.groups` argument.
+
+``` r
+# plots are in the list `p_icer_plotlist`: 
+p <- p_icer_plotlist[[4]] + 
+  theme(axis.text.x=element_text(vjust=0.5,size=9),axis.text.y=element_text(size=8.5),plot.caption=element_text(size=9),
+        legend.text=element_text(size=9),legend.background=element_rect(fill=NA),legend.position="bottom",
+          axis.title.x=element_text(size=10),axis.title.y=element_text(size=10),strip.text.x=element_text(size=9))
+
+p
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-41-1.png" width="100%" />
+
+### Plot for a few selected prices (Figure 5 in manuscript)
+
+``` r
+sel_prices <- list(MV=c(2.5,5,10,20),mAb=c(10,20,40,80)); n_price=length(sel_prices$MV)
+# selected DALY metric
+sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[1]
+ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) ) %>% 
+  filter( (intervention %in% "MV" & price %in% sel_prices$MV) | (intervention %in% "mAb" & price %in% sel_prices$mAb) ) %>%
+  ungroup() %>% group_by(country_iso,intervention) %>% mutate(n_ord=row_number()) %>% 
+  mutate(n_ord=ifelse(country_iso %in% "ZAF",n_ord+2*n_price,n_ord)) %>% # # ICER_sensit_price$
+  mutate(n_ord=ifelse(intervention %in% "MV",n_ord+n_price,n_ord)) %>% # 
+  arrange(n_ord) %>% mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int)),
+                            price_interv=factor(price_interv,levels=unique(price_interv))) %>%
+  ggplot() + geom_boxplot(aes(x=cnt_int,middle=median, color=price_interv,
+                              lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
+                          position=position_dodge(width=dodge_val),stat="identity",width=0.85) + # ,size=1.1
+  facet_wrap(~variable,scales="free_y",nrow=3) +
+  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(n_price),
+                              colorRampPalette(colors=c("blue","blueviolet"))(n_price))) +
+  geom_vline(xintercept=c(4.5,12.5),linetype="dashed",size=0.3) + 
+  geom_vline(xintercept=c(8.5),size=1/2) + geom_hline(yintercept=0,linetype="dashed",size=1/2) +
+  xlab("") + ylab("cost in USD (median, CI50/95)") + labs(color="",linetype="") + guides(color=guide_legend(ncol=2)) + 
+  scale_x_discrete(expand=expansion(0.05,0)) + 
+  theme_bw() + standard_theme + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=10),
+                                      axis.text.y=element_text(size=10),strip.text=element_text(size=12),
+                                      legend.text=element_text(size=11),legend.position="top",
+                                      axis.title.y=element_text(size=12),strip.text.x=element_text(size=12)) 
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-42-1.png" width="100%" height="100%" />
+
+### Plots comparing different efficacy levels
+
+``` r
+list_folders_effic_scan <- c(
+  "output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_40pt_betafit_pricescan",
+  "output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_60pt_betafit_pricescan",
+  "output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_80pt_betafit_pricescan")
+
+list_df_effic_scan=list()
+for (k_folder in 1:length(list_folders_effic_scan)) {
+  list_df_effic_scan[[k_folder]] <- read_csv(paste0(list_folders_effic_scan[k_folder],"/ICER_sensit_price.csv")) %>% 
+    mutate(median_efficacy=c(40,60,80)[k_folder]) }
+
+# transfrm into dataframe
+df_effic_scan <- bind_rows(list_df_effic_scan)
+# y axis limits
+df_ylim <- df_effic_scan %>% 
+  filter(grepl(sel_icer_var_pattern,variable)) %>% group_by(intervention,country_plot) %>%
+  summarise(CI95_low_sep_cntr=min(CI95_low),CI95_high_sep_cntr=max(CI95_high),
+            CI50_low_sep_cntr=min(CI50_low),CI50_high_sep_cntr=max(CI50_high)) %>% 
+  group_by(intervention) %>% mutate(CI95_low=min(CI95_low_sep_cntr),CI95_high=max(CI95_high_sep_cntr),
+                                    CI50_low=min(CI50_low_sep_cntr),CI50_high=max(CI50_high_sep_cntr))
+
+# plot
+ylim_var_name=list(c("CI50_low","CI50_high"),c("CI95_low","CI95_high"))[[1]]
+
+df_effic_scan %>% filter(grepl(sel_icer_var_pattern,variable)) %>%
+# PLOT
+ggplot() + geom_line(aes(x=price,y=median,group=median_efficacy)) + 
+  geom_ribbon(aes(x=price,ymin=CI50_low,ymax=CI50_high,group=median_efficacy,fill=paste0(median_efficacy,"%")),alpha=1/2) +
+  geom_point(data=df_ylim,aes(x=10,y=get(ylim_var_name[1])),color="white") + 
+  geom_point(data=df_ylim,aes(x=10,y=get(ylim_var_name[2])),color="white") +
+  facet_wrap(intervention~country_plot,scales="free",nrow=2) + 
+  geom_hline(data=hline_vals,aes(yintercept=value),size=1/3,linetype="dashed") + # ,5e3
+  scale_x_continuous(breaks=(0:20)*5,expand=expansion(0.03,0)) + scale_y_continuous(expand=expansion(0.01,0)) +
+  xlab("dose price (2019 USD)") + ylab("ICER (incremental cost per DALY averted)") +
+  theme_bw() + standard_theme + plot_theme + labs(fill="median efficacy") + 
+  theme(axis.text.x=element_text(angle=90,vjust=1/2,size=10),
+        axis.text.y=element_text(size=10),strip.text=element_text(size=12),
+        legend.text=element_text(size=11),legend.position="top",
+        axis.title.x=element_text(size=12),axis.title.y=element_text(size=12),
+        strip.text.x=element_text(size=12)) 
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-43-1.png" width="100%" />
+
+``` r
+# SAVE
+# ggsave(paste0("output/cea_plots/price_efficacy scan.png"),width=40,height=30,units="cm")
+```
+
+### Plots comparing CEA results with projected data vs new data
+
+``` r
+# load ungeviz library (from https://github.com/wilkelab/ungeviz)
+# if not installed: devtools::install_github("wilkelab/ungeviz")
+library(ungeviz)
+# subfolder_name<-"new_price_efficacy_kenyadeaths_CIs/"
+SAVE_FLAG=F
+linerange_val=8; width_val=0.19; geom_text_font_size=3
+source("functions/compar_plots_loop.R")
+# plots are in `list_compar_plots`
+list_compar_plots[[1]] + theme(axis.text.x=element_text(angle=90,vjust=1/2,size=10),
+        axis.text.y=element_text(size=10),strip.text=element_text(size=12),
+        legend.text=element_text(size=11),legend.position="top",
+        axis.title.x=element_text(size=12),axis.title.y=element_text(size=12),
+        strip.text.x=element_text(size=12)) 
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-44-1.png" width="100%" height="100%" />
+
+### Plots comparing reductions in DALYs and medical costs to previous projections
+
+``` r
+linerange_val=22; width_val=0.22; geom_text_font_size=4
+source("functions/compar_plots_cost_red.R")
+p_compar_plot_cost_red + theme(axis.text.x=element_text(angle=90,vjust=1/2,size=10),
+        axis.text.y=element_text(size=10),strip.text=element_text(size=12),
+        legend.text=element_text(size=11),legend.position="top",
+        axis.title.x=element_text(size=12),axis.title.y=element_text(size=12),
+        strip.text.x=element_text(size=12)) 
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-45-1.png" width="100%" height="100%" />
+
+### Plots comparing incremental costs to previous projections (at default price)
+
+``` r
+linerange_val=23; width_val=0.23; geom_text_font_size=5
+source("functions/compar_plots_increm_cost.R")
+p_increm_cost_compar + theme(axis.text.x=element_text(angle=90,vjust=1/2,size=10),
+        axis.text.y=element_text(size=10),strip.text=element_text(size=12),
+        legend.text=element_text(size=10),legend.position="top",
+        axis.title.x=element_text(size=12),axis.title.y=element_text(size=12),
+        strip.text.x=element_text(size=12)) 
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-46-1.png" width="100%" height="100%" />
+
+### Plots comparing ICERs to previous projections (at default price)
+
+``` r
+CI95_FLAG=F
+linerange_val=24; width_val=0.4; geom_text_font_size=4.5
+source("functions/icer_comp_plot.R"); 
+p_icer_comp + theme(axis.text.x=element_text(angle=90,vjust=1/2,size=10),
+        axis.text.y=element_text(size=10),strip.text=element_text(size=11),
+        legend.text=element_text(size=10),legend.position="top",
+        axis.title.x=element_text(size=12),axis.title.y=element_text(size=11),
+        strip.text.x=element_text(size=10),plot.caption=element_text(size=9)) +
+guides(color = guide_legend(override.aes = list(size=5)))
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-47-1.png" width="100%" height="100%" />
+
+``` r
+# SAVE plot
+# ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.png"),width=38,height=32,units="cm")
+# SAVE table of ICER comparisons
+# write_csv(df_plot_icer_comp,paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.csv"))
 ```

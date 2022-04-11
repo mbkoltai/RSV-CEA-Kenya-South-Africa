@@ -75,7 +75,7 @@ for (k_plot in 1:3) {
                   y=max(norm_CI95_high*1e2)*1.05,group=intervention,
                   label=ifelse(intervention!="MV",gsub("^,","",paste0(orig_burden_round,
                                ifelse(grepl("YLD non",plot_variable),"*",""))),"")),
-              position=position_dodge(width=dodge_val),size=5.5) + 
+              position=position_dodge(width=dodge_val),size=ifelse(exists("geom_text_font_size"),geom_text_font_size,5)) + 
     labs(color="",linetype="",
          caption=ifelse(any(grepl("costs",df_plot$plot_variable)),"*pre-intervention median value","")) + 
     scale_y_continuous(breaks=(0:15)*10) + # scale_x_discrete(expand=expansion(0.1,0)) + 

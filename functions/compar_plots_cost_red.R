@@ -27,19 +27,23 @@ df_total_DALY_medcost_averted_KEN_ZAF <- cea_summary_all %>% select(!(contains("
          source=gsub(", community-based","",source)) %>%
   mutate(across(where(is.numeric),round,3))
 ylab_txt="cost in USD (median, CI50, CI95)"
+
+
+# ifelse(exists("linerange_val"),linerange_val,17) # ifelse(exists("width_val"),width_val,0.22)
+#
 # plot total DALY AVERTED, total medical cost averted
 p_compar_plot_cost_red <- ggplot(df_total_DALY_medcost_averted_KEN_ZAF %>% filter(!grepl("incremental",variable))) + 
   geom_hpline(aes(x=country_iso,y=median,group=interaction(source,intervention),
-                  linetype=source),position=position_dodge(width=dodge_val),width=0.23,size=2) + # color=price_interv,
+                  linetype=source),position=position_dodge(width=dodge_val),width=ifelse(exists("width_val"),width_val,0.23),size=1) +
   geom_linerange(aes(x=country_iso,ymin=CI95_low,ymax=CI95_high,group=interaction(source,intervention),
-                     color=intervention),alpha=0.25,position=position_dodge(width=dodge_val),size=42) +
+       color=intervention),alpha=0.25,position=position_dodge(width=dodge_val),size=ifelse(exists("linerange_val"),linerange_val,42)) +
   facet_wrap(~variable,scales="free_y",ncol=1) + scale_color_manual(values=c("red","blue")) +
   geom_vline(xintercept=1.5,size=0.5) + geom_vline(xintercept=c(1,2),linetype="dashed",size=0.75) +
   geom_vline(xintercept=c(0.75,1.25,1.75,2.25),linetype="dashed",size=0.25) + 
   theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
-  geom_text(aes(x=country_iso,y=CI95_high+2,
+  geom_text(aes(x=country_iso,y=CI95_high+1,
                 group=interaction(source,intervention),label=orig_burden_round),
-            position=position_dodge(width=dodge_val),size=8) +
+            position=position_dodge(width=dodge_val),size=ifelse(exists("geom_text_font_size"),geom_text_font_size,8)) +
   scale_x_discrete(expand=expansion(0.02,0)) + labs(color="",linetype="") +#,caption="Numbers show median values."
   guides(color=guide_legend(ncol=2,override.aes=list(size=5)),
          linetype=guide_legend(nrow=2,override.aes=list(size=1.25))) +
