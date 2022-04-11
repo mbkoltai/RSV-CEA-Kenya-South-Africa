@@ -1,19 +1,12 @@
----
-title: Cost-effectiveness analysis of public health interventions against RSV in Kenya
-  and South Africa
-output: github_document
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Cost-effectiveness analysis of public health interventions against RSV
+in Kenya and South Africa
+================
 
 ### Loading required libraries
 
 We need to load libraries required for the analysis.
 
-```{r,results='hide',message=FALSE}
-
+``` r
 # html_document
 
 rm(list=ls())
@@ -28,24 +21,20 @@ currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(curren
 # library(here)
 conflict_prefer("select", "dplyr"); conflict_prefer("filter", "dplyr")
 num_sim <- 5000; source('functions/RSV_load_all.R')
-
 ```
 
 ### Loading functions
 
-```{r,message=FALSE,results=FALSE}
-
+``` r
 source('functions/load_config_pars.R') # here::here(
 lapply(c("functions/set_xlims_cea.R","functions/get_burden_flexible.R",
          "functions/get_burden_flexible_ari_sari.R",'functions/GammaParmsFromQuantiles.R',
          "functions/load_own_data.R"),function(x) {source(x)}) # here::here()
-
 ```
 
-
 ### Load incidence data from Kenya
-```{r,message=FALSE,results=FALSE}
 
+``` r
 kenya_data_file_path <- "custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_updated_2021_08.csv"
 
 ### load Kenya ARI/SARI incidence data and structure as dataframe
@@ -62,13 +51,11 @@ kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_
   group_by(age_in_months,disease_type_medic_status) %>% summarise(value=unique(value),
     CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),
     metric_per_popul=unique(metric_per_popul))
-
 ```
 
 ### PLOT Kenya incidence data
 
-```{r,out.width='100%'}
-
+``` r
 popul_denom <- 1e5 # per person or per 100K?
 # helper df to have axis limits fixed per row
 df2 <- data.frame(disease_type_medic_status=unique(kenya_ari_sari_incidence$disease_type_medic_status),
@@ -85,30 +72,30 @@ ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) +
                legend.text=element_text(size=7),legend.background=element_rect(fill=NA),legend.position="bottom", # c(0.92,0.925)
                                       axis.title.x=element_text(size=10),axis.title.y=element_text(size=10),
                                       strip.text=element_text(size=11))
+```
 
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-4-1.png" width="100%" />
+
+``` r
 save_flag=FALSE
 if (save_flag){
 ggsave(paste0("output/cea_plots/kenya_ari_sari_burden_errorbars_grouped_",ifelse(popul_denom>1,"per100k",""),".png"),
         width=42,height=22,units="cm") }
-
 ```
 
 ### Fit the uncertainty in ARI/SARI incidence data for Kenya with gamma distributions
 
-```{r,message=FALSE,results=FALSE}
-
+``` r
 ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
 kenya_nonhosp_hosp_incid_ari_sari <- lapply(c("ARI","SARI"), function(x)
   fcn_gen_nonhosp_hosp_incid_samples_kenya(kenya_data_file_path,sel_disease=x,n_iter=5e3,age_maxval=60,
             CI_intervals=ci95_range,randsampl_distrib_type="gamma"))
 names(kenya_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
-
 ```
 
 ### Load Kenya deaths data & fit CI95 values with gamma distributions again
 
-```{r,message=FALSE}
-
+``` r
 # Load data
 deaths_kenya <- read_csv("custom_input/deaths_kenya_tidy_adjusted_02_2022.csv") %>% 
   filter(variable=="rate" & !age_in_months %in% c("<12","12-23","<24","24-59","<60")) %>% 
@@ -132,18 +119,16 @@ kenya_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), function(y_no) da
 
 ### Generate samples for Kenya deaths from the fitted distributions
 
-```{r}
-
+``` r
 kenya_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:59, function(x) 
     rgamma(5e3,shape=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
           rate=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5)
 names(kenya_deaths_incid)=c("hosp","nonhosp")
-
 ```
 
 ### Load deaths data for South Africa
 
-```{r}
+``` r
 deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TIDY.csv") %>% 
   rename(age_in_months=`age in months`,CI_95_lower=LCI,CI_95_upper=UCI,in_hospital=`medically attended`) %>% 
   filter(!in_hospital %in% "total") %>%
@@ -157,7 +142,18 @@ deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TID
                               sapply(strsplit(age_in_months,'-'),'[[',1),age_in_months)) %>%
   uncount(weights=freq, .id="n",.remove=F) %>% mutate(age_inf=as.numeric(age_in_months)+(n-1)) %>% 
   dplyr::select(!c(n,freq,age_in_months)) %>% relocate(age_inf,.before=value)
+```
 
+    ## Rows: 126 Columns: 7
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (3): age in months, variable, medically attended
+    ## dbl (4): value, LCI, UCI, metric_per_popul
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 # plot separately
 # ggplot(deaths_SA,aes(x=age_inf,y=value,color=in_hospital)) + geom_line() + geom_point() +
 #   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper,fill=in_hospital),alpha=0.2) + theme_bw() +
@@ -166,8 +162,7 @@ deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TID
 
 ### Plot incidence of deaths/100k population for both countries
 
-```{r,out.width='100%'}
-
+``` r
 deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% group_by(age_in_months_orig,in_hospital) %>%
             summarise(value=unique(value),CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),
             country="South Africa") %>% ungroup() %>% 
@@ -178,7 +173,14 @@ deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% group_by(age_in_mont
         group_by(country,age_in_months_orig) %>% 
         mutate(CI_95_lower_sum=sum(CI_95_lower),CI_95_upper_sum=sum(CI_95_upper)) %>% 
   mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
+```
 
+    ## `summarise()` has grouped output by 'age_in_months_orig'. You can override
+    ## using the `.groups` argument.
+    ## `summarise()` has grouped output by 'age_in_months_orig'. You can override
+    ## using the `.groups` argument.
+
+``` r
 # PLOT
 ggplot(deaths_data,aes(x=age_in_months_orig)) + 
   geom_bar(aes(y=value,fill=in_hospital),stat="identity") + # ,position="dodge"
@@ -189,7 +191,11 @@ ggplot(deaths_data,aes(x=age_in_months_orig)) +
   theme(axis.text.x=element_text(vjust=0.5,size=11),axis.text.y=element_text(size=11),
     legend.text=element_text(size=13),legend.background=element_rect(fill=NA),strip.text=element_text(size=14),
     legend.position=c(0.88,0.925),axis.title.x=element_text(size=13),axis.title.y=element_text(size=13))
+```
 
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-9-1.png" width="100%" />
+
+``` r
 # SAVE
 # ggsave("output/cea_plots/ALL_deaths_data_stacked_yfixed.png",width=32,height=18,units="cm")
 
@@ -199,12 +205,23 @@ deaths_data %>% mutate(before_5_mts=as.numeric(age_in_months_orig)<=5,
                        size_agegr=ifelse(as.numeric(age_in_months_orig)<=12,1,
                                          ifelse(as.numeric(age_in_months_orig)<=16,2,12))) %>%
    group_by(country,before_5_mts) %>%  summarise(value=sum(value*size_agegr))
-
 ```
+
+    ## `summarise()` has grouped output by 'country'. You can override using the
+    ## `.groups` argument.
+
+    ## # A tibble: 4 × 3
+    ## # Groups:   country [2]
+    ##   country      before_5_mts value
+    ##   <chr>        <lgl>        <dbl>
+    ## 1 Kenya        FALSE         659 
+    ## 2 Kenya        TRUE          501 
+    ## 3 South Africa FALSE         225.
+    ## 4 South Africa TRUE          438
 
 ### Fit CI95s of South African deaths data with gamma distributions
 
-```{r}
+``` r
 SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), 
         function(y_no) data.frame(age_inf=0:(nrow(deaths_SA)/2-1), 
         t(sapply(1:(nrow(deaths_SA)/2), function(x) gamma.parms.from.quantiles(p=c(2.5,97.5)/100, 
@@ -218,12 +235,11 @@ SA_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:(nrow(deaths_
   rgamma(5e3,shape=(SA_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
          rate=(SA_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/popul_denom)
 names(SA_deaths_incid)=c("hosp","nonhosp")
-
 ```
 
 ### Check if the fits match the data well
 
-```{r,out.width='100%'}
+``` r
 ggplot(bind_rows(data.frame(age_inf=0:59,value=rowMeans(SA_deaths_incid$hosp),
             t(sapply(1:nrow(SA_deaths_incid$hosp),
     function(x) quantile(SA_deaths_incid$hosp[x,],probs=c(2.5,97.5)/100))),source="fit" ) %>%
@@ -236,11 +252,13 @@ ggplot(bind_rows(data.frame(age_inf=0:59,value=rowMeans(SA_deaths_incid$hosp),
   theme_bw() + standard_theme
 ```
 
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-11-1.png" width="100%" />
+
 ### Load South African incidence data of RSV disease (ARI/SARI)
 
 #### Load SARI data
 
-```{r}
+``` r
 SA_SARI_data <- fcn_load_s_afr(safr_data_path = "custom_input/s_afr_incidence_data_rate.csv") %>%
   mutate(disease_type_medic_status=paste(disease_type,
         ifelse(hospitalisation,"hospitalised","not hospitalised")) ) %>%
@@ -249,8 +267,19 @@ SA_SARI_data <- fcn_load_s_afr(safr_data_path = "custom_input/s_afr_incidence_da
   relocate(year,.before=Province)
 ```
 
+    ## Rows: 1080 Columns: 10
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): Province, year, disease_type, age
+    ## dbl (5): age_inf, rate, rate_CI_lower, rate_CI_upper, popul_denom
+    ## lgl (1): hospitalisation
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
 #### Load ILI (influenza-like illness) data
-```{r}
+
+``` r
 SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>% 
   filter(!(grepl("<",agegroup) | agegroup %in% c("0-5m","6-11m","12-23m","24-59m","<5y"))) %>%
   mutate(agegroup_mts=agegroup,agegroup=gsub("m","",agegroup), freq=1) %>% 
@@ -266,15 +295,25 @@ SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>%
   relocate(disease_type_medic_status,.before=Province)
 ```
 
+    ## Rows: 38 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (3): agegroup, disease_type, Province
+    ## dbl (4): rate, rate_CI_lower, rate_CI_upper, popul_denom
+    ## lgl (1): hospitalisation
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
 #### Concatenate two datasets
-```{r}
+
+``` r
 if (!exists("SA_data")){ SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
 ```
 
 ### Plot South African disease incidence (ARI/SARI)
 
-```{r,out.width='100%'}
-
+``` r
 # put it into one dataframe
 SA_ILI_SARI_rawdata <- bind_rows( 
   distinct(fcn_load_s_afr(safr_data_path="custom_input/s_afr_incidence_data_rate.csv") %>%
@@ -286,7 +325,28 @@ read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>%
          disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
                                           paste0("non medically attended ",disease_type))) ) %>%
   mutate(age=gsub("m","",age),age=factor(age,levels=unique(age)))
+```
 
+    ## Rows: 1080 Columns: 10
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): Province, year, disease_type, age
+    ## dbl (5): age_inf, rate, rate_CI_lower, rate_CI_upper, popul_denom
+    ## lgl (1): hospitalisation
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+    ## Rows: 38 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (3): agegroup, disease_type, Province
+    ## dbl (4): rate, rate_CI_lower, rate_CI_upper, popul_denom
+    ## lgl (1): hospitalisation
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 # PLOT
 plot_popul_denom <- 1e5 # per person or per 100K?
   # helper df to have axis limits fixed per row
@@ -304,16 +364,19 @@ ggplot(SA_ILI_SARI_rawdata,aes(x=age)) +
                legend.text=element_text(size=7),legend.background=element_rect(fill=NA),legend.position="bottom", # c(0.92,0.925)
                                       axis.title.x=element_text(size=10),axis.title.y=element_text(size=10),
                                       strip.text=element_text(size=11))
+```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-15-1.png" width="100%" />
+
+``` r
 # SAVE
 # ggsave(paste0("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921",ifelse(popul_denom>1,"per100k",""),".png"),
 #        width=42,height=22,units="cm")
-
 ```
-
 
 ### Expanding ILI rates to ARI by taking % of ARI with fever in Kenya
 
-```{r}
+``` r
 ILI_adjust_SA=TRUE
 if (ILI_adjust_SA) { # 
   print("divide by fever proportion")
@@ -323,10 +386,11 @@ if (ILI_adjust_SA) { #
   }
 ```
 
+    ## [1] "divide by fever proportion"
+
 ### Fit South African ARI/SARI incidence data by fitting CI95s with gamma distributions
 
-```{r}
-
+``` r
 # CI lower limit should not be 0 -> setting it to 1 in those cases where it's 0
 # since average value of mean rate is > 1000, this does not change results more than 0.1%
 SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
@@ -335,10 +399,13 @@ SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
 sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), 
       function(x) fcn_gen_nonhosp_hosp_incid_samples_SA(SA_data,diseasetype=x,
       n_iter=5e3, age_maxval=60,CI_intervals=ci95_range,randsampl_distrib_type="gamma"))
+```
+
+    ## [1] "fitting gamma distrib. to data means and CI95s"
+    ## [1] "fitting gamma distrib. to data means and CI95s"
+
+``` r
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
-
-
-
 ```
 
 ## Cost Estimates
@@ -347,8 +414,20 @@ names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 
 #### Inflation data
 
-```{r}
+``` r
 inflation_data <- (read_csv("custom_input/inflation_data.csv") %>% filter(grepl("South Africa",`Country Name`)))
+```
+
+    ## Rows: 266 Columns: 24
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr  (4): Country Name, Country Code, Indicator Name, Indicator Code
+    ## dbl (20): 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, ...
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 inflation_rate <- 1+as.numeric(inflation_data[,(ncol(inflation_data)-5):ncol(inflation_data)])/100
 # ratio of exchange rates 2014 vs 2021
 exch_rate_adj <- 11.2/14.77
@@ -356,9 +435,9 @@ exch_rate_adj <- 11.2/14.77
 hist_adj <- prod(inflation_rate)*exch_rate_adj
 ```
 
-### Load South Africa outpatient cost 
+### Load South Africa outpatient cost
 
-```{r}
+``` r
 s_afr_outpatient_cost <- bind_rows(data.frame(age="0-59",mean=25,LCI=18.3,UCI=31.8,
                                           cost_type="healthcare",disease="outpatient",name="total"),
       read_csv("custom_input/s_afr_PDE_calcs.csv") %>% filter(grepl("outpatient",disease)) %>%  
@@ -367,9 +446,18 @@ s_afr_outpatient_cost <- bind_rows(data.frame(age="0-59",mean=25,LCI=18.3,UCI=31
   mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj)
 ```
 
+    ## Rows: 53 Columns: 7
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): age, name, cost_type, disease
+    ## dbl (3): Mean cost per illness episode (USD), LCI, UCI
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
 ### Fitting cost estimates (CI95s) with gamma distributions
 
-```{r}
+``` r
 if (!any(grepl("shape",colnames(s_afr_outpatient_cost)))) {
   # colbind to original dataframe
 for (k_row in 1:nrow(s_afr_outpatient_cost)) {
@@ -396,15 +484,31 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
   uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) 
 }
+```
 
+    ## Warning: The fitting procedure 'L-BFGS-B' has failed (convergence error occurred
+    ## or specified tolerance not achieved)!
+
+    ## Warning: The fitting procedure 'BFGS' has failed (convergence error occurred or
+    ## specified tolerance not achieved)!
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+``` r
 # PLOT: compare with and data
 ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) +
    theme_bw() + scale_x_log10() + scale_y_log10(expand=expansion(0.1,0))
-
 ```
-### Load inpatient costs (South Africa)
 
-```{r}
+![](reprod_figs_files/figure-gfm/unnamed-chunk-20-1.png)<!-- --> ###
+Load inpatient costs (South Africa)
+
+``` r
 s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>% 
   filter(!name %in% "PDE" & grepl("inpatient",disease)) %>% 
   rename(mean=`Mean cost per illness episode (USD)`) %>%
@@ -414,12 +518,20 @@ s_afr_inpatient_cost <- read_csv("custom_input/s_afr_PDE_calcs.csv") %>%
   uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) %>%
   mutate(mean=mean*hist_adj,LCI=LCI*hist_adj,UCI=UCI*hist_adj) # adjustment for inflation and exch rate change
-
 ```
+
+    ## Rows: 53 Columns: 7
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): age, name, cost_type, disease
+    ## dbl (3): Mean cost per illness episode (USD), LCI, UCI
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 
 ### Fit inpatient cost estimates (South Africa) with gamma distributions
 
-```{r,warning=FALSE}
+``` r
 if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
   sa_costs_unique <- s_afr_inpatient_cost %>% select(c(name,mean,LCI,UCI,cost_type,disease)) %>% distinct()
   for (k_row in 1:nrow(sa_costs_unique)) {
@@ -440,7 +552,106 @@ if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
             left_join(sa_costs_unique %>% mutate(n=row_number()),gamma_fits,by="n") %>% select(!n),
             by=c("name","mean","LCI","UCI","cost_type","disease"))
 }
+```
 
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## [1] "first fit unsuccesful, re-fit with rescaling"
+
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+``` r
 list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpatient_cost)
 
 # cost data types:
@@ -450,20 +661,31 @@ list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpat
 
 #### Check if (South Afr) inpatient cost fits are good
 
-```{r,out.width='100%'}
-
+``` r
 ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_point(aes(y=mean),shape=21) +    geom_line(aes(y=sim_mean),color="red") + geom_point(aes(y=sim_mean),shape=21,color="red") +
   geom_ribbon(aes(ymin=LCI,ymax=UCI),alpha=0.2) + geom_ribbon(aes(ymin=sim_ci95_low,ymax=sim_ci95_up),fill="red",alpha=0.2) +
   facet_wrap(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme + ggtitle("black: data, red = fitted values")
-
 ```
+
+<img src="reprod_figs_files/figure-gfm/unnamed-chunk-23-1.png" width="100%" />
 ## KENYA cost estimates
 
 ### Load Kenya cost data
 
-```{r}
-
+``` r
 kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
+```
+
+    ## Rows: 34 Columns: 8
+    ## ── Column specification ────────────────────────────────────────────────────────
+    ## Delimiter: ","
+    ## chr (4): variable, Age in months, site, currency
+    ## dbl (4): mean, median, ci95_low, ci95_up
+    ## 
+    ## ℹ Use `spec()` to retrieve the full column specification for this data.
+    ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+``` r
 # using inpatient/outpatient ratio in South Africa OR study from Malawi, taken from:
 # https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7864144/
 in_outpatient_cost_ratio <- 45.37/9.26
@@ -475,12 +697,11 @@ KEN_outpatient_cost <- kenya_costs$mean[kenya_costs$variable %in% "Total healthc
      kenya_costs$mean[grepl("Total number of outpatients",kenya_costs$variable)])
 # assemble list
 ken_inpatient_rows <- kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable))
-
 ```
 
 ### Fit Kenya cost data with gamma distributions
 
-```{r,warning=FALSE}
+``` r
 list_KEN_costs <- list(inpatient_household=bind_cols(
   kenya_costs %>% filter(grepl("Siaya",site) & grepl("Total patient",variable)), 
   t(sapply(1:nrow(ken_inpatient_rows), function(x)
@@ -489,9 +710,27 @@ list_KEN_costs <- list(inpatient_household=bind_cols(
   inpatient_healthcare_system=KEN_outpatient_cost*in_outpatient_cost_ratio,outpatient_cost=KEN_outpatient_cost)
 ```
 
+    ## The fitting procedure 'L-BFGS-B' was successful!
+
+    ## $par
+    ## [1] 111.46629  70.42779
+    ## 
+    ## $value
+    ## [1] 6.772076e-05
+    ## 
+    ## $counts
+    ## function gradient 
+    ##       29       29 
+    ## 
+    ## $convergence
+    ## [1] 0
+    ## 
+    ## $message
+    ## [1] "CONVERGENCE: REL_REDUCTION_OF_F <= FACTR*EPSMCH"
+
 ## Efficacy figures
 
-```{r}
+``` r
 lists_of_effics <- list(
   # published novavax data (MV), for mAB: https://www.nejm.org/doi/pdf/10.1056/NEJMoa2110275?articleTools=true)
   list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053,CI95_high=0.612),
@@ -532,23 +771,31 @@ lists_of_effics <- list(
   )
 
 efficacy_figures <- lists_of_effics[[1]]
-
 ```
 
 ### Fit efficacy by distributions
 
-```{r}
+``` r
 # fitting efficacy figures with a beta distribution
 source("functions/fit_efficacy.R")
 g(list_effic_betafit,allfits) %=% fcn_betafit_efficacy(effic_figs=efficacy_figures,
                                    scan_range_resol_nsample=c(min=-2,max=2,by=1/100,n_sample=2e4),
                                    optim_range_res=c(min=-1,max=2,by=0.04),optim_initguess=c(-0.05,1))
-# fit as: beta_fit <- rbeta(n=1e4,shape1=alphaval,shape2=betaval)*scale_val + shift_val
-
 ```
+
+    ## [1] "mat_vacc"      "sympt_disease"
+    ## [1] "mat_vacc" "hospit"  
+    ## [1] "mat_vacc" "severe"  
+    ## [1] "monocl_ab"     "sympt_disease"
+    ## [1] "monocl_ab" "hospit"
+
+``` r
+# fit as: beta_fit <- rbeta(n=1e4,shape1=alphaval,shape2=betaval)*scale_val + shift_val
+```
+
 #### Shift distributions to fit the mean better? (set to false by default)
 
-```{r}
+``` r
 # if this is set to true, then the fit is shifted to be more aligned with the mean efficacy rather than
 # the CI interval (beta distribution often cannot do both)
 flag_adjust_to_mean <- FALSE
@@ -568,7 +815,7 @@ c(mean(sim_beta),quantile(sim_beta,probs=ci95_range))
 
 ### Dose prices
 
-```{r}
+``` r
 pricelist=list("mat_vacc"=c(3),"mAb"=c(6))
 # loop thru: cntrs * interventions
 cntrs_cea=c("KEN","ZAF")
@@ -578,7 +825,7 @@ kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 
 ### Set if exponential waning of efficacy, create folder name
 
-```{r}
+``` r
 # exponential waning model used for efficacy
 exp_wane_val <- FALSE
 # parameters for exponential waning model
@@ -596,13 +843,20 @@ subfolder_name <- paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdea
 ```
 
 ### Set up initial conditions
-```{r,message=FALSE}
+
+``` r
 ### Before starting loop for the FIRST TIME need to create temp folder (afterwards can comment out this line)
 source("init_cea_calc_parallel.R")
 ```
 
+    ## [1] "calculating costs"
+    ## [1] "calculating averted burden"
+    ## [1] "calculating total costs"
+    ## [1] "aggregating output"
+
 ### Outputs of CEA to display
-```{r}
+
+``` r
 # outputs to display
 all_cols=c("non_hosp_cases","hosp_cases",
            "rsv_deaths","rsv_deaths_disc",
@@ -623,5 +877,3 @@ all_cols=c("non_hosp_cases","hosp_cases",
 ####
 burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[grepl("cost",all_cols)]
 ```
-
-
