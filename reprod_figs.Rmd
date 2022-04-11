@@ -452,7 +452,8 @@ list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpat
 
 ```{r,out.width='100%'}
 
-ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_point(aes(y=mean),shape=21) +    geom_line(aes(y=sim_mean),color="red") + geom_point(aes(y=sim_mean),shape=21,color="red") +
+ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_point(aes(y=mean),shape=21) +
+  geom_line(aes(y=sim_mean),color="red") + geom_point(aes(y=sim_mean),shape=21,color="red") +
   geom_ribbon(aes(ymin=LCI,ymax=UCI),alpha=0.2) + geom_ribbon(aes(ymin=sim_ci95_low,ymax=sim_ci95_up),fill="red",alpha=0.2) +
   facet_wrap(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme + ggtitle("black: data, red = fitted values")
 
@@ -625,3 +626,13 @@ burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[
 ```
 
 
+## RUN cost effectiveness calculations
+```{r,message=F,results=F,warning=F}
+
+ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
+# do we also want to calculate with projections from [Li 2020]
+CALC_PROJECTION=TRUE
+# run calculations (approx 3 mins if CALC_PROJECTION=FALSE, 6 mins if TRUE)
+source("functions/cea_loop_cntr_interv.R")
+
+```
