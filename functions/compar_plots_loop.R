@@ -20,7 +20,7 @@ for (k_plot in 1:3) {
     filter(grepl("averted",burden_interv))
   if (any(grepl("cost",sel_vars))) {
     df_plot <- df_plot %>% mutate(vartype=gsub("outpatient","outpatient care",gsub("cost RSV","cost of RSV",
-                                                                                   gsub("hospitalised","hospitalisation",vartype))))
+                                                    gsub("hospitalised","hospitalisation",vartype))))
   }
   # labels
   if (any(df_plot$vartype %in% "total_DALY")) {
