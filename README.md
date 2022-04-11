@@ -7,7 +7,7 @@ We also did not consider indirect effects of immunisation against RSV on other r
 Therefore our estimates of the reduction of disease burden can be considered conservative
 
 The file to run the analysis and reproduce the results and figures in the manuscript is [reprod_figs.R](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/blob/master/reprod_figs.R). Data files are in the folder *custom_input*.
-**A Markdown reproducing the figures of the article is at [reprod_figs.md](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/blob/master/reprod_figs.md)**.
+**A Markdown reproducing the figures of the article by the code we used is available at [reprod_figs.md](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/blob/master/reprod_figs.md)**.
 
 The code is based on the [previously developed R package McMarcel](https://zenodo.org/record/3663447), which was modified to include:
 1) user-provided incidence data (treated and untreated ARIs and SARIs and deaths)
