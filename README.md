@@ -25,4 +25,4 @@ Incidence rates, efficacy estimates and some of the costs are generated from pro
 
 Other sub-folders in [output/cea_plots](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots) are sensitivity analyses with hypothetical efficacy values.
 
-For questions or problems please contact [Mihaly Koltai](lshmk17 at lshtm.ac.uk)
+For questions or problems please post an issue or send an email ([see here](https://www.lshtm.ac.uk/aboutus/people/koltai.mihaly)).
