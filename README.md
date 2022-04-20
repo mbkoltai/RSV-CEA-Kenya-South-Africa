@@ -20,7 +20,7 @@ Incidence rates, efficacy estimates and some of the costs are generated from pro
 
 **Outputs** are in the folder [output/cea_plots](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots):  
 1) the [default scenario](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_betafit): efficacy figures with published efficacy data, protection applies to a fixed period (3 months for MV and 5 months for mAb) then goes to zero.
-2) [interim efficacy data for MV](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_betafit_interim): using unpublished data for MV (data presented by Pfizer at the [6th Resvinet conference](www.resvinet.org/6th-conference-2021.html))
+2) [interim efficacy data for MV](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_betafit_interim): using unpublished data for MV (data presented by Pfizer at the [6th Resvinet conference](https://www.resvinet.org/6th-conference-2021.html))
 3) [exponential waning model](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_expwaning_effic_betafit): instead of an on-off model of protection, the efficacy wanes exponentially with a time-average equal to the reported mean efficacy over the period of protection
 
 Other sub-folders in [output/cea_plots](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots) are sensitivity analyses with hypothetical efficacy values.
