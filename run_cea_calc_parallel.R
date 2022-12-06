@@ -1,13 +1,14 @@
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
-# Script to reproduce analysis and figures in the article at [..TBC..]
+# Script to reproduce analysis and figures in the article at https://doi.org/10.1101/2022.09.09.22279780
 rm(list=ls())
-package_names <- c("tidyverse","rstudioapi","fitdistrplus","rstudioapi","matrixStats","ungeviz",
+package_names <- c("tidyverse","rstudioapi","fitdistrplus","rstudioapi","matrixStats", # "ungeviz",
   "stringi","cowplot","here","conflicted","rriskDistributions","rgdal")
 # if rriskDistributions does not install, try installing the following libraries from the command line:
 # sudo apt install tk-dev tk-table
 lapply(package_names, function(x) if (!any(row.names(installed.packages()) %in% x)) {install.packages(x)})
 lapply(package_names[!package_names %in% "here"],library,character.only=TRUE)
-currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path); library(here)
+currentdir_path=dirname(rstudioapi::getSourceEditorContext()$path); setwd(currentdir_path)
+library(here)
 conflict_prefer("select", "dplyr"); conflict_prefer("filter", "dplyr")
 num_sim <- 5000; source(here::here('functions/RSV_load_all.R'))
 # if rgdal doesn't load/install, try: sudo apt install libgdal-dev
@@ -126,7 +127,7 @@ deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% group_by(age_in_mont
         group_by(country,age_in_months_orig) %>% 
         mutate(CI_95_lower_sum=sum(CI_95_lower),CI_95_upper_sum=sum(CI_95_upper)) %>% 
   mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
-# 
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 plot_flag=F
 if (plot_flag){
 p <- ggplot(deaths_data,aes(x=age_in_months_orig)) + 
@@ -143,11 +144,13 @@ p <- ggplot(deaths_data,aes(x=age_in_months_orig)) +
 # ggsave("output/cea_plots/ALL_deaths_data_stacked_2rows.png",width=32,height=18,units="cm") #  # _yfixed
 # ggsave("output/cea_plots/ALL_deaths_data_stacked.png",width=32,height=18,units="cm") #  # _yfixed
 # ggsave("output/cea_plots/ALL_deaths_data_stacked_yfixed.png",width=32,height=18,units="cm") #  # 
+#
 }
-
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # concentration of deaths in first X months (this is a bit crude bc assuming age group size = duration)
 # deaths_data %>% mutate(before_5_mts=as.numeric(age_in_months_orig)<=5,
-#                        size_agegr=ifelse(as.numeric(age_in_months_orig)<=12,1,ifelse(as.numeric(age_in_months_orig)<=16,2,12))) %>%
+#                        size_agegr=ifelse(as.numeric(age_in_months_orig)<=12,1,
+#         ifelse(as.numeric(age_in_months_orig)<=16,2,12))) %>%
 #   group_by(country,before_5_mts) %>%  summarise(value=sum(value*size_agegr))
 
 # fit distributions to CI95
@@ -302,8 +305,8 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) 
 }
 # types: s_afr_outpatient_cost %>% select(c(name,cost_type,disease)) %>% distinct()
-# ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) +
-#   theme_bw()+ scale_x_log10() + scale_y_log10()
+ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) +
+   theme_bw()+ scale_x_log10() + scale_y_log10()
 
 # fit inpatient costs by gamma distributions
 # inpatient
