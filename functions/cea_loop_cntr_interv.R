@@ -4,7 +4,7 @@ for (k_par in 1:nrow(par_table)) {
   # intervention config table
   sel_interv <- sim_config_matrix[which(sim_config_matrix$country_iso %in% cntrs_cea[n_cntr_output])[n_interv],]
   if (cntrs_cea[n_cntr_output]=="ZAF"){
-    sel_interv$country_iso=cntrs_cea[n_cntr_output]}
+    sel_interv$country_iso=cntrs_cea[n_cntr_output] }
   # modify duration
   if (n_interv==1) { sel_interv$dur_protection_maternal=3/12 
   } else { sel_interv$dur_protection_infant<-5/12 }
@@ -39,8 +39,12 @@ for (k_par in 1:nrow(par_table)) {
                                          efficacy_figures,effic_prob=T,effic_distr=effic_dist_fit,list_effic_fit=list_effic_betafit,
                                          exp_wane=exp_wane_val,list_exp_waning_param,dose_price=doseprice,cost_data=cost_input)
       # calculation with projections from mcmarcel (community-based)
-      sim_output=sim_output_user_input_ari_sari # get_burden_flexible(sel_interv,NA,NA,exp_wane=exp_wane_val,doseprice)
+      if (CALC_PROJECTION) {
+        sim_output=get_burden_flexible(sel_interv,NA,NA,exp_wane=exp_wane_val,doseprice)
+        } else {
+      sim_output=sim_output_user_input_ari_sari # 
       sim_output[1:nrow(sim_output_user_input_ari_sari),1:ncol(sim_output_user_input_ari_sari)]=NA
+      }
       # sim_output=data.frame()
       ### processing samples -> mean, median, CIs
       # ICER with discounted DALYs
