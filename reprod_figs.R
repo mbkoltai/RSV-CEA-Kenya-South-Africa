@@ -25,10 +25,11 @@ kenya_data_file_path <- "custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_up
 
 # "custom_input/ARI_SARI_Rates_2010_2018_tidydata.csv"
 ### PLOT Kenya incidence data with error bars
-kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
+kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=
+                                  kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
           fcn_load_kenya(kenya_data_path=kenya_data_file_path,sel_disease="SARI")$rsv_incidence_ageinf) %>% 
   mutate(disease_type_medic_status=paste(disease_type, 
-                                         ifelse(medically_attended,"medically attended","not attended")) ) %>%
+                                 ifelse(medically_attended,"medically attended","not attended")) ) %>%
   mutate(disease_type_medic_status=gsub("SARI medically attended","SARI hospitalised",
                                         disease_type_medic_status)) %>%
   mutate(disease_type_medic_status=gsub("SARI not attended","SARI non-hospitalised",
@@ -44,15 +45,19 @@ plot_flag=F
 if (plot_flag){
 popul_denom <- 1e5 # per person or per 100K?
 # helper df to have axis limits fixed per row
-df2 <- data.frame(disease_type_medic_status=unique(kenya_ari_sari_incidence$disease_type_medic_status),age_in_months=1,
+df2 <- data.frame(disease_type_medic_status=unique(kenya_ari_sari_incidence$disease_type_medic_status),
+                  age_in_months=1,
                   value=c(rep(0.55,2),rep(0.125,2))*popul_denom)
 
 ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) + 
-  geom_bar(aes(y=popul_denom*value/metric_per_popul,fill=disease_type_medic_status),position="stack",stat="identity") +
-  geom_errorbar(aes(ymin=popul_denom*CI_95_lower/metric_per_popul,ymax=popul_denom*CI_95_upper/metric_per_popul),size=0.4) +
+  geom_bar(aes(y=popul_denom*value/metric_per_popul,fill=disease_type_medic_status),
+           position="stack",stat="identity") +
+  geom_errorbar(aes(ymin=popul_denom*CI_95_lower/metric_per_popul,
+                    ymax=popul_denom*CI_95_upper/metric_per_popul),size=0.4) +
   geom_point(data=df2,aes(x=age_in_months,y=value),color="white") +
   facet_wrap(~disease_type_medic_status,nrow=2,scales="free") + # 
-  xlab("age (months)") + ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""), "person year",ifelse(popul_denom>1,"s",""))) +
+  xlab("age (months)") + ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""),
+                                     "person year",ifelse(popul_denom>1,"s",""))) +
   labs(fill="")+ scale_y_continuous(expand=expansion(0.01,0)) +
   theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5,size=13),
                                       axis.text.y=element_text(size=13),legend.text=element_text(size=13),
@@ -98,7 +103,7 @@ kenya_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), function(y_no) da
 kenya_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:59, function(x) 
     rgamma(5e3,shape=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
           rate=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5)
-names(kenya_deaths_incid)=c("hosp","nonhosp")
+names(kenya_deaths_incid) <- c("hosp","nonhosp")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # SA deaths
 deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TIDY.csv") %>% 
@@ -130,19 +135,20 @@ deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% group_by(age_in_mont
         mutate(age_in_months_orig=factor(age_in_months_orig,levels=unique(age_in_months_orig))) %>% 
         group_by(country,age_in_months_orig) %>% 
         mutate(CI_95_lower_sum=sum(CI_95_lower),CI_95_upper_sum=sum(CI_95_upper)) %>% 
-  mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
+        mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 plot_flag=F
-if (plot_flag){
-p <- ggplot(deaths_data,aes(x=age_in_months_orig)) + 
+if (plot_flag){ # p <- 
+ggplot(deaths_data,aes(x=age_in_months_orig)) + 
   geom_bar(aes(y=value,fill=in_hospital),stat="identity") + # ,position="dodge"
   geom_errorbar(aes(ymin=CI_95_lower_sum,ymax=CI_95_upper_sum,group=in_hospital),size=0.2) + # ,position="dodge"
   facet_wrap(~country) + # ,nrow=2 # ,scales="free_y"
   xlab("age (months)") + ylab("deaths per 100,000 person year") + labs(fill="") +
   scale_y_continuous(expand=expansion(0.01,0),breaks=(0:12)*25) + theme_bw() + standard_theme + 
   theme(axis.text.x=element_text(vjust=0.5,size=13),axis.text.y=element_text(size=13),
-    legend.text=element_text(size=13),legend.background=element_rect(fill=NA),strip.text=element_text(size=14),
-    legend.position=c(0.88,0.925),axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)); p
+    legend.text=element_text(size=13),legend.background=element_rect(fill=NA),legend.position=c(0.88,0.925),
+    strip.text=element_text(size=14),
+    axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)) # p
 # save
 # ggsave("output/cea_plots/ALL_deaths_data_dodged_2rows.png",width=32,height=18,units="cm") #  # _yfixed
 # ggsave("output/cea_plots/ALL_deaths_data_stacked_2rows.png",width=32,height=18,units="cm") #  # _yfixed
@@ -166,7 +172,7 @@ SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"),
         dplyr::select(c(CI_95_lower,CI_95_upper)))[x,]))[c("shape","rate")])),in_hospital=y_no))) %>% 
   mutate(shape=unlist(shape),rate=unlist(rate))
 # generate samples from fitted distribs
-popul_denom<-unique(deaths_SA$metric_per_popul)
+popul_denom <- unique(deaths_SA$metric_per_popul)
 SA_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:(nrow(deaths_SA)/2-1), function(x) 
   rgamma(5e3,shape=(SA_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
          rate=(SA_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/popul_denom)
@@ -207,8 +213,9 @@ SA_ILI_data <- read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>%
          disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
                 paste0("non medically attended ",disease_type))) %>% 
   relocate(disease_type_medic_status,.before=Province)
-# concatenate
+# CONCATENATE
 if (!exists("SA_data")){ SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
+
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # PLOT South Africa incidence
 SA_ILI_SARI_rawdata <- bind_rows( 
@@ -230,17 +237,22 @@ if (plot_flag){
                     rate=c(rep(0.115,2),rep(0.32,2))*plot_popul_denom)
 # create plot
 ggplot(SA_ILI_SARI_rawdata,aes(x=age)) + 
-  geom_bar(aes(y=plot_popul_denom*rate/popul_denom,fill=disease_type_medic_status),position="stack",stat="identity") +
-  geom_errorbar(aes(ymin=plot_popul_denom*rate_CI_lower/popul_denom,ymax=plot_popul_denom*rate_CI_upper/popul_denom),size=0.4) +
+  geom_bar(aes(y=plot_popul_denom*rate/popul_denom,fill=disease_type_medic_status),
+           position="stack",stat="identity") +
+  geom_errorbar(aes(ymin=plot_popul_denom*rate_CI_lower/popul_denom,
+                    ymax=plot_popul_denom*rate_CI_upper/popul_denom),size=0.4) +
   geom_point(data=df2,aes(x=age,y=rate),color="white") +
   facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
-  xlab("age (months)") + ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""), "person year",ifelse(popul_denom>1,"s",""))) +
+  xlab("age (months)") + 
+  ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""),
+              "person year",ifelse(popul_denom>1,"s",""))) +
   labs(fill="") + scale_y_continuous(expand=expansion(0.01,0)) +
-  theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5,size=13),
-                                      axis.text.y=element_text(size=13),legend.text=element_text(size=13),
-                                      legend.background=element_rect(fill=NA),legend.position=c(0.9,0.925),
-                                      axis.title.x=element_text(size=17),axis.title.y=element_text(size=17),
-                                      strip.text=element_text(size=14))
+  theme_bw() + standard_theme + 
+  theme(axis.text.x=element_text(vjust=0.5,size=13),
+        axis.text.y=element_text(size=13),legend.text=element_text(size=13),
+        legend.background=element_rect(fill=NA),legend.position=c(0.9,0.925),
+        axis.title.x=element_text(size=17),axis.title.y=element_text(size=17),
+        strip.text=element_text(size=14))
 # SAVE
 # paste0("output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921",ifelse(popul_denom>1,"per100k",""),".png")
 # "output/cea_plots/SA_ari_sari_burden_errorbars_grouped_ILI_160921.png"
@@ -286,8 +298,9 @@ s_afr_outpatient_cost <- bind_rows(data.frame(age="0-59",mean=25,LCI=18.3,UCI=31
 if (!any(grepl("shape",colnames(s_afr_outpatient_cost)))) {
   # colbind to original dataframe
 for (k_row in 1:nrow(s_afr_outpatient_cost)) {
-    gamma_fit <- c(get.gamma.par(p=ci95_range,q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row]),
-                             show.output=F,plot=F),scaling=1)
+    gamma_fit <- c(get.gamma.par(p=ci95_range,
+                                 q=c(s_afr_outpatient_cost$LCI[k_row],
+                                 s_afr_outpatient_cost$UCI[k_row]),show.output=F,plot=F),scaling=1)
   # if fitting fails, this can be overcome by dividing the costs by 100 and then scaling the fit 100x afterwards
   if (any(is.na(gamma_fit))) { 
     gamma_fit <- c(get.gamma.par(p=ci95_range,
@@ -310,8 +323,10 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) 
 }
 # types: s_afr_outpatient_cost %>% select(c(name,cost_type,disease)) %>% distinct()
-ggplot(s_afr_outpatient_cost) + geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=3) +
-   theme_bw()+ scale_x_log10() + scale_y_log10()
+ggplot(s_afr_outpatient_cost) +
+  geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=6) +
+  geom_point(data=data.frame(mean=c(0.3,30),sim_mean=c(0.3,30)),aes(x=mean,y=sim_mean),color=NA) +
+   labs(color="") + theme_bw()+ scale_x_log10() + scale_y_log10()
 
 # fit inpatient costs by gamma distributions
 # inpatient
@@ -393,27 +408,37 @@ cntrs_cea=c("KEN","ZAF")
 # for mAb from NIRSEVIMAB (from https://www.nejm.org/doi/full/10.1056/nejmoa1913556)
 #
 # if this flag is set to TRUE, then using published efficacy data. if FALSE --> interim results
-flag_publ_effic <- TRUE
+flag_publ_effic <- F
 if (flag_publ_effic){
 efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.394,CI95_low=0.053,CI95_high=0.612),
-                            hospit=c(mean=0.444,CI95_low=0.196,CI95_high=0.615),
-                            severe=c(mean=0.483,CI95_low=-8.2/100,CI95_high=0.753), # c(mean=0.483,-8.2/100,0.753)
-                            half_life=36.5/30,duration=3),
+                        hospit=c(mean=0.444,CI95_low=0.196,CI95_high=0.615),
+                        severe=c(mean=0.483,CI95_low=-8.2/100,CI95_high=0.753), # c(mean=0.483,-8.2/100,0.753)
+                        half_life=36.5/30,duration=3),
                       monocl_ab=list(sympt_disease=c(mean=0.701,CI95_low=0.523,CI95_high=0.812),
                                      hospit=c(mean=0.784,CI95_low=0.519,CI95_high=0.903),
                                      half_life=59.3/30,duration=5)) } else {
-  # new data (from conference)
-efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.847,CI95_low=0.216,CI95_high=0.976),
-                              hospit=c(mean=0.847,CI95_low=0.216,CI95_high=0.976), # no sep data
-                              severe=c(mean=0.915,CI95_low=-5.6/100,CI95_high=0.998),
-                              half_life=36.5/30,duration=3),
-                         monocl_ab=list(sympt_disease=c(mean=0.701,CI95_low=0.523,CI95_high=0.812),
-                                        hospit=c(mean=0.784,CI95_low=0.519,CI95_high=0.903),
-                                        half_life=59.3/30,duration=5)) 
+  # new efficacy data
+  # MV: https://bit.ly/3Y2FalR
+  # mAb: https://bit.ly/3UMzuty
+efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.571,CI95_low=0.147,CI95_high=0.798),
+                                       hospit=c(mean=0.818,CI95_low=0.506,CI95_high=0.976), # no sep data
+                                       severe=c(mean=0.818,CI95_low=0.506,CI95_high=0.976),
+                                       half_life=36.5/30,duration=3),
+                         monocl_ab=list(sympt_disease=c(mean=0.795,CI95_low=0.659,CI95_high=0.877),
+                                        hospit=c(mean=0.773,CI95_low=0.503,CI95_high=0.897),
+                                        half_life=59.3/30,duration=5))
+}
+# from conferences:
+# mat_vacc=list(sympt_disease=c(mean=0.847,CI95_low=0.216,CI95_high=0.976),
+#               hospit=c(mean=0.847,CI95_low=0.216,CI95_high=0.976), # no sep data
+#               severe=c(mean=0.915,CI95_low=-5.6/100,CI95_high=0.998),
+#               half_life=36.5/30,duration=3),
+# monocl_ab=list(sympt_disease=c(mean=0.701,CI95_low=0.523,CI95_high=0.812),
+#                hospit=c(mean=0.784,CI95_low=0.519,CI95_high=0.903),
+#                half_life=59.3/30,duration=5)
 # list(sympt_disease=c(mean=0.745,CI95_low=0.496,CI95_high=0.871),
 # hospit=c(mean=0.621,CI95_low=-8.6/100,CI95_high=0.868),
 # half_life=59.3/30,duration=5)
-}
 
 # fitting efficacy figures with a beta distribution
 source("functions/fit_efficacy.R")
@@ -440,7 +465,7 @@ c(mean(sim_beta),quantile(sim_beta,probs=ci95_range))
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 
 # default prices for doses
-pricelist=list("mat_vacc"=c(3),"mAb"=c(6))
+pricelist=list("mat_vacc"=3,"mAb"=6)
 # loop thru: cntrs * interventions * dose prices
 # n_cntr_output=1:length(cntrs_cea); n_interv=1:2
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
@@ -451,14 +476,20 @@ exp_wane_val <- FALSE
 g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 # distribution used to fit efficacy figures
 effic_dist_fit <- "beta" # 
-lower_cov=FALSE # ; lower_cov_val=0.7
-subfolder_name <- paste0("new_price_efficacy_",ifelse(kenya_deaths_input,"KENdeaths",""),
-                       ifelse(SA_deaths_input,"_SAdeaths",""),
-        "_CIs_SA_ILI_",ifelse(ILI_adjust_SA,"broader","narrow"),ifelse(exp_wane_val,"_expwaning",""),
+# adjust coverage levels
+coverage_adj=T; adj_cov_val=c(SA=0.752,KEN=0.616)
+subfolder_name <- paste0(
+      # "new_price_efficacy_",
+        # ifelse(kenya_deaths_input,"KENdeaths",""),
+        # ifelse(SA_deaths_input,"_SAdeaths",""),
+        # "_CIs_",
+        "SA_ILI_",
+        ifelse(ILI_adjust_SA,"broader","narrow"),
+        ifelse(exp_wane_val,"_expwaning",""),
         # ifelse(FALSE,paste0("_coverage",lower_cov_val),""),
-        ifelse(flag_adjust_to_mean,"_adj_mv_sev_eff_mean",""),
+        ifelse(ifelse(exists("flag_adjust_to_mean"),flag_adjust_to_mean,F),"_adj_mv_sev_eff_mean",""),
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
-        ifelse(flag_publ_effic,"","_interim"),"/") 
+        ifelse(flag_publ_effic,"","_2022"),"/") 
 #
 ### Before starting loop for the FIRST TIME need to create temp folder (afterwards can comment out this line)
 source("init_cea_calc_parallel.R")
@@ -489,7 +520,7 @@ burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[
 # parallelisation might crash R
 ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
 # do we also want to calculate with projections from [Li 2020]
-CALC_PROJECTION=TRUE
+CALC_PROJECTION=F
 # run calculations (approx 3 mins if CALC_PROJECTION=FALSE, 6 mins if TRUE)
 source("functions/cea_loop_cntr_interv.R")
 

@@ -40,6 +40,7 @@ output/cea_plots/old_effic_figs
 output/cea_plots/old_estims
 output/cea_plots/kenya_old_mortality
 output/cea_plots/in_outpatient_SA_ratio
+output/cea_plots/1st_submission
 output/ari_sari_burden
 *RData
 *Rhistory

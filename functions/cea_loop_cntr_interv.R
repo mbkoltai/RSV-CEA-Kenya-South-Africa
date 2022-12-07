@@ -10,11 +10,18 @@ for (k_par in 1:nrow(par_table)) {
   } else { sel_interv$dur_protection_infant<-5/12 }
   # half-life
   half_life <- ifelse(n_interv==1,36.5,59.3)
-  # lower coverage
-  if (lower_cov) {if (n_interv==1) { sel_interv$coverage_maternal <- lower_cov_val } else {
-    sel_interv$coverage_infant=lower_cov_val} }
-  ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-  # calculate
+  # adjusted coverage level
+  # coverage_adj=T; adj_cov_val=c(SA=0.752,KEN=0.616)
+  if (coverage_adj) {if (n_interv==1) { 
+    sel_interv$coverage_maternal <- ifelse(cntrs_cea[n_cntr_output] %in% "KEN",
+                                           adj_cov_val["KEN"],adj_cov_val["SA"])
+    } else {
+    sel_interv$coverage_infant <- ifelse(cntrs_cea[n_cntr_output] %in% "KEN",
+                                         adj_cov_val["KEN"],adj_cov_val["SA"]) } 
+  }
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# calculate
   if (grepl("calc",read_calc_flag)) {
     # loop through PRICE levels
     for (k_price in 1:length(pricelist[[n_interv]])) {
@@ -35,9 +42,12 @@ for (k_par in 1:nrow(par_table)) {
           sa_nonhosp_hosp_incid_ari_sari$deaths=NULL}
       # RUN CALCULATIONS
       sim_output_user_input_ari_sari <- get_burden_flexible_ari_sari(sel_interv,
-                                         list(kenya_nonhosp_hosp_incid_ari_sari,sa_nonhosp_hosp_incid_ari_sari)[[n_cntr_output]],
-                                         efficacy_figures,effic_prob=T,effic_distr=effic_dist_fit,list_effic_fit=list_effic_betafit,
-                                         exp_wane=exp_wane_val,list_exp_waning_param,dose_price=doseprice,cost_data=cost_input)
+                                         list(kenya_nonhosp_hosp_incid_ari_sari,
+                                              sa_nonhosp_hosp_incid_ari_sari)[[n_cntr_output]],
+                                         efficacy_figures,effic_prob=T,effic_distr=effic_dist_fit,
+                                         list_effic_fit=list_effic_betafit,
+                                         exp_wane=exp_wane_val,list_exp_waning_param,
+                                         dose_price=doseprice,cost_data=cost_input)
       # calculation with projections from mcmarcel (community-based)
       if (CALC_PROJECTION) {
         sim_output=get_burden_flexible(sel_interv,NA,NA,exp_wane=exp_wane_val,doseprice)
@@ -68,7 +78,8 @@ for (k_par in 1:nrow(par_table)) {
         with_discounted_DALYs) %>%
         mutate(name_root=gsub("_averted","",variable)) %>% group_by(source,iter,name_root) %>% 
         mutate(value_norm=ifelse(grepl("avert",variable)&!grepl("incremental",variable),
-                                 value[grepl("avert",variable)]/value[!grepl("avert",variable)],NA)) %>% ungroup() %>% select(!name_root)
+                  value[grepl("avert",variable)]/value[!grepl("avert",variable)],NA)) %>% 
+        ungroup() %>% select(!name_root)
       
       # calculate mean, median, CI95
       x=burden_mcmarcel_owndata %>% group_by(source,variable) %>% 
@@ -90,11 +101,11 @@ for (k_par in 1:nrow(par_table)) {
     folder_path=paste0("output/cea_plots/",subfolder_name)
     if (!dir.exists(folder_path)) {dir.create(folder_path)}
     write_csv(cea_summary,paste0("output/cea_plots/",subfolder_name,sel_interv$country_iso,
-                                 "_cea_summary_mean_CI_",gsub("maternal","Mat_Vacc",sel_interv$intervention),".csv") ) } 
+             "_cea_summary_mean_CI_",gsub("maternal","Mat_Vacc",sel_interv$intervention),".csv") ) } 
   # LOAD EXISTING DATA IF already available
   else { 
     cea_summary <- read_csv(paste0("output/cea_plots/",subfolder_name,sel_interv$country_iso,
-                                   "_cea_summary_mean_CI_",gsub("maternal","Mat_Vacc",sel_interv$intervention),".csv")) 
+             "_cea_summary_mean_CI_",gsub("maternal","Mat_Vacc",sel_interv$intervention),".csv")) 
   }
 } # loop country
 # stop cluster
