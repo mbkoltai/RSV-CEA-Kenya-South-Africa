@@ -1,0 +1,17 @@
+source,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,price,source_num,country_iso,intervention,country_plot,vec,price_interv,orig_burden_round
+new data (hospital-based + HUS),incremental cost/DALY averted,327.4,320.4,283.5,363.6,229,468.8,5,NA,KEN,mAb,Kenya,320,5$ (mAb),0.32K
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,746.5,730.8,647.2,828.8,524,1064.1,5,NA,KEN,mAb,Kenya,731,5$ (mAb),0.73K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,2587.4,1924.1,1101.8,3296.5,382.4,8519.2,5,NA,KEN,mAb,Kenya,1924,5$ (mAb),1.92K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,5836.4,4409.1,2531.6,7479.7,881.9,18846.1,5,NA,KEN,mAb,Kenya,4409,5$ (mAb),4.41K
+new data (hospital-based + HUS),incremental cost/DALY averted,220.7,215.4,189.5,245.4,147.5,323.3,2.5,NA,KEN,MV,Kenya,215,2.5$ (MV),0.22K
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,504.9,493,434.4,561.6,338.5,735.5,2.5,NA,KEN,MV,Kenya,493,2.5$ (MV),0.49K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,4942,3524.6,1962.5,6238.2,639.9,17622.7,2.5,NA,KEN,MV,Kenya,3525,2.5$ (MV),3.52K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,11164.5,8065.7,4512.8,14204.8,1478.4,39211.8,2.5,NA,KEN,MV,Kenya,8066,2.5$ (MV),8.07K
+new data (hospital-based + HUS),incremental cost/DALY averted,-357.9,-359.3,-427,-289.7,-560.3,-153.1,5,NA,ZAF,mAb,South Africa,-359,5$ (mAb),-0.36K
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,-774.1,-777.1,-923.5,-626,-1213.6,-330.3,5,NA,ZAF,mAb,South Africa,-777,5$ (mAb),-0.78K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,1863,1269.8,562.4,2495.4,-161.3,7111.1,5,NA,ZAF,mAb,South Africa,1270,5$ (mAb),1.27K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,4023.6,2778.6,1235,5436,-354.2,15399.9,5,NA,ZAF,mAb,South Africa,2779,5$ (mAb),2.78K
+new data (hospital-based + HUS),incremental cost/DALY averted,-612.7,-589.8,-739.5,-466,-1079.5,-260.9,2.5,NA,ZAF,MV,South Africa,-590,2.5$ (MV),-0.59K
+new data (hospital-based + HUS),incremental cost/DALY (discounted) averted,-1323,-1276.6,-1593.6,-1010.1,-2311.1,-566.9,2.5,NA,ZAF,MV,South Africa,-1277,2.5$ (MV),-1.28K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY averted,4496.7,3068.6,1576.9,5694.7,312.5,17319.2,2.5,NA,ZAF,MV,South Africa,3069,2.5$ (MV),3.07K
+projection ([Li 2020] from [Shi 2017] meta-analysis),incremental cost/DALY (discounted) averted,9741.2,6711.1,3478.5,12397.6,691.1,37082.3,2.5,NA,ZAF,MV,South Africa,6711,2.5$ (MV),6.71K

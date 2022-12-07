@@ -1,5 +1,6 @@
-levels_except_icer = gsub("disc","(disc)",gsub("_"," ",c("intervention cost","incremental cost","total medical cost averted",
-                                                         "total_DALY_disc_averted","total_DALY_averted")))
+levels_except_icer = gsub("disc","(disc)",
+                          gsub("_"," ",c("intervention cost","incremental cost",
+                          "total medical cost averted","total_DALY_disc_averted","total_DALY_averted")))
 
 for (k_daly in c("incremental_cost/DALY_averted","incremental_cost/DALY_disc_averted")) {
   df_plot <- cea_summary_all %>% 
@@ -41,17 +42,20 @@ list_scaled <- list()
 for (k_scale in 1:length(price_scaling_vect)) {
   price_scaling <- price_scaling_vect[k_scale] 
   # replace values
-  xx <- df_interv_incremcosts_icer[!duplicated(df_interv_incremcosts_icer),] %>% select(!c(source_num,source)) %>%
+  xx <- df_interv_incremcosts_icer[!duplicated(df_interv_incremcosts_icer),] %>% 
+    select(!c(source_num,source)) %>%
     pivot_longer(c(mean,median,CI50_low,CI50_high,CI95_low,CI95_high)) %>%
     group_by(country_iso,intervention) %>% 
     mutate(value=ifelse(grepl("intervention cost",variable),price_scaling*value,value),
            price=price_scaling*price, price_interv=paste0(price,"$(",intervention,")"),
-           cnt_int=paste0(country_iso,"\n$",price,"\n",intervention) ) %>% # paste0(country_iso ," $",price," ",intervention)
+           cnt_int=paste0(country_iso,"\n$",price,"\n",intervention) ) %>% 
+    # paste0(country_iso ," $",price," ",intervention)
     group_by(country_iso,intervention,name) %>%
     mutate(value=ifelse(grepl("incremental cost",variable) & grepl("million",variable),
-                        value[grepl("intervention cost",variable)]-value[grepl("total medical cost averted",variable)],value)) %>%
-    mutate(row=row_number()) %>% pivot_wider(names_from=c(name),values_from=value) %>% select(!row) %>%
-    group_by(country_iso,intervention) %>% # ,variable
+      value[grepl("intervention cost",variable)]-
+        value[grepl("total medical cost averted",variable)],value)) %>%
+    mutate(row=row_number()) %>% pivot_wider(names_from=c(name),values_from=value) %>% 
+    select(!row) %>% group_by(country_iso,intervention) %>% # ,variable
     # incremental costs: ci50/95 high and low needs to be swapped
     mutate(CI50_low_store=CI50_low,CI95_low_store=CI95_low) %>% 
     mutate(CI50_low=ifelse(grepl("incremental cost \\(million",variable),CI50_high,CI50_low),
@@ -96,9 +100,9 @@ for (k_scale in 1:length(price_scaling_vect)) {
            CI95_high=ifelse(grepl("incremental cost/DALY averted",variable),
                             1e6*CI95_high[grepl("incremental cost",variable) & grepl("million",variable)]/
                               CI95_low[grepl("total DALY averted",variable)],CI95_high)) %>%
-    # mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int[order(country_iso,intervention,price)]),ordered=T) ) %>%
+# mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int[order(country_iso,intervention,price)]),ordered=T) ) %>%
         arrange(country_iso,intervention,price) # %>%
-    # mutate(cnt_int=factor(cnt_int,ordered=T) ) # levels=unique(cnt_int[order(country_iso,intervention,price)]),
+# mutate(cnt_int=factor(cnt_int,ordered=T) ) # levels=unique(cnt_int[order(country_iso,intervention,price)]),
     
   list_scaled[[k_scale]] <- xx
   # "6$ (mAb)" "ZAF $6 mAb" # list_scaled[[k_scale]]
@@ -115,8 +119,8 @@ for (k_scale in 1:length(price_scaling_vect)) {
 #   
 #   # create plot
 #     p <- ggplot(df_plot) + geom_boxplot(aes(x=cnt_int,middle=median, color=price_interv,
-#                                      lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
-#                                  position=position_dodge(width=dodge_val),stat="identity",width=0.85) + # ,size=1.1
+#                                 lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
+#                    position=position_dodge(width=dodge_val),stat="identity",width=0.85) + # ,size=1.1
 #     facet_wrap(~variable,scales="free_y",nrow=3) +
 #     scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(df_n_price$n_price[1]),
 #                                 colorRampPalette(colors=c("blue","blueviolet"))(df_n_price$n_price[2]))) +

@@ -498,11 +498,11 @@ get_burden_flexible_ari_sari <- function(configList,list_incid,effic_fig,effic_p
           cost_data_inpatient_outofpocket <- cost_data$inpatient %>% filter(name %in% "out-of-pocket")
           cost_data_inpatient_indirect <- cost_data$inpatient %>% filter(name %in% "indirect cost")
           config$hosp_cost <- t(sapply(1:nrow(cost_data_inpatient_healthcare), 
-                    function(x) rgamma(config$num_sim,shape=cost_data_inpatient_healthcare$shape[x],
-                            rate=cost_data_inpatient_healthcare$rate[x])*cost_data_inpatient_healthcare$scaling[x])) + 
+              function(x) rgamma(config$num_sim,shape=cost_data_inpatient_healthcare$shape[x],
+                  rate=cost_data_inpatient_healthcare$rate[x])*cost_data_inpatient_healthcare$scaling[x])) +
             t(sapply(1:nrow(cost_data_inpatient_outofpocket), 
                      function(x) rgamma(config$num_sim,shape=cost_data_inpatient_outofpocket$shape[x],
-                        rate=cost_data_inpatient_outofpocket$rate[x])*cost_data_inpatient_outofpocket$scaling[x])) +
+                  rate=cost_data_inpatient_outofpocket$rate[x])*cost_data_inpatient_outofpocket$scaling[x])) +
             t(sapply(1:nrow(cost_data_inpatient_outofpocket), 
                      function(x) rgamma(config$num_sim,shape=cost_data_inpatient_indirect$shape[x],
                             rate=cost_data_inpatient_indirect$rate[x])*cost_data_inpatient_indirect$scaling[x]))

@@ -301,7 +301,7 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
     gamma_fit <- c(get.gamma.par(p=ci95_range,
                                  q=c(s_afr_outpatient_cost$LCI[k_row],
                                  s_afr_outpatient_cost$UCI[k_row]),show.output=F,plot=F),scaling=1)
-  # if fitting fails, this can be overcome by dividing the costs by 100 and then scaling the fit 100x afterwards
+  # if fitting fails, divided costs by 100 and then scaling the fit 100x afterwards
   if (any(is.na(gamma_fit))) { 
     gamma_fit <- c(get.gamma.par(p=ci95_range,
                       q=c(s_afr_outpatient_cost$LCI[k_row],s_afr_outpatient_cost$UCI[k_row])/100,
@@ -361,16 +361,18 @@ if (!any(grepl("shape",colnames(s_afr_inpatient_cost)))){
 }
 
 list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpatient_cost)
+
 # cost data types:
-# list_SA_costs$inpatient %>% select(c(name,disease,cost_type)) %>% distinct()
-# list_SA_costs$outpatient %>% select(c(name,disease,cost_type)) %>% distinct()
+list_SA_costs$inpatient %>% select(c(name,disease,cost_type)) %>% distinct()
+list_SA_costs$outpatient %>% select(c(name,disease,cost_type)) %>% distinct()
 
 # check fit
-# ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_line(aes(y=sim_mean),color="red") +
-#   geom_point(aes(y=mean),shape=21) + geom_point(aes(y=sim_mean),shape=21,color="red") +
-#   geom_ribbon(aes(ymin=LCI,ymax=UCI),alpha=0.2) +
-#   geom_ribbon(aes(ymin=sim_ci95_low,ymax=sim_ci95_up),fill="red",alpha=0.2) +
-#   facet_grid(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme
+ggplot(s_afr_inpatient_cost,aes(x=age)) + geom_line(aes(y=mean)) + geom_line(aes(y=sim_mean),color="red") +
+  geom_point(aes(y=mean),shape=21) + geom_point(aes(y=sim_mean),shape=21,color="red") +
+  geom_ribbon(aes(ymin=LCI,ymax=UCI),alpha=0.2) +
+  geom_ribbon(aes(ymin=sim_ci95_low,ymax=sim_ci95_up),fill="red",alpha=0.2) +
+  facet_grid(disease~name~cost_type,scales="free_y") + theme_bw() + standard_theme
+
 ### ### ### ### ### ### ### ### ### ### ### ### ###
 # KENYA costs
 kenya_costs <- read_csv("custom_input/kenya_costing_tables_tidy.csv")
@@ -444,7 +446,8 @@ efficacy_figures <- list(mat_vacc=list(sympt_disease=c(mean=0.571,CI95_low=0.147
 source("functions/fit_efficacy.R")
 g(list_effic_betafit,allfits) %=% fcn_betafit_efficacy(effic_figs=efficacy_figures,
                                    scan_range_resol_nsample=c(min=-2,max=2,by=1/100,n_sample=2e4),
-                                   optim_range_res=c(min=-1,max=2,by=0.04),optim_initguess=c(-0.05,1))
+                                   optim_range_res=c(min=-1,max=2,by=0.04),
+                                   optim_initguess=c(-0.05,1))
 # fit as: beta_fit <- rbeta(n=1e4,shape1=alphaval,shape2=betaval)*scale_val + shift_val
 #
 # if this is set to true, then the fit is shifted to be more aligned with the mean efficacy rather than
@@ -471,7 +474,7 @@ pricelist=list("mat_vacc"=3,"mAb"=6)
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
 kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 # exponential waning model used for efficacy
-exp_wane_val <- FALSE
+exp_wane_val <- T
 # parameters for exponential waning model
 g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 # distribution used to fit efficacy figures
@@ -479,17 +482,17 @@ effic_dist_fit <- "beta" #
 # adjust coverage levels
 coverage_adj=T; adj_cov_val=c(SA=0.752,KEN=0.616)
 subfolder_name <- paste0(
-      # "new_price_efficacy_",
-        # ifelse(kenya_deaths_input,"KENdeaths",""),
-        # ifelse(SA_deaths_input,"_SAdeaths",""),
-        # "_CIs_",
         "SA_ILI_",
         ifelse(ILI_adjust_SA,"broader","narrow"),
         ifelse(exp_wane_val,"_expwaning",""),
-        # ifelse(FALSE,paste0("_coverage",lower_cov_val),""),
+        ifelse(coverage_adj,"_coverage_ANC","_coverage_BCG_"),
         ifelse(ifelse(exists("flag_adjust_to_mean"),flag_adjust_to_mean,F),"_adj_mv_sev_eff_mean",""),
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
-        ifelse(flag_publ_effic,"","_2022"),"/") 
+        ifelse(flag_publ_effic,"","_2022"),"/")
+# "new_price_efficacy_",
+# ifelse(kenya_deaths_input,"KENdeaths",""),
+# ifelse(SA_deaths_input,"_SAdeaths",""),
+# "_CIs_",
 #
 ### Before starting loop for the FIRST TIME need to create temp folder (afterwards can comment out this line)
 source("init_cea_calc_parallel.R")
@@ -558,13 +561,14 @@ old_new_names <- list(
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # Figure combining burden and costs and their relative reduction
-save_flag=FALSE # TRUE
+save_flag=T # TRUE
 source("functions/fig_combined_burden_cost_reduct.R")
 # combine figures
 plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],
           nrow=3,rel_heights=c(1.5,1,1.1),labels="auto",label_size=19)
 # SAVE
-ggsave(paste0("output/cea_plots/",subfolder_name,"combined_burden_cost_reduct.png"),width=35,height=40,units="cm")
+ggsave(paste0("output/cea_plots/",subfolder_name,"combined_burden_cost_reduct.png"),
+       width=35,height=40,units="cm")
 # save table
 df_combined_burden_cost_reduct[,c("mean","median","CI50_low","CI50_high","CI95_low","CI95_high")] <- 
   round(df_combined_burden_cost_reduct %>% select(c(mean,median,CI50_low,CI50_high,CI95_low,CI95_high)))
@@ -578,16 +582,21 @@ write_csv(df_combined_burden_cost_reduct %>% mutate(across(where(is.numeric),rou
 
 # calculate ICERs 
 # to scale default price
-price_scaling_vect <- 1:20 
+price_scaling_vect <- c(1,10/3,10)
 # calculates ICERs for different price levels (dataframe for default price: df_interv_incremcosts_icer)
 source("functions/icer_plots.R")
 
 # create dataframe with all prices
 ICER_sensit_price <- bind_rows(list_scaled) %>%
-  mutate(CI50_wrong=CI50_low>CI50_high,CI95_wrong=CI95_low>CI95_high,CI50_low_store=CI50_low,CI95_low_store=CI95_low) %>% # 
-  mutate(CI50_low=ifelse(CI50_wrong,CI50_high,CI50_low),CI95_low=ifelse(CI50_wrong,CI95_high,CI95_low),
-         CI50_high=ifelse(CI95_wrong,CI50_low_store,CI50_high),CI95_high=ifelse(CI95_wrong,CI95_low_store,CI95_high)) %>%
-  select(!c(CI50_wrong,CI95_wrong,CI50_low_store,CI95_low_store)) %>% mutate(across(where(is.numeric),round,1))
+  mutate(CI50_wrong=CI50_low>CI50_high,
+         CI95_wrong=CI95_low>CI95_high,
+         CI50_low_store=CI50_low,CI95_low_store=CI95_low) %>% # 
+  mutate(CI50_low=ifelse(CI50_wrong,CI50_high,CI50_low),
+         CI95_low=ifelse(CI50_wrong,CI95_high,CI95_low),
+         CI50_high=ifelse(CI95_wrong,CI50_low_store,CI50_high),
+         CI95_high=ifelse(CI95_wrong,CI95_low_store,CI95_high)) %>%
+  select(!c(CI50_wrong,CI95_wrong,CI50_low_store,CI95_low_store)) %>% 
+  mutate(across(where(is.numeric),round,1))
 
 # icer RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95
 price_limit_MV=30; SAVE_FLAG=F
@@ -597,36 +606,45 @@ p_icer_plotlist[[4]]
 
 ######
 # plot for a few selected prices (Figure 5 in manuscript)
-sel_prices <- list(MV=c(2.5,5,10,20),mAb=c(10,20,40,80)); n_price=length(sel_prices$MV)
-# selected DALY metric
+sel_prices <- list(MV=c(3,10,30),mAb=c(6,20,60)); n_price=length(sel_prices$MV)
+# selected DALY metric: undiscounted or discounted
 sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[1]
-ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) ) %>% 
-  filter( (intervention %in% "MV" & price %in% sel_prices$MV) | (intervention %in% "mAb" & price %in% sel_prices$mAb) ) %>%
+####
+ICER_price_range_plot <- ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) ) %>% 
+  filter( (intervention %in% "MV" & price %in% sel_prices$MV) | 
+            (intervention %in% "mAb" & price %in% sel_prices$mAb) ) %>%
   ungroup() %>% group_by(country_iso,intervention) %>% mutate(n_ord=row_number()) %>% 
   mutate(n_ord=ifelse(country_iso %in% "ZAF",n_ord+2*n_price,n_ord)) %>% # # ICER_sensit_price$
   mutate(n_ord=ifelse(intervention %in% "MV",n_ord+n_price,n_ord)) %>% # 
   arrange(n_ord) %>% mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int)),
-                            price_interv=factor(price_interv,levels=unique(price_interv))) %>%
-  ggplot() + geom_boxplot(aes(x=cnt_int,middle=median, color=price_interv,
+                            price_interv=factor(price_interv,levels=unique(price_interv))) 
+# show plot
+ICER_price_range_plot %>%
+ggplot() + geom_boxplot(aes(x=cnt_int,middle=median,color=price_interv,
                               lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
                           position=position_dodge(width=dodge_val),stat="identity",width=0.85) + # ,size=1.1
   facet_wrap(~variable,scales="free_y",nrow=3) +
   scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(n_price),
                               colorRampPalette(colors=c("blue","blueviolet"))(n_price))) +
-  geom_vline(xintercept=c(4.5,12.5),linetype="dashed",size=0.3) + 
-  geom_vline(xintercept=c(8.5),size=1/2) + geom_hline(yintercept=0,linetype="dashed",size=1/2) +
-  xlab("") + ylab("cost in USD (median, CI50/95)") + labs(color="",linetype="") +guides(color=guide_legend(ncol=2)) + 
-  scale_x_discrete(expand=expansion(0.05,0)) + 
-  theme_bw() + standard_theme + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),
+  geom_text(aes(x=as.numeric(cnt_int)+1/4,y=CI50_high+80,label=round(median))) +
+  geom_vline(xintercept=c(2*n_price+0.5),size=1/2) + 
+  geom_vline(xintercept=c(n_price+0.5,3*n_price+0.5),linetype="dashed",size=0.3) +
+  geom_hline(yintercept=0,linetype="dashed",size=1/2) +
+  xlab("") + ylab("cost in USD (median, CI50/95)") + labs(color="",linetype="") +
+  guides(color=guide_legend(ncol=2)) + 
+  scale_x_discrete(expand=expansion(0.05,0)) + theme_bw() + standard_theme +
+  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),
                                       axis.text.y=element_text(size=17),strip.text=element_text(size=14),
                                       legend.text=element_text(size=20),legend.position="top",
                                       axis.title.y=element_text(size=20),strip.text.x=element_text(size=18)) 
 # SAVE
-ggsave(paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF",ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),
+ggsave(paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF",
+              ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),
               n_price,"prices",".png"),width=30,height=20,units="cm")
 
 # SAVE table
-write_csv(df_interv_incremcosts_icer %>% mutate(across(where(is.numeric),round,1)),paste0("output/cea_plots/",
+write_csv(df_interv_incremcosts_icer %>% 
+            mutate(across(where(is.numeric),round,1)),paste0("output/cea_plots/",
                                  subfolder_name,"df_interv_incremcosts_icer.csv"))
 # price scan
 write_csv(ICER_sensit_price,paste0("output/cea_plots/",subfolder_name,"ICER_sensit_price.csv"))
@@ -635,15 +653,17 @@ write_csv(ICER_sensit_price,paste0("output/cea_plots/",subfolder_name,"ICER_sens
 # comparing different efficacy levels (from existing folders)
 
 list_folders_effic_scan <- c(
-  "output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_40pt_betafit_pricescan",
-  "output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_60pt_betafit_pricescan",
-  "output/cea_plots/new_price_efficacy_KENdeaths_SAdeaths_CIs_SA_ILI_broader_effic_80pt_betafit_pricescan")
+  "output/cea_plots/efficacy_sensit_analysis/SA_ILI_broader_effic_40pt_betafit_pricescan",
+  "output/cea_plots/efficacy_sensit_analysis/SA_ILI_broader_effic_60pt_betafit_pricescan",
+  "output/cea_plots/efficacy_sensit_analysis/SA_ILI_broader_effic_80pt_betafit_pricescan")
 
 list_df_effic_scan=list()
 for (k_folder in 1:length(list_folders_effic_scan)) {
-  list_df_effic_scan[[k_folder]] <- read_csv(paste0(list_folders_effic_scan[k_folder],"/ICER_sensit_price.csv")) %>% 
-    mutate(median_efficacy=c(40,60,80)[k_folder]) }
-# transfrm into dataframe
+  list_df_effic_scan[[k_folder]] <- read_csv(
+    paste0(list_folders_effic_scan[k_folder],"/ICER_sensit_price.csv")) %>%
+    mutate(median_efficacy=c(40,60,80)[k_folder]) 
+  }
+# transform into dataframe
 df_effic_scan <- bind_rows(list_df_effic_scan)
 # y axis limits
 df_ylim <- df_effic_scan %>% 
@@ -658,14 +678,16 @@ ylim_var_name=list(c("CI50_low","CI50_high"),c("CI95_low","CI95_high"))[[1]]
 
 df_effic_scan %>% filter(grepl(sel_icer_var_pattern,variable)) %>%
   ggplot() + geom_line(aes(x=price,y=median,group=median_efficacy)) + 
-  geom_ribbon(aes(x=price,ymin=CI50_low,ymax=CI50_high,group=median_efficacy,fill=paste0(median_efficacy,"%")),alpha=1/2) +
+  geom_ribbon(aes(x=price,ymin=CI50_low,ymax=CI50_high,
+                  group=median_efficacy,fill=paste0(median_efficacy,"%")),alpha=1/2) +
   geom_point(data=df_ylim,aes(x=10,y=get(ylim_var_name[1])),color="white") + 
   geom_point(data=df_ylim,aes(x=10,y=get(ylim_var_name[2])),color="white") +
   facet_wrap(intervention~country_plot,scales="free",nrow=2) + 
   geom_hline(data=hline_vals,aes(yintercept=value),size=1/3,linetype="dashed") + # ,5e3
   scale_x_continuous(breaks=(0:20)*5,expand=expansion(0.03,0)) + scale_y_continuous(expand=expansion(0.01,0)) +
   xlab("dose price (2019 USD)") + ylab("ICER (incremental cost per DALY averted)") +
-  theme_bw() + standard_theme + plot_theme + labs(fill="median efficacy") + theme(legend.title=element_text(size=16))
+  theme_bw() + standard_theme + plot_theme + labs(fill="median efficacy") + 
+  theme(legend.title=element_text(size=16))
 # SAVE
 ggsave(paste0("output/cea_plots/price_efficacy scan.png"),width=40,height=30,units="cm")
 
@@ -676,8 +698,8 @@ ggsave(paste0("output/cea_plots/price_efficacy scan.png"),width=40,height=30,uni
 # load ungeviz library (from https://github.com/wilkelab/ungeviz)
 # if not installed: devtools::install_github("wilkelab/ungeviz")
 library(ungeviz)
-# subfolder_name<-"new_price_efficacy_kenyadeaths_CIs/"
-SAVE_FLAG=F
+# subfolder_name<-""
+SAVE_FLAG=T
 source("functions/compar_plots_loop.R")
 # plots are in `list_compar_plots`
 list_compar_plots[[3]]
