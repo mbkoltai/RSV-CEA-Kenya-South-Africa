@@ -22,6 +22,7 @@ for (k_icer in 1:2) {
     filter(!(intervention %in% "MV" & value>3e3)) 
   
   # plot
+  max_price=max(ICER_sensit_price$price)
   for (k_ylim in 1:2) {
     ylim_var_name=list(c("CI50_low","CI50_high"),c("CI95_low","CI95_high"))[[k_ylim]]
     p <- ICER_sensit_price %>% filter(grepl(sel_icer_var_pattern,variable)) %>%
@@ -32,9 +33,11 @@ for (k_icer in 1:2) {
       geom_point(data=df_ylim,aes(x=10,y=get(ylim_var_name[2])),color="white") +
       facet_wrap(intervention~country_plot,scales="free",nrow=2) + 
       geom_hline(data=hline_vals,aes(yintercept=value),size=1/3,linetype="dashed") + # ,5e3
-      scale_x_continuous(breaks=(0:20)*5,expand=expansion(0.03,0)) + scale_y_continuous(expand=expansion(0.01,0)) +
+      scale_x_continuous(expand=expansion(0.03,0)) + # max_price
+      scale_y_continuous(expand=expansion(0.01,0)) +
       xlab("dose price (2019 USD)") + 
-      ylab(paste0("ICER (incremental cost per ",ifelse(grepl("disc",sel_icer_var_pattern),"disc. ",""),"DALY averted)")) +
+      ylab(paste0("ICER (incremental cost per ",
+                  ifelse(grepl("disc",sel_icer_var_pattern),"disc. ",""),"DALY averted)")) +
       theme_bw() + standard_theme + plot_theme + theme(legend.title=element_blank())
     if (any(grepl("CI50",ylim_var_name))) { 
       p } else {
@@ -46,6 +49,7 @@ for (k_icer in 1:2) {
     if (SAVE_FLAG){
     ggsave(paste0("output/cea_plots/",subfolder_name,"ICER_",
                    ifelse(grepl("disc",sel_icer_var_pattern),"disc_DALY_",""),
-                   "price_scan",ifelse(any(grepl("CI50",ylim_var_name)),"_CI50",""),".png"),width=40,height=30,units="cm")}
+                   "price_scan",ifelse(any(grepl("CI50",ylim_var_name)),"_CI50",""),".png"),
+           width=40,height=30,units="cm")}
   }
 }

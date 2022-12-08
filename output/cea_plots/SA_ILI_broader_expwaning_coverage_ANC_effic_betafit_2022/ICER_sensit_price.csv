@@ -83,6 +83,90 @@ MV",13.9,13.8,13.1,14.7,11.8,16.3
 incremental cost/DALY averted (US$),3,ZAF,MV,South Africa,746,3$(MV),"ZAF
 $3
 MV",-749.1,-745.8,-773.9,-721.6,-820.1,-672.1
+incremental cost (million US$),10,KEN,mAb,Kenya,463100,10$(mAb),"KEN
+$10
+mAb",4.2,4.2,4.1,4.3,3.9,4.5
+incremental cost/DALY (disc) averted (US$),10,KEN,mAb,Kenya,36,10$(mAb),"KEN
+$10
+mAb",330.4,331.7,309.4,355,268.8,403.7
+intervention cost (million US$),10,KEN,mAb,Kenya,5634000,10$(mAb),"KEN
+$10
+mAb",9.4,9.4,9.4,9.4,9.4,9.4
+total DALY averted (US$),10,KEN,mAb,Kenya,28970,10$(mAb),"KEN
+$10
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),10,KEN,mAb,Kenya,12700,10$(mAb),"KEN
+$10
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),10,KEN,mAb,Kenya,5171000,10$(mAb),"KEN
+$10
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),10,KEN,mAb,Kenya,16,10$(mAb),"KEN
+$10
+mAb",144.9,145.4,135.5,155.8,117.6,177.4
+incremental cost (million US$),5,KEN,MV,Kenya,713200,5$(MV),"KEN
+$5
+MV",2.6,2.6,2.5,2.7,2.4,2.9
+incremental cost/DALY (disc) averted (US$),5,KEN,MV,Kenya,71,5$(MV),"KEN
+$5
+MV",263,263.5,242.9,286,207,330.7
+intervention cost (million US$),5,KEN,MV,Kenya,2882000,5$(MV),"KEN
+$5
+MV",4.8,4.8,4.8,4.8,4.8,4.8
+total DALY averted (US$),5,KEN,MV,Kenya,22950,5$(MV),"KEN
+$5
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),5,KEN,MV,Kenya,9982,5$(MV),"KEN
+$5
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),5,KEN,MV,Kenya,2169000,5$(MV),"KEN
+$5
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),5,KEN,MV,Kenya,31,5$(MV),"KEN
+$5
+MV",114.4,114.6,105.6,124.5,89.9,144
+incremental cost (million US$),10,ZAF,mAb,South Africa,12330000,10$(mAb),"ZAF
+$10
+mAb",-9,-8.9,-9.8,-8.2,-11.5,-6.7
+incremental cost/DALY (disc) averted (US$),10,ZAF,mAb,South Africa,1476,10$(mAb),"ZAF
+$10
+mAb",-1076.8,-1070.7,-1137.5,-1008.4,-1262.1,-882.7
+intervention cost (million US$),10,ZAF,mAb,South Africa,5103000,10$(mAb),"ZAF
+$10
+mAb",8.5,8.5,8.5,8.5,8.5,8.5
+total DALY averted (US$),10,ZAF,mAb,South Africa,17960,10$(mAb),"ZAF
+$10
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),10,ZAF,mAb,South Africa,8341,10$(mAb),"ZAF
+$10
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),10,ZAF,mAb,South Africa,17430000,10$(mAb),"ZAF
+$10
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),10,ZAF,mAb,South Africa,685,10$(mAb),"ZAF
+$10
+mAb",-499.8,-497.1,-527.7,-468.3,-584.7,-410.3
+incremental cost (million US$),5,ZAF,MV,South Africa,11240000,5$(MV),"ZAF
+$5
+MV",-9.6,-9.5,-10.3,-8.8,-11.9,-7.4
+incremental cost/DALY (disc) averted (US$),5,ZAF,MV,South Africa,1626,5$(MV),"ZAF
+$5
+MV",-1383.1,-1374.9,-1445.9,-1313.1,-1564.8,-1187.3
+intervention cost (million US$),5,ZAF,MV,South Africa,2597000,5$(MV),"ZAF
+$5
+MV",4.3,4.3,4.3,4.3,4.3,4.3
+total DALY averted (US$),5,ZAF,MV,South Africa,15060,5$(MV),"ZAF
+$5
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),5,ZAF,MV,South Africa,6907,5$(MV),"ZAF
+$5
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),5,ZAF,MV,South Africa,13830000,5$(MV),"ZAF
+$5
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),5,ZAF,MV,South Africa,746,5$(MV),"ZAF
+$5
+MV",-634.2,-630.7,-662.6,-602.6,-716.2,-545.1
 incremental cost (million US$),20,KEN,mAb,Kenya,463100,20$(mAb),"KEN
 $20
 mAb",13.6,13.6,13.5,13.7,13.2,13.9
@@ -167,87 +251,675 @@ MV",13.9,13.8,13.1,14.7,11.8,16.3
 incremental cost/DALY averted (US$),10,ZAF,MV,South Africa,746,10$(MV),"ZAF
 $10
 MV",-346.9,-342.9,-384.3,-305.1,-456.4,-227.5
-incremental cost (million US$),60,KEN,mAb,Kenya,463100,60$(mAb),"KEN
-$60
-mAb",51.1,51.1,51,51.2,50.8,51.4
-incremental cost/DALY (disc) averted (US$),60,KEN,mAb,Kenya,36,60$(mAb),"KEN
-$60
-mAb",4018.3,4025.4,3856.2,4207.2,3542.2,4600.6
-intervention cost (million US$),60,KEN,mAb,Kenya,5634000,60$(mAb),"KEN
-$60
-mAb",56.3,56.3,56.3,56.3,56.3,56.3
-total DALY averted (US$),60,KEN,mAb,Kenya,28970,60$(mAb),"KEN
-$60
+incremental cost (million US$),40,KEN,mAb,Kenya,463100,40$(mAb),"KEN
+$40
+mAb",32.4,32.4,32.2,32.5,32,32.7
+incremental cost/DALY (disc) averted (US$),40,KEN,mAb,Kenya,36,40$(mAb),"KEN
+$40
+mAb",2543.1,2547.9,2437.5,2666.3,2232.8,2921.9
+intervention cost (million US$),40,KEN,mAb,Kenya,5634000,40$(mAb),"KEN
+$40
+mAb",37.5,37.5,37.5,37.5,37.5,37.5
+total DALY averted (US$),40,KEN,mAb,Kenya,28970,40$(mAb),"KEN
+$40
 mAb",29017.4,28970,27756.5,30199.2,25442,32774
-total DALY (disc) averted (US$),60,KEN,mAb,Kenya,12700,60$(mAb),"KEN
-$60
+total DALY (disc) averted (US$),40,KEN,mAb,Kenya,12700,40$(mAb),"KEN
+$40
 mAb",12721.8,12702,12179,13228,11178.9,14333.1
-total medical cost averted (million US$),60,KEN,mAb,Kenya,5171000,60$(mAb),"KEN
-$60
+total medical cost averted (million US$),40,KEN,mAb,Kenya,5171000,40$(mAb),"KEN
+$40
 mAb",5.2,5.2,5.1,5.3,4.9,5.5
-incremental cost/DALY averted (US$),60,KEN,mAb,Kenya,16,60$(mAb),"KEN
-$60
-mAb",1761.7,1764.9,1689.1,1846.1,1549.1,2021.5
-incremental cost (million US$),30,KEN,MV,Kenya,713200,30$(MV),"KEN
-$30
-MV",26.6,26.6,26.5,26.7,26.4,26.9
-incremental cost/DALY (disc) averted (US$),30,KEN,MV,Kenya,71,30$(MV),"KEN
-$30
-MV",2663.4,2667.8,2537.8,2809.4,2303.6,3105.4
-intervention cost (million US$),30,KEN,MV,Kenya,2882000,30$(MV),"KEN
-$30
-MV",28.8,28.8,28.8,28.8,28.8,28.8
-total DALY averted (US$),30,KEN,MV,Kenya,22950,30$(MV),"KEN
-$30
+incremental cost/DALY averted (US$),40,KEN,mAb,Kenya,16,40$(mAb),"KEN
+$40
+mAb",1115,1117.1,1067.7,1169.9,976.5,1283.8
+incremental cost (million US$),20,KEN,MV,Kenya,713200,20$(MV),"KEN
+$20
+MV",17,17,16.9,17.1,16.8,17.3
+incremental cost/DALY (disc) averted (US$),20,KEN,MV,Kenya,71,20$(MV),"KEN
+$20
+MV",1703.3,1706.1,1619.8,1800,1464.9,1995.5
+intervention cost (million US$),20,KEN,MV,Kenya,2882000,20$(MV),"KEN
+$20
+MV",19.2,19.2,19.2,19.2,19.2,19.2
+total DALY averted (US$),20,KEN,MV,Kenya,22950,20$(MV),"KEN
+$20
 MV",22987.3,22954,21851.5,24050,19861.8,26371.5
-total DALY (disc) averted (US$),30,KEN,MV,Kenya,9982,30$(MV),"KEN
-$30
+total DALY (disc) averted (US$),20,KEN,MV,Kenya,9982,20$(MV),"KEN
+$20
 MV",9998.5,9982,9511,10458,8649.5,11447.5
-total medical cost averted (million US$),30,KEN,MV,Kenya,2169000,30$(MV),"KEN
-$30
+total medical cost averted (million US$),20,KEN,MV,Kenya,2169000,20$(MV),"KEN
+$20
 MV",2.2,2.2,2.1,2.3,1.9,2.4
-incremental cost/DALY averted (US$),30,KEN,MV,Kenya,31,30$(MV),"KEN
-$30
-MV",1158.5,1160.1,1103.5,1222.8,999.9,1352.3
-incremental cost (million US$),60,ZAF,mAb,South Africa,12330000,60$(mAb),"ZAF
-$60
-mAb",33.5,33.6,32.7,34.3,31,35.8
-incremental cost/DALY (disc) averted (US$),60,ZAF,mAb,South Africa,1476,60$(mAb),"ZAF
-$60
-mAb",4013.8,4024.9,3810.7,4243.7,3398,4683.1
-intervention cost (million US$),60,ZAF,mAb,South Africa,5103000,60$(mAb),"ZAF
-$60
-mAb",51,51,51,51,51,51
-total DALY averted (US$),60,ZAF,mAb,South Africa,17960,60$(mAb),"ZAF
-$60
+incremental cost/DALY averted (US$),20,KEN,MV,Kenya,31,20$(MV),"KEN
+$20
+MV",740.8,741.9,704.4,783.5,635.9,869
+incremental cost (million US$),40,ZAF,mAb,South Africa,12330000,40$(mAb),"ZAF
+$40
+mAb",16.5,16.6,15.7,17.3,14,18.8
+incremental cost/DALY (disc) averted (US$),40,ZAF,mAb,South Africa,1476,40$(mAb),"ZAF
+$40
+mAb",1977.6,1986.7,1831.4,2142.9,1534,2456.8
+intervention cost (million US$),40,ZAF,mAb,South Africa,5103000,40$(mAb),"ZAF
+$40
+mAb",34,34,34,34,34,34
+total DALY averted (US$),40,ZAF,mAb,South Africa,17960,40$(mAb),"ZAF
+$40
 mAb",17985.6,17965,17424,18516,16425.9,19685
-total DALY (disc) averted (US$),60,ZAF,mAb,South Africa,8341,60$(mAb),"ZAF
-$60
+total DALY (disc) averted (US$),40,ZAF,mAb,South Africa,8341,40$(mAb),"ZAF
+$40
 mAb",8348.6,8340.5,8092,8589,7636,9120
-total medical cost averted (million US$),60,ZAF,mAb,South Africa,17430000,60$(mAb),"ZAF
-$60
+total medical cost averted (million US$),40,ZAF,mAb,South Africa,17430000,40$(mAb),"ZAF
+$40
 mAb",17.5,17.4,16.7,18.3,15.2,20
-incremental cost/DALY averted (US$),60,ZAF,mAb,South Africa,685,60$(mAb),"ZAF
-$60
-mAb",1863.2,1868.6,1767.7,1970.8,1574.3,2177.1
-incremental cost (million US$),30,ZAF,MV,South Africa,11240000,30$(MV),"ZAF
-$30
-MV",12.1,12.2,11.3,12.9,9.7,14.2
-incremental cost/DALY (disc) averted (US$),30,ZAF,MV,South Africa,1626,30$(MV),"ZAF
-$30
-MV",1749.4,1762,1590.7,1928.5,1273.2,2272
-intervention cost (million US$),30,ZAF,MV,South Africa,2597000,30$(MV),"ZAF
-$30
-MV",26,26,26,26,26,26
-total DALY averted (US$),30,ZAF,MV,South Africa,15060,30$(MV),"ZAF
-$30
+incremental cost/DALY averted (US$),40,ZAF,mAb,South Africa,685,40$(mAb),"ZAF
+$40
+mAb",918,922.3,849.5,995.2,710.7,1142.1
+incremental cost (million US$),20,ZAF,MV,South Africa,11240000,20$(MV),"ZAF
+$20
+MV",3.4,3.5,2.7,4.2,1.1,5.6
+incremental cost/DALY (disc) averted (US$),20,ZAF,MV,South Africa,1626,20$(MV),"ZAF
+$20
+MV",496.4,507.2,376.1,631.9,138,888.3
+intervention cost (million US$),20,ZAF,MV,South Africa,2597000,20$(MV),"ZAF
+$20
+MV",17.3,17.3,17.3,17.3,17.3,17.3
+total DALY averted (US$),20,ZAF,MV,South Africa,15060,20$(MV),"ZAF
+$20
 MV",15084,15058,14564,15569.5,13643.8,16681.5
-total DALY (disc) averted (US$),30,ZAF,MV,South Africa,6907,30$(MV),"ZAF
-$30
+total DALY (disc) averted (US$),20,ZAF,MV,South Africa,6907,20$(MV),"ZAF
+$20
 MV",6916.6,6907,6684,7135,6263.2,7634.5
-total medical cost averted (million US$),30,ZAF,MV,South Africa,13830000,30$(MV),"ZAF
-$30
+total medical cost averted (million US$),20,ZAF,MV,South Africa,13830000,20$(MV),"ZAF
+$20
 MV",13.9,13.8,13.1,14.7,11.8,16.3
-incremental cost/DALY averted (US$),30,ZAF,MV,South Africa,746,30$(MV),"ZAF
-$30
-MV",802.2,808.2,729,885.1,582.7,1043
+incremental cost/DALY averted (US$),20,ZAF,MV,South Africa,746,20$(MV),"ZAF
+$20
+MV",227.6,232.7,172.3,290,63.1,407.8
+incremental cost (million US$),25,KEN,mAb,Kenya,463100,25$(mAb),"KEN
+$25
+mAb",18.3,18.3,18.2,18.4,17.9,18.6
+incremental cost/DALY (disc) averted (US$),25,KEN,mAb,Kenya,36,25$(mAb),"KEN
+$25
+mAb",1436.8,1439.8,1373.5,1510.7,1250.8,1662.8
+intervention cost (million US$),25,KEN,mAb,Kenya,5634000,25$(mAb),"KEN
+$25
+mAb",23.5,23.5,23.5,23.5,23.5,23.5
+total DALY averted (US$),25,KEN,mAb,Kenya,28970,25$(mAb),"KEN
+$25
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),25,KEN,mAb,Kenya,12700,25$(mAb),"KEN
+$25
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),25,KEN,mAb,Kenya,5171000,25$(mAb),"KEN
+$25
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),25,KEN,mAb,Kenya,16,25$(mAb),"KEN
+$25
+mAb",629.9,631.3,601.6,662.8,547,730.6
+incremental cost (million US$),12.5,KEN,MV,Kenya,713200,12.5$(MV),"KEN
+$12.5
+MV",9.8,9.8,9.7,9.9,9.6,10.1
+incremental cost/DALY (disc) averted (US$),12.5,KEN,MV,Kenya,71,12.5$(MV),"KEN
+$12.5
+MV",983.1,984.8,931.3,1043,836,1163.1
+intervention cost (million US$),12.5,KEN,MV,Kenya,2882000,12.5$(MV),"KEN
+$12.5
+MV",12,12,12,12,12,12
+total DALY averted (US$),12.5,KEN,MV,Kenya,22950,12.5$(MV),"KEN
+$12.5
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),12.5,KEN,MV,Kenya,9982,12.5$(MV),"KEN
+$12.5
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),12.5,KEN,MV,Kenya,2169000,12.5$(MV),"KEN
+$12.5
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),12.5,KEN,MV,Kenya,31,12.5$(MV),"KEN
+$12.5
+MV",427.6,428.2,405,454,362.9,506.5
+incremental cost (million US$),25,ZAF,mAb,South Africa,12330000,25$(mAb),"ZAF
+$25
+mAb",3.8,3.8,3,4.6,1.2,6
+incremental cost/DALY (disc) averted (US$),25,ZAF,mAb,South Africa,1476,25$(mAb),"ZAF
+$25
+mAb",450.4,458,347,567.2,136,787.1
+intervention cost (million US$),25,ZAF,mAb,South Africa,5103000,25$(mAb),"ZAF
+$25
+mAb",21.2,21.2,21.2,21.2,21.2,21.2
+total DALY averted (US$),25,ZAF,mAb,South Africa,17960,25$(mAb),"ZAF
+$25
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),25,ZAF,mAb,South Africa,8341,25$(mAb),"ZAF
+$25
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),25,ZAF,mAb,South Africa,17430000,25$(mAb),"ZAF
+$25
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),25,ZAF,mAb,South Africa,685,25$(mAb),"ZAF
+$25
+mAb",209.1,212.6,160.9,263.4,63,365.9
+incremental cost (million US$),12.5,ZAF,MV,South Africa,11240000,12.5$(MV),"ZAF
+$12.5
+MV",-3.1,-3,-3.8,-2.3,-5.4,-0.9
+incremental cost/DALY (disc) averted (US$),12.5,ZAF,MV,South Africa,1626,12.5$(MV),"ZAF
+$12.5
+MV",-443.4,-433.9,-534.9,-340.6,-713.4,-149.5
+intervention cost (million US$),12.5,ZAF,MV,South Africa,2597000,12.5$(MV),"ZAF
+$12.5
+MV",10.8,10.8,10.8,10.8,10.8,10.8
+total DALY averted (US$),12.5,ZAF,MV,South Africa,15060,12.5$(MV),"ZAF
+$12.5
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),12.5,ZAF,MV,South Africa,6907,12.5$(MV),"ZAF
+$12.5
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),12.5,ZAF,MV,South Africa,13830000,12.5$(MV),"ZAF
+$12.5
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),12.5,ZAF,MV,South Africa,746,12.5$(MV),"ZAF
+$12.5
+MV",-203.3,-199,-245.1,-156.3,-326.5,-68.7
+incremental cost (million US$),50,KEN,mAb,Kenya,463100,50$(mAb),"KEN
+$50
+mAb",41.7,41.7,41.6,41.9,41.4,42
+incremental cost/DALY (disc) averted (US$),50,KEN,mAb,Kenya,36,50$(mAb),"KEN
+$50
+mAb",3280.7,3286.6,3146.9,3436.8,2887.5,3761.2
+intervention cost (million US$),50,KEN,mAb,Kenya,5634000,50$(mAb),"KEN
+$50
+mAb",46.9,46.9,46.9,46.9,46.9,46.9
+total DALY averted (US$),50,KEN,mAb,Kenya,28970,50$(mAb),"KEN
+$50
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),50,KEN,mAb,Kenya,12700,50$(mAb),"KEN
+$50
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),50,KEN,mAb,Kenya,5171000,50$(mAb),"KEN
+$50
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),50,KEN,mAb,Kenya,16,50$(mAb),"KEN
+$50
+mAb",1438.3,1441,1378.4,1508,1262.8,1652.7
+incremental cost (million US$),25,KEN,MV,Kenya,713200,25$(MV),"KEN
+$25
+MV",21.8,21.8,21.7,21.9,21.6,22.1
+incremental cost/DALY (disc) averted (US$),25,KEN,MV,Kenya,71,25$(MV),"KEN
+$25
+MV",2183.3,2186.9,2078.8,2304.7,1884.3,2550.4
+intervention cost (million US$),25,KEN,MV,Kenya,2882000,25$(MV),"KEN
+$25
+MV",24,24,24,24,24,24
+total DALY averted (US$),25,KEN,MV,Kenya,22950,25$(MV),"KEN
+$25
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),25,KEN,MV,Kenya,9982,25$(MV),"KEN
+$25
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),25,KEN,MV,Kenya,2169000,25$(MV),"KEN
+$25
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),25,KEN,MV,Kenya,31,25$(MV),"KEN
+$25
+MV",949.7,951,904,1003.1,817.9,1110.7
+incremental cost (million US$),50,ZAF,mAb,South Africa,12330000,50$(mAb),"ZAF
+$50
+mAb",25,25.1,24.2,25.8,22.5,27.3
+incremental cost/DALY (disc) averted (US$),50,ZAF,mAb,South Africa,1476,50$(mAb),"ZAF
+$50
+mAb",2995.7,3005.8,2821.1,3193.3,2466,3569.9
+intervention cost (million US$),50,ZAF,mAb,South Africa,5103000,50$(mAb),"ZAF
+$50
+mAb",42.5,42.5,42.5,42.5,42.5,42.5
+total DALY averted (US$),50,ZAF,mAb,South Africa,17960,50$(mAb),"ZAF
+$50
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),50,ZAF,mAb,South Africa,8341,50$(mAb),"ZAF
+$50
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),50,ZAF,mAb,South Africa,17430000,50$(mAb),"ZAF
+$50
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),50,ZAF,mAb,South Africa,685,50$(mAb),"ZAF
+$50
+mAb",1390.6,1395.5,1308.6,1483,1142.5,1659.6
+incremental cost (million US$),25,ZAF,MV,South Africa,11240000,25$(MV),"ZAF
+$25
+MV",7.8,7.8,7,8.6,5.4,9.9
+incremental cost/DALY (disc) averted (US$),25,ZAF,MV,South Africa,1626,25$(MV),"ZAF
+$25
+MV",1122.9,1134.6,983.4,1280.2,705.6,1580.1
+intervention cost (million US$),25,ZAF,MV,South Africa,2597000,25$(MV),"ZAF
+$25
+MV",21.7,21.7,21.7,21.7,21.7,21.7
+total DALY averted (US$),25,ZAF,MV,South Africa,15060,25$(MV),"ZAF
+$25
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),25,ZAF,MV,South Africa,6907,25$(MV),"ZAF
+$25
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),25,ZAF,MV,South Africa,13830000,25$(MV),"ZAF
+$25
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),25,ZAF,MV,South Africa,746,25$(MV),"ZAF
+$25
+MV",514.9,520.4,450.7,587.5,322.9,725.4
+incremental cost (million US$),80,KEN,mAb,Kenya,463100,80$(mAb),"KEN
+$80
+mAb",69.9,69.9,69.8,70,69.5,70.2
+incremental cost/DALY (disc) averted (US$),80,KEN,mAb,Kenya,36,80$(mAb),"KEN
+$80
+mAb",5493.5,5502.8,5274.9,5748.1,4851.5,6279.4
+intervention cost (million US$),80,KEN,mAb,Kenya,5634000,80$(mAb),"KEN
+$80
+mAb",75.1,75.1,75.1,75.1,75.1,75.1
+total DALY averted (US$),80,KEN,mAb,Kenya,28970,80$(mAb),"KEN
+$80
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),80,KEN,mAb,Kenya,12700,80$(mAb),"KEN
+$80
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),80,KEN,mAb,Kenya,5171000,80$(mAb),"KEN
+$80
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),80,KEN,mAb,Kenya,16,80$(mAb),"KEN
+$80
+mAb",2408.4,2412.7,2310.5,2522.2,2121.7,2759.1
+incremental cost (million US$),40,KEN,MV,Kenya,713200,40$(MV),"KEN
+$40
+MV",36.2,36.2,36.1,36.3,36,36.5
+incremental cost/DALY (disc) averted (US$),40,KEN,MV,Kenya,71,40$(MV),"KEN
+$40
+MV",3623.6,3629.5,3455.7,3818.7,3142.2,4215.3
+intervention cost (million US$),40,KEN,MV,Kenya,2882000,40$(MV),"KEN
+$40
+MV",38.4,38.4,38.4,38.4,38.4,38.4
+total DALY averted (US$),40,KEN,MV,Kenya,22950,40$(MV),"KEN
+$40
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),40,KEN,MV,Kenya,9982,40$(MV),"KEN
+$40
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),40,KEN,MV,Kenya,2169000,40$(MV),"KEN
+$40
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),40,KEN,MV,Kenya,31,40$(MV),"KEN
+$40
+MV",1576.1,1578.4,1502.7,1662.1,1364,1835.7
+incremental cost (million US$),80,ZAF,mAb,South Africa,12330000,80$(mAb),"ZAF
+$80
+mAb",50.5,50.6,49.7,51.3,48,52.8
+incremental cost/DALY (disc) averted (US$),80,ZAF,mAb,South Africa,1476,80$(mAb),"ZAF
+$80
+mAb",6050.1,6063.2,5790,6344.5,5262,6909.4
+intervention cost (million US$),80,ZAF,mAb,South Africa,5103000,80$(mAb),"ZAF
+$80
+mAb",68,68,68,68,68,68
+total DALY averted (US$),80,ZAF,mAb,South Africa,17960,80$(mAb),"ZAF
+$80
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),80,ZAF,mAb,South Africa,8341,80$(mAb),"ZAF
+$80
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),80,ZAF,mAb,South Africa,17430000,80$(mAb),"ZAF
+$80
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),80,ZAF,mAb,South Africa,685,80$(mAb),"ZAF
+$80
+mAb",2808.4,2814.9,2685.8,2946.5,2437.9,3212
+incremental cost (million US$),40,ZAF,MV,South Africa,11240000,40$(MV),"ZAF
+$40
+MV",20.8,20.8,20,21.6,18.4,22.9
+incremental cost/DALY (disc) averted (US$),40,ZAF,MV,South Africa,1626,40$(MV),"ZAF
+$40
+MV",3002.4,3016.7,2805.4,3225.1,2408.4,3655.7
+intervention cost (million US$),40,ZAF,MV,South Africa,2597000,40$(MV),"ZAF
+$40
+MV",34.7,34.7,34.7,34.7,34.7,34.7
+total DALY averted (US$),40,ZAF,MV,South Africa,15060,40$(MV),"ZAF
+$40
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),40,ZAF,MV,South Africa,6907,40$(MV),"ZAF
+$40
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),40,ZAF,MV,South Africa,13830000,40$(MV),"ZAF
+$40
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),40,ZAF,MV,South Africa,746,40$(MV),"ZAF
+$40
+MV",1376.7,1383.8,1285.6,1480.1,1102.2,1678.2
+incremental cost (million US$),100,KEN,mAb,Kenya,463100,100$(mAb),"KEN
+$100
+mAb",88.7,88.7,88.5,88.8,88.3,89
+incremental cost/DALY (disc) averted (US$),100,KEN,mAb,Kenya,36,100$(mAb),"KEN
+$100
+mAb",6968.6,6980.3,6693.6,7289,6160.8,7958.1
+intervention cost (million US$),100,KEN,mAb,Kenya,5634000,100$(mAb),"KEN
+$100
+mAb",93.8,93.8,93.8,93.8,93.8,93.8
+total DALY averted (US$),100,KEN,mAb,Kenya,28970,100$(mAb),"KEN
+$100
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),100,KEN,mAb,Kenya,12700,100$(mAb),"KEN
+$100
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),100,KEN,mAb,Kenya,5171000,100$(mAb),"KEN
+$100
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),100,KEN,mAb,Kenya,16,100$(mAb),"KEN
+$100
+mAb",3055.2,3060.5,2932,3198.3,2694.3,3496.7
+incremental cost (million US$),50,KEN,MV,Kenya,713200,50$(MV),"KEN
+$50
+MV",45.8,45.8,45.7,45.9,45.6,46.1
+incremental cost/DALY (disc) averted (US$),50,KEN,MV,Kenya,71,50$(MV),"KEN
+$50
+MV",4583.7,4591.3,4373.7,4828.1,3980.8,5325.2
+intervention cost (million US$),50,KEN,MV,Kenya,2882000,50$(MV),"KEN
+$50
+MV",48,48,48,48,48,48
+total DALY averted (US$),50,KEN,MV,Kenya,22950,50$(MV),"KEN
+$50
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),50,KEN,MV,Kenya,9982,50$(MV),"KEN
+$50
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),50,KEN,MV,Kenya,2169000,50$(MV),"KEN
+$50
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),50,KEN,MV,Kenya,31,50$(MV),"KEN
+$50
+MV",1993.7,1996.6,1901.9,2101.5,1728,2319
+incremental cost (million US$),100,ZAF,mAb,South Africa,12330000,100$(mAb),"ZAF
+$100
+mAb",67.5,67.6,66.7,68.3,65,69.8
+incremental cost/DALY (disc) averted (US$),100,ZAF,mAb,South Africa,1476,100$(mAb),"ZAF
+$100
+mAb",8086.4,8101.4,7769.2,8445.4,7126.1,9135.7
+intervention cost (million US$),100,ZAF,mAb,South Africa,5103000,100$(mAb),"ZAF
+$100
+mAb",85,85,85,85,85,85
+total DALY averted (US$),100,ZAF,mAb,South Africa,17960,100$(mAb),"ZAF
+$100
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),100,ZAF,mAb,South Africa,8341,100$(mAb),"ZAF
+$100
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),100,ZAF,mAb,South Africa,17430000,100$(mAb),"ZAF
+$100
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),100,ZAF,mAb,South Africa,685,100$(mAb),"ZAF
+$100
+mAb",3753.6,3761.2,3603.9,3922.2,3301.5,4247
+incremental cost (million US$),50,ZAF,MV,South Africa,11240000,50$(MV),"ZAF
+$50
+MV",29.4,29.5,28.7,30.2,27.1,31.6
+incremental cost/DALY (disc) averted (US$),50,ZAF,MV,South Africa,1626,50$(MV),"ZAF
+$50
+MV",4255.5,4271.5,4020.1,4521.7,3543.6,5039.4
+intervention cost (million US$),50,ZAF,MV,South Africa,2597000,50$(MV),"ZAF
+$50
+MV",43.3,43.3,43.3,43.3,43.3,43.3
+total DALY averted (US$),50,ZAF,MV,South Africa,15060,50$(MV),"ZAF
+$50
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),50,ZAF,MV,South Africa,6907,50$(MV),"ZAF
+$50
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),50,ZAF,MV,South Africa,13830000,50$(MV),"ZAF
+$50
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),50,ZAF,MV,South Africa,746,50$(MV),"ZAF
+$50
+MV",1951.3,1959.3,1842.3,2075.2,1621.8,2313.4
+incremental cost (million US$),150,KEN,mAb,Kenya,463100,150$(mAb),"KEN
+$150
+mAb",135.6,135.6,135.5,135.7,135.2,135.9
+incremental cost/DALY (disc) averted (US$),150,KEN,mAb,Kenya,36,150$(mAb),"KEN
+$150
+mAb",10656.5,10673.9,10240.4,11141.3,9434.1,12155
+intervention cost (million US$),150,KEN,mAb,Kenya,5634000,150$(mAb),"KEN
+$150
+mAb",140.8,140.8,140.8,140.8,140.8,140.8
+total DALY averted (US$),150,KEN,mAb,Kenya,28970,150$(mAb),"KEN
+$150
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),150,KEN,mAb,Kenya,12700,150$(mAb),"KEN
+$150
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),150,KEN,mAb,Kenya,5171000,150$(mAb),"KEN
+$150
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),150,KEN,mAb,Kenya,16,150$(mAb),"KEN
+$150
+mAb",4672,4680,4485.5,4888.6,4125.8,5340.8
+incremental cost (million US$),75,KEN,MV,Kenya,713200,75$(MV),"KEN
+$75
+MV",69.8,69.8,69.7,69.9,69.6,70.1
+incremental cost/DALY (disc) averted (US$),75,KEN,MV,Kenya,71,75$(MV),"KEN
+$75
+MV",6984.1,6995.6,6668.6,7351.5,6077.3,8099.9
+intervention cost (million US$),75,KEN,MV,Kenya,2882000,75$(MV),"KEN
+$75
+MV",72,72,72,72,72,72
+total DALY averted (US$),75,KEN,MV,Kenya,22950,75$(MV),"KEN
+$75
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),75,KEN,MV,Kenya,9982,75$(MV),"KEN
+$75
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),75,KEN,MV,Kenya,2169000,75$(MV),"KEN
+$75
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),75,KEN,MV,Kenya,31,75$(MV),"KEN
+$75
+MV",3037.8,3042.2,2899.8,3199.8,2638.1,3527.4
+incremental cost (million US$),150,ZAF,mAb,South Africa,12330000,150$(mAb),"ZAF
+$150
+mAb",110,110.1,109.2,110.8,107.5,112.3
+incremental cost/DALY (disc) averted (US$),150,ZAF,mAb,South Africa,1476,150$(mAb),"ZAF
+$150
+mAb",13177,13197.1,12717.4,13697.5,11786.2,14701.4
+intervention cost (million US$),150,ZAF,mAb,South Africa,5103000,150$(mAb),"ZAF
+$150
+mAb",127.5,127.5,127.5,127.5,127.5,127.5
+total DALY averted (US$),150,ZAF,mAb,South Africa,17960,150$(mAb),"ZAF
+$150
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),150,ZAF,mAb,South Africa,8341,150$(mAb),"ZAF
+$150
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),150,ZAF,mAb,South Africa,17430000,150$(mAb),"ZAF
+$150
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),150,ZAF,mAb,South Africa,685,150$(mAb),"ZAF
+$150
+mAb",6116.6,6126.9,5899.2,6361.3,5460.5,6834.3
+incremental cost (million US$),75,ZAF,MV,South Africa,11240000,75$(MV),"ZAF
+$75
+MV",51.1,51.2,50.4,51.9,48.7,53.2
+incremental cost/DALY (disc) averted (US$),75,ZAF,MV,South Africa,1626,75$(MV),"ZAF
+$75
+MV",7388,7408.4,7056.8,7763.3,6381.6,8498.8
+intervention cost (million US$),75,ZAF,MV,South Africa,2597000,75$(MV),"ZAF
+$75
+MV",65,65,65,65,65,65
+total DALY averted (US$),75,ZAF,MV,South Africa,15060,75$(MV),"ZAF
+$75
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),75,ZAF,MV,South Africa,6907,75$(MV),"ZAF
+$75
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),75,ZAF,MV,South Africa,13830000,75$(MV),"ZAF
+$75
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),75,ZAF,MV,South Africa,746,75$(MV),"ZAF
+$75
+MV",3387.7,3398.2,3233.9,3562.9,2920.6,3901.4
+incremental cost (million US$),75,KEN,mAb,Kenya,463100,75$(mAb),"KEN
+$75
+mAb",65.2,65.2,65.1,65.3,64.8,65.5
+incremental cost/DALY (disc) averted (US$),75,KEN,mAb,Kenya,36,75$(mAb),"KEN
+$75
+mAb",5124.7,5133.4,4920.2,5362.9,4524.1,5859.7
+intervention cost (million US$),75,KEN,mAb,Kenya,5634000,75$(mAb),"KEN
+$75
+mAb",70.4,70.4,70.4,70.4,70.4,70.4
+total DALY averted (US$),75,KEN,mAb,Kenya,28970,75$(mAb),"KEN
+$75
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),75,KEN,mAb,Kenya,12700,75$(mAb),"KEN
+$75
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),75,KEN,mAb,Kenya,5171000,75$(mAb),"KEN
+$75
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),75,KEN,mAb,Kenya,16,75$(mAb),"KEN
+$75
+mAb",2246.8,2250.8,2155.2,2353.1,1978.5,2574.7
+incremental cost (million US$),37.5,KEN,MV,Kenya,713200,37.5$(MV),"KEN
+$37.5
+MV",33.8,33.8,33.7,33.9,33.6,34.1
+incremental cost/DALY (disc) averted (US$),37.5,KEN,MV,Kenya,71,37.5$(MV),"KEN
+$37.5
+MV",3383.5,3389.1,3226.2,3566.4,2932.5,3937.8
+intervention cost (million US$),37.5,KEN,MV,Kenya,2882000,37.5$(MV),"KEN
+$37.5
+MV",36,36,36,36,36,36
+total DALY averted (US$),37.5,KEN,MV,Kenya,22950,37.5$(MV),"KEN
+$37.5
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),37.5,KEN,MV,Kenya,9982,37.5$(MV),"KEN
+$37.5
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),37.5,KEN,MV,Kenya,2169000,37.5$(MV),"KEN
+$37.5
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),37.5,KEN,MV,Kenya,31,37.5$(MV),"KEN
+$37.5
+MV",1471.7,1473.8,1402.9,1552.3,1273,1714.9
+incremental cost (million US$),75,ZAF,mAb,South Africa,12330000,75$(mAb),"ZAF
+$75
+mAb",46.3,46.3,45.5,47.1,43.7,48.5
+incremental cost/DALY (disc) averted (US$),75,ZAF,mAb,South Africa,1476,75$(mAb),"ZAF
+$75
+mAb",5541,5553.6,5295.1,5819.3,4796,6352.8
+intervention cost (million US$),75,ZAF,mAb,South Africa,5103000,75$(mAb),"ZAF
+$75
+mAb",63.7,63.7,63.7,63.7,63.7,63.7
+total DALY averted (US$),75,ZAF,mAb,South Africa,17960,75$(mAb),"ZAF
+$75
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),75,ZAF,mAb,South Africa,8341,75$(mAb),"ZAF
+$75
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),75,ZAF,mAb,South Africa,17430000,75$(mAb),"ZAF
+$75
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),75,ZAF,mAb,South Africa,685,75$(mAb),"ZAF
+$75
+mAb",2572.1,2578.3,2456.3,2702.6,2222,2953.3
+incremental cost (million US$),37.5,ZAF,MV,South Africa,11240000,37.5$(MV),"ZAF
+$37.5
+MV",18.6,18.7,17.9,19.4,16.2,20.7
+incremental cost/DALY (disc) averted (US$),37.5,ZAF,MV,South Africa,1626,37.5$(MV),"ZAF
+$37.5
+MV",2689.2,2703.1,2501.8,2901,2124.6,3309.8
+intervention cost (million US$),37.5,ZAF,MV,South Africa,2597000,37.5$(MV),"ZAF
+$37.5
+MV",32.5,32.5,32.5,32.5,32.5,32.5
+total DALY averted (US$),37.5,ZAF,MV,South Africa,15060,37.5$(MV),"ZAF
+$37.5
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),37.5,ZAF,MV,South Africa,6907,37.5$(MV),"ZAF
+$37.5
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),37.5,ZAF,MV,South Africa,13830000,37.5$(MV),"ZAF
+$37.5
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),37.5,ZAF,MV,South Africa,746,37.5$(MV),"ZAF
+$37.5
+MV",1233.1,1239.9,1146.5,1331.4,972.3,1519.4
+incremental cost (million US$),200,KEN,mAb,Kenya,463100,200$(mAb),"KEN
+$200
+mAb",182.5,182.5,182.4,182.6,182.1,182.8
+incremental cost/DALY (disc) averted (US$),200,KEN,mAb,Kenya,36,200$(mAb),"KEN
+$200
+mAb",14344.5,14367.6,13787.2,14993.6,12707.4,16351.9
+intervention cost (million US$),200,KEN,mAb,Kenya,5634000,200$(mAb),"KEN
+$200
+mAb",187.7,187.7,187.7,187.7,187.7,187.7
+total DALY averted (US$),200,KEN,mAb,Kenya,28970,200$(mAb),"KEN
+$200
+mAb",29017.4,28970,27756.5,30199.2,25442,32774
+total DALY (disc) averted (US$),200,KEN,mAb,Kenya,12700,200$(mAb),"KEN
+$200
+mAb",12721.8,12702,12179,13228,11178.9,14333.1
+total medical cost averted (million US$),200,KEN,mAb,Kenya,5171000,200$(mAb),"KEN
+$200
+mAb",5.2,5.2,5.1,5.3,4.9,5.5
+incremental cost/DALY averted (US$),200,KEN,mAb,Kenya,16,200$(mAb),"KEN
+$200
+mAb",6288.9,6299.5,6039.1,6578.9,5557.3,7184.9
+incremental cost (million US$),100,KEN,MV,Kenya,713200,100$(MV),"KEN
+$100
+MV",93.8,93.8,93.7,93.9,93.6,94.1
+incremental cost/DALY (disc) averted (US$),100,KEN,MV,Kenya,71,100$(MV),"KEN
+$100
+MV",9384.4,9399.9,8963.5,9874.9,8173.8,10874.6
+intervention cost (million US$),100,KEN,MV,Kenya,2882000,100$(MV),"KEN
+$100
+MV",96,96,96,96,96,96
+total DALY averted (US$),100,KEN,MV,Kenya,22950,100$(MV),"KEN
+$100
+MV",22987.3,22954,21851.5,24050,19861.8,26371.5
+total DALY (disc) averted (US$),100,KEN,MV,Kenya,9982,100$(MV),"KEN
+$100
+MV",9998.5,9982,9511,10458,8649.5,11447.5
+total medical cost averted (million US$),100,KEN,MV,Kenya,2169000,100$(MV),"KEN
+$100
+MV",2.2,2.2,2.1,2.3,1.9,2.4
+incremental cost/DALY averted (US$),100,KEN,MV,Kenya,31,100$(MV),"KEN
+$100
+MV",4081.8,4087.7,3897.7,4298.1,3548.1,4735.7
+incremental cost (million US$),200,ZAF,mAb,South Africa,12330000,200$(mAb),"ZAF
+$200
+mAb",152.5,152.6,151.7,153.3,150,154.8
+incremental cost/DALY (disc) averted (US$),200,ZAF,mAb,South Africa,1476,200$(mAb),"ZAF
+$200
+mAb",18267.7,18292.7,17665.6,18949.6,16446.2,20267.2
+intervention cost (million US$),200,ZAF,mAb,South Africa,5103000,200$(mAb),"ZAF
+$200
+mAb",170,170,170,170,170,170
+total DALY averted (US$),200,ZAF,mAb,South Africa,17960,200$(mAb),"ZAF
+$200
+mAb",17985.6,17965,17424,18516,16425.9,19685
+total DALY (disc) averted (US$),200,ZAF,mAb,South Africa,8341,200$(mAb),"ZAF
+$200
+mAb",8348.6,8340.5,8092,8589,7636,9120
+total medical cost averted (million US$),200,ZAF,mAb,South Africa,17430000,200$(mAb),"ZAF
+$200
+mAb",17.5,17.4,16.7,18.3,15.2,20
+incremental cost/DALY averted (US$),200,ZAF,mAb,South Africa,685,200$(mAb),"ZAF
+$200
+mAb",8479.6,8492.6,8194.5,8800.5,7619.5,9421.7
+incremental cost (million US$),100,ZAF,MV,South Africa,11240000,100$(MV),"ZAF
+$100
+MV",72.8,72.8,72,73.6,70.4,74.9
+incremental cost/DALY (disc) averted (US$),100,ZAF,MV,South Africa,1626,100$(MV),"ZAF
+$100
+MV",10520.6,10545.3,10093.4,11004.9,9219.6,11958.1
+intervention cost (million US$),100,ZAF,MV,South Africa,2597000,100$(MV),"ZAF
+$100
+MV",86.7,86.7,86.7,86.7,86.7,86.7
+total DALY averted (US$),100,ZAF,MV,South Africa,15060,100$(MV),"ZAF
+$100
+MV",15084,15058,14564,15569.5,13643.8,16681.5
+total DALY (disc) averted (US$),100,ZAF,MV,South Africa,6907,100$(MV),"ZAF
+$100
+MV",6916.6,6907,6684,7135,6263.2,7634.5
+total medical cost averted (million US$),100,ZAF,MV,South Africa,13830000,100$(MV),"ZAF
+$100
+MV",13.9,13.8,13.1,14.7,11.8,16.3
+incremental cost/DALY averted (US$),100,ZAF,MV,South Africa,746,100$(MV),"ZAF
+$100
+MV",4824.1,4837.1,4625.5,5050.6,4219.4,5489.4

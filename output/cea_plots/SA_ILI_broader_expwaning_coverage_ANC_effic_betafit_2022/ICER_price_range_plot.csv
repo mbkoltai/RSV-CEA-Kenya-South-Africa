@@ -1,0 +1,49 @@
+variable,price,country_iso,intervention,country_plot,vec,price_interv,cnt_int,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,n_ord
+incremental cost/DALY averted (US$),25,KEN,mAb,Kenya,16,25$(mAb),"KEN
+$25
+mAb",629.9,631.3,601.6,662.8,547,730.6,1
+incremental cost/DALY averted (US$),50,KEN,mAb,Kenya,16,50$(mAb),"KEN
+$50
+mAb",1438.3,1441,1378.4,1508,1262.8,1652.7,2
+incremental cost/DALY averted (US$),75,KEN,mAb,Kenya,16,75$(mAb),"KEN
+$75
+mAb",2246.8,2250.8,2155.2,2353.1,1978.5,2574.7,3
+incremental cost/DALY averted (US$),100,KEN,mAb,Kenya,16,100$(mAb),"KEN
+$100
+mAb",3055.2,3060.5,2932,3198.3,2694.3,3496.7,4
+incremental cost/DALY averted (US$),5,KEN,MV,Kenya,31,5$(MV),"KEN
+$5
+MV",114.4,114.6,105.6,124.5,89.9,144,5
+incremental cost/DALY averted (US$),10,KEN,MV,Kenya,31,10$(MV),"KEN
+$10
+MV",323.2,323.7,305.2,344.1,271.9,385.7,6
+incremental cost/DALY averted (US$),20,KEN,MV,Kenya,31,20$(MV),"KEN
+$20
+MV",740.8,741.9,704.4,783.5,635.9,869,7
+incremental cost/DALY averted (US$),40,KEN,MV,Kenya,31,40$(MV),"KEN
+$40
+MV",1576.1,1578.4,1502.7,1662.1,1364,1835.7,8
+incremental cost/DALY averted (US$),25,ZAF,mAb,South Africa,685,25$(mAb),"ZAF
+$25
+mAb",209.1,212.6,160.9,263.4,63,365.9,9
+incremental cost/DALY averted (US$),50,ZAF,mAb,South Africa,685,50$(mAb),"ZAF
+$50
+mAb",1390.6,1395.5,1308.6,1483,1142.5,1659.6,10
+incremental cost/DALY averted (US$),75,ZAF,mAb,South Africa,685,75$(mAb),"ZAF
+$75
+mAb",2572.1,2578.3,2456.3,2702.6,2222,2953.3,11
+incremental cost/DALY averted (US$),100,ZAF,mAb,South Africa,685,100$(mAb),"ZAF
+$100
+mAb",3753.6,3761.2,3603.9,3922.2,3301.5,4247,12
+incremental cost/DALY averted (US$),5,ZAF,MV,South Africa,746,5$(MV),"ZAF
+$5
+MV",-634.2,-630.7,-662.6,-602.6,-716.2,-545.1,13
+incremental cost/DALY averted (US$),10,ZAF,MV,South Africa,746,10$(MV),"ZAF
+$10
+MV",-346.9,-342.9,-384.3,-305.1,-456.4,-227.5,14
+incremental cost/DALY averted (US$),20,ZAF,MV,South Africa,746,20$(MV),"ZAF
+$20
+MV",227.6,232.7,172.3,290,63.1,407.8,15
+incremental cost/DALY averted (US$),40,ZAF,MV,South Africa,746,40$(MV),"ZAF
+$40
+MV",1376.7,1383.8,1285.6,1480.1,1102.2,1678.2,16

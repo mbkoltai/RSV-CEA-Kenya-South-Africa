@@ -551,11 +551,12 @@ write_csv(cea_summary_all,paste0("output/cea_plots/",subfolder_name,"cea_summary
 # replace names
 old_new_names <- list(
   "old"=list(c("total_YLD","total_YLL","hosp_YLD","hosp_med_att_YLD","non_hosp_YLD","total_DALY"),
-            c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),  # ,"ARI_YLD","SARI_YLD"
+            c("rsv_deaths","hosp_SARI","non_hosp_SARI","hosp_cases","non_hosp_cases"),
             c("admin_cost","cost_rsv_hosp","cost_rsv_outpatient","total_medical_cost")),
   "new"=list(c("total YLD","total YLL","YLD hospitalised cases","YLD medically attended cases",
                 "YLD non-hospitalised cases","total DALY"),
-              c("deaths","hospitalised SARI","non-hospitalised SARI","hospitalised cases","non-hospitalised cases"),
+              c("deaths","hospitalised SARI","non-hospitalised SARI",
+                "hospitalised cases","non-hospitalised cases"),
               c("admin. costs","hospitalisation costs","outpatient costs","total medical cost")))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
@@ -582,7 +583,7 @@ write_csv(df_combined_burden_cost_reduct %>% mutate(across(where(is.numeric),rou
 
 # calculate ICERs 
 # to scale default price
-price_scaling_vect <- c(1,10/3,10)
+price_scaling_vect <- c(1,5/3,10/3,25/6,5,20/3,25/3,10,40/3,50/3,75/3,75/6,125/6,100/3)
 # calculates ICERs for different price levels (dataframe for default price: df_interv_incremcosts_icer)
 source("functions/icer_plots.R")
 
@@ -599,53 +600,73 @@ ICER_sensit_price <- bind_rows(list_scaled) %>%
   mutate(across(where(is.numeric),round,1))
 
 # icer RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95
-price_limit_MV=30; SAVE_FLAG=F
+price_limit_MV=30; SAVE_FLAG=T
 source("functions/icer_range_plots.R")
 # plots are in the list `p_icer_plotlist`: 
 p_icer_plotlist[[4]]
 
-######
-# plot for a few selected prices (Figure 5 in manuscript)
-sel_prices <- list(MV=c(3,10,30),mAb=c(6,20,60)); n_price=length(sel_prices$MV)
-# selected DALY metric: undiscounted or discounted
-sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[1]
-####
-ICER_price_range_plot <- ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) ) %>% 
-  filter( (intervention %in% "MV" & price %in% sel_prices$MV) | 
-            (intervention %in% "mAb" & price %in% sel_prices$mAb) ) %>%
-  ungroup() %>% group_by(country_iso,intervention) %>% mutate(n_ord=row_number()) %>% 
-  mutate(n_ord=ifelse(country_iso %in% "ZAF",n_ord+2*n_price,n_ord)) %>% # # ICER_sensit_price$
-  mutate(n_ord=ifelse(intervention %in% "MV",n_ord+n_price,n_ord)) %>% # 
-  arrange(n_ord) %>% mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int)),
-                            price_interv=factor(price_interv,levels=unique(price_interv))) 
+# boxplots with multiple doseprice values (rotated)
+n_disc=2; sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
+sel_prices <- list(MV=c(5,10,20,30,40,50),
+                   mAb=list(c(10,20,30,40,50,75,100,125), c(10,20,30,40,50,60,75))[[n_disc]])
 # show plot
-ICER_price_range_plot %>%
-ggplot() + geom_boxplot(aes(x=cnt_int,middle=median,color=price_interv,
-                              lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
-                          position=position_dodge(width=dodge_val),stat="identity",width=0.85) + # ,size=1.1
-  facet_wrap(~variable,scales="free_y",nrow=3) +
-  scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(n_price),
-                              colorRampPalette(colors=c("blue","blueviolet"))(n_price))) +
-  geom_text(aes(x=as.numeric(cnt_int)+1/4,y=CI50_high+80,label=round(median))) +
-  geom_vline(xintercept=c(2*n_price+0.5),size=1/2) + 
-  geom_vline(xintercept=c(n_price+0.5,3*n_price+0.5),linetype="dashed",size=0.3) +
-  geom_hline(yintercept=0,linetype="dashed",size=1/2) +
-  xlab("") + ylab("cost in USD (median, CI50/95)") + labs(color="",linetype="") +
-  guides(color=guide_legend(ncol=2)) + 
-  scale_x_discrete(expand=expansion(0.05,0)) + theme_bw() + standard_theme +
-  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),
-                                      axis.text.y=element_text(size=17),strip.text=element_text(size=14),
-                                      legend.text=element_text(size=20),legend.position="top",
-                                      axis.title.y=element_text(size=20),strip.text.x=element_text(size=18)) 
-# SAVE
-ggsave(paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF",
-              ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),
-              n_price,"prices",".png"),width=30,height=20,units="cm")
+ICER_plot_sel_data = ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) &
+                               (intervention %in% "MV" & price %in% sel_prices$MV |
+                               intervention %in% "mAb" & price %in% sel_prices$mAb) )
+df_min_max_points = ICER_plot_sel_data %>% group_by(intervention) %>% 
+  summarise(maxval=max(CI95_high),minval=min(CI95_low)) %>% pivot_longer(!intervention)
 
-# SAVE table
-write_csv(df_interv_incremcosts_icer %>% 
-            mutate(across(where(is.numeric),round,1)),paste0("output/cea_plots/",
-                                 subfolder_name,"df_interv_incremcosts_icer.csv"))
+# show lot
+ICER_plot_sel_data %>%
+ggplot() + geom_boxplot(aes(x=factor(price),middle=median,lower=CI50_low,upper=CI50_high,
+                   ymin=CI95_low,ymax=CI95_high,color=intervention),stat="identity",show.legend = FALSE) + 
+  geom_point(data=df_min_max_points,aes(x=1,y=value),color="white") +
+  facet_wrap(country_plot~intervention,scales="free") + scale_color_manual(values=c("red","blue")) +
+  geom_rect(aes(xmin=0.45,xmax=ifelse(intervention %in% "MV",length(sel_prices$MV),length(sel_prices$mAb))+0.55),
+            ymin=-Inf,ymax=0,fill="grey",alpha=1/8) +
+  geom_hline(aes(yintercept=ifelse(country_iso %in% "KEN",2e3,6e3)),size=1/2,linetype="dashed") +
+  xlab("dose price (USD)") + ylab(paste0("ICER (",c("USD/averted DALYs)","USD/averted disc. DALYs)")[n_disc])) +
+  labs(color="",linetype="") + # scale_y_continuous(expand=expansion(0.03,0)) + 
+  theme_bw() + standard_theme + 
+  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),axis.text.y=element_text(size=17),
+        axis.title.x=element_text(size=20),axis.title.y=element_text(size=18),
+        strip.text.x=element_text(size=18),strip.text.y=element_text(size=18),
+        plot.margin=margin(t=0.2,b=0.2,l=0.2,r=0.6, "cm")) + coord_flip()
+# SAVE
+icer_plotname=paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF_highres",
+                     ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),"faceted.png")
+ggsave(icer_plotname,width=36,height=20,units="cm")
+
+# LINEPLOT
+n_disc=1; sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
+ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) & price<=150 ) %>%
+ggplot() + 
+  geom_line(aes(x=price,y=median),color="black",show.legend=FALSE) +
+  geom_ribbon(aes(x=price,ymin=CI50_low,ymax=CI50_high,fill=intervention),alpha=1/2,show.legend=FALSE) + 
+  geom_ribbon(aes(x=price,ymin=CI95_low,ymax=CI95_high,fill=intervention),alpha=1/4,show.legend=FALSE) + 
+  geom_point(aes(x=price,y=median),show.legend=FALSE,color="black",size=2) + 
+  facet_grid(country_plot~intervention,scales="free") + 
+  scale_color_manual(values=c("red","blue")) + scale_fill_manual(values=c("red","blue")) +
+  geom_hline(yintercept=0,color="grey",size=1/2) +
+  geom_hline(aes(yintercept=ifelse(country_iso %in% "KEN",2e3,6e3)),size=1/2,linetype="dashed") +
+  xlab("dose price (USD)") + ylab(paste0("ICER (",c("USD/averted DALYs)","USD/averted DALYs [disc.])")[n_disc])) + 
+  labs(color="",linetype="") + scale_x_continuous(breaks=unique(unlist(sel_prices)),expand=expansion(0.01,0)) +
+  scale_y_continuous(breaks=(-1:8)*2500,expand=expansion(0.01,0)) + theme_bw() + standard_theme + 
+  theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),axis.text.y=element_text(size=17),
+        axis.title.x=element_text(size=20),axis.title.y=element_text(size=20),
+        strip.text.x=element_text(size=18),strip.text.y=element_text(size=18))
+# save
+icer_lineplotname=paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF_lineplot",
+                     ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),"faceted.png")
+ggsave(icer_lineplotname,width=35,height=20,units="cm")
+
+
+# SAVE tables
+write_csv(df_interv_incremcosts_icer %>% mutate(across(where(is.numeric),round,1)),
+          paste0("output/cea_plots/",subfolder_name,"df_interv_incremcosts_icer.csv"))
+write_csv(ICER_price_range_plot,
+          paste0("output/cea_plots/",subfolder_name,"ICER_price_range_plot.csv"))
+
 # price scan
 write_csv(ICER_sensit_price,paste0("output/cea_plots/",subfolder_name,"ICER_sensit_price.csv"))
 
@@ -730,6 +751,53 @@ ggsave(paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.png")
 # SAVE table of ICER comparisons
 write_csv(df_plot_icer_comp,paste0("output/cea_plots/",subfolder_name,"comparisons/ICER_KEN_ZAF.csv"))
 
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+# ICER plot for a few selected prices (Figure 5 in manuscript)
+# sel_prices <- list(MV=c(5,10,20,40),mAb=c(20,50,75,100)) # MV=c(3,10,30),mAb=c(6,20,60)
+# n_price=length(sel_prices$MV)
+# # selected DALY metric: undiscounted or discounted
+# n_disc=1; sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
+# ####
+# ICER_price_range_plot <- ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) ) %>% 
+#   filter( (intervention %in% "MV" & price %in% sel_prices$MV) |
+#             (intervention %in% "mAb" & price %in% sel_prices$mAb) ) %>% # ungroup() %>%
+#   arrange(country_iso,intervention,price) %>%
+#   ungroup() %>% group_by(country_iso,intervention) %>% mutate(n_ord=row_number()) %>% 
+#   mutate(n_ord=ifelse(country_iso %in% "ZAF",n_ord+2*n_price,n_ord)) %>% # # ICER_sensit_price$
+#   mutate(n_ord=ifelse(intervention %in% "MV",n_ord+n_price,n_ord)) %>% # 
+#   arrange(n_ord) %>% mutate(cnt_int=factor(cnt_int,levels=unique(cnt_int)),
+#                             price_interv=gsub("\\$"," $",price_interv),
+#                             price_interv_plot=gsub("\\)","",gsub("\\$","$\n",gsub("\\(","",price_interv))),
+#                             price_interv_plot=factor(price_interv_plot,levels=unique(price_interv_plot)),
+#                             price_interv=factor(price_interv,levels=unique(price_interv))) 
+# show plot
+# ICER_price_range_plot %>%
+# ggplot() + geom_boxplot(aes(x=price_interv_plot,middle=median,color=price_interv,
+#                               lower=CI50_low,upper=CI50_high,ymin=CI95_low,ymax=CI95_high),
+#                           position=position_dodge(width=dodge_val),stat="identity",width=0.85) + # ,size=1.1
+#   facet_grid(country_plot~intervention,scales="free_x") + # ,scales="free_y"
+#   scale_color_manual(values=c(colorRampPalette(colors=c("rosybrown","red"))(n_price),
+#                               colorRampPalette(colors=c("blue","blueviolet"))(n_price))) +
+#   geom_text(aes(x=as.numeric(price_interv_plot)+1/4+ifelse(intervention %in% "MV",-n_price,0),
+#                 y=CI50_high+c(250,400)[n_disc],label=round(median))) +
+#   geom_vline(xintercept=2*n_price+0.5,size=1/2) + 
+#   geom_vline(xintercept=c(n_price+0.5,3*n_price+0.5),linetype="dashed",size=0.3) +
+#   geom_hline(yintercept=0,color="grey",size=1/2) +
+#   geom_segment(data=data.frame(country_plot=c("Kenya","South Africa"),max_icer=c(2e3,6e3)),
+#     aes(x=1/2,xend=n_price+1/2,y=max_icer,yend=max_icer),size=1/2,linetype="dashed") +
+#   xlab("") + ylab("cost in USD (median, CI50/95)") + labs(color="",linetype="") +
+#   guides(color=guide_legend(ncol=4)) + scale_x_discrete(expand=expansion(0.05,0)) + 
+#   scale_y_continuous(breaks=(-1:5)*2500) +
+#   theme_bw() + standard_theme + theme(axis.text.x=element_text(angle=0,vjust=1/2,size=17),
+#         axis.text.y=element_text(size=17),strip.text=element_text(size=14),
+#         legend.text=element_text(size=20),legend.position="top",
+#         axis.title.y=element_text(size=20),strip.text.x=element_text(size=18)) 
+# # SAVE
+# icer_plotname=paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF",
+#                      ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),
+#                      n_price,"prices_faceted.png")
+# ggsave(icer_plotname,width=30,height=20,units="cm")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # selvars=c("total_medical_cost","total_medical_cost_disc", # "intervention_cost"

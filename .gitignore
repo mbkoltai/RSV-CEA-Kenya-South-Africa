@@ -41,6 +41,8 @@ output/cea_plots/old_estims
 output/cea_plots/kenya_old_mortality
 output/cea_plots/in_outpatient_SA_ratio
 output/cea_plots/1st_submission
+output/cea_plots/SA_ILI_broader_coverage_ANC_effic_betafit_2022/oldplot
+output/cea_plots/*/oldplot
 output/ari_sari_burden
 *RData
 *Rhistory
