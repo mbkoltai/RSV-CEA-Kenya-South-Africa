@@ -8,6 +8,8 @@ RSV_main.R
 RSV_main_PATH.R
 # own inputs: only when published!!!
 # custom_input/
+custom_input/*.png
+custom_input/*.txt
 custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_updated_july2021.csv
 custom_input/ARI_SARI_Rates_2010_2018_tidydata.csv
 custom_input/deaths_kenya_tidy.csv
