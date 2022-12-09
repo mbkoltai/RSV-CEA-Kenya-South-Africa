@@ -1,0 +1,77 @@
+age_in_months,disease_type_medic_status,value,CI_95_lower,CI_95_upper,metric_per_popul
+<1,ARI medically attended,38,27,51,1000
+<1,ARI not attended,42,29,56,1000
+<1,SARI hospitalised,2366,2042,2751,100000
+<1,SARI non-hospitalised,7302,6301,8489,100000
+1,ARI medically attended,93,74,116,1000
+1,ARI not attended,102,81,127,1000
+1,SARI hospitalised,3420,2911,4012,100000
+1,SARI non-hospitalised,10553,8983,12382,100000
+2,ARI medically attended,160,125,199,1000
+2,ARI not attended,175,137,219,1000
+2,SARI hospitalised,2493,2142,2912,100000
+2,SARI non-hospitalised,7692,6611,8986,100000
+3,ARI medically attended,350,289,415,1000
+3,ARI not attended,385,317,457,1000
+3,SARI hospitalised,1516,1297,1790,100000
+3,SARI non-hospitalised,4679,4004,5524,100000
+4,ARI medically attended,410,343,489,1000
+4,ARI not attended,450,377,538,1000
+4,SARI hospitalised,1372,1169,1597,100000
+4,SARI non-hospitalised,4234,3607,4928,100000
+5,ARI medically attended,390,322,463,1000
+5,ARI not attended,428,354,509,1000
+5,SARI hospitalised,1510,1288,1766,100000
+5,SARI non-hospitalised,4659,3975,5450,100000
+6,ARI medically attended,290,229,360,1000
+6,ARI not attended,318,252,396,1000
+6,SARI hospitalised,1052,877,1269,100000
+6,SARI non-hospitalised,3246,2706,3917,100000
+7,ARI medically attended,217,164,278,1000
+7,ARI not attended,239,180,306,1000
+7,SARI hospitalised,916,764,1086,100000
+7,SARI non-hospitalised,2825,2357,3353,100000
+8,ARI medically attended,243,182,315,1000
+8,ARI not attended,268,200,346,1000
+8,SARI hospitalised,853,714,1023,100000
+8,SARI non-hospitalised,2632,2203,3156,100000
+9,ARI medically attended,329,267,403,1000
+9,ARI not attended,362,293,443,1000
+9,SARI hospitalised,513,417,618,100000
+9,SARI non-hospitalised,1583,1287,1907,100000
+10,ARI medically attended,326,265,405,1000
+10,ARI not attended,359,291,446,1000
+10,SARI hospitalised,575,475,685,100000
+10,SARI non-hospitalised,1773,1465,2115,100000
+11,ARI medically attended,286,221,355,1000
+11,ARI not attended,315,243,390,1000
+11,SARI hospitalised,465,389,567,100000
+11,SARI non-hospitalised,1434,1202,1749,100000
+12-14,ARI medically attended,219,183,262,1000
+12-14,ARI not attended,241,201,288,1000
+12-14,SARI hospitalised,383,310,466,100000
+12-14,SARI non-hospitalised,1183,958,1439,100000
+15-17,ARI medically attended,185,145,228,1000
+15-17,ARI not attended,204,159,251,1000
+15-17,SARI hospitalised,285,223,362,100000
+15-17,SARI non-hospitalised,878,689,1118,100000
+18-20,ARI medically attended,162,122,205,1000
+18-20,ARI not attended,179,134,225,1000
+18-20,SARI hospitalised,318,249,399,100000
+18-20,SARI non-hospitalised,982,769,1233,100000
+21-23,ARI medically attended,168,126,215,1000
+21-23,ARI not attended,185,139,236,1000
+21-23,SARI hospitalised,184,133,238,100000
+21-23,SARI non-hospitalised,567,412,736,100000
+24-35,ARI medically attended,141,114,168,1000
+24-35,ARI not attended,156,125,185,1000
+24-35,SARI hospitalised,120,99,148,100000
+24-35,SARI non-hospitalised,372,304,456,100000
+36-47,ARI medically attended,132,102,165,1000
+36-47,ARI not attended,145,112,181,1000
+36-47,SARI hospitalised,58,43,75,100000
+36-47,SARI non-hospitalised,179,133,231,100000
+48-59,ARI medically attended,60,39,86,1000
+48-59,ARI not attended,66,42,95,1000
+48-59,SARI hospitalised,13,7,21,100000
+48-59,SARI non-hospitalised,41,23,63,100000

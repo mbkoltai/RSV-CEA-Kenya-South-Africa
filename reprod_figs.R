@@ -23,7 +23,6 @@ lapply(here::here(c("functions/set_xlims_cea.R","functions/get_burden_flexible.R
 
 kenya_data_file_path <- "custom_input/Kenya_ARI_SARI_Rates_2010_2018_tidydata_updated_2021_08.csv"
 
-# "custom_input/ARI_SARI_Rates_2010_2018_tidydata.csv"
 ### PLOT Kenya incidence data with error bars
 kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=
                                   kenya_data_file_path,sel_disease="ARI")$rsv_incidence_ageinf,
@@ -67,7 +66,9 @@ ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) +
 # geom_text(data=hosp_rate_kenya,aes(x=45,y=c(0.17,0.2),
 # label=paste0(status,"=",round(mean_medic_attended*1e2,1),"%")),size=6) +
 # scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0))
-# SAVE
+# SAVE DATA
+write_csv(kenya_ari_sari_incidence,file = "custom_input/kenya_ari_sari_incidence.csv")
+# SAVE PLOT
 # ggsave("output/ari_sari_burden/kenya_ari_sari_burden_errorbars_grouped_updated_jul2021.png",
 #   width=35,height=22,units="cm")
 ggsave(paste0("output/cea_plots/kenya_ari_sari_burden_errorbars_grouped_",ifelse(popul_denom>1,"per100k",""),".png"),
@@ -136,6 +137,7 @@ deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% group_by(age_in_mont
         group_by(country,age_in_months_orig) %>% 
         mutate(CI_95_lower_sum=sum(CI_95_lower),CI_95_upper_sum=sum(CI_95_upper)) %>% 
         mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
+# write_csv(deaths_data,file = "custom_input/deaths_data.csv")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 plot_flag=F
 if (plot_flag){ # p <- 
@@ -271,6 +273,8 @@ if (ILI_adjust_SA) { #
 # CI lower limit should not be 0 -> setting it to 1 
 # (since average value of mean rate is > 1000, this does not change results more than 0.1%)
 SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
+# SAVE SA incid data
+# write_csv(SA_data,file = "custom_input/sa_ari_sari_incidence.csv")
 ### generate 5e3 sample paths for CEA
 sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), 
       function(x) fcn_gen_nonhosp_hosp_incid_samples_SA(SA_data,diseasetype=x,
@@ -474,26 +478,22 @@ pricelist=list("mat_vacc"=3,"mAb"=6)
 par_table <- expand_grid(n_cntr_output=1:length(cntrs_cea),n_interv=1:2); read_calc_flag=c("calc","read")[1]
 kenya_deaths_input=TRUE; SA_deaths_input=TRUE
 # exponential waning model used for efficacy
-exp_wane_val <- T
+exp_wane_val <- F
 # parameters for exponential waning model
 g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_figures,n_row=60)
 # distribution used to fit efficacy figures
 effic_dist_fit <- "beta" # 
 # adjust coverage levels
-coverage_adj=T; adj_cov_val=c(SA=0.752,KEN=0.616)
+coverage_adj=F; adj_cov_val=c(SA=0.752,KEN=0.616)
 subfolder_name <- paste0(
         "SA_ILI_",
         ifelse(ILI_adjust_SA,"broader","narrow"),
         ifelse(exp_wane_val,"_expwaning",""),
-        ifelse(coverage_adj,"_coverage_ANC","_coverage_BCG_"),
+        ifelse(coverage_adj,"_coverage_ANC","_coverage_BCG"),
         ifelse(ifelse(exists("flag_adjust_to_mean"),flag_adjust_to_mean,F),"_adj_mv_sev_eff_mean",""),
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
         ifelse(flag_publ_effic,"","_2022"),"/")
-# "new_price_efficacy_",
-# ifelse(kenya_deaths_input,"KENdeaths",""),
-# ifelse(SA_deaths_input,"_SAdeaths",""),
-# "_CIs_",
-#
+
 ### Before starting loop for the FIRST TIME need to create temp folder (afterwards can comment out this line)
 source("init_cea_calc_parallel.R")
 ###
@@ -518,9 +518,6 @@ all_cols=c("non_hosp_cases","hosp_cases",
 burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[grepl("cost",all_cols)]
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
-# cl=parallel::makeCluster(8); registerDoParallel(cl)
-# foreach (k_par=1:nrow(par_table),.packages=c("dplyr","ggplot2","tidyr","readr","rriskDistributions")) %dopar% 
-# parallelisation might crash R
 ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
 # do we also want to calculate with projections from [Li 2020]
 CALC_PROJECTION=F
@@ -562,7 +559,7 @@ old_new_names <- list(
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # Figure combining burden and costs and their relative reduction
-save_flag=T # TRUE
+save_flag=F # TRUE
 source("functions/fig_combined_burden_cost_reduct.R")
 # combine figures
 plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],
@@ -599,14 +596,8 @@ ICER_sensit_price <- bind_rows(list_scaled) %>%
   select(!c(CI50_wrong,CI95_wrong,CI50_low_store,CI95_low_store)) %>% 
   mutate(across(where(is.numeric),round,1))
 
-# icer RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95
-price_limit_MV=30; SAVE_FLAG=T
-source("functions/icer_range_plots.R")
-# plots are in the list `p_icer_plotlist`: 
-p_icer_plotlist[[4]]
-
 # boxplots with multiple doseprice values (rotated)
-n_disc=2; sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
+n_disc=1; sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
 sel_prices <- list(MV=c(5,10,20,30,40,50),
                    mAb=list(c(10,20,30,40,50,75,100,125), c(10,20,30,40,50,60,75))[[n_disc]])
 # show plot
@@ -637,6 +628,14 @@ icer_plotname=paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF_highres",
                      ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),"faceted.png")
 ggsave(icer_plotname,width=36,height=20,units="cm")
 
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###  
+# icer RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95
+price_limit_MV=30; SAVE_FLAG=T
+source("functions/icer_range_plots.R")
+# plots are in the list `p_icer_plotlist`: 
+p_icer_plotlist[[4]]
+
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # LINEPLOT
 n_disc=1; sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
 ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) & price<=150 ) %>%

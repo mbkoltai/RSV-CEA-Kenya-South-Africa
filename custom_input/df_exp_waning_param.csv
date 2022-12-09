@@ -1,6 +1,0 @@
-interv,dis_type,c_const,exp_decay_rate
-mat_vacc,sympt_disease,0.6268249177067635,0.5697100114191331
-mat_vacc,hospit,0.7063712270604137,0.5697100114191331
-mat_vacc,severe,1,1.0986630558189308
-monocl_ab,sympt_disease,1,0.19572506493397543
-monocl_ab,hospit,1,0.1309214474309579

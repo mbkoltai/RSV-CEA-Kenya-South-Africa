@@ -43,14 +43,15 @@ for (k_plot in 1:3) {
                            levels=unique(df_plot$vartype)[c(which(!grepl("total_DALY",unique(df_plot$vartype))),
                                                             which(grepl("total_DALY",unique(df_plot$vartype))))])
     df_plot$plot_variable=factor(df_plot$plot_variable,
-                                 levels=c("YLD non-hospitalised cases","YLD medically attended cases",
+                               levels=c("YLD non-hospitalised cases","YLD medically attended cases",
                                           "YLD hospitalised cases","total YLD","total YLL","total DALY")) 
   }
   # plot for 2 cntrs, 2 intervents
   dodge_val=1; round_val=2; caption_txt=paste0("Numbers above medians are pre-intervention",
                 ifelse(any(grepl("YLL",sel_vars))," DALYs",
                 ifelse(any(grepl("death",sel_vars))," case/death numbers"," costs (USD)") ),
-                ifelse(any(grepl("YLL",sel_vars)),". YLD=years lived with disability. YLL=years of life lost",""))
+                ifelse(any(grepl("YLL",sel_vars)),
+                       ". YLD=years lived with disability. YLL=years of life lost",""))
   # labels for y-axis
   ylab_txt=paste0("% reduction in ",ifelse(any(grepl("YLL",sel_vars)),"DALYs",
                                            ifelse(any(grepl("death",sel_vars)),"cases/deaths","cost")))
@@ -63,11 +64,14 @@ for (k_plot in 1:3) {
 
   ### ### ### ### ### ### ### ### ### ### ### ### 
   # PLOT with cntr on x-axis, MV/mAb as colors
-  plot_list[[k_plot]] <- ggplot(df_plot %>% filter(grepl("averted",burden_interv)) %>% 
-                                  mutate(cnt_int=paste0(country_iso,"\n(",intervention,")")) ) +
+  df_plot_sub <- df_plot %>% filter(grepl("averted",burden_interv)) %>% 
+    mutate(cnt_int=paste0(country_iso,"\n(",intervention,")"))
+  plot_list[[k_plot]] <- ggplot(df_plot_sub) +
     geom_boxplot(aes(x=cnt_int,color=intervention,middle=norm_median*1e2,
-                     ymin=norm_CI95_low*1e2,ymax=norm_CI95_high*1e2,lower=norm_CI50_low*1e2,upper=norm_CI50_high*1e2),
-                 position=position_dodge(width=dodge_val),stat="identity") +
+                     ymin=norm_CI95_low*1e2,ymax=norm_CI95_high*1e2,
+                     lower=norm_CI50_low*1e2,upper=norm_CI50_high*1e2),
+                 position=position_dodge(width=dodge_val),stat="identity",
+                 show.legend=ifelse(k_plot<3,F,T)) +
     scale_color_manual(values=c("red","blue")) +
     facet_wrap(~plot_variable) + geom_vline(xintercept=2.5,linetype="dashed",size=0.3) + # vartype
     theme_bw() + standard_theme + xlab("") + ylab(ylab_txt) + 
@@ -75,7 +79,8 @@ for (k_plot in 1:3) {
                   y=max(norm_CI95_high*1e2)*1.05,group=intervention,
                   label=ifelse(intervention!="MV",gsub("^,","",paste0(orig_burden_round,
                                ifelse(grepl("YLD non",plot_variable),"*",""))),"")),
-              position=position_dodge(width=dodge_val),size=ifelse(exists("geom_text_font_size"),geom_text_font_size,5)) + 
+              position=position_dodge(width=dodge_val),size=ifelse(exists("geom_text_font_size"),
+                                                                   geom_text_font_size,5)) + 
     labs(color="",linetype="",
          caption=ifelse(any(grepl("costs",df_plot$plot_variable)),"*pre-intervention median value","")) + 
     scale_y_continuous(breaks=(0:15)*10) + # scale_x_discrete(expand=expansion(0.1,0)) + 
@@ -89,6 +94,6 @@ for (k_plot in 1:3) {
   if (save_flag) {
     plot_list[[k_plot]]
     ggsave(paste0("output/cea_plots/",subfolder_name,ifelse(any(grepl("YLL",sel_vars)),"DALY",
-                               ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),
+                ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),
            width=36,height=18,units="cm") } 
 } ##### end of loop
