@@ -21,7 +21,6 @@ custom_input/resvax_trial_figures.csv
 custom_input/resvax_efficacy_figures.csv
 custom_input/anc_coverage.csv
 custom_input/bcg_coverage.csv
-custom_input/sa_ari_sari_incidence.csv
 # other inputs not needed for final analysis
 # input/hosp_prob_ts_n5000.csv
 # input/hosp_prob_ts_n5000_pooled.csv
