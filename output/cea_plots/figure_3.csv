@@ -1,0 +1,77 @@
+age_in_months_orig,in_hospital,value,CI_95_lower,CI_95_upper,country,CI_95_lower_sum,CI_95_upper_sum
+0,out-of-hospital,28.8,18,34.7,South Africa,74.9,144.5
+0,in-hospital,82,56.9,109.8,South Africa,74.9,144.5
+1,out-of-hospital,28.9,20.6,32.6,South Africa,85.9,135.8
+1,in-hospital,82.4,65.3,103.2,South Africa,85.9,135.8
+2,out-of-hospital,20.6,14.3,23.7,South Africa,59.5,98.7
+2,in-hospital,58.6,45.2,75,South Africa,59.5,98.7
+3,out-of-hospital,18.2,12.3,21.4,South Africa,51.3,89
+3,in-hospital,51.9,39,67.6,South Africa,51.3,89
+4,out-of-hospital,17.3,11.2,20.9,South Africa,46.8,87
+4,in-hospital,49.3,35.6,66.1,South Africa,46.8,87
+5,out-of-hospital,11,6.9,13.8,South Africa,28.799999999999997,57.599999999999994
+5,in-hospital,31.3,21.9,43.8,South Africa,28.799999999999997,57.599999999999994
+6,out-of-hospital,10.8,6.9,13.2,South Africa,28.6,55.099999999999994
+6,in-hospital,30.8,21.7,41.9,South Africa,28.6,55.099999999999994
+7,out-of-hospital,7.3,4.2,9.6,South Africa,17.5,39.9
+7,in-hospital,20.8,13.3,30.3,South Africa,17.5,39.9
+8,out-of-hospital,4.9,2.7,6.4,South Africa,11.3,26.799999999999997
+8,in-hospital,14,8.6,20.4,South Africa,11.3,26.799999999999997
+9,out-of-hospital,4.2,2.1,6,South Africa,8.6,24.9
+9,in-hospital,11.8,6.5,18.9,South Africa,8.6,24.9
+10,out-of-hospital,4.1,2.1,5.7,South Africa,8.7,23.599999999999998
+10,in-hospital,11.6,6.6,17.9,South Africa,8.7,23.599999999999998
+11,out-of-hospital,3.8,1.9,5.4,South Africa,7.9,22.6
+11,in-hospital,10.8,6,17.2,South Africa,7.9,22.6
+12-14,out-of-hospital,1.3,0.8,1.6,South Africa,3.3,6.699999999999999
+12-14,in-hospital,3.6,2.5,5.1,South Africa,3.3,6.699999999999999
+15-17,out-of-hospital,0.9,0.5,1.1,South Africa,2.1,4.7
+15-17,in-hospital,2.5,1.6,3.6,South Africa,2.1,4.7
+18-20,out-of-hospital,0.6,0.3,0.9,South Africa,1.3,3.6999999999999997
+18-20,in-hospital,1.8,1,2.8,South Africa,1.3,3.6999999999999997
+21-23,out-of-hospital,0.9,0.4,1.3,South Africa,1.6,5.5
+21-23,in-hospital,2.5,1.2,4.2,South Africa,1.6,5.5
+24-35,out-of-hospital,0.2,0.1,0.3,South Africa,0.5,1.2
+24-35,in-hospital,0.6,0.4,0.9,South Africa,0.5,1.2
+36-47,out-of-hospital,0.1,0,0.2,South Africa,0.1,0.7
+36-47,in-hospital,0.3,0.1,0.5,South Africa,0.1,0.7
+48-59,out-of-hospital,0.1,0,0.2,South Africa,0.1,0.7
+48-59,in-hospital,0.3,0.1,0.5,South Africa,0.1,0.7
+0,out-of-hospital,55,31,85,Kenya,59,163
+0,in-hospital,51,28,78,Kenya,59,163
+1,out-of-hospital,80,46,122,Kenya,88,234
+1,in-hospital,74,42,112,Kenya,88,234
+2,out-of-hospital,58,33,90,Kenya,63,173
+2,in-hospital,54,30,83,Kenya,63,173
+3,out-of-hospital,35,19,55,Kenya,37,105
+3,in-hospital,33,18,50,Kenya,37,105
+4,out-of-hospital,32,18,48,Kenya,35,92
+4,in-hospital,29,17,44,Kenya,35,92
+5,out-of-hospital,35,20,56,Kenya,38,107
+5,in-hospital,32,18,51,Kenya,38,107
+6,out-of-hospital,47,26,75,Kenya,50,144
+6,in-hospital,43,24,69,Kenya,50,144
+7,out-of-hospital,40,21,63,Kenya,41,121
+7,in-hospital,37,20,58,Kenya,41,121
+8,out-of-hospital,37,21,62,Kenya,41,119
+8,in-hospital,34,20,57,Kenya,41,119
+9,out-of-hospital,23,12,38,Kenya,23,73
+9,in-hospital,21,11,35,Kenya,23,73
+10,out-of-hospital,25,14,41,Kenya,27,79
+10,in-hospital,23,13,38,Kenya,27,79
+11,out-of-hospital,21,11,33,Kenya,21,64
+11,in-hospital,19,10,31,Kenya,21,64
+12-14,out-of-hospital,9,3,16,Kenya,6,31
+12-14,in-hospital,8,3,15,Kenya,6,31
+15-17,out-of-hospital,6,2,13,Kenya,4,25
+15-17,in-hospital,6,2,12,Kenya,4,25
+18-20,out-of-hospital,7,2,14,Kenya,4,27
+18-20,in-hospital,7,2,13,Kenya,4,27
+21-23,out-of-hospital,4,1,8,Kenya,2,16
+21-23,in-hospital,4,1,8,Kenya,2,16
+24-35,out-of-hospital,4,1,7,Kenya,2,14
+24-35,in-hospital,3,1,7,Kenya,2,14
+36-47,out-of-hospital,2,0,4,Kenya,0,7
+36-47,in-hospital,1,0,3,Kenya,0,7
+48-59,out-of-hospital,0,0,1,Kenya,0,2
+48-59,in-hospital,0,0,1,Kenya,0,2

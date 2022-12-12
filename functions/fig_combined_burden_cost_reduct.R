@@ -6,8 +6,11 @@ for (k_name_categ in 1:length(old_new_names$old)){
   for (k_name in 1:length(old_new_names$old[[k_name_categ]])){
     cea_summary_all <- cea_summary_all %>% 
       mutate(plot_variable=ifelse(variable %in% old_new_names$old[[k_name_categ]][k_name],
-                                  old_new_names$new[[k_name_categ]][k_name],plot_variable)) } }
+                                  old_new_names$new[[k_name_categ]][k_name],plot_variable)) } 
+}
 
+ll_df <- list()
+# LOOP to create plots
 for (k_plot in 1:3) {
   sel_vars <- old_new_names$old[[k_plot]]
   df_plot <- cea_summary_all %>% 
@@ -66,6 +69,7 @@ for (k_plot in 1:3) {
   # PLOT with cntr on x-axis, MV/mAb as colors
   df_plot_sub <- df_plot %>% filter(grepl("averted",burden_interv)) %>% 
     mutate(cnt_int=paste0(country_iso,"\n(",intervention,")"))
+  ll_df[[k_plot]] <- df_plot_sub
   plot_list[[k_plot]] <- ggplot(df_plot_sub) +
     geom_boxplot(aes(x=cnt_int,color=intervention,middle=norm_median*1e2,
                      ymin=norm_CI95_low*1e2,ymax=norm_CI95_high*1e2,
@@ -89,7 +93,9 @@ for (k_plot in 1:3) {
                                   ifelse(k_plot<3,"none","bottom")),legend.text=element_text(size=18),
           axis.title.y=element_text(size=16.5,margin=margin(t=0,r=12,b=0,l=0)),
           legend.spacing.x=unit(0.7,'cm'),legend.key.size=unit(3,"line"),plot.caption=element_text(size=14))
-  if (k_plot<3) { plot_list[[k_plot]] <- plot_list[[k_plot]] + theme(axis.text.x=element_blank()) }
+  if (k_plot<3) { 
+    plot_list[[k_plot]] <- plot_list[[k_plot]] + theme(axis.text.x=element_blank()) 
+    }
   # save
   if (save_flag) {
     plot_list[[k_plot]]
@@ -97,3 +103,10 @@ for (k_plot in 1:3) {
                 ifelse(any(grepl("death",sel_vars)),"case_death","cost")),"_reductions_KEN_ZAF.png"),
            width=36,height=18,units="cm") } 
 } ##### end of loop
+
+df_fig4 <- ll_df %>% bind_rows() %>% select(!c(price,source_num,country_iso,burden_interv,
+                                               vartype,vec,orig_burden_round,cnt_int,source)) %>% 
+  relocate(c(country_plot,intervention,country_plot,plot_variable),.before = variable)
+df_fig4[,c("mean","median","CI50_low","CI50_high","CI95_low","CI95_high")] <- 
+  round(df_fig4 %>% select(c(mean,median,CI50_low,CI50_high,CI95_low,CI95_high)))
+df_fig4 <- df_fig4 %>% mutate(across(where(is.numeric),round,3))

@@ -56,6 +56,9 @@ output/cea_plots/in_outpatient_SA_ratio
 output/cea_plots/1st_submission
 output/cea_plots/SA_ILI_broader_coverage_ANC_effic_betafit_2022/oldplot
 output/cea_plots/*/oldplot
+output/cea_plots/*deaths*.png
+output/cea_plots/*ari_sari*.png
+output/cea_plots/*efficacy_scan*.png
 output/ari_sari_burden
 *RData
 *Rhistory

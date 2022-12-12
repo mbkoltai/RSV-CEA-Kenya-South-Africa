@@ -1,0 +1,241 @@
+variable,price,country_iso,intervention,country_plot,vec,price_interv,cnt_int,mean,median,CI50_low,CI50_high,CI95_low,CI95_high
+incremental cost/DALY averted (US$),10,KEN,mAb,Kenya,137,10$(mAb),"KEN
+$10
+mAb",331.7,333.3,303.4,366.1,254.4,440.9
+incremental cost/DALY averted (US$),5,KEN,MV,Kenya,86,5$(MV),"KEN
+$5
+MV",214.5,215.5,189.1,244.9,151,322.3
+incremental cost/DALY averted (US$),10,ZAF,mAb,South Africa,583,10$(mAb),"ZAF
+$10
+mAb",-348.8,-347.2,-389.6,-301.4,-460.6,-199.5
+incremental cost/DALY averted (US$),5,ZAF,MV,South Africa,756,5$(MV),"ZAF
+$5
+MV",-587.3,-583.8,-628.6,-537.4,-713.8,-420.5
+incremental cost/DALY averted (US$),20,KEN,mAb,Kenya,137,20$(mAb),"KEN
+$20
+mAb",818.4,821.8,757.2,892.7,652.1,1053.5
+incremental cost/DALY averted (US$),10,KEN,MV,Kenya,86,10$(MV),"KEN
+$10
+MV",534.3,536.7,481.9,597.8,401,756.9
+incremental cost/DALY averted (US$),20,ZAF,mAb,South Africa,583,20$(mAb),"ZAF
+$20
+mAb",244.1,246.6,171.7,328.1,45.9,509.9
+incremental cost/DALY averted (US$),10,ZAF,MV,South Africa,756,10$(MV),"ZAF
+$10
+MV",-167.8,-164.7,-238.7,-84,-366.1,117.5
+incremental cost/DALY averted (US$),30,KEN,mAb,Kenya,137,30$(mAb),"KEN
+$30
+mAb",1305.2,1310.2,1211.1,1419.3,1049.8,1666
+incremental cost/DALY averted (US$),30,ZAF,mAb,South Africa,583,30$(mAb),"ZAF
+$30
+mAb",837,840.4,732.9,957.6,552.3,1219.3
+incremental cost/DALY averted (US$),40,KEN,mAb,Kenya,137,40$(mAb),"KEN
+$40
+mAb",1792,1798.6,1664.9,1945.9,1447.5,2278.6
+incremental cost/DALY averted (US$),20,KEN,MV,Kenya,86,20$(MV),"KEN
+$20
+MV",1173.8,1179.2,1067.4,1303.7,900.9,1626.1
+incremental cost/DALY averted (US$),40,ZAF,mAb,South Africa,583,40$(mAb),"ZAF
+$40
+mAb",1429.9,1434.2,1294.1,1587.1,1058.8,1928.7
+incremental cost/DALY averted (US$),20,ZAF,MV,South Africa,756,20$(MV),"ZAF
+$20
+MV",671.3,673.4,541,822.6,329.2,1193.7
+incremental cost/DALY averted (US$),50,KEN,mAb,Kenya,137,50$(mAb),"KEN
+$50
+mAb",2278.7,2287.1,2118.7,2472.5,1845.2,2891.2
+incremental cost/DALY averted (US$),50,ZAF,mAb,South Africa,583,50$(mAb),"ZAF
+$50
+mAb",2022.8,2027.9,1855.4,2216.5,1565.3,2638.1
+incremental cost/DALY averted (US$),30,KEN,MV,Kenya,86,30$(MV),"KEN
+$30
+MV",1813.3,1821.7,1653,2009.6,1400.8,2495.3
+incremental cost/DALY averted (US$),30,ZAF,MV,South Africa,756,30$(MV),"ZAF
+$30
+MV",1510.3,1511.6,1320.8,1729.2,1024.6,2269.8
+incremental cost/DALY averted (US$),40,KEN,MV,Kenya,86,40$(MV),"KEN
+$40
+MV",2452.8,2464.2,2238.5,2715.4,1900.7,3364.5
+incremental cost/DALY averted (US$),40,ZAF,MV,South Africa,756,40$(MV),"ZAF
+$40
+MV",2349.4,2349.8,2100.5,2635.8,1719.9,3346
+incremental cost/DALY averted (US$),100,KEN,mAb,Kenya,137,100$(mAb),"KEN
+$100
+mAb",4712.6,4729.2,4387.8,5105.5,3833.7,5954.1
+incremental cost/DALY averted (US$),50,KEN,MV,Kenya,86,50$(MV),"KEN
+$50
+MV",3092.4,3106.7,2824.1,3421.3,2400.6,4233.7
+incremental cost/DALY averted (US$),100,ZAF,mAb,South Africa,583,100$(mAb),"ZAF
+$100
+mAb",4987.2,4996.9,4661.5,5364,4097.6,6185.1
+incremental cost/DALY averted (US$),50,ZAF,MV,South Africa,756,50$(MV),"ZAF
+$50
+MV",3188.5,3187.9,2880.3,3542.5,2415.2,4422.1
+incremental cost/DALY averted (US$),75,KEN,mAb,Kenya,137,75$(mAb),"KEN
+$75
+mAb",3495.7,3508.1,3253.2,3789,2839.5,4422.6
+incremental cost/DALY averted (US$),75,ZAF,mAb,South Africa,583,75$(mAb),"ZAF
+$75
+mAb",3505,3512.4,3258.4,3790.3,2831.4,4411.6
+incremental cost/DALY averted (US$),125,KEN,mAb,Kenya,137,125$(mAb),"KEN
+$125
+mAb",5929.5,5950.3,5522.4,6422,4827.9,7485.5
+incremental cost/DALY averted (US$),125,ZAF,mAb,South Africa,583,125$(mAb),"ZAF
+$125
+mAb",6469.4,6481.3,6064.6,6937.7,5363.8,7958.6
+incremental cost/DALY (disc) averted (US$),10,KEN,mAb,Kenya,314,10$(mAb),"KEN
+$10
+mAb",756.4,760,692.7,834,582.2,1002.9
+incremental cost/DALY (disc) averted (US$),5,KEN,MV,Kenya,198,5$(MV),"KEN
+$5
+MV",491.6,493.5,434,560.6,347.2,735.5
+incremental cost/DALY (disc) averted (US$),10,ZAF,mAb,South Africa,1261,10$(mAb),"ZAF
+$10
+mAb",-754.2,-750.6,-843.2,-651.4,-997.8,-430.2
+incremental cost/DALY (disc) averted (US$),5,ZAF,MV,South Africa,1642,5$(MV),"ZAF
+$5
+MV",-1276.1,-1267.4,-1368.3,-1165.3,-1555.6,-910.2
+incremental cost/DALY (disc) averted (US$),20,KEN,mAb,Kenya,314,20$(mAb),"KEN
+$20
+mAb",1866.5,1873.8,1728.9,2033.6,1492.3,2396.3
+incremental cost/DALY (disc) averted (US$),10,KEN,MV,Kenya,198,10$(MV),"KEN
+$10
+MV",1224.5,1229.1,1106,1368.6,922,1727.3
+incremental cost/DALY (disc) averted (US$),20,ZAF,mAb,South Africa,1261,20$(mAb),"ZAF
+$20
+mAb",527.9,533.2,371.6,709.1,99.4,1099.9
+incremental cost/DALY (disc) averted (US$),10,ZAF,MV,South Africa,1642,10$(MV),"ZAF
+$10
+MV",-364.6,-357.6,-519.7,-182.2,-797.9,254.4
+incremental cost/DALY (disc) averted (US$),30,KEN,mAb,Kenya,314,30$(mAb),"KEN
+$30
+mAb",2976.6,2987.5,2765,3233.2,2402.3,3789.8
+incremental cost/DALY (disc) averted (US$),30,ZAF,mAb,South Africa,1261,30$(mAb),"ZAF
+$30
+mAb",1810.1,1816.9,1586.4,2069.5,1196.6,2630.1
+incremental cost/DALY (disc) averted (US$),40,KEN,mAb,Kenya,314,40$(mAb),"KEN
+$40
+mAb",4086.7,4101.3,3801.2,4432.8,3312.3,5183.2
+incremental cost/DALY (disc) averted (US$),20,KEN,MV,Kenya,198,20$(MV),"KEN
+$20
+MV",2690.3,2700.4,2450,2984.7,2071.5,3710.7
+incremental cost/DALY (disc) averted (US$),40,ZAF,mAb,South Africa,1261,40$(mAb),"ZAF
+$40
+mAb",3092.2,3100.7,2801.2,3430,2293.8,4160.3
+incremental cost/DALY (disc) averted (US$),20,ZAF,MV,South Africa,1642,20$(MV),"ZAF
+$20
+MV",1458.4,1462,1177.7,1783.9,717.5,2583.6
+incremental cost/DALY (disc) averted (US$),50,KEN,mAb,Kenya,314,50$(mAb),"KEN
+$50
+mAb",5196.8,5215,4837.3,5632.4,4222.3,6576.7
+incremental cost/DALY (disc) averted (US$),50,ZAF,mAb,South Africa,1261,50$(mAb),"ZAF
+$50
+mAb",4374.4,4384.5,4016,4790.5,3391,5690.5
+incremental cost/DALY (disc) averted (US$),60,KEN,mAb,Kenya,314,60$(mAb),"KEN
+$60
+mAb",6306.9,6328.8,5873.5,6832,5132.4,7970.1
+incremental cost/DALY (disc) averted (US$),30,KEN,MV,Kenya,198,30$(MV),"KEN
+$30
+MV",4156,4171.6,3794.1,4600.8,3221,5694.2
+incremental cost/DALY (disc) averted (US$),60,ZAF,mAb,South Africa,1261,60$(mAb),"ZAF
+$60
+mAb",5656.5,5668.3,5230.8,6151,4488.2,7220.6
+incremental cost/DALY (disc) averted (US$),30,ZAF,MV,South Africa,1642,30$(MV),"ZAF
+$30
+MV",3281.4,3281.5,2875,3750,2232.9,4912.8
+incremental cost/DALY (disc) averted (US$),40,KEN,MV,Kenya,198,40$(MV),"KEN
+$40
+MV",5621.8,5642.9,5138.1,6216.9,4370.5,7677.7
+incremental cost/DALY (disc) averted (US$),40,ZAF,MV,South Africa,1642,40$(MV),"ZAF
+$40
+MV",5104.4,5101.1,4572.4,5716.1,3748.3,7241.9
+incremental cost/DALY (disc) averted (US$),50,KEN,MV,Kenya,198,50$(MV),"KEN
+$50
+MV",7087.5,7114.2,6482.1,7833,5520,9661.2
+incremental cost/DALY (disc) averted (US$),50,ZAF,MV,South Africa,1642,50$(MV),"ZAF
+$50
+MV",6927.3,6920.7,6269.7,7682.2,5263.7,9571.1
+incremental cost/DALY (disc) averted (US$),75,KEN,mAb,Kenya,314,75$(mAb),"KEN
+$75
+mAb",7972,7999.4,7427.7,8631.4,6497.4,10060.3
+incremental cost/DALY (disc) averted (US$),75,ZAF,mAb,South Africa,1261,75$(mAb),"ZAF
+$75
+mAb",7579.7,7594,7053,8191.7,6134,9515.9
+incremental cost/DALY (disc) averted (US$),10,KEN,mAb,Kenya,314,10$(mAb),"KEN
+$10
+mAb",756.4,760,692.7,834,582.2,1002.9
+incremental cost/DALY (disc) averted (US$),5,KEN,MV,Kenya,198,5$(MV),"KEN
+$5
+MV",491.6,493.5,434,560.6,347.2,735.5
+incremental cost/DALY (disc) averted (US$),10,ZAF,mAb,South Africa,1261,10$(mAb),"ZAF
+$10
+mAb",-754.2,-750.6,-843.2,-651.4,-997.8,-430.2
+incremental cost/DALY (disc) averted (US$),5,ZAF,MV,South Africa,1642,5$(MV),"ZAF
+$5
+MV",-1276.1,-1267.4,-1368.3,-1165.3,-1555.6,-910.2
+incremental cost/DALY (disc) averted (US$),20,KEN,mAb,Kenya,314,20$(mAb),"KEN
+$20
+mAb",1866.5,1873.8,1728.9,2033.6,1492.3,2396.3
+incremental cost/DALY (disc) averted (US$),10,KEN,MV,Kenya,198,10$(MV),"KEN
+$10
+MV",1224.5,1229.1,1106,1368.6,922,1727.3
+incremental cost/DALY (disc) averted (US$),20,ZAF,mAb,South Africa,1261,20$(mAb),"ZAF
+$20
+mAb",527.9,533.2,371.6,709.1,99.4,1099.9
+incremental cost/DALY (disc) averted (US$),10,ZAF,MV,South Africa,1642,10$(MV),"ZAF
+$10
+MV",-364.6,-357.6,-519.7,-182.2,-797.9,254.4
+incremental cost/DALY (disc) averted (US$),30,KEN,mAb,Kenya,314,30$(mAb),"KEN
+$30
+mAb",2976.6,2987.5,2765,3233.2,2402.3,3789.8
+incremental cost/DALY (disc) averted (US$),30,ZAF,mAb,South Africa,1261,30$(mAb),"ZAF
+$30
+mAb",1810.1,1816.9,1586.4,2069.5,1196.6,2630.1
+incremental cost/DALY (disc) averted (US$),40,KEN,mAb,Kenya,314,40$(mAb),"KEN
+$40
+mAb",4086.7,4101.3,3801.2,4432.8,3312.3,5183.2
+incremental cost/DALY (disc) averted (US$),20,KEN,MV,Kenya,198,20$(MV),"KEN
+$20
+MV",2690.3,2700.4,2450,2984.7,2071.5,3710.7
+incremental cost/DALY (disc) averted (US$),40,ZAF,mAb,South Africa,1261,40$(mAb),"ZAF
+$40
+mAb",3092.2,3100.7,2801.2,3430,2293.8,4160.3
+incremental cost/DALY (disc) averted (US$),20,ZAF,MV,South Africa,1642,20$(MV),"ZAF
+$20
+MV",1458.4,1462,1177.7,1783.9,717.5,2583.6
+incremental cost/DALY (disc) averted (US$),50,KEN,mAb,Kenya,314,50$(mAb),"KEN
+$50
+mAb",5196.8,5215,4837.3,5632.4,4222.3,6576.7
+incremental cost/DALY (disc) averted (US$),50,ZAF,mAb,South Africa,1261,50$(mAb),"ZAF
+$50
+mAb",4374.4,4384.5,4016,4790.5,3391,5690.5
+incremental cost/DALY (disc) averted (US$),60,KEN,mAb,Kenya,314,60$(mAb),"KEN
+$60
+mAb",6306.9,6328.8,5873.5,6832,5132.4,7970.1
+incremental cost/DALY (disc) averted (US$),30,KEN,MV,Kenya,198,30$(MV),"KEN
+$30
+MV",4156,4171.6,3794.1,4600.8,3221,5694.2
+incremental cost/DALY (disc) averted (US$),60,ZAF,mAb,South Africa,1261,60$(mAb),"ZAF
+$60
+mAb",5656.5,5668.3,5230.8,6151,4488.2,7220.6
+incremental cost/DALY (disc) averted (US$),30,ZAF,MV,South Africa,1642,30$(MV),"ZAF
+$30
+MV",3281.4,3281.5,2875,3750,2232.9,4912.8
+incremental cost/DALY (disc) averted (US$),40,KEN,MV,Kenya,198,40$(MV),"KEN
+$40
+MV",5621.8,5642.9,5138.1,6216.9,4370.5,7677.7
+incremental cost/DALY (disc) averted (US$),40,ZAF,MV,South Africa,1642,40$(MV),"ZAF
+$40
+MV",5104.4,5101.1,4572.4,5716.1,3748.3,7241.9
+incremental cost/DALY (disc) averted (US$),50,KEN,MV,Kenya,198,50$(MV),"KEN
+$50
+MV",7087.5,7114.2,6482.1,7833,5520,9661.2
+incremental cost/DALY (disc) averted (US$),50,ZAF,MV,South Africa,1642,50$(MV),"ZAF
+$50
+MV",6927.3,6920.7,6269.7,7682.2,5263.7,9571.1
+incremental cost/DALY (disc) averted (US$),75,KEN,mAb,Kenya,314,75$(mAb),"KEN
+$75
+mAb",7972,7999.4,7427.7,8631.4,6497.4,10060.3
+incremental cost/DALY (disc) averted (US$),75,ZAF,mAb,South Africa,1261,75$(mAb),"ZAF
+$75
+mAb",7579.7,7594,7053,8191.7,6134,9515.9

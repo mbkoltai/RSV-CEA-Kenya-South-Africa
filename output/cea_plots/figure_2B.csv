@@ -1,0 +1,77 @@
+Province,year,rate,rate_CI_lower,rate_CI_upper,disease_type,hospitalisation,popul_denom,age,disease_type_medic_status
+South Africa,2011-2016,6803.7,5065.3,8529,SARI,TRUE,100000,0,SARI hospitalised
+South Africa,2011-2016,6831.7,5858.1,7841.9,SARI,TRUE,100000,1,SARI hospitalised
+South Africa,2011-2016,4857.4,4003.7,5748.9,SARI,TRUE,100000,2,SARI hospitalised
+South Africa,2011-2016,4307.5,3459.4,5191.3,SARI,TRUE,100000,3,SARI hospitalised
+South Africa,2011-2016,4089.1,3161.5,5095,SARI,TRUE,100000,4,SARI hospitalised
+South Africa,2011-2016,2603.8,1921.5,3405.2,SARI,TRUE,100000,5,SARI hospitalised
+South Africa,2011-2016,2839.9,2115.5,3607.7,SARI,TRUE,100000,6,SARI hospitalised
+South Africa,2011-2016,1919.7,1282.1,2605,SARI,TRUE,100000,7,SARI hospitalised
+South Africa,2011-2016,1292,804.9,1766.1,SARI,TRUE,100000,8,SARI hospitalised
+South Africa,2011-2016,1090.6,622.7,1661.7,SARI,TRUE,100000,9,SARI hospitalised
+South Africa,2011-2016,1073.5,629.4,1581.2,SARI,TRUE,100000,10,SARI hospitalised
+South Africa,2011-2016,1000.3,577.5,1494.5,SARI,TRUE,100000,11,SARI hospitalised
+South Africa,2011-2016,684.1,495.7,910.2,SARI,TRUE,100000,12-14,SARI hospitalised
+South Africa,2011-2016,478.2,320.2,647,SARI,TRUE,100000,15-17,SARI hospitalised
+South Africa,2011-2016,347.2,194.9,513.7,SARI,TRUE,100000,18-20,SARI hospitalised
+South Africa,2011-2016,480,221.3,774.2,SARI,TRUE,100000,21-23,SARI hospitalised
+South Africa,2011-2016,116.7,79.9,159.3,SARI,TRUE,100000,24-35,SARI hospitalised
+South Africa,2011-2016,57.3,26.7,94.4,SARI,TRUE,100000,36-47,SARI hospitalised
+South Africa,2011-2016,58.7,27.1,95.3,SARI,TRUE,100000,48-59,SARI hospitalised
+South Africa,2011-2016,7870.7,5110,11115.5,SARI,FALSE,100000,0,SARI not hospitalised
+South Africa,2011-2016,7904.6,5830.4,10630.5,SARI,FALSE,100000,1,SARI not hospitalised
+South Africa,2011-2016,5619.1,4081.4,7669.1,SARI,FALSE,100000,2,SARI not hospitalised
+South Africa,2011-2016,4984,3519.1,6908.7,SARI,FALSE,100000,3,SARI not hospitalised
+South Africa,2011-2016,4730.5,3206.4,6731.4,SARI,FALSE,100000,4,SARI not hospitalised
+South Africa,2011-2016,3011.1,1994.3,4437.1,SARI,FALSE,100000,5,SARI not hospitalised
+South Africa,2011-2016,3286.5,2204.3,4735.3,SARI,FALSE,100000,6,SARI not hospitalised
+South Africa,2011-2016,2222.2,1372.3,3427.7,SARI,FALSE,100000,7,SARI not hospitalised
+South Africa,2011-2016,1494.9,904.8,2289.1,SARI,FALSE,100000,8,SARI not hospitalised
+South Africa,2011-2016,1261.5,679.7,2095.1,SARI,FALSE,100000,9,SARI not hospitalised
+South Africa,2011-2016,1240.6,679.1,1984.2,SARI,FALSE,100000,10,SARI not hospitalised
+South Africa,2011-2016,1156.1,614.2,1944.4,SARI,FALSE,100000,11,SARI not hospitalised
+South Africa,2011-2016,790.5,517.8,1203.8,SARI,FALSE,100000,12-14,SARI not hospitalised
+South Africa,2011-2016,552.7,340.4,844,SARI,FALSE,100000,15-17,SARI not hospitalised
+South Africa,2011-2016,400.8,214.8,639.7,SARI,FALSE,100000,18-20,SARI not hospitalised
+South Africa,2011-2016,554.5,238.8,948.2,SARI,FALSE,100000,21-23,SARI not hospitalised
+South Africa,2011-2016,135,85.3,204.4,SARI,FALSE,100000,24-35,SARI not hospitalised
+South Africa,2011-2016,66.4,29.9,118,SARI,FALSE,100000,36-47,SARI not hospitalised
+South Africa,2011-2016,67.8,31.7,118.8,SARI,FALSE,100000,48-59,SARI not hospitalised
+South Africa,NA,2730.2,0,9528.6,ARI,TRUE,100000,0,medically attended ARI
+South Africa,NA,2499,1107.3,4302.8,ARI,TRUE,100000,1,medically attended ARI
+South Africa,NA,4175,2172.5,6233.4,ARI,TRUE,100000,2,medically attended ARI
+South Africa,NA,2116.4,993,3352.9,ARI,TRUE,100000,3,medically attended ARI
+South Africa,NA,2833.1,3352.9,4582.1,ARI,TRUE,100000,4,medically attended ARI
+South Africa,NA,1303.7,502.9,2301.1,ARI,TRUE,100000,5,medically attended ARI
+South Africa,NA,1379.3,577,2292.3,ARI,TRUE,100000,6,medically attended ARI
+South Africa,NA,1646.5,774.7,2689.4,ARI,TRUE,100000,7,medically attended ARI
+South Africa,NA,1061.1,391.2,1896.4,ARI,TRUE,100000,8,medically attended ARI
+South Africa,NA,1824.5,986.3,2672.4,ARI,TRUE,100000,9,medically attended ARI
+South Africa,NA,1038.4,472.8,1800,ARI,TRUE,100000,10,medically attended ARI
+South Africa,NA,1107.3,455,1821.8,ARI,TRUE,100000,11,medically attended ARI
+South Africa,NA,2713.8,1581,3945.8,ARI,TRUE,100000,12-14,medically attended ARI
+South Africa,NA,1787.9,890.5,2801.5,ARI,TRUE,100000,15-17,medically attended ARI
+South Africa,NA,1923.5,1062.1,2891.4,ARI,TRUE,100000,18-20,medically attended ARI
+South Africa,NA,2332.3,975.6,3877.8,ARI,TRUE,100000,21-23,medically attended ARI
+South Africa,NA,650.2,463.3,848.9,ARI,TRUE,100000,24-35,medically attended ARI
+South Africa,NA,408.6,270.4,550.7,ARI,TRUE,100000,36-47,medically attended ARI
+South Africa,NA,298.9,174.5,437.5,ARI,TRUE,100000,48-59,medically attended ARI
+South Africa,NA,9274.6,0,31440,ARI,FALSE,100000,0,non medically attended ARI
+South Africa,NA,8493.7,3405.5,15386.5,ARI,FALSE,100000,1,non medically attended ARI
+South Africa,NA,14185.5,7163.6,22231.7,ARI,FALSE,100000,2,non medically attended ARI
+South Africa,NA,7192.5,3338.6,11965.1,ARI,FALSE,100000,3,non medically attended ARI
+South Africa,NA,9628.6,4730.8,16193.8,ARI,FALSE,100000,4,non medically attended ARI
+South Africa,NA,4431.1,1661.5,8184.3,ARI,FALSE,100000,5,non medically attended ARI
+South Africa,NA,4688.9,1991.6,8031,ARI,FALSE,100000,6,non medically attended ARI
+South Africa,NA,5603.3,2669.6,9477.1,ARI,FALSE,100000,7,non medically attended ARI
+South Africa,NA,3602.8,1313.5,6505.6,ARI,FALSE,100000,8,non medically attended ARI
+South Africa,NA,6200.4,3304.7,9665.3,ARI,FALSE,100000,9,non medically attended ARI
+South Africa,NA,3532.6,1489.5,6354.2,ARI,FALSE,100000,10,non medically attended ARI
+South Africa,NA,3765.9,1521.2,6436.6,ARI,FALSE,100000,11,non medically attended ARI
+South Africa,NA,9221.3,5331.6,14078.6,ARI,FALSE,100000,12-14,non medically attended ARI
+South Africa,NA,6077.5,3122.5,10204.5,ARI,FALSE,100000,15-17,non medically attended ARI
+South Africa,NA,6536.9,3473.5,10407.4,ARI,FALSE,100000,18-20,non medically attended ARI
+South Africa,NA,7928.2,3329.5,13628.9,ARI,FALSE,100000,21-23,non medically attended ARI
+South Africa,NA,2214.5,1481,3119.2,ARI,FALSE,100000,24-35,non medically attended ARI
+South Africa,NA,1390.8,887.3,1972.4,ARI,FALSE,100000,36-47,non medically attended ARI
+South Africa,NA,1017.2,887.3,1588.4,ARI,FALSE,100000,48-59,non medically attended ARI
