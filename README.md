@@ -21,6 +21,6 @@ Incidence rates, efficacy estimates and some of the costs are generated from pro
 2) [BCG coverage scenario](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/SA_ILI_broader_coverage_BCG_effic_betafit_2022): same as previous scenario, but higher coverage level.
 2) [exponential waning model](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots/SA_ILI_broader_expwaning_coverage_ANC_effic_betafit_2022): instead of an on-off model of protection, the efficacy wanes exponentially with a time-average equal to the reported mean efficacy over the period of protection. Coverage as in scenario #1.
 
-For all **figures in the main text** the data tables can be found in the [CEA plots](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots) folder, named __figure_\*.csv__.
+For all **figures in the main text** the data tables can be found in the [CEA plots](https://github.com/mbkoltai/RSV-CEA-Kenya-South-Africa/tree/master/output/cea_plots) folder, named figure_\*.csv.
 
 For questions or problems please post an issue or send an email ([to the authors](https://www.lshtm.ac.uk/aboutus/people/koltai.mihaly)).
