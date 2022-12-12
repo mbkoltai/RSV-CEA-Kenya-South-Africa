@@ -1,0 +1,55 @@
+variable,price,intervention,country_plot,median,CI95_low,CI95_high,mean,CI50_high,CI50_low
+incremental cost/DALY (disc) averted (US$),10,mAb,Kenya,760,582,1003,756,834,693
+incremental cost/DALY (disc) averted (US$),20,mAb,Kenya,1874,1492,2396,1866,2034,1729
+incremental cost/DALY (disc) averted (US$),30,mAb,Kenya,2988,2402,3790,2977,3233,2765
+incremental cost/DALY (disc) averted (US$),40,mAb,Kenya,4101,3312,5183,4087,4433,3801
+incremental cost/DALY (disc) averted (US$),50,mAb,Kenya,5215,4222,6577,5197,5632,4837
+incremental cost/DALY (disc) averted (US$),60,mAb,Kenya,6329,5132,7970,6307,6832,5874
+incremental cost/DALY (disc) averted (US$),75,mAb,Kenya,7999,6497,10060,7972,8631,7428
+incremental cost/DALY (disc) averted (US$),10,mAb,South Africa,-751,-998,-430,-754,-651,-843
+incremental cost/DALY (disc) averted (US$),20,mAb,South Africa,533,99,1100,528,709,372
+incremental cost/DALY (disc) averted (US$),30,mAb,South Africa,1817,1197,2630,1810,2070,1586
+incremental cost/DALY (disc) averted (US$),40,mAb,South Africa,3101,2294,4160,3092,3430,2801
+incremental cost/DALY (disc) averted (US$),50,mAb,South Africa,4384,3391,5690,4374,4790,4016
+incremental cost/DALY (disc) averted (US$),60,mAb,South Africa,5668,4488,7221,5656,6151,5231
+incremental cost/DALY (disc) averted (US$),75,mAb,South Africa,7594,6134,9516,7580,8192,7053
+incremental cost/DALY (disc) averted (US$),5,MV,Kenya,494,347,736,492,561,434
+incremental cost/DALY (disc) averted (US$),10,MV,Kenya,1229,922,1727,1224,1369,1106
+incremental cost/DALY (disc) averted (US$),20,MV,Kenya,2700,2072,3711,2690,2985,2450
+incremental cost/DALY (disc) averted (US$),30,MV,Kenya,4172,3221,5694,4156,4601,3794
+incremental cost/DALY (disc) averted (US$),40,MV,Kenya,5643,4370,7678,5622,6217,5138
+incremental cost/DALY (disc) averted (US$),50,MV,Kenya,7114,5520,9661,7088,7833,6482
+incremental cost/DALY (disc) averted (US$),5,MV,South Africa,-1267,-1556,-910,-1276,-1165,-1368
+incremental cost/DALY (disc) averted (US$),10,MV,South Africa,-358,-798,254,-365,-182,-520
+incremental cost/DALY (disc) averted (US$),20,MV,South Africa,1462,718,2584,1458,1784,1178
+incremental cost/DALY (disc) averted (US$),30,MV,South Africa,3282,2233,4913,3281,3750,2875
+incremental cost/DALY (disc) averted (US$),40,MV,South Africa,5101,3748,7242,5104,5716,4572
+incremental cost/DALY (disc) averted (US$),50,MV,South Africa,6921,5264,9571,6927,7682,6270
+incremental cost/DALY averted (US$),10,mAb,Kenya,333,254,441,332,366,303
+incremental cost/DALY averted (US$),20,mAb,Kenya,822,652,1054,818,893,757
+incremental cost/DALY averted (US$),30,mAb,Kenya,1310,1050,1666,1305,1419,1211
+incremental cost/DALY averted (US$),40,mAb,Kenya,1799,1448,2279,1792,1946,1665
+incremental cost/DALY averted (US$),50,mAb,Kenya,2287,1845,2891,2279,2472,2119
+incremental cost/DALY averted (US$),100,mAb,Kenya,4729,3834,5954,4713,5106,4388
+incremental cost/DALY averted (US$),75,mAb,Kenya,3508,2840,4423,3496,3789,3253
+incremental cost/DALY averted (US$),125,mAb,Kenya,5950,4828,7486,5930,6422,5522
+incremental cost/DALY averted (US$),10,mAb,South Africa,-347,-461,-200,-349,-301,-390
+incremental cost/DALY averted (US$),20,mAb,South Africa,247,46,510,244,328,172
+incremental cost/DALY averted (US$),30,mAb,South Africa,840,552,1219,837,958,733
+incremental cost/DALY averted (US$),40,mAb,South Africa,1434,1059,1929,1430,1587,1294
+incremental cost/DALY averted (US$),50,mAb,South Africa,2028,1565,2638,2023,2216,1855
+incremental cost/DALY averted (US$),100,mAb,South Africa,4997,4098,6185,4987,5364,4662
+incremental cost/DALY averted (US$),75,mAb,South Africa,3512,2831,4412,3505,3790,3258
+incremental cost/DALY averted (US$),125,mAb,South Africa,6481,5364,7959,6469,6938,6065
+incremental cost/DALY averted (US$),5,MV,Kenya,216,151,322,214,245,189
+incremental cost/DALY averted (US$),10,MV,Kenya,537,401,757,534,598,482
+incremental cost/DALY averted (US$),20,MV,Kenya,1179,901,1626,1174,1304,1067
+incremental cost/DALY averted (US$),30,MV,Kenya,1822,1401,2495,1813,2010,1653
+incremental cost/DALY averted (US$),40,MV,Kenya,2464,1901,3364,2453,2715,2238
+incremental cost/DALY averted (US$),50,MV,Kenya,3107,2401,4234,3092,3421,2824
+incremental cost/DALY averted (US$),5,MV,South Africa,-584,-714,-420,-587,-537,-629
+incremental cost/DALY averted (US$),10,MV,South Africa,-165,-366,118,-168,-84,-239
+incremental cost/DALY averted (US$),20,MV,South Africa,673,329,1194,671,823,541
+incremental cost/DALY averted (US$),30,MV,South Africa,1512,1025,2270,1510,1729,1321
+incremental cost/DALY averted (US$),40,MV,South Africa,2350,1720,3346,2349,2636,2100
+incremental cost/DALY averted (US$),50,MV,South Africa,3188,2415,4422,3188,3542,2880

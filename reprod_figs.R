@@ -567,7 +567,7 @@ plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],
 # SAVE
 ggsave(paste0("output/cea_plots/",subfolder_name,"combined_burden_cost_reduct.png"),
        width=35,height=40,units="cm")
-# save table
+# save table (rounded)
 df_combined_burden_cost_reduct[,c("mean","median","CI50_low","CI50_high","CI95_low","CI95_high")] <- 
   round(df_combined_burden_cost_reduct %>% select(c(mean,median,CI50_low,CI50_high,CI95_low,CI95_high)))
 # save
@@ -627,6 +627,15 @@ ggplot() + geom_boxplot(aes(x=factor(price),middle=median,lower=CI50_low,upper=C
 icer_plotname=paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF_highres",
                      ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),"faceted.png")
 ggsave(icer_plotname,width=36,height=20,units="cm")
+
+# ICER_plot_sel_data_all <- bind_rows(undisc_daly,ICER_plot_sel_data) %>%
+#   arrange(variable,intervention,country_iso) %>%
+#   mutate(across(where(is.numeric),round)) %>% ungroup() %>%
+#   select(!c(price_interv,cnt_int,country_iso,vec)) %>%
+#   relocate(c(mean,CI50_high,CI50_low),.after = last_col())
+# write_csv(ICER_plot_sel_data_all,
+#           "output/cea_plots/SA_ILI_broader_coverage_ANC_effic_betafit_2022/ICER_plot_sel_data_all.csv")
+
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###  
 # icer RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95

@@ -1,0 +1,13 @@
+country_iso,intervention,variable,norm_mean,norm_CI95_low,norm_CI95_high,median
+KEN,mAb,total_DALY_averted,19.2,15.8,22.6,19211
+KEN,MV,total_DALY_averted,15,11.4,18.4,14942
+ZAF,mAb,total_DALY_averted,36.5,31.1,41.4,14315
+ZAF,MV,total_DALY_averted,26.3,20.8,30.8,10340
+KEN,mAb,hosp_cases_averted,23.6,20,26.9,6483
+KEN,mAb,rsv_deaths_averted,19.9,16.3,23.4,284
+KEN,MV,hosp_cases_averted,18.5,14.5,21.6,5105
+KEN,MV,rsv_deaths_averted,15.6,11.8,19.2,222
+ZAF,mAb,hosp_cases_averted,33.4,28.3,38,13904
+ZAF,mAb,rsv_deaths_averted,37.9,32.3,43,223
+ZAF,MV,hosp_cases_averted,24.2,18.7,28.6,10142
+ZAF,MV,rsv_deaths_averted,27.4,21.6,32.3,162
