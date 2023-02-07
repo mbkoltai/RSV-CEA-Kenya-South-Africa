@@ -1,0 +1,145 @@
+source,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,price,source_num,country_iso,intervention,country_plot,vec,price_interv,cnt_int
+new data (hospital-based + HUS),incremental cost (million US$),2.7,2.7,2.5,2.8,2.3,3,6,NA,KEN,mAb,Kenya,2658000,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost/DALY (disc) averted (US$),267.4,263,237.9,291.8,197.2,363.7,6,NA,KEN,mAb,Kenya,263,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),intervention cost (million US$),5.6,5.6,5.6,5.6,5.6,5.6,6,NA,KEN,mAb,Kenya,5634000,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),total DALY averted (US$),23093,23030.5,21402.5,24744.2,18057.8,28408,6,NA,KEN,mAb,Kenya,23030,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),10094.8,10064.5,9364.8,10809.2,7918,12388,6,NA,KEN,mAb,Kenya,10060,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),total medical cost averted (million US$),3,3,2.9,3.1,2.6,3.4,6,NA,KEN,mAb,Kenya,2975000,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost (million US$),1.3,1.3,1.2,1.4,1,1.6,3,NA,KEN,MV,Kenya,1303000,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),incremental cost/DALY (disc) averted (US$),169.4,166.7,147.2,188.2,114.5,242.6,3,NA,KEN,MV,Kenya,167,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),intervention cost (million US$),2.9,2.9,2.9,2.9,2.9,2.9,3,NA,KEN,MV,Kenya,2882000,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),total DALY averted (US$),18003.3,17900.5,16267.5,19630.8,13309,23064.2,3,NA,KEN,MV,Kenya,17900,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),7838.4,7795,7091.2,8536.8,5817.5,10008.5,3,NA,KEN,MV,Kenya,7795,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),total medical cost averted (million US$),1.6,1.6,1.5,1.7,1.2,1.9,3,NA,KEN,MV,Kenya,1579000,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),incremental cost (million US$),-8.4,-8.4,-9.3,-7.4,-11.2,-5.8,6,NA,ZAF,mAb,South Africa,8369000,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost/DALY (disc) averted (US$),-1269.5,-1259.7,-1385.1,-1142.7,-1649.3,-939.5,6,NA,ZAF,mAb,South Africa,1260,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),intervention cost (million US$),5.1,5.1,5.1,5.1,5.1,5.1,6,NA,ZAF,mAb,South Africa,5103000,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),total DALY averted (US$),14298.1,14321,13477.8,15145,11861,16728.2,6,NA,ZAF,mAb,South Africa,14320,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),6614.1,6624,6241,7000.2,5505,7710,6,NA,ZAF,mAb,South Africa,6624,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),total medical cost averted (million US$),13.5,13.5,12.6,14.4,10.8,16.3,6,NA,ZAF,mAb,South Africa,13470000,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost (million US$),-7.8,-7.8,-8.8,-6.9,-10.6,-5.2,3,NA,ZAF,MV,South Africa,7766000,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),incremental cost/DALY (disc) averted (US$),-1670.1,-1648.6,-1893.5,-1422.7,-2405.8,-1052.8,3,NA,ZAF,MV,South Africa,1649,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),intervention cost (million US$),2.6,2.6,2.6,2.6,2.6,2.6,3,NA,ZAF,MV,South Africa,2597000,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),total DALY averted (US$),10298.9,10307.5,9545,11062,8087.9,12495.1,3,NA,ZAF,MV,South Africa,10310,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),4742.7,4746,4402.2,5084,3749,5727.1,3,NA,ZAF,MV,South Africa,4746,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),total medical cost averted (million US$),10.4,10.4,9.5,11.3,7.8,13.2,3,NA,ZAF,MV,South Africa,10360000,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),incremental cost (million US$),2.7,2.7,2.5,2.8,2.3,3,6,NA,KEN,mAb,Kenya,2658000,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost/DALY averted (US$),116.9,115,103.9,127.6,86.2,159.1,6,NA,KEN,mAb,Kenya,115,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),intervention cost (million US$),5.6,5.6,5.6,5.6,5.6,5.6,6,NA,KEN,mAb,Kenya,5634000,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),total DALY averted (US$),23093,23030.5,21402.5,24744.2,18057.8,28408,6,NA,KEN,mAb,Kenya,23030,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),10094.8,10064.5,9364.8,10809.2,7918,12388,6,NA,KEN,mAb,Kenya,10060,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),total medical cost averted (million US$),3,3,2.9,3.1,2.6,3.4,6,NA,KEN,mAb,Kenya,2975000,6$ (mAb),"KEN
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost (million US$),1.3,1.3,1.2,1.4,1,1.6,3,NA,KEN,MV,Kenya,1303000,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),incremental cost/DALY averted (US$),73.8,72.6,64,82,49.8,105.8,3,NA,KEN,MV,Kenya,73,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),intervention cost (million US$),2.9,2.9,2.9,2.9,2.9,2.9,3,NA,KEN,MV,Kenya,2882000,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),total DALY averted (US$),18003.3,17900.5,16267.5,19630.8,13309,23064.2,3,NA,KEN,MV,Kenya,17900,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),7838.4,7795,7091.2,8536.8,5817.5,10008.5,3,NA,KEN,MV,Kenya,7795,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),total medical cost averted (million US$),1.6,1.6,1.5,1.7,1.2,1.9,3,NA,KEN,MV,Kenya,1579000,3$ (MV),"KEN
+$3
+MV"
+new data (hospital-based + HUS),incremental cost (million US$),-8.4,-8.4,-9.3,-7.4,-11.2,-5.8,6,NA,ZAF,mAb,South Africa,8369000,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost/DALY averted (US$),-587.4,-583.1,-641,-528.2,-765.3,-436.5,6,NA,ZAF,mAb,South Africa,583,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),intervention cost (million US$),5.1,5.1,5.1,5.1,5.1,5.1,6,NA,ZAF,mAb,South Africa,5103000,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),total DALY averted (US$),14298.1,14321,13477.8,15145,11861,16728.2,6,NA,ZAF,mAb,South Africa,14320,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),6614.1,6624,6241,7000.2,5505,7710,6,NA,ZAF,mAb,South Africa,6624,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),total medical cost averted (million US$),13.5,13.5,12.6,14.4,10.8,16.3,6,NA,ZAF,mAb,South Africa,13470000,6$ (mAb),"ZAF
+$6
+mAb"
+new data (hospital-based + HUS),incremental cost (million US$),-7.8,-7.8,-8.8,-6.9,-10.6,-5.2,3,NA,ZAF,MV,South Africa,7766000,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),incremental cost/DALY averted (US$),-769.8,-758.9,-874.2,-654.8,-1115.8,-484,3,NA,ZAF,MV,South Africa,759,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),intervention cost (million US$),2.6,2.6,2.6,2.6,2.6,2.6,3,NA,ZAF,MV,South Africa,2597000,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),total DALY averted (US$),10298.9,10307.5,9545,11062,8087.9,12495.1,3,NA,ZAF,MV,South Africa,10310,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),total DALY (disc) averted (US$),4742.7,4746,4402.2,5084,3749,5727.1,3,NA,ZAF,MV,South Africa,4746,3$ (MV),"ZAF
+$3
+MV"
+new data (hospital-based + HUS),total medical cost averted (million US$),10.4,10.4,9.5,11.3,7.8,13.2,3,NA,ZAF,MV,South Africa,10360000,3$ (MV),"ZAF
+$3
+MV"

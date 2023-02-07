@@ -38,7 +38,8 @@ kenya_ari_sari_incidence <- bind_rows(fcn_load_kenya(kenya_data_path=
   group_by(age_in_months,disease_type_medic_status) %>% summarise(value=unique(value),
     CI_95_lower=unique(CI_95_lower),CI_95_upper=unique(CI_95_upper),
     metric_per_popul=unique(metric_per_popul))
-### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # PLOT
 plot_flag=F
 if (plot_flag){
@@ -50,10 +51,10 @@ df_ylims <- data.frame(
 
 # FIGURE 1B
 ggplot(kenya_ari_sari_incidence, aes(x=age_in_months)) + 
-  geom_bar(aes(y=popul_denom*value/metric_per_popul,fill=disease_type_medic_status),
-           position="stack",stat="identity") +
+  geom_bar(aes(y=popul_denom*value/metric_per_popul),position="stack",stat="identity",fill="white",color="black") +
+  # ,fill=disease_type_medic_status
   geom_errorbar(aes(ymin=popul_denom*CI_95_lower/metric_per_popul,
-                    ymax=popul_denom*CI_95_upper/metric_per_popul),size=0.4) +
+                    ymax=popul_denom*CI_95_upper/metric_per_popul),size=0.5,color="red",width=2/3) +
   geom_point(data=df_ylims,aes(x=age_in_months,y=value),color="white") +
   facet_wrap(~disease_type_medic_status,nrow=2,scales="free") + # 
   xlab("age (months)") + ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""),
@@ -83,7 +84,9 @@ kenya_nonhosp_hosp_incid_ari_sari <- lapply(c("ARI","SARI"), function(x)
 names(kenya_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 ### deaths
 # Kenya deaths
-deaths_kenya <- read_csv("custom_input/deaths_kenya_tidy_adjusted_02_2022.csv") %>% 
+ken_deaths_source <- c(1,2)[2]
+deaths_kenya <- read_csv(c("custom_input/deaths_kenya_tidy_adjusted_02_2022.csv",
+                           "custom_input/deaths_kenya_tidy_adjusted_12_2022.csv")[ken_deaths_source]) %>% 
   filter(variable=="rate" & !age_in_months %in% c("<12","12-23","<24","24-59","<60")) %>% 
   mutate(age_in_months=ifelse(age_in_months=="<1","0",age_in_months),freq=1) %>% 
   mutate(freq=ifelse(grepl('-',age_in_months),as.numeric(sapply(age_in_months, 
@@ -102,7 +105,7 @@ kenya_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), function(y_no) da
   mutate(shape=unlist(shape),rate=unlist(rate))
 # generate samples from fitted distribs
 kenya_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:59, function(x) 
-    rgamma(5e3,shape=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
+    rgamma(n=5e3,shape=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
           rate=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5)
 names(kenya_deaths_incid) <- c("hosp","nonhosp")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
@@ -143,33 +146,98 @@ deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>%
         mutate(in_hospital=ifelse(in_hospital=="yes","in-hospital","out-of-hospital"))
 # SAVE
 # write_csv(deaths_data,file = "custom_input/deaths_data.csv")
-write_csv(deaths_data,file = "output/cea_plots/figure_3.csv")
+write_csv(deaths_data,file="output/cea_plots/figure_3.csv")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 plot_flag=F
 if (plot_flag){
-ggplot(deaths_data,aes(x=age_in_months_orig)) + 
-  geom_bar(aes(y=value,fill=in_hospital),stat="identity") + # ,position="dodge"
-  geom_errorbar(aes(ymin=CI_95_lower_sum,ymax=CI_95_upper_sum,group=in_hospital),size=0.2) + # ,position="dodge"
-  facet_wrap(~country) + # ,nrow=2 # ,scales="free_y"
-  xlab("age (months)") + ylab("deaths per 100,000 person year") + labs(fill="") +
-  scale_y_continuous(expand=expansion(0.01,0),breaks=(0:12)*25) + theme_bw() + standard_theme + 
-  theme(axis.text.x=element_text(vjust=0.5,size=13),axis.text.y=element_text(size=13),
-    legend.text=element_text(size=13),legend.background=element_rect(fill=NA),legend.position=c(0.88,0.925),
-    strip.text=element_text(size=14),
-    axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)) # p
+  
+# plot with monthly resolution
+# ggplot(deaths_data,aes(x=age_in_months_orig)) +
+#   geom_bar(aes(y=value,fill=in_hospital),stat="identity",position="dodge") + # ,position="dodge"
+#   geom_errorbar(aes(ymin=CI_95_lower,ymax=CI_95_upper,group=in_hospital), # _sum
+#                 size=0.2,position="dodge") + #position="dodge"
+#   facet_wrap(~country) + # ,nrow=2 # ,scales="free_y"
+#   xlab("age (months)") + ylab("deaths per 100,000 person year") + labs(fill="") +
+#   scale_y_continuous(expand=expansion(0.01,0),breaks=(0:12)*25) + theme_bw() + standard_theme +
+#   theme(axis.text.x=element_text(vjust=0.5,size=13),axis.text.y=element_text(size=13),
+#     legend.text=element_text(size=13),legend.background=element_rect(fill=NA),legend.position=c(0.88,0.925),
+#     strip.text=element_text(size=14),
+#     axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)) # p
 # save
-# ggsave("output/cea_plots/ALL_deaths_data_dodged_2rows.png",width=32,height=18,units="cm") #  # _yfixed
-# ggsave("output/cea_plots/ALL_deaths_data_stacked_2rows.png",width=32,height=18,units="cm") #  # _yfixed
-# ggsave("output/cea_plots/ALL_deaths_data_stacked.png",width=32,height=18,units="cm") #  # _yfixed
-# ggsave("output/cea_plots/ALL_deaths_data_stacked_yfixed.png",width=32,height=18,units="cm") #  # 
-# ggsave("output/cea_plots/figure_3.png",width=32,height=18,units="cm") #  # 
+# ggsave("output/cea_plots/figure_3_revisedKENdeaths_dodged.png",width=32,height=18,units="cm")
+
+# Revised Figure3
+# source("death_rates.R")
+# ratio of hosp/nonhosp deaths in SA
+  age_brackets=c("0-5m","6-11m","12-23m","24-35m","36-59m")
+  out_in_hosp_ratio = data.frame(age=unique(deaths_data$age_in_months_orig),
+      ZAF=deaths_data$value[(!deaths_data$in_hospital %in% "in-hospital") & deaths_data$country %in% "South Africa"]/
+        deaths_data$value[(deaths_data$in_hospital %in% "in-hospital") & deaths_data$country %in% "South Africa"],
+      KEN=deaths_data$value[(deaths_data$in_hospital %in% "out-of-hospital") & deaths_data$country %in% "Kenya"]/
+        deaths_data$value[(deaths_data$in_hospital %in% "in-hospital") & deaths_data$country %in% "Kenya"]) %>%
+    mutate(age_ind=row_number(), 
+           ageband=case_when(age_ind<=6 ~ "0-5m",
+                             age_ind>6&age_ind<=12 ~ "6-11m",
+                             age_ind>12&age_ind<=16 ~ "12-23m",
+                             age_ind==17 ~ "24-35m",
+                             age_ind>17 ~ "36-59m")) %>%
+    group_by(ageband) %>% summarise(ZAF=mean(ZAF,na.rm=T), KEN=mean(KEN,na.rm=T)) %>%
+    mutate(ageband=factor(ageband,levels=age_brackets)) %>% arrange(ageband) %>%
+    pivot_longer(!ageband) %>% 
+    mutate(label_text=ifelse(!is.nan(value),as.character(round(value,2)),"NA"),
+           value=ifelse(!is.nan(value),value,0))
+### ### ### ### ### ### ### ### ### ### ### ### ### ### 
+# SA INHOSP CFR (in-hosp deaths / hosp. rate)
+  cfr_sa_inhosp=deaths_data$value[(deaths_data$in_hospital %in% "in-hospital") & 
+                                    deaths_data$country %in% "South Africa"]/
+    SA_ILI_SARI_rawdata$rate[SA_ILI_SARI_rawdata$disease_type %in% "SARI" & 
+                               SA_ILI_SARI_rawdata$hospitalisation]
+# KEN INHOSP CFR
+  cfr_ken_inhosp=deaths_data$value[(deaths_data$in_hospital %in% "in-hospital") & 
+                                     deaths_data$country %in% "Kenya"]/
+    kenya_ari_sari_incidence$value[kenya_ari_sari_incidence$disease_type_medic_status %in% "SARI hospitalised"]
+  
+  # aggregrate into 1 dataframe
+  CFR_inhosp = data.frame(
+    age=deaths_data$age_in_months_orig[(deaths_data$in_hospital %in% "in-hospital") & 
+                                         deaths_data$country %in% "Kenya"],
+    KEN=cfr_ken_inhosp, ZAF=cfr_sa_inhosp) %>%
+    mutate(age_ind=row_number(), 
+           ageband=case_when(age_ind<=6 ~ "0-5m",
+                             age_ind>6 & age_ind<=12 ~ "6-11m",
+                             age_ind>12 & age_ind<=16 ~ "12-23m",
+                             age_ind==17 ~ "24-35m",
+                             age_ind>17 ~ "36-59m")) %>%
+    group_by(ageband) %>% summarise(ZAF=100*mean(ZAF),KEN=100*mean(KEN)) %>%
+    mutate(ageband=factor(ageband,levels=age_brackets)) %>% arrange(ageband) %>%
+    pivot_longer(!ageband) %>% mutate(label_text=as.character(round(value,2)) ) %>%
+    mutate(variable="In–hospital CFR (%)")
+  
+# plot
+bind_rows(out_in_hosp_ratio %>% 
+              mutate(variable="[out-of-hospital deaths]/[in-hospital deaths]"), CFR_inhosp) %>%
+    mutate(ageband=factor(ageband,levels=rev(c("0-5m","6-11m","12-23m","24-35m","36-59m"))),
+           variable=factor(variable,levels=c("In–hospital CFR (%)",
+                                             "[out-of-hospital deaths]/[in-hospital deaths]"))) %>%
+    ggplot(aes(x=ageband,y=value,fill=name,group=name)) + facet_wrap(~variable,scales="free_x") +
+    geom_bar(stat="identity",position="dodge",width=0.9) + 
+    geom_text(aes(y=value+0.18,label=label_text),position=position_dodge(width=1),size=4) +
+    xlab("") + ylab("") + coord_flip() + theme_bw() + standard_theme + 
+    scale_y_continuous(expand=expansion(mult=c(1/1e3,6/1e2))) +
+    theme(axis.text.x=element_text(size=16,angle=0),strip.text=element_text(size=18),
+          axis.text.y=element_text(size=16),legend.title=element_blank(),
+          legend.text=element_text(size=18))
+# save
+ggsave("output/cea_plots/figure_3_CFR_inoutmultipl.png",width=32,height=18,units="cm")
 }
+
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # concentration of deaths in first X months (this is a bit crude bc assuming age group size = duration)
-# deaths_data %>% mutate(before_5_mts=as.numeric(age_in_months_orig)<=5,
-#                        size_agegr=ifelse(as.numeric(age_in_months_orig)<=12,1,
-#         ifelse(as.numeric(age_in_months_orig)<=16,2,12))) %>%
-#   group_by(country,before_5_mts) %>%  summarise(value=sum(value*size_agegr))
+deaths_data %>% mutate(before_5_mts=as.numeric(age_in_months_orig)<=6,
+                       size_agegr=ifelse(as.numeric(age_in_months_orig)<=12,1,
+                                          ifelse(as.numeric(age_in_months_orig)<=16,2,12))) %>%
+  group_by(country,before_5_mts) %>% summarise(value=sum(value*size_agegr)) %>%
+  group_by(country) %>% mutate(share=value/sum(value))
 
 # fit distributions to CI95
 SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), 
@@ -195,9 +263,11 @@ names(SA_deaths_incid)=c("hosp","nonhosp")
 #       select(age_inf,value,CI_95_lower,CI_95_upper) %>%
 #     mutate(source="data",value=value/1e5,
 #           CI_95_lower=CI_95_lower/1e5,CI_95_upper=CI_95_upper/1e5) ),
-#       aes(x=age_inf,color=source,fill=source)) + geom_point(aes(y=value)) + geom_line(aes(y=value)) +
-#   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper),alpha=1/5) + scale_y_log10() +
-#   theme_bw() + standard_theme
+#       aes(x=age_inf,color=source,fill=source)) + geom_point(aes(y=value),size=4) + geom_line(aes(y=value)) +
+#   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper),alpha=1/5) + 
+#   scale_y_log10() + scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) +
+#   theme_bw() + standard_theme + theme(axis.text.x=element_text(size=16),
+#                                       axis.text.y=element_text(size=16))
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### SA incidence data of RSV disease (ARI/SARI)
@@ -225,18 +295,20 @@ if (!exists("SA_data")){ SA_data=bind_rows(SA_ILI_data,SA_SARI_data) }
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # PLOT South Africa incidence
-SA_ILI_SARI_rawdata <- bind_rows( 
+SA_ILI_SARI_rawdata <- bind_rows(
   distinct(fcn_load_s_afr(safr_data_path="custom_input/s_afr_incidence_data_rate.csv") %>%
   mutate(disease_type_medic_status=paste(disease_type,
                      ifelse(hospitalisation,"hospitalised","not hospitalised"))) %>% select(!age_inf)),
 read_csv("custom_input/s_afr_ILI_incidence_rate_160921.csv") %>% 
   filter(!(grepl("<",agegroup) | agegroup %in% c("0-5m","6-11m","12-23m","24-59m","<5y"))) %>%
-  rename(age=agegroup) %>% mutate(disease_type=ifelse(disease_type=="ILI","ARI",""),
+  rename(age=agegroup) %>% 
+  mutate(disease_type=ifelse(disease_type=="ILI","ARI",""),
          disease_type_medic_status=ifelse(hospitalisation,paste0("medically attended ",disease_type),
                                           paste0("non medically attended ",disease_type))) ) %>%
   mutate(age=gsub("m","",age),age=factor(age,levels=unique(age)))
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # PLOT
+plot_flag=F
 if (plot_flag){
   plot_popul_denom <- 1e5 # per person or per 100K?
   # helper df to have axis limits fixed per row
@@ -245,18 +317,17 @@ if (plot_flag){
     rate=c(rep(0.115,2),rep(0.32,2))*plot_popul_denom)
 # create plot
 ggplot(SA_ILI_SARI_rawdata,aes(x=age)) + 
-  geom_bar(aes(y=plot_popul_denom*rate/popul_denom,fill=disease_type_medic_status),
-           position="stack",stat="identity") +
+  geom_bar(aes(y=plot_popul_denom*rate/popul_denom),position="stack",stat="identity",color="black",fill="white") +
+  # ,fill=disease_type_medic_status
   geom_errorbar(aes(ymin=plot_popul_denom*rate_CI_lower/popul_denom,
-                    ymax=plot_popul_denom*rate_CI_upper/popul_denom),size=0.4) +
+                    ymax=plot_popul_denom*rate_CI_upper/popul_denom),size=0.4,width=2/3,color="red") +
   geom_point(data=df_ylims,aes(x=age,y=rate),color="white") +
   facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
   xlab("age (months)") + 
   ylab(paste0("cases per ",ifelse(popul_denom>1,"100,000 ",""),
               "person year",ifelse(popul_denom>1,"s",""))) +
   labs(fill="") + scale_y_continuous(expand=expansion(0.01,0)) +
-  theme_bw() + standard_theme + 
-  theme(axis.text.x=element_text(vjust=0.5,size=13),
+  theme_bw() + standard_theme + theme(axis.text.x=element_text(vjust=0.5,size=13),
         axis.text.y=element_text(size=13),legend.text=element_text(size=13),
         legend.background=element_rect(fill=NA),legend.position=c(0.9,0.925),
         axis.title.x=element_text(size=17),axis.title.y=element_text(size=17),
@@ -270,24 +341,28 @@ ggsave(fig2_name,width=42,height=22,units="cm")
 # save data
 # write_csv(SA_ILI_SARI_rawdata, "output/cea_plots/figure_2B.csv")
 }
+
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ## estimate from Kenya on % of ARI cases with fever (=ILI) -> take this percentage to expand ILI to ARI
-ILI_adjust_SA=TRUE
-if (ILI_adjust_SA) { # 
+ILI_adjust_SA=T
+if (ILI_adjust_SA) {
   print("divide by fever proportion")
-  SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]=
-  SA_data[SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper")]/mean(c(0.333,0.205,0.16))
+  ari_adj_inds=list(SA_data$disease_type=="ARI",c("rate","rate_CI_lower","rate_CI_upper"))
+  SA_data[ari_adj_inds[[1]],ari_adj_inds[[2]]]=SA_data[ari_adj_inds[[1]],ari_adj_inds[[2]]]/mean(c(0.333,0.205,0.16))
   divided_fever=TRUE 
   }
 # CI lower limit should not be 0 -> setting it to 1 
 # (since average value of mean rate is > 1000, this does not change results more than 0.1%)
+if ( any(SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]==0) ) {
 SA_data$rate_CI_lower[SA_data$age_inf==0 & SA_data$disease_type=="ARI"]=1
+}
 # SAVE SA incid data
 # write_csv(SA_data,file = "custom_input/sa_ari_sari_incidence.csv")
 ### generate 5e3 sample paths for CEA
 sa_nonhosp_hosp_incid_ari_sari=lapply(c("ARI","SARI"), 
       function(x) fcn_gen_nonhosp_hosp_incid_samples_SA(SA_data,diseasetype=x,
-      n_iter=5e3, age_maxval=60,CI_intervals=ci95_range,randsampl_distrib_type="gamma"))
+                              n_iter=5e3, age_maxval=60,CI_intervals=ci95_range,
+                              randsampl_distrib_type="gamma") )
 names(sa_nonhosp_hosp_incid_ari_sari)=c("ARI","SARI")
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
@@ -336,7 +411,8 @@ for (k_row in 1:nrow(s_afr_outpatient_cost)) {
   uncount(weights=freq, .id="n",.remove=F) %>% # dplyr::
   mutate(age=as.numeric(age)+(n-1)) %>% select(!c(n,freq)) 
 }
-# types: s_afr_outpatient_cost %>% select(c(name,cost_type,disease)) %>% distinct()
+
+# plot quality of fits
 ggplot(s_afr_outpatient_cost) +
   geom_point(aes(x=mean,y=sim_mean,color=name,fill=cost_type),shape=21,size=6) +
   geom_point(data=data.frame(mean=c(0.3,30),sim_mean=c(0.3,30)),aes(x=mean,y=sim_mean),color=NA) +
@@ -386,7 +462,7 @@ list_SA_costs <- list("inpatient"=s_afr_inpatient_cost,"outpatient"=s_afr_outpat
 list_SA_costs$inpatient %>% select(c(name,disease,cost_type)) %>% distinct()
 list_SA_costs$outpatient %>% select(c(name,disease,cost_type)) %>% distinct()
 
-# check fit
+# check quality of fits
 ggplot(s_afr_inpatient_cost,aes(x=age)) + 
   geom_line(aes(y=mean)) + geom_line(aes(y=sim_mean),color="red") +
   geom_point(aes(y=mean),shape=21) + geom_point(aes(y=sim_mean),shape=21,color="red") +
@@ -418,6 +494,7 @@ list_KEN_costs <- list(inpatient_household=bind_cols(
             p=c(2.5,50,97.5)/100,plot=F)[c("shape","rate")]))),scaling=100),
   inpatient_healthcare_system=KEN_outpatient_cost*in_outpatient_cost_ratio,
   outpatient_cost=KEN_outpatient_cost)
+#
 # gamma can fit median and CIs well, but not so much the mean
 # gamma_pars_cost <- get.gamma.par(q=c(ken_inpatient_rows$ci95_low,ken_inpatient_rows$median,
 #   ken_inpatient_rows$ci95_up)/100,p=c(2.5,50,97.5)/100,plot=F)
@@ -506,7 +583,7 @@ g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_fi
 # distribution used to fit efficacy figures
 effic_dist_fit <- "beta" # 
 # adjust coverage levels
-coverage_adj=T; adj_cov_val=c(SA=0.752,KEN=0.616)
+coverage_adj=F; adj_cov_val=c(SA=0.752,KEN=0.616)
 subfolder_name <- paste0(
         "SA_ILI_",
         ifelse(ILI_adjust_SA,"broader","narrow"),
@@ -514,9 +591,11 @@ subfolder_name <- paste0(
         ifelse(coverage_adj,"_coverage_ANC","_coverage_BCG"),
         ifelse(ifelse(exists("flag_adjust_to_mean"),flag_adjust_to_mean,F),"_adj_mv_sev_eff_mean",""),
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
-        ifelse(flag_publ_effic,"","_2022"),"/")
+        ifelse(flag_publ_effic,"","_2022"),
+        ifelse(ken_deaths_source==2,"_ken_death_rev",""),
+        "/")
 
-### Before starting loop for the FIRST TIME need to create temp folder (afterwards can comment out this line)
+### Before starting loop for the FIRST TIME need to create temp folder (after 1st run can comment out this line)
 source("init_cea_calc_parallel.R")
 ###
 # outputs to display
@@ -543,7 +622,7 @@ burden_cols <- all_cols[!grepl("cost|averted",all_cols)]; cost_cols <- all_cols[
 ci50_range <- c(25,75)/1e2; ci95_range <- c(2.5,97.5)/1e2
 # do we also want to calculate with projections from [Li 2020]
 CALC_PROJECTION=F
-# run calculations (approx 3 mins if CALC_PROJECTION=FALSE, 6 mins if TRUE)
+# RUN CALCULATIONS (approx 3 mins if CALC_PROJECTION=FALSE, 6 mins if TRUE)
 source("functions/cea_loop_cntr_interv.R")
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
@@ -592,6 +671,7 @@ plot_grid(plot_list[[1]],plot_list[[2]],plot_list[[3]],
 ggsave(paste0("output/cea_plots/",subfolder_name,"combined_burden_cost_reduct.png"),
        width=35,height=40,units="cm")
 # save table (rounded)
+# ggsave(paste0("output/cea_plots/2nd_subm/figure_4.png"),width=35,height=40,units="cm")
 
 # save data table
 # write_csv(df_fig4,"output/cea_plots/figure_4.csv")
@@ -602,7 +682,7 @@ ggsave(paste0("output/cea_plots/",subfolder_name,"combined_burden_cost_reduct.pn
 
 # calculate ICERs 
 # to scale default price
-price_scaling_vect <- c(1,5/3,10/3,25/6,5,20/3,25/3,10,40/3,50/3,75/3,75/6,125/6,100/3)
+price_scaling_vect <- c(1,5/3,10/3,25/6,5,20/3,25/3,10,40/3,50/3,75/3,75/6,125/6,100/3) # , 125/3
 # calculates ICERs for different price levels (dataframe for default price: df_interv_incremcosts_icer)
 source("functions/icer_plots.R")
 
@@ -620,10 +700,11 @@ ICER_sensit_price <- bind_rows(list_scaled) %>%
 
 ll_icer_plot <- list()
 # boxplots with multiple doseprice values (rotated)
+# n_disc=1 -> undiscounted DALYs
 for (n_disc in 1:2){
 sel_DALY_pattern = c("incremental cost/DALY averted","incremental cost/DALY \\(disc")[n_disc]
-sel_prices <- list(MV=c(5,10,20,30,40,50),
-                   mAb=list(c(10,20,30,40,50,75,100,125), c(10,20,30,40,50,60,75))[[n_disc]])
+sel_prices <- list(MV=c(5,10,20,30,40,50,75), # ,100,125
+                   mAb=list(c(10,20,30,40,50,75,100,125,150), c(10,20,30,40,50,60,75))[[n_disc]])
 # show plot
 ICER_plot_sel_data = ICER_sensit_price %>% filter(grepl(sel_DALY_pattern,variable) &
                                (intervention %in% "MV" & price %in% sel_prices$MV |
@@ -655,12 +736,15 @@ ggplot() + geom_boxplot(aes(x=factor(price),middle=median,lower=CI50_low,upper=C
 full_filename <- paste0(subfolder_name,"ICER_KEN_ZAF_highres",
         ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),"faceted.png")
 
-ggsave(paste0("output/cea_plots/",c("figure_5A","figure_5B")[n_disc],".png"),
+# ggsave(paste0("output/cea_plots/",c("figure_5A","figure_5B")[n_disc],".png"),
+#        width=36,height=20,units="cm")
+ggsave(paste0("output/cea_plots/",subfolder_name,"ICER_price_scan",c("","_disc")[n_disc],".png"),
        width=36,height=20,units="cm")
 }
 
 # save data table
-write_csv(bind_rows(ll_icer_plot),"output/cea_plots/figure_5.csv")
+# write_csv(bind_rows(ll_icer_plot),"output/cea_plots/figure_5.csv")
+write_csv(bind_rows(ll_icer_plot),paste0("output/cea_plots/",subfolder_name,"figure_5.csv"))
 
 # ICER_plot_sel_data_all <- bind_rows(undisc_daly,ICER_plot_sel_data) %>%
 #   arrange(variable,intervention,country_iso) %>%
@@ -672,7 +756,7 @@ write_csv(bind_rows(ll_icer_plot),"output/cea_plots/figure_5.csv")
 
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###  
-# icer RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95
+# ICER RANGE plots: undiscounted/discounted DALYs, showing CI50 or CI50+CI95
 price_limit_MV=30; SAVE_FLAG=T
 source("functions/icer_range_plots.R")
 # plots are in the list `p_icer_plotlist`: 
@@ -702,12 +786,11 @@ icer_lineplotname=paste0("output/cea_plots/",subfolder_name,"ICER_KEN_ZAF_linepl
                      ifelse(grepl("disc",sel_DALY_pattern),"_disc_","_"),"faceted.png")
 ggsave(icer_lineplotname,width=35,height=20,units="cm")
 
-
 # SAVE tables
 write_csv(df_interv_incremcosts_icer %>% mutate(across(where(is.numeric),round,1)),
           paste0("output/cea_plots/",subfolder_name,"df_interv_incremcosts_icer.csv"))
-write_csv(ICER_price_range_plot,
-          paste0("output/cea_plots/",subfolder_name,"ICER_price_range_plot.csv"))
+# write_csv(ICER_price_range_plot,
+#           paste0("output/cea_plots/",subfolder_name,"ICER_price_range_plot.csv"))
 
 # price scan
 write_csv(ICER_sensit_price,paste0("output/cea_plots/",subfolder_name,"ICER_sensit_price.csv"))
@@ -729,7 +812,7 @@ for (k_folder in 1:length(list_folders_effic_scan)) {
 # transform into dataframe
 df_effic_scan <- bind_rows(list_df_effic_scan)
 # y axis limits
-df_ylim <- df_effic_scan %>% 
+df_ylim <- df_effic_scan %>%
   filter(grepl(sel_icer_var_pattern,variable)) %>% group_by(intervention,country_plot) %>%
   summarise(CI95_low_sep_cntr=min(CI95_low),CI95_high_sep_cntr=max(CI95_high),
             CI50_low_sep_cntr=min(CI50_low),CI50_high_sep_cntr=max(CI50_high)) %>% 
@@ -752,10 +835,13 @@ df_effic_scan %>% filter(grepl(sel_icer_var_pattern,variable)) %>%
   theme_bw() + standard_theme + plot_theme + labs(fill="median efficacy") + 
   theme(legend.title=element_text(size=16))
 # SAVE
-ggsave(paste0("output/cea_plots/price_efficacy scan.png"),width=40,height=30,units="cm")
+ggsave(paste0("output/cea_plots/",subfolder_name,"price_efficacy scan.png"),width=40,height=30,units="cm")
+# ggsave(paste0("output/cea_plots/SI_Figure_4.png"),width=40,height=30,units="cm")
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### PLOTS BELOW NOT USED ANYMORE IN MANUSCRIPT
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # plots COMPARING CEA results with projected data vs new data
 # load ungeviz library (from https://github.com/wilkelab/ungeviz)
@@ -769,7 +855,7 @@ list_compar_plots[[3]]
 
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
-# comparative plots of reduction in DALYs and medical costs (input data vs projections)
+# comparative plots of reduction in DALYs and medical costs: input data vs projections in [Li 2020]
 
 source("functions/compar_plots_cost_red.R")
 p_compar_plot_cost_red

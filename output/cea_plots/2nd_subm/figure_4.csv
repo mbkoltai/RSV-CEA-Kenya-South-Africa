@@ -1,0 +1,49 @@
+country_plot,intervention,plot_variable,variable,mean,median,CI50_low,CI50_high,CI95_low,CI95_high,norm_mean,norm_median,norm_CI50_low,norm_CI50_high,norm_CI95_low,norm_CI95_high
+Kenya,mAb,YLD medically attended cases,hosp_med_att_YLD_averted,143,142,133,151,117,174,0.073,0.073,0.068,0.077,0.061,0.087
+Kenya,mAb,YLD hospitalised cases,hosp_YLD_averted,42,42,38,45,32,53,0.236,0.236,0.221,0.251,0.195,0.281
+Kenya,mAb,YLD non-hospitalised cases,non_hosp_YLD_averted,240,239,225,253,199,285,0.096,0.096,0.091,0.101,0.081,0.111
+Kenya,mAb,total DALY,total_DALY_averted,19277,19211,17819,20676,15318,23594,0.192,0.192,0.18,0.204,0.158,0.226
+Kenya,mAb,total YLD,total_YLD_averted,281,281,264,297,233,334,0.063,0.063,0.06,0.067,0.053,0.073
+Kenya,mAb,total YLL,total_YLL_averted,18996,18926,17541,20388,15049,23288,0.198,0.198,0.186,0.21,0.162,0.234
+Kenya,MV,YLD medically attended cases,hosp_med_att_YLD_averted,52,52,47,58,38,68,0.027,0.027,0.024,0.029,0.019,0.034
+Kenya,MV,YLD hospitalised cases,hosp_YLD_averted,33,32,29,36,23,43,0.184,0.185,0.169,0.2,0.137,0.23
+Kenya,MV,YLD non-hospitalised cases,non_hosp_YLD_averted,122,122,110,133,89,156,0.049,0.049,0.044,0.053,0.036,0.062
+Kenya,MV,total DALY,total_DALY_averted,15011,14942,13600,16395,11045,19203,0.15,0.15,0.138,0.162,0.114,0.184
+Kenya,MV,total YLD,total_YLD_averted,155,155,140,169,112,198,0.035,0.035,0.032,0.038,0.025,0.044
+Kenya,MV,total YLL,total_YLL_averted,14857,14786,13444,16241,10900,19048,0.155,0.155,0.142,0.167,0.118,0.191
+South Africa,mAb,YLD medically attended cases,hosp_med_att_YLD_averted,141,140,130,151,113,179,0.214,0.213,0.201,0.226,0.179,0.253
+South Africa,mAb,YLD hospitalised cases,hosp_YLD_averted,90,89,81,97,69,114,0.334,0.333,0.315,0.354,0.278,0.393
+South Africa,mAb,YLD non-hospitalised cases,non_hosp_YLD_averted,268,261,237,290,198,385,0.16,0.158,0.146,0.172,0.126,0.209
+South Africa,mAb,total DALY,total_DALY_averted,14337,14315,13503,15145,11982,16783,0.365,0.365,0.347,0.383,0.311,0.414
+South Africa,mAb,total YLD,total_YLD_averted,358,352,325,383,276,480,0.153,0.152,0.142,0.163,0.125,0.192
+South Africa,mAb,total YLL,total_YLL_averted,13979,13964,13155,14778,11671,16402,0.378,0.378,0.36,0.397,0.322,0.43
+South Africa,MV,YLD medically attended cases,hosp_med_att_YLD_averted,86,85,76,95,60,118,0.13,0.129,0.118,0.142,0.095,0.17
+South Africa,MV,YLD hospitalised cases,hosp_YLD_averted,65,65,58,72,44,87,0.242,0.243,0.221,0.263,0.177,0.303
+South Africa,MV,YLD non-hospitalised cases,non_hosp_YLD_averted,148,143,124,167,93,237,0.088,0.087,0.075,0.099,0.058,0.131
+South Africa,MV,total DALY,total_DALY_averted,10329,10340,9559,11115,8053,12464,0.263,0.264,0.246,0.281,0.208,0.308
+South Africa,MV,total YLD,total_YLD_averted,213,210,186,236,145,307,0.091,0.09,0.081,0.1,0.064,0.126
+South Africa,MV,total YLL,total_YLL_averted,10115,10126,9347,10898,7841,12261,0.274,0.275,0.256,0.293,0.216,0.322
+Kenya,mAb,hospitalised cases,hosp_cases_averted,6474,6483,6128,6828,5419,7458,0.236,0.237,0.225,0.249,0.2,0.269
+Kenya,mAb,non-hospitalised cases,non_hosp_cases_averted,150997,151004,145692,156515,135025,166638,0.063,0.063,0.061,0.066,0.057,0.07
+Kenya,mAb,deaths,rsv_deaths_averted,285,284,263,306,226,349,0.199,0.199,0.187,0.211,0.163,0.234
+Kenya,MV,hospitalised cases,hosp_cases_averted,5069,5105,4735,5436,3951,5999,0.185,0.186,0.174,0.198,0.145,0.216
+Kenya,MV,non-hospitalised cases,non_hosp_cases_averted,35369,35488,29009,42002,17348,52564,0.015,0.015,0.012,0.018,0.007,0.022
+Kenya,MV,deaths,rsv_deaths_averted,223,222,202,244,164,286,0.156,0.156,0.143,0.168,0.118,0.192
+South Africa,mAb,hospitalised cases,hosp_cases_averted,13898,13904,13092,14704,11594,16145,0.334,0.334,0.317,0.351,0.283,0.38
+South Africa,mAb,non-hospitalised cases,non_hosp_cases_averted,150353,146156,132649,162656,110803,217791,0.133,0.131,0.121,0.143,0.104,0.177
+South Africa,mAb,deaths,rsv_deaths_averted,223,223,210,236,186,262,0.379,0.379,0.36,0.398,0.323,0.43
+South Africa,MV,hospitalised cases,hosp_cases_averted,10087,10142,9359,10847,7692,12198,0.242,0.244,0.227,0.259,0.187,0.286
+South Africa,MV,non-hospitalised cases,non_hosp_cases_averted,63835,61186,47026,76396,25176,122762,0.056,0.055,0.043,0.067,0.023,0.101
+South Africa,MV,deaths,rsv_deaths_averted,162,162,149,174,125,196,0.274,0.276,0.256,0.294,0.216,0.323
+Kenya,mAb,hospitalisation costs (US$),cost_rsv_hosp_averted,1688683,1683722,1574562,1798860,1369875,2026071,0.236,0.237,0.225,0.249,0.2,0.269
+Kenya,mAb,outpatient costs (US$),cost_rsv_outpatient_averted,1298226,1296716,1239318,1355116,1132110,1475042,0.055,0.055,0.052,0.057,0.048,0.062
+Kenya,mAb,total medical cost (US$),total_medical_cost_averted,2986909,2978722,2859507,3112617,2630067,3376180,0.097,0.097,0.093,0.1,0.086,0.107
+Kenya,MV,hospitalisation costs (US$),cost_rsv_hosp_averted,1322254,1326080,1217654,1426883,1008453,1628377,0.185,0.186,0.174,0.198,0.145,0.216
+Kenya,MV,outpatient costs (US$),cost_rsv_outpatient_averted,259116,259853,212620,305828,135723,380483,0.011,0.011,0.009,0.013,0.006,0.016
+Kenya,MV,total medical cost (US$),total_medical_cost_averted,1581370,1584970,1468429,1698410,1236676,1904725,0.051,0.051,0.048,0.055,0.04,0.061
+South Africa,mAb,hospitalisation costs (US$),cost_rsv_hosp_averted,12363592,12319741,11445026,13253959,9775653,15025007,0.356,0.357,0.336,0.376,0.297,0.412
+South Africa,mAb,outpatient costs (US$),cost_rsv_outpatient_averted,1139332,1086198,973514,1233457,793358,1837541,0.123,0.119,0.109,0.133,0.091,0.178
+South Africa,mAb,total medical cost (US$),total_medical_cost_averted,13502924,13470691,12573430,14402136,10888158,16234275,0.307,0.308,0.291,0.323,0.259,0.352
+South Africa,MV,hospitalisation costs (US$),cost_rsv_hosp_averted,9928054,9920108,9000033,10838789,7245507,12737497,0.286,0.287,0.265,0.309,0.217,0.345
+South Africa,MV,outpatient costs (US$),cost_rsv_outpatient_averted,472820,432168,330368,563992,183404,1025441,0.051,0.047,0.037,0.061,0.021,0.101
+South Africa,MV,total medical cost (US$),total_medical_cost_averted,10400874,10371380,9468790,11320337,7718391,13226353,0.237,0.237,0.22,0.255,0.182,0.285
