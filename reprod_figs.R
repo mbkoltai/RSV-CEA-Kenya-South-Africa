@@ -96,18 +96,6 @@ deaths_kenya <- read_csv(c("custom_input/deaths_kenya_tidy_adjusted_02_2022.csv"
                               sapply(strsplit(age_in_months,'-'),'[[',1),age_in_months)) %>%
   uncount(weights=freq, .id="n",.remove=F) %>% mutate(age_inf=as.numeric(age_in_months)+(n-1)) %>% 
   dplyr::select(!c(n,freq,age_in_months)) %>% relocate(age_inf,.before=value)
-# fit distributions to CI95
-kenya_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), function(y_no) data.frame(age_inf=0:59, 
-  t(sapply(1:(nrow(deaths_kenya)/2), function(x) gamma.parms.from.quantiles(p=c(2.5,97.5)/100, 
-  q=as.numeric((deaths_kenya %>% mutate(CI_95_lower=ifelse(CI_95_lower==0,0.1,CI_95_lower)) %>% 
-                  filter(in_hospital==y_no) %>% 
-  dplyr::select(c(CI_95_lower,CI_95_upper)))[x,]))[c("shape","rate")])),in_hospital=y_no))) %>% 
-  mutate(shape=unlist(shape),rate=unlist(rate))
-# generate samples from fitted distribs
-kenya_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:59, function(x) 
-    rgamma(n=5e3,shape=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
-          rate=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5)
-names(kenya_deaths_incid) <- c("hosp","nonhosp")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
 # SA deaths
 deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TIDY.csv") %>% 
@@ -130,7 +118,29 @@ deaths_SA <- read_csv("custom_input/mortality South Africa updated17_01_2022_TID
 #   geom_ribbon(aes(ymin=CI_95_lower,ymax=CI_95_upper,fill=in_hospital),alpha=0.2) + theme_bw() +
 #   scale_x_continuous(breaks=(0:30)*2,expand=expansion(0.01,0)) + scale_y_log10(breaks=2^(-3:7))
 
-# PLOT DEATHS
+# merge deaths data in 3-month brackets?
+death_merge_6m=T
+if (death_merge_6m){
+  deaths_SA <- deaths_SA %>% 
+    mutate(meta_age=ifelse(as.numeric(age_in_months_orig)<=12,
+                           ceiling(as.numeric(age_in_months_orig)/6),
+                           as.numeric(age_in_months_orig))) %>%
+    group_by(meta_age,in_hospital) %>% 
+    mutate(value=mean(value),
+           CI_95_lower=mean(CI_95_lower),CI_95_upper=mean(CI_95_upper)) %>%
+    ungroup() %>% select(!meta_age)
+  # KEN
+  deaths_kenya <- deaths_kenya %>% 
+    mutate(meta_age=ifelse(as.numeric(age_in_months_orig)<=12,
+                           ceiling(as.numeric(age_in_months_orig)/6),
+                           as.numeric(age_in_months_orig))) %>%
+    group_by(meta_age,in_hospital) %>% 
+    mutate(value=mean(value),
+           CI_95_lower=mean(CI_95_lower),CI_95_upper=mean(CI_95_upper)) %>%
+    ungroup() %>% select(!meta_age)
+}
+
+# collate deaths data
 deaths_data <- bind_rows(deaths_SA %>% select(!age_inf) %>% 
             group_by(age_in_months_orig,in_hospital) %>%
             summarise(value=unique(value),
@@ -150,21 +160,6 @@ write_csv(deaths_data,file="output/cea_plots/figure_3.csv")
 ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 plot_flag=F
 if (plot_flag){
-  
-# plot with monthly resolution
-# ggplot(deaths_data,aes(x=age_in_months_orig)) +
-#   geom_bar(aes(y=value,fill=in_hospital),stat="identity",position="dodge") + # ,position="dodge"
-#   geom_errorbar(aes(ymin=CI_95_lower,ymax=CI_95_upper,group=in_hospital), # _sum
-#                 size=0.2,position="dodge") + #position="dodge"
-#   facet_wrap(~country) + # ,nrow=2 # ,scales="free_y"
-#   xlab("age (months)") + ylab("deaths per 100,000 person year") + labs(fill="") +
-#   scale_y_continuous(expand=expansion(0.01,0),breaks=(0:12)*25) + theme_bw() + standard_theme +
-#   theme(axis.text.x=element_text(vjust=0.5,size=13),axis.text.y=element_text(size=13),
-#     legend.text=element_text(size=13),legend.background=element_rect(fill=NA),legend.position=c(0.88,0.925),
-#     strip.text=element_text(size=14),
-#     axis.title.x=element_text(size=17),axis.title.y=element_text(size=17)) # p
-# save
-# ggsave("output/cea_plots/figure_3_revisedKENdeaths_dodged.png",width=32,height=18,units="cm")
 
 # Revised Figure3
 # source("death_rates.R")
@@ -239,7 +234,22 @@ deaths_data %>% mutate(before_5_mts=as.numeric(age_in_months_orig)<=6,
   group_by(country,before_5_mts) %>% summarise(value=sum(value*size_agegr)) %>%
   group_by(country) %>% mutate(share=value/sum(value))
 
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ###
+### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### ### 
 # fit distributions to CI95
+kenya_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), function(y_no) data.frame(age_inf=0:59, 
+          t(sapply(1:(nrow(deaths_kenya)/2), function(x) gamma.parms.from.quantiles(p=c(2.5,97.5)/100, 
+    q=as.numeric((deaths_kenya %>% mutate(CI_95_lower=ifelse(CI_95_lower==0,0.1,CI_95_lower)) %>% 
+    filter(in_hospital==y_no) %>% 
+    dplyr::select(c(CI_95_lower,CI_95_upper)))[x,]))[c("shape","rate")])),in_hospital=y_no))) %>% 
+    mutate(shape=unlist(shape),rate=unlist(rate))
+# generate samples from fitted distribs
+kenya_deaths_incid <- lapply(c("yes","no"), function(y_no) t(sapply(0:59, function(x) 
+  rgamma(n=5e3,shape=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$shape,
+         rate=(kenya_deaths_distrib_params %>% filter(age_inf==x&in_hospital==y_no))$rate)))/1e5)
+names(kenya_deaths_incid) <- c("hosp","nonhosp")
+
+
 SA_deaths_distrib_params <- bind_rows(lapply(c("yes","no"), 
         function(y_no) data.frame(age_inf=0:(nrow(deaths_SA)/2-1), 
         t(sapply(1:(nrow(deaths_SA)/2), function(x) gamma.parms.from.quantiles(p=c(2.5,97.5)/100, 
@@ -317,10 +327,12 @@ if (plot_flag){
     rate=c(rep(0.115,2),rep(0.32,2))*plot_popul_denom)
 # create plot
 ggplot(SA_ILI_SARI_rawdata,aes(x=age)) + 
-  geom_bar(aes(y=plot_popul_denom*rate/popul_denom),position="stack",stat="identity",color="black",fill="white") +
+  geom_bar(aes(y=plot_popul_denom*rate/popul_denom),
+           position="stack",stat="identity",color="black",fill="white") +
   # ,fill=disease_type_medic_status
   geom_errorbar(aes(ymin=plot_popul_denom*rate_CI_lower/popul_denom,
-                    ymax=plot_popul_denom*rate_CI_upper/popul_denom),size=0.4,width=2/3,color="red") +
+                    ymax=plot_popul_denom*rate_CI_upper/popul_denom),
+                size=0.4,width=2/3,color="red") +
   geom_point(data=df_ylims,aes(x=age,y=rate),color="white") +
   facet_wrap(~disease_type_medic_status,nrow=2,scales = "free") + # 
   xlab("age (months)") + 
@@ -583,7 +595,10 @@ g(list_exp_waning_param,df_exp_waning_param) %=% fcn_exp_waning_rate(efficacy_fi
 # distribution used to fit efficacy figures
 effic_dist_fit <- "beta" # 
 # adjust coverage levels
-coverage_adj=F; adj_cov_val=c(SA=0.752,KEN=0.616)
+coverage_adj=T; adj_cov_val=c(SA=0.752,KEN=0.616)
+# MERGE death data in 3-month age brackets
+death_merge_6m
+#
 subfolder_name <- paste0(
         "SA_ILI_",
         ifelse(ILI_adjust_SA,"broader","narrow"),
@@ -593,6 +608,7 @@ subfolder_name <- paste0(
         ifelse(grepl("gamma",effic_dist_fit),"","_effic_betafit"),
         ifelse(flag_publ_effic,"","_2022"),
         ifelse(ken_deaths_source==2,"_ken_death_rev",""),
+        ifelse(death_merge_6m,"_death_merged",""),
         "/")
 
 ### Before starting loop for the FIRST TIME need to create temp folder (after 1st run can comment out this line)
