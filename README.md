@@ -1,6 +1,6 @@
 ## Estimating the cost-effectiveness of maternal vaccination and monoclonal antibodies for respiratory syncytial virus (RSV) in Kenya and South Africa
 
-This repository contains R scripts and data tables to perform a cost-effectiveness analysis (CEA) of public health interventions against RSV disease in Kenya and South Africa for children under the age of 5 years, accompanying [this manuscript](https://www.medrxiv.org/content/10.1101/2022.09.09.22279780v2). 
+This repository contains R scripts and data tables to perform a cost-effectiveness analysis (CEA) of public health interventions against RSV disease in Kenya and South Africa for children under the age of 5 years, accompanying [this paper](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-023-02806-w). 
 
 The simulated interventions are based either on maternal vaccination (MV) or on monoclonal antibodies (mAb).
 We used probabilistic sensitivity analysis of a static cohort model, which is a modified version of a previous CEA by [Li 2020](https://bmcmedicine.biomedcentral.com/articles/10.1186/s12916-020-01537-6).
